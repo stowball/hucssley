@@ -1,0 +1,5 @@
+@mixin hu-bump-specificity() {
+  @at-root #{&}#{&} {
+    @content;
+  }
+}

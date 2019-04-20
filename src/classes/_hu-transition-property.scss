@@ -1,0 +1,71 @@
+$hu-transition-property-modules: (base, group-hover, group-state, state);
+
+$hu-transition-property-types: (
+  all,
+  height,
+  opacity,
+  transform,
+  visibility,
+  width,
+  none,
+) !default;
+
+@each $type, $value in $hu-transition-property-types {
+  $class-name: #{$hu-namespace}transition-property-#{$type};
+  $property: transition-property;
+  $value: if($value, $value, $type);
+
+  @if (index($hu-transition-property-modules, base)) {
+    @include hu-base($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-transition-property-modules, state)) {
+    @include hu-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-transition-property-modules, hocus)) {
+    @include hu-hocus($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-transition-property-modules, group-state)) {
+    @include hu-group-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-transition-property-modules, group-hover)) {
+    @include hu-group-hover($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-transition-property-modules, responsive)) {
+    @include hu-responsive($class-name) {
+      #{$property}: $value;
+    }
+
+    @if (index($hu-transition-property-modules, state)) {
+      @include hu-responsive-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-transition-property-modules, group-state)) {
+      @include hu-responsive-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if (index($hu-transition-property-modules, print)) {
+    @include hu-print($class-name) {
+      #{$property}: $value;
+    }
+  }
+}

@@ -1,0 +1,68 @@
+$hu-overscroll-modules: (base);
+
+$hu-overscroll-types: (
+  auto,
+  contain,
+  none,
+) !default;
+
+// overscroll -> overscroll-behavior
+@each $type, $value in $hu-overscroll-types {
+  $class-name: #{$hu-namespace}overscroll-#{$type};
+  $property: overscroll-behavior;
+  $value: if($value, $value, $type);
+
+  @if (index($hu-overscroll-modules, base)) {
+    @include hu-base($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-overscroll-modules, state)) {
+    @include hu-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-overscroll-modules, hocus)) {
+    @include hu-hocus($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-overscroll-modules, group-state)) {
+    @include hu-group-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-overscroll-modules, group-hover)) {
+    @include hu-group-hover($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-overscroll-modules, responsive)) {
+    @include hu-responsive($class-name) {
+      #{$property}: $value;
+    }
+
+    @if (index($hu-overscroll-modules, state)) {
+      @include hu-responsive-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-overscroll-modules, group-state)) {
+      @include hu-responsive-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if (index($hu-overscroll-modules, print)) {
+    @include hu-print($class-name) {
+      #{$property}: $value;
+    }
+  }
+}

@@ -1,0 +1,74 @@
+$hu-font-size-modules: (base, responsive);
+
+$hu-font-size-types: (
+  100: 10px,
+  200: 12px,
+  300: 14px,
+  400: 16px,
+  500: 18px,
+  600: 20px,
+  700: 22px,
+  800: 24px,
+  900: 26px,
+  1000: 28px,
+) !default;
+
+@each $type, $value in $hu-font-size-types {
+  $class-name: #{$hu-namespace}font-size-#{$type};
+  $property: font-size;
+  $value: if($value, $value, $type);
+
+  @if (index($hu-font-size-modules, base)) {
+    @include hu-base($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-font-size-modules, state)) {
+    @include hu-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-font-size-modules, hocus)) {
+    @include hu-hocus($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-font-size-modules, group-state)) {
+    @include hu-group-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-font-size-modules, group-hover)) {
+    @include hu-group-hover($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-font-size-modules, responsive)) {
+    @include hu-responsive($class-name) {
+      #{$property}: $value;
+    }
+
+    @if (index($hu-font-size-modules, state)) {
+      @include hu-responsive-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-font-size-modules, group-state)) {
+      @include hu-responsive-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if (index($hu-font-size-modules, print)) {
+    @include hu-print($class-name) {
+      #{$property}: $value;
+    }
+  }
+}

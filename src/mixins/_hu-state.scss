@@ -1,0 +1,7 @@
+@mixin hu-state($class-name) {
+  @each $state in $hu-states {
+    .#{$state}.#{$state}--#{$class-name} {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,91 @@
+$hu-padding-modules: $hu-margin-modules !default;
+
+$hu-padding-scale: $hu-margin-scale !default;
+
+$hu-padding-types: (
+  padding: padding,
+  padding-b: padding-bottom,
+  padding-l: padding-left,
+  padding-r: padding-right,
+  padding-t: padding-top,
+  padding-h: (padding-left, padding-right),
+  padding-v: (padding-bottom, padding-top),
+) !default;
+
+@each $type, $properties in $hu-padding-types {
+  @each $scale, $value in $hu-padding-scale {
+    $class-name: #{$hu-namespace}#{$type}-#{$scale};
+
+    @if (index($hu-padding-modules, base)) {
+      @include hu-base($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-padding-modules, state)) {
+      @include hu-state($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-padding-modules, hocus)) {
+      @include hu-hocus($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-padding-modules, group-state)) {
+      @include hu-group-state($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-padding-modules, group-hover)) {
+      @include hu-group-hover($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-padding-modules, responsive)) {
+      @include hu-responsive($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @if (index($hu-padding-modules, state)) {
+        @include hu-responsive-state($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+      }
+
+      @if (index($hu-padding-modules, group-state)) {
+        @include hu-responsive-group-state($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+      }
+    }
+
+    @if (index($hu-padding-modules, print)) {
+      @include hu-print($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}

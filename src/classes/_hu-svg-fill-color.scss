@@ -1,0 +1,65 @@
+$hu-svg-fill-color-modules: $hu-bg-color-modules !default;
+
+$hu-svg-fill-color-types: map-merge($hu-colors, (current: (current: currentColor))) !default;
+
+// svg-fill-color -> fill
+@each $hue, $colors in $hu-svg-fill-color-types {
+  @each $scale, $value in $colors {
+    $class-name: #{$hu-namespace}svg-fill-color-#{if($hue == current or $hue == inherit or $hue == transparent, "", unquote("#{$hue}-"))}#{$scale};
+    $property: fill;
+
+    @if (index($hu-color-modules, base)) {
+      @include hu-base($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-color-modules, state)) {
+      @include hu-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-color-modules, hocus)) {
+      @include hu-hocus($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-color-modules, group-state)) {
+      @include hu-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-color-modules, group-hover)) {
+      @include hu-group-hover($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-color-modules, responsive)) {
+      @include hu-responsive($class-name) {
+        #{$property}: $value;
+      }
+
+      @if (index($hu-color-modules, state)) {
+        @include hu-responsive-state($class-name) {
+          #{$property}: $value;
+        }
+      }
+
+      @if (index($hu-color-modules, group-state)) {
+        @include hu-responsive-group-state($class-name) {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-color-modules, print)) {
+      @include hu-print($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+}

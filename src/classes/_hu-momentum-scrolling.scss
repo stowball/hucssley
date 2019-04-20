@@ -1,0 +1,12 @@
+$hu-momentum-scrolling-modules: (base);
+
+// momentum-scrolling -> webkit-overflow-scrolling
+@if (index($hu-momentum-scrolling-modules, base)) {
+  $class-name: #{$hu-namespace}momentum-scrolling;
+  $property: -webkit-overflow-scrolling;
+  $value: touch;
+  
+  @include hu-base($class-name) {
+    #{$property}: $value;
+  }
+}

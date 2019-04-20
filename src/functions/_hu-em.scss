@@ -1,0 +1,3 @@
+@function hu-em($target, $context: 16) {
+  @return hu-strip-unit($target / $context) * 1em;
+}

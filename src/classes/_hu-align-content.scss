@@ -1,0 +1,75 @@
+$hu-align-content-modules: (base, responsive) !default;
+
+$hu-align-content-types: (
+  baseline,
+  center,
+  end,
+  flex-end,
+  flex-start,
+  normal,
+  space-around,
+  space-between,
+  space-evenly,
+  start,
+  stretch,
+) !default;
+
+@each $type, $value in $hu-align-content-types {
+  $class-name: #{$hu-namespace}align-content-#{$type};
+  $property: align-content;
+  $value: if($value, $value, $type);
+
+  @if (index($hu-align-content-modules, base)) {
+    @include hu-base($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-content-modules, state)) {
+    @include hu-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-content-modules, hocus)) {
+    @include hu-hocus($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-content-modules, group-state)) {
+    @include hu-group-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-content-modules, group-hover)) {
+    @include hu-group-hover($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-content-modules, responsive)) {
+    @include hu-responsive($class-name) {
+      #{$property}: $value;
+    }
+
+    @if (index($hu-align-content-modules, state)) {
+      @include hu-responsive-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-align-content-modules, group-state)) {
+      @include hu-responsive-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if (index($hu-align-content-modules, print)) {
+    @include hu-print($class-name) {
+      #{$property}: $value;
+    }
+  }
+}

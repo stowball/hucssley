@@ -1,0 +1,71 @@
+$hu-transition-duration-modules: (base, group-hover, group-state, state);
+
+$hu-transition-duration-types: (
+  0: 0s,
+  100: 0.1ms,
+  200: 0.2ms,
+  300: 0.3ms,
+  400: 0.4ms,
+  500: 0.5ms,
+  1000: 1s,
+) !default;
+
+@each $type, $value in $hu-transition-duration-types {
+  $class-name: #{$hu-namespace}transition-duration-#{$type};
+  $property: transition-duration;
+  $value: if($value, $value, $type);
+
+  @if (index($hu-transition-duration-modules, base)) {
+    @include hu-base($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-transition-duration-modules, state)) {
+    @include hu-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-transition-duration-modules, hocus)) {
+    @include hu-hocus($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-transition-duration-modules, group-state)) {
+    @include hu-group-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-transition-duration-modules, group-hover)) {
+    @include hu-group-hover($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-transition-duration-modules, responsive)) {
+    @include hu-responsive($class-name) {
+      #{$property}: $value;
+    }
+
+    @if (index($hu-transition-duration-modules, state)) {
+      @include hu-responsive-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-transition-duration-modules, group-state)) {
+      @include hu-responsive-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if (index($hu-transition-duration-modules, print)) {
+    @include hu-print($class-name) {
+      #{$property}: $value;
+    }
+  }
+}

@@ -1,0 +1,77 @@
+$hu-justify-items-modules: (base, responsive);
+
+$hu-justify-items-types: (
+  auto,
+  baseline,
+  center,
+  end,
+  flex-end,
+  flex-start,
+  left,
+  normal,
+  right,
+  self-end,
+  self-start,
+  start,
+  stretch,
+) !default;
+
+@each $type, $value in $hu-justify-items-types {
+  $class-name: #{$hu-namespace}justify-items-#{$type};
+  $property: justify-items;
+  $value: if($value, $value, $type);
+
+  @if (index($hu-justify-items-modules, base)) {
+    @include hu-base($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-justify-items-modules, state)) {
+    @include hu-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-justify-items-modules, hocus)) {
+    @include hu-hocus($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-justify-items-modules, group-state)) {
+    @include hu-group-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-justify-items-modules, group-hover)) {
+    @include hu-group-hover($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-justify-items-modules, responsive)) {
+    @include hu-responsive($class-name) {
+      #{$property}: $value;
+    }
+
+    @if (index($hu-justify-items-modules, state)) {
+      @include hu-responsive-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-justify-items-modules, group-state)) {
+      @include hu-responsive-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if (index($hu-justify-items-modules, print)) {
+    @include hu-print($class-name) {
+      #{$property}: $value;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+@mixin hu-group-state($class-name) {
+  @each $state in $hu-states {
+    .group.#{$state} .group__#{$state}--#{$class-name} {
+      @content;
+    }
+  }
+}

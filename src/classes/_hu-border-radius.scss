@@ -1,0 +1,101 @@
+$hu-border-radius-modules: (base, responsive) !default;
+
+$hu-border-radius-scale: (
+  0: 0,
+  100: 1px,
+  200: 2px,
+  300: 3px,
+  400: 4px,
+  500: 5px,
+  1000: 1000px,
+) !default;
+
+$hu-border-radius-types: (
+  border-radius: border-radius,
+  border-radius-b: (border-bottom-left-radius, border-bottom-right-radius),
+  border-radius-bl: border-bottom-left-radius,
+  border-radius-br: border-bottom-right-radius,
+  border-radius-l: (border-bottom-left-radius, border-top-left-radius),
+  border-radius-r: (border-bottom-right-radius, border-top-right-radius),
+  border-radius-t: (border-top-left-radius, border-top-right-radius),
+  border-radius-tl: border-top-left-radius,
+  border-radius-tr: border-top-right-radius,
+) !default;
+
+@each $type, $properties in $hu-border-radius-types {
+  @each $scale, $value in $hu-border-radius-scale {
+    $class-name: #{$hu-namespace}#{$type}-#{$scale};
+
+    @if (index($hu-border-radius-modules, base)) {
+      @include hu-base($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-border-radius-modules, state)) {
+      @include hu-state($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-border-radius-modules, hocus)) {
+      @include hu-hocus($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-border-radius-modules, group-state)) {
+      @include hu-group-state($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-border-radius-modules, group-hover)) {
+      @include hu-group-hover($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-border-radius-modules, responsive)) {
+      @include hu-responsive($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @if (index($hu-border-radius-modules, state)) {
+        @include hu-responsive-state($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+      }
+
+      @if (index($hu-border-radius-modules, group-state)) {
+        @include hu-responsive-group-state($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+      }
+    }
+
+    @if (index($hu-border-radius-modules, print)) {
+      @include hu-print($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}

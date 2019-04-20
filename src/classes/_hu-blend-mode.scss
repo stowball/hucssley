@@ -1,0 +1,81 @@
+$hu-blend-mode-modules: (base) !default;
+
+$hu-blend-mode-types: (
+  color,
+  color-burn,
+  color-dodge,
+  darken,
+  difference,
+  exclusion,
+  hard-light,
+  hue,
+  lighten,
+  luminosity,
+  multiply,
+  normal,
+  overlay,
+  saturation,
+  screen,
+  soft-light,
+);
+
+// blend-mode -> mix-blend-mode
+@each $type, $value in $hu-blend-mode-types {
+  $class-name: #{$hu-namespace}blend-mode-#{$type};
+  $property: mix-blend-mode;
+  $value: if($value, $value, $type);
+
+  @if (index($hu-blend-mode-modules, base)) {
+    @include hu-base($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-blend-mode-modules, state)) {
+    @include hu-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-blend-mode-modules, hocus)) {
+    @include hu-hocus($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-blend-mode-modules, group-state)) {
+    @include hu-group-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-blend-mode-modules, group-hover)) {
+    @include hu-group-hover($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-blend-mode-modules, responsive)) {
+    @include hu-responsive($class-name) {
+      #{$property}: $value;
+    }
+
+    @if (index($hu-blend-mode-modules, state)) {
+      @include hu-responsive-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-blend-mode-modules, group-state)) {
+      @include hu-responsive-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if (index($hu-blend-mode-modules, print)) {
+    @include hu-print($class-name) {
+      #{$property}: $value;
+    }
+  }
+}

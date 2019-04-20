@@ -1,0 +1,66 @@
+$hu-scroll-behavior-modules: (base);
+
+$hu-scroll-behavior-types: (
+  auto,
+  smooth,
+) !default;
+
+@each $type, $value in $hu-scroll-behavior-types {
+  $class-name: #{$hu-namespace}scroll-behavior-#{$type};
+  $property: scroll-behavior;
+  $value: if($value, $value, $type);
+
+  @if (index($hu-scroll-behavior-modules, base)) {
+    @include hu-base($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-scroll-behavior-modules, state)) {
+    @include hu-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-scroll-behavior-modules, hocus)) {
+    @include hu-hocus($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-scroll-behavior-modules, group-state)) {
+    @include hu-group-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-scroll-behavior-modules, group-h)) {
+    @include hu-group-h($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-scroll-behavior-modules, responsive)) {
+    @include hu-responsive($class-name) {
+      #{$property}: $value;
+    }
+
+    @if (index($hu-scroll-behavior-modules, state)) {
+      @include hu-responsive-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-scroll-behavior-modules, group-state)) {
+      @include hu-responsive-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if (index($hu-scroll-behavior-modules, print)) {
+    @include hu-print($class-name) {
+      #{$property}: $value;
+    }
+  }
+}

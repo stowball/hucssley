@@ -1,0 +1,156 @@
+$hu-margin-modules: (base, responsive) !default;
+
+$hu-margin-scale: (
+  0: 0,
+  100: 2px,
+  200: 4px,
+  300: 8px,
+  400: 16px,
+  500: 24px,
+  600: 32px,
+  700: 48px,
+  800: 64px,
+) !default;
+
+$hu-margin-types: (
+  margin: margin,
+  margin-b: margin-bottom,
+  margin-l: margin-left,
+  margin-r: margin-right,
+  margin-t: margin-top,
+  margin-h: (margin-left, margin-right),
+  margin-v: (margin-bottom, margin-top),
+) !default;
+
+@each $type, $properties in $hu-margin-types {
+  @each $scale, $value in $hu-margin-scale {
+    $class-name: #{$hu-namespace}#{$type}-#{$scale};
+    $class-name-negative: #{$hu-namespace}#{$type}-n#{$scale};
+
+    @if (index($hu-margin-modules, base)) {
+      @include hu-base($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @include hu-base($class-name-negative) {
+        @each $property in $properties {
+          #{$property}: $value * -1;
+        }
+      }
+    }
+
+    @if (index($hu-margin-modules, state)) {
+      @include hu-state($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @include hu-state($class-name-negative) {
+        @each $property in $properties {
+          #{$property}: $value * -1;
+        }
+      }
+    }
+
+    @if (index($hu-margin-modules, hocus)) {
+      @include hu-hocus($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @include hu-hocus($class-name-negative) {
+        @each $property in $properties {
+          #{$property}: $value * -1;
+        }
+      }
+    }
+
+    @if (index($hu-margin-modules, group-state)) {
+      @include hu-group-state($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @include hu-group-state($class-name-negative) {
+        @each $property in $properties {
+          #{$property}: $value * -1;
+        }
+      }
+    }
+
+    @if (index($hu-margin-modules, group-hover)) {
+      @include hu-group-hover($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @include hu-group-hover($class-name-negative) {
+        @each $property in $properties {
+          #{$property}: $value * -1;
+        }
+      }
+    }
+
+    @if (index($hu-margin-modules, responsive)) {
+      @include hu-responsive($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @include hu-responsive($class-name-negative) {
+        @each $property in $properties {
+          #{$property}: $value * -1;
+        }
+      }
+
+      @if (index($hu-margin-modules, state)) {
+        @include hu-responsive-state($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+
+        @include hu-responsive-state($class-name-negative) {
+          @each $property in $properties {
+            #{$property}: $value * -1;
+          }
+        }
+      }
+
+      @if (index($hu-margin-modules, group-state)) {
+        @include hu-responsive-group-state($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+
+        @include hu-responsive-group-state($class-name-negative) {
+          @each $property in $properties {
+            #{$property}: $value * -1;
+          }
+        }
+      }
+    }
+
+    @if (index($hu-margin-modules, print)) {
+      @include hu-print($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @include hu-print($class-name-negative) {
+        @each $property in $properties {
+          #{$property}: $value * -1;
+        }
+      }
+    }
+  }
+}

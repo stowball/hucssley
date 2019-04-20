@@ -1,0 +1,6 @@
+@mixin hu-hocus($class-name) {
+  .hocus--#{$class-name}:focus,
+  .hocus--#{$class-name}:hover {
+    @content;
+  }
+}

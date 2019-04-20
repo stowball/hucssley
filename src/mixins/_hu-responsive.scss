@@ -1,0 +1,9 @@
+@mixin hu-responsive($class-name) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    .bp-#{$bp-scale}--#{$class-name} {
+      @media (min-width: $bp-value) {
+        @content;
+      }
+    }
+  }
+}
