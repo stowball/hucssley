@@ -1,0 +1,2031 @@
+/* ------------------------- */
+/* WIP Utility Class Library */
+/*                           */
+/* Works well with Purgecss  */
+/* ------------------------- */
+
+// Configuration starts on L104 //
+
+// Functions and Mixins
+
+@function hu-em($target, $context: 16) {
+  @return hu-strip-unit($target / $context) * 1em;
+}
+
+@function hu-strip-unit($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+@mixin hu-base($class-name) {
+  .#{$class-name} {
+    @content;
+  }
+}
+
+@mixin hu-bump-specificity() {
+  @at-root #{&}#{&} {
+    @content;
+  }
+}
+
+@mixin hu-group-hover($class-name) {
+  .group:hover .group__hover--#{$class-name} {
+    @content;
+  }
+}
+
+@mixin hu-group-state($class-name) {
+  @each $state in $hu-states {
+    .group.#{$state} .group__#{$state}--#{$class-name} {
+      @content;
+    }
+  }
+}
+
+@mixin hu-hocus($class-name) {
+  .hocus--#{$class-name}:focus,
+  .hocus--#{$class-name}:hover {
+    @content;
+  }
+}
+
+@mixin hu-print($class-name) {
+  @media print {
+    .print--#{$class-name} {
+      @include hu-bump-specificity {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin hu-responsive($class-name) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    .bp-#{$bp-scale}--#{$class-name} {
+      @media (min-width: $bp-value) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin hu-responsive-group-state($class-name) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @each $state in $hu-states {
+      .group.#{$state} .group__bp-#{$bp-scale}-#{$state}--#{$class-name} {
+        @media (min-width: $bp-value) {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+@mixin hu-responsive-state($class-name) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @each $state in $hu-states {
+      .#{$state}.bp-#{$bp-scale}-#{$state}--#{$class-name} {
+        @media (min-width: $bp-value) {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+@mixin hu-state($class-name) {
+  @each $state in $hu-states {
+    .#{$state}.#{$state}--#{$class-name} {
+      @content;
+    }
+  }
+}
+
+// Configuration
+
+//// Global
+
+$hu-breakpoints: (
+  360: hu-em(360),
+  480: hu-em(480),
+  600: hu-em(600),
+  768: hu-em(768),
+  960: hu-em(960),
+  1024: hu-em(1024),
+  1280: hu-em(1280),
+) !default;
+
+$hu-colors: (
+  neutral: (
+    0: #fff,
+    100: #fafbfd,
+    200: #f9fafc,
+    300: #f1f4f8,
+    400: #f1f1f1,
+    500: #e0e1e2,
+    800: #aeaeae,
+    900: #495b60,
+    1000: #000,
+  ),
+  blue: (
+    100: #f3f9ff,
+    300: #cff5fa,
+    400: #afeff7,
+    600: #00c2da,
+    1000: #003453,
+  ),
+  yellow: (
+    200: #fdf8c2,
+    300: #fbf5ac,
+  ),
+  green: (
+    1000: #17653b,
+  ),
+  red: (
+    100: #fffdfc,
+    1000: #b40b00,
+  ),
+  inherit: (
+    inherit: inherit,
+  ),
+  transparent: (
+    transparent: transparent,
+  ),
+) !default;
+
+$hu-namespace: "hu-" !default;
+
+//// Specific
+
+$hu-align-content-modules: (base, responsive) !default;
+
+$hu-align-content-types: (
+  baseline,
+  center,
+  end,
+  flex-end,
+  flex-start,
+  normal,
+  space-around,
+  space-between,
+  space-evenly,
+  start,
+  stretch,
+) !default;
+
+$hu-align-items-modules: (base, responsive) !default;
+
+$hu-align-items-types: (
+  auto,
+  center,
+  end,
+  flex-end,
+  flex-start,
+  normal,
+  self-end,
+  self-start,
+  start,
+) !default;
+
+$hu-align-self-modules: (base, responsive) !default;
+
+$hu-align-self-types: $hu-align-items-types !default;
+
+$hu-bg-color-modules: (base, hocus, group-hover, group-state, state) !default;
+
+$hu-bg-color-types: $hu-colors !default;
+
+$hu-blend-mode-modules: (base) !default;
+
+$hu-blend-mode-types: (
+  color,
+  color-burn,
+  color-dodge,
+  darken,
+  difference,
+  exclusion,
+  hard-light,
+  hue,
+  lighten,
+  luminosity,
+  multiply,
+  normal,
+  overlay,
+  saturation,
+  screen,
+  soft-light,
+);
+
+$hu-border-color-modules: $hu-bg-color-modules !default;
+
+$hu-border-color-types: $hu-colors !default;
+
+$hu-border-radius-scale: (
+  0: 0,
+  100: 1px,
+  200: 2px,
+  300: 3px,
+  400: 4px,
+  500: 5px,
+  1000: 1000px,
+) !default;
+
+$hu-border-radius-types: (
+  border-radius: border-radius,
+  border-radius-b: (border-bottom-left-radius, border-bottom-right-radius),
+  border-radius-bl: border-bottom-left-radius,
+  border-radius-br: border-bottom-right-radius,
+  border-radius-l: (border-bottom-left-radius, border-top-left-radius),
+  border-radius-r: (border-bottom-right-radius, border-top-right-radius),
+  border-radius-t: (border-top-left-radius, border-top-right-radius),
+  border-radius-tl: border-top-left-radius,
+  border-radius-tr: border-top-right-radius,
+) !default;
+
+$hu-border-style-types: (
+  none,
+  dashed,
+  double,
+  dotted,
+  solid,
+) !default;
+
+$hu-border-width-types: (
+  0: 0,
+  100: 1px,
+  200: 2px,
+) !default;
+
+$hu-box-sizing-types: (
+  border-box,
+  content-box,
+) !default;
+
+$hu-color-modules: $hu-bg-color-modules !default;
+
+$hu-color-types: $hu-colors !default;
+
+$hu-cursor-types: (
+  auto,
+  default,
+  not-allowed,
+  pointer,
+  progress,
+  text,
+  wait,
+) !default;
+
+$hu-display-modules: (base, hocus, group-hover, group-state, print, responsive, state) !default;
+
+$hu-display-types: (
+  block,
+  flex,
+  grid,
+  inline,
+  inline-block,
+  inline-flex,
+  inline-grid,
+  none,
+  table,
+  table-cell,
+  table-row,
+) !default;
+
+$hu-flex-direction-types: (
+  column,
+  column-reverse,
+  row,
+  row-reverse,
+) !default;
+
+$hu-flex-grow-types: (
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  auto,
+) !default;
+
+$hu-flex-shrink-types: $hu-flex-grow-types !default;
+
+$hu-flex-wrap-types: (
+  no-wrap: nowrap,
+  wrap: wrap,
+  wrap-reverse: wrap-reverse,
+) !default;
+
+$hu-font-family-types: (
+  mono: "Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
+  sans: "system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif",
+  serif: "Constantia, Lucida Bright, Lucidabright, Lucida Serif, Lucida, DejaVu Serif, Bitstream Vera Serif, Liberation Serif, Georgia, serif",
+) !default;
+
+$hu-font-size-types: (
+  100: 10px,
+  200: 12px,
+  300: 14px,
+  400: 16px,
+  500: 18px,
+  600: 20px,
+  700: 22px,
+  800: 24px,
+  900: 26px,
+  1000: 28px,
+) !default;
+
+$hu-font-weight-types: (
+  400,
+  700,
+) !default;
+
+$hu-height-types: (
+  0: 0,
+  100: 100%,
+  100vh: 100vh,
+  auto: auto,
+) !default;
+
+$hu-justify-content-types: (
+  center,
+  end,
+  flex-end,
+  flex-start,
+  left,
+  normal,
+  right,
+  space-around,
+  space-between,
+  space-evenly,
+  start,
+  stretch,
+) !default;
+
+$hu-justify-items-types: (
+  auto,
+  baseline,
+  center,
+  end,
+  flex-end,
+  flex-start,
+  left,
+  normal,
+  right,
+  self-end,
+  self-start,
+  start,
+  stretch,
+) !default;
+
+$hu-line-height-types: (
+  0: 0,
+  100: 1,
+  200: 1.2,
+  300: 1.4,
+  400: 1.6,
+  500: 1.8,
+  600: 2,
+  700: 2.2,
+  800: 2.4,
+  900: 2.6,
+  1000: 2.8,
+) !default;
+
+$hu-list-style-types: (
+  circle,
+  decimal,
+  decimal-leading-zero,
+  disc,
+  lower-alpha,
+  lower-roman,
+  none,
+  square,
+  upper-alpha,
+  upper-roman,
+) !default;
+
+$hu-margin-modules: (base, responsive) !default;
+
+$hu-margin-scale: (
+  0: 0,
+  100: 2px,
+  200: 4px,
+  300: 8px,
+  400: 16px,
+  500: 24px,
+  600: 32px,
+  700: 48px,
+  800: 64px,
+) !default;
+
+$hu-margin-types: (
+  margin: margin,
+  margin-b: margin-bottom,
+  margin-l: margin-left,
+  margin-r: margin-right,
+  margin-t: margin-top,
+  margin-h: (margin-left, margin-right),
+  margin-v: (margin-bottom, margin-top),
+) !default;
+
+$hu-max-height-types: $hu-height-types !default;
+
+$hu-min-width-types: (
+  0: 0,
+  100: 100%,
+  100vw: 100vw,
+  none: none,
+) !default;
+
+$hu-opacity-types: (
+  0: 0,
+  10: 0.1,
+  20: 0.2,
+  25: 0.25,
+  30: 0.3,
+  40: 0.4,
+  50: 0.5,
+  60: 0.6,
+  70: 0.7,
+  75: 0.75,
+  80: 0.8,
+  90: 0.9,
+  100: 1,
+) !default;
+
+$hu-order-types: (
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+) !default;
+
+$hu-overflow-types: (
+  auto,
+  hidden,
+  visible,
+) !default;
+
+$hu-overscroll-types: (
+  auto,
+  contain,
+  none,
+) !default;
+
+$hu-padding-modules: $hu-margin-modules !default;
+
+$hu-padding-scale: $hu-margin-scale !default;
+
+$hu-padding-types: (
+  padding-h: (padding-left, padding-right),
+  padding: padding,
+  padding-b: padding-bottom,
+  padding-l: padding-left,
+  padding-r: padding-right,
+  padding-t: padding-top,
+  padding-v: (padding-bottom, padding-top),
+) !default;
+
+$hu-pin-scale: (
+  0: 0,
+  50: 50%,
+  100: 100%,
+  auto: auto,
+) !default;
+
+$hu-pin-types: (
+  pin-a: (bottom, left, right, top),
+  pin-b: bottom,
+  pin-bl: (bottom, left),
+  pin-br: (bottom, right),
+  pin-l: left,
+  pin-r: right,
+  pin-t: top,
+  pin-tl: (left, top),
+  pin-tr: (right, top),
+) !default;
+
+$hu-pointer-events-types: (
+  auto,
+  none,
+) !default;
+
+$hu-position-modules: (base, hocus, group-hover, group-state, state) !default;
+
+$hu-position-types: (
+  absolute,
+  fixed,
+  relative,
+  static,
+  sticky,
+) !default;
+
+$hu-states: (
+  is-active,
+  is-closed,
+  is-collapsed,
+  is-disabled,
+  is-expanded,
+  is-hidden,
+  is-loading,
+  is-open,
+  is-selected,
+  is-visible,
+) !default;
+
+$hu-svg-fill-color-modules: $hu-bg-color-modules !default;
+
+$hu-svg-fill-color-types: map-merge($hu-colors, (current: (current: currentColor))) !default;
+
+$hu-svg-stroke-color-modules: $hu-bg-color-modules !default;
+
+$hu-svg-stroke-color-types: $hu-svg-fill-color-types !default;
+
+$hu-table-border-types: (
+  collapse,
+  separate,
+) !default;
+
+$hu-table-layout-types: (
+  auto,
+  fixed,
+) !default;
+
+$hu-text-align-types: (
+  center,
+  justify,
+  left,
+  right,
+) !default;
+
+$hu-text-case-types: (
+  lower: lowercase,
+  normal: none,
+  title: capitalize,
+  upper: uppercase,
+) !default;
+
+$hu-text-decoration-types: (
+  line-through,
+  none,
+  underline,
+) !default;
+
+$hu-vertical-align-types: (
+  baseline,
+  bottom,
+  middle,
+  text-bottom,
+  text-top,
+  top,
+) !default;
+
+$hu-visibility-modules: (base, hocus, group-hover, group-state, print, responsive, state) !default;
+
+$hu-visibility-types: (
+  hidden,
+  visible,
+) !default;
+
+$hu-white-space-types: (
+  no-wrap: nowrap,
+  normal: normal,
+  pre: pre,
+  pre-line: pre-line,
+  pre-wrap: pre-wrap,
+) !default;
+
+$hu-width-types: (
+  0: 0,
+  5: 5%,
+  10: 10%,
+  16: 16.66667%,
+  20: 20%,
+  25: 25%,
+  30: 30%,
+  33: 33.33333%,
+  40: 40%,
+  50: 50%,
+  60: 60%,
+  70: 70%,
+  75: 75%,
+  80: 80%,
+  83: 83.33333%,
+  90: 90%,
+  100: 100%,
+  100vw: 100vw,
+  auto: auto,
+) !default;
+
+$hu-z-index-modules: (base, hocus, group-hover, group-state, state) !default;
+
+$hu-z-index-types: (
+  auto,
+  inherit,
+  -1,
+  0,
+  100,
+  200,
+  300,
+  400,
+  500,
+  600,
+  700,
+  800,
+  900,
+  1000,
+  9999,
+) !default;
+
+// Class creation
+
+// align-content
+@each $type, $value in $hu-align-content-types {
+  $class-name: #{$hu-namespace}align-content-#{$type};
+  $property: align-content;
+  $value: if($value, $value, $type);
+
+  @if (index($hu-align-content-modules, base)) {
+    @include hu-base($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-content-modules, state)) {
+    @include hu-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-content-modules, hocus)) {
+    @include hu-hocus($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-content-modules, group-state)) {
+    @include hu-group-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-content-modules, group-hover)) {
+    @include hu-group-hover($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-content-modules, responsive)) {
+    @include hu-responsive($class-name) {
+      #{$property}: $value;
+    }
+
+    @if (index($hu-align-content-modules, state)) {
+      @include hu-responsive-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-align-content-modules, group-state)) {
+      @include hu-responsive-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if (index($hu-align-content-modules, print)) {
+    @include hu-print($class-name) {
+      #{$property}: $value;
+    }
+  }
+}
+
+// align-items
+@each $type, $value in $hu-align-items-types {
+  $class-name: #{$hu-namespace}align-items-#{$type};
+  $property: align-items;
+  $value: if($value, $value, $type);
+
+  @if (index($hu-align-items-modules, base)) {
+    @include hu-base($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-items-modules, state)) {
+    @include hu-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-items-modules, hocus)) {
+    @include hu-hocus($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-items-modules, group-state)) {
+    @include hu-group-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-items-modules, group-hover)) {
+    @include hu-group-hover($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-items-modules, responsive)) {
+    @include hu-responsive($class-name) {
+      #{$property}: $value;
+    }
+
+    @if (index($hu-align-items-modules, state)) {
+      @include hu-responsive-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-align-items-modules, group-state)) {
+      @include hu-responsive-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if (index($hu-align-items-modules, print)) {
+    @include hu-print($class-name) {
+      #{$property}: $value;
+    }
+  }
+}
+
+// align-self
+@each $type, $value in $hu-align-self-types {
+  $class-name: #{$hu-namespace}align-self-#{$type};
+  $property: align-self;
+  $value: if($value, $value, $type);
+
+  @if (index($hu-align-self-modules, base)) {
+    @include hu-base($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-self-modules, state)) {
+    @include hu-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-self-modules, hocus)) {
+    @include hu-hocus($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-self-modules, group-state)) {
+    @include hu-group-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-self-modules, group-hover)) {
+    @include hu-group-hover($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-align-self-modules, responsive)) {
+    @include hu-responsive($class-name) {
+      #{$property}: $value;
+    }
+
+    @if (index($hu-align-self-modules, state)) {
+      @include hu-responsive-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-align-self-modules, group-state)) {
+      @include hu-responsive-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if (index($hu-align-self-modules, print)) {
+    @include hu-print($class-name) {
+      #{$property}: $value;
+    }
+  }
+}
+
+// bg-color -> background-color
+@each $hue, $colors in $hu-bg-color-types {
+  @each $scale, $value in $colors {
+    $class-name: #{$hu-namespace}bg-color-#{if($hue == current or $hue == inherit or $hue == transparent, "", unquote("#{$hue}-"))}#{$scale};
+    $property: background-color;
+
+    @if (index($hu-bg-color-modules, base)) {
+      @include hu-base($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-bg-color-modules, state)) {
+      @include hu-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-bg-color-modules, hocus)) {
+      @include hu-hocus($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-bg-color-modules, group-state)) {
+      @include hu-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-bg-color-modules, group-hover)) {
+      @include hu-group-hover($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-bg-color-modules, responsive)) {
+      @include hu-responsive($class-name) {
+        #{$property}: $value;
+      }
+
+      @if (index($hu-bg-color-modules, state)) {
+        @include hu-responsive-state($class-name) {
+          #{$property}: $value;
+        }
+      }
+
+      @if (index($hu-bg-color-modules, group-state)) {
+        @include hu-responsive-group-state($class-name) {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-bg-color-modules, print)) {
+      @include hu-print($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+// blend-mode -> mix-blend-mode
+@each $type, $value in $hu-blend-mode-types {
+  $class-name: #{$hu-namespace}blend-mode-#{$type};
+  $property: mix-blend-mode;
+  $value: if($value, $value, $type);
+
+  @if (index($hu-blend-mode-modules, base)) {
+    @include hu-base($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-blend-mode-modules, state)) {
+    @include hu-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-blend-mode-modules, hocus)) {
+    @include hu-hocus($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-blend-mode-modules, group-state)) {
+    @include hu-group-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-blend-mode-modules, group-hover)) {
+    @include hu-group-hover($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-blend-mode-modules, responsive)) {
+    @include hu-responsive($class-name) {
+      #{$property}: $value;
+    }
+
+    @if (index($hu-blend-mode-modules, state)) {
+      @include hu-responsive-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-blend-mode-modules, group-state)) {
+      @include hu-responsive-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if (index($hu-blend-mode-modules, print)) {
+    @include hu-print($class-name) {
+      #{$property}: $value;
+    }
+  }
+}
+
+// border-color
+@each $hue, $colors in $hu-border-color-types {
+  @each $scale, $value in $colors {
+    $class-name: #{$hu-namespace}border-color-#{if($hue == current or $hue == inherit or $hue == transparent, "", unquote("#{$hue}-"))}#{$scale};
+    $property: border-color;
+
+    @if (index($hu-border-color-modules, base)) {
+      @include hu-base($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-border-color-modules, state)) {
+      @include hu-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-border-color-modules, hocus)) {
+      @include hu-hocus($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-border-color-modules, group-state)) {
+      @include hu-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-border-color-modules, group-hover)) {
+      @include hu-group-hover($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-border-color-modules, responsive)) {
+      @include hu-responsive($class-name) {
+        #{$property}: $value;
+      }
+
+      @if (index($hu-border-color-modules, state)) {
+        @include hu-responsive-state($class-name) {
+          #{$property}: $value;
+        }
+      }
+
+      @if (index($hu-border-color-modules, group-state)) {
+        @include hu-responsive-group-state($class-name) {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-border-color-modules, print)) {
+      @include hu-print($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+// border-radius
+@each $type, $properties in $hu-border-radius-types {
+  @each $scale, $value in $hu-border-radius-scale {
+    .#{$hu-namespace}#{$type}-#{$scale} {
+      @each $property in $properties {
+        #{$property}: $value;
+      }
+    }
+
+    @include hu-responsive(#{$hu-namespace}#{$type}-#{$scale}) {
+      @each $property in $properties {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+// border-style
+@each $type, $value in $hu-border-style-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}border-style-#{$type} {
+    border-style: $value;
+  }
+}
+
+// border-width
+@each $type, $value in $hu-border-width-types {
+  .#{$hu-namespace}border-width-#{$type} {
+    border-width: $value;
+  }
+}
+
+// box-sizing
+@each $type, $value in $hu-box-sizing-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}box-sizing-#{$type} {
+    box-sizing: $value;
+  }
+}
+
+// color
+@each $hue, $colors in $hu-color-types {
+  @each $scale, $value in $colors {
+    $class-name: #{$hu-namespace}color-#{if($hue == current or $hue == inherit or $hue == transparent, "", unquote("#{$hue}-"))}#{$scale};
+    $property: color;
+
+    @if (index($hu-color-modules, base)) {
+      @include hu-base($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-color-modules, state)) {
+      @include hu-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-color-modules, hocus)) {
+      @include hu-hocus($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-color-modules, group-state)) {
+      @include hu-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-color-modules, group-hover)) {
+      @include hu-group-hover($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-color-modules, responsive)) {
+      @include hu-responsive($class-name) {
+        #{$property}: $value;
+      }
+
+      @if (index($hu-color-modules, state)) {
+        @include hu-responsive-state($class-name) {
+          #{$property}: $value;
+        }
+      }
+
+      @if (index($hu-color-modules, group-state)) {
+        @include hu-responsive-group-state($class-name) {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-color-modules, print)) {
+      @include hu-print($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+// cursor
+@each $type, $value in $hu-cursor-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}cursor-#{$type} {
+    cursor: $value;
+  }
+
+  @include hu-state(#{$hu-namespace}cursor-#{$type}) {
+    cursor: $value;
+  }
+}
+
+// display
+@each $type, $value in $hu-display-types {
+  $class-name: #{$hu-namespace}display-#{$type};
+  $property: display;
+  $value: if($value, $value, $type);
+
+  @if (index($hu-display-modules, base)) {
+    @include hu-base($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-display-modules, state)) {
+    @include hu-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-display-modules, hocus)) {
+    @include hu-hocus($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-display-modules, group-state)) {
+    @include hu-group-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-display-modules, group-hover)) {
+    @include hu-group-hover($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-display-modules, responsive)) {
+    @include hu-responsive($class-name) {
+      #{$property}: $value;
+    }
+
+    @if (index($hu-display-modules, state)) {
+      @include hu-responsive-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-display-modules, group-state)) {
+      @include hu-responsive-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if (index($hu-display-modules, print)) {
+    @include hu-print($class-name) {
+      #{$property}: $value;
+    }
+  }
+}
+
+// flex-direction {
+@each $type, $value in $hu-flex-direction-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}flex-direction-#{$type} {
+    flex-direction: $value;
+  }
+
+  @include hu-responsive(#{$hu-namespace}flex-direction-#{$type}) {
+    flex-direction: $value;
+  }
+}
+
+// flex-grow {
+@each $type, $value in $hu-flex-grow-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}flex-grow-#{$type} {
+    flex-grow: $value;
+  }
+
+  @include hu-responsive(#{$hu-namespace}flex-grow-#{$type}) {
+    flex-grow: $value;
+  }
+}
+
+// flex-shrink {
+@each $type, $value in $hu-flex-shrink-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}flex-shrink-#{$type} {
+    flex-shrink: $value;
+  }
+
+  @include hu-responsive(#{$hu-namespace}flex-shrink-#{$type}) {
+    flex-shrink: $value;
+  }
+}
+
+// flex-wrap
+@each $type, $value in $hu-flex-wrap-types {
+  .#{$hu-namespace}flex-wrap-#{$type} {
+    flex-wrap: $value;
+  }
+
+  @include hu-responsive(#{$hu-namespace}flex-wrap-#{$type}) {
+    flex-wrap: $value;
+  }
+}
+
+// font-family
+@each $type, $value in $hu-font-family-types {
+  .#{$hu-namespace}font-family-#{$type} {
+    font-family: $value;
+  }
+}
+
+// font-size
+@each $type, $value in $hu-font-size-types {
+  .#{$hu-namespace}font-size-#{$type} {
+    font-size: $value;
+  }
+
+  @include hu-responsive(#{$hu-namespace}font-size-#{$type}) {
+    font-size: $value;
+  }
+}
+
+// font-weight
+@each $type, $value in $hu-font-weight-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}font-weight {
+    font-weight: $value;
+  }
+}
+
+// height
+@each $type, $value in $hu-height-types {
+  .#{$hu-namespace}height-#{$type} {
+    height: $value;
+  }
+
+  @include hu-print(#{$hu-namespace}height-#{$type}) {
+    height: $value;
+  }
+}
+
+// justify-content
+@each $type, $value in $hu-justify-content-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}justify-content-#{$type} {
+    justify-content: $value;
+  }
+
+  @include hu-responsive(#{$hu-namespace}justify-content-#{$type}) {
+    justify-content: $value;
+  }
+}
+
+// justify-items
+@each $type, $value in $hu-justify-items-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}justify-items-#{$type} {
+    justify-items: $value;
+  }
+
+  @include hu-responsive(#{$hu-namespace}justify-items-#{$type}) {
+    justify-items: $value;
+  }
+}
+
+// line-height
+@each $type, $value in $hu-line-height-types {
+  .#{$hu-namespace}line-height-#{$type} {
+    line-height: $value;
+  }
+
+  @include hu-responsive(#{$hu-namespace}line-height-#{$type}) {
+    line-height: $value;
+  }
+}
+
+// list-style
+@each $type, $value in $hu-list-style-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}list-style-#{$type} {
+    list-style: $value;
+  }
+}
+
+// margin
+@each $type, $properties in $hu-margin-types {
+  @each $scale, $value in $hu-margin-scale {
+    $class-name: #{$hu-namespace}#{$type}-#{$scale};
+    $class-name-negative: #{$hu-namespace}#{$type}-n#{$scale};
+
+    @if (index($hu-margin-modules, base)) {
+      @include hu-base($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @include hu-base($class-name-negative) {
+        @each $property in $properties {
+          #{$property}: $value * -1;
+        }
+      }
+    }
+
+    @if (index($hu-margin-modules, state)) {
+      @include hu-state($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @include hu-state($class-name-negative) {
+        @each $property in $properties {
+          #{$property}: $value * -1;
+        }
+      }
+    }
+
+    @if (index($hu-margin-modules, hocus)) {
+      @include hu-hocus($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @include hu-hocus($class-name-negative) {
+        @each $property in $properties {
+          #{$property}: $value * -1;
+        }
+      }
+    }
+
+    @if (index($hu-margin-modules, group-state)) {
+      @include hu-group-state($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @include hu-group-state($class-name-negative) {
+        @each $property in $properties {
+          #{$property}: $value * -1;
+        }
+      }
+    }
+
+    @if (index($hu-margin-modules, group-hover)) {
+      @include hu-group-hover($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @include hu-group-hover($class-name-negative) {
+        @each $property in $properties {
+          #{$property}: $value * -1;
+        }
+      }
+    }
+
+    @if (index($hu-margin-modules, responsive)) {
+      @include hu-responsive($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @include hu-responsive($class-name-negative) {
+        @each $property in $properties {
+          #{$property}: $value * -1;
+        }
+      }
+
+      @if (index($hu-margin-modules, state)) {
+        @include hu-responsive-state($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+
+        @include hu-responsive-state($class-name-negative) {
+          @each $property in $properties {
+            #{$property}: $value * -1;
+          }
+        }
+      }
+
+      @if (index($hu-margin-modules, group-state)) {
+        @include hu-responsive-group-state($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+
+        @include hu-responsive-group-state($class-name-negative) {
+          @each $property in $properties {
+            #{$property}: $value * -1;
+          }
+        }
+      }
+    }
+
+    @if (index($hu-margin-modules, print)) {
+      @include hu-print($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @include hu-print($class-name-negative) {
+        @each $property in $properties {
+          #{$property}: $value * -1;
+        }
+      }
+    }
+  }
+}
+
+// max-height
+@each $type, $value in $hu-max-height-types {
+  .#{$hu-namespace}max-height-#{$type} {
+    max-height: $value;
+  }
+
+  @include hu-print(#{$hu-namespace}max-height-#{$type}) {
+    max-height: $value;
+  }
+}
+
+// min-width
+@each $type, $value in $hu-min-width-types {
+  .#{$hu-namespace}min-width-#{$type} {
+    min-width: $value;
+  }
+}
+
+// momentum-scrolling -> webkit-overflow-scrolling
+.#{$hu-namespace}momentum-scrolling {
+  -webkit-overflow-scrolling: touch;
+}
+
+// opacity
+@each $type, $value in $hu-opacity-types {
+  .#{$hu-namespace}opacity-#{$type} {
+    opacity: $value;
+  }
+}
+
+// order {
+@each $type, $value in $hu-order-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}order-#{$type} {
+    order: $value;
+  }
+
+  @include hu-responsive(#{$hu-namespace}order-#{$type}) {
+    order: $value;
+  }
+}
+
+// overflow
+@each $type, $value in $hu-overflow-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}overflow-#{$type} {
+    overflow: $value;
+  }
+
+  @include hu-responsive(#{$hu-namespace}overflow-#{$type}) {
+    overflow: $value;
+  }
+
+  @include hu-print(#{$hu-namespace}overflow-#{$type}) {
+    overflow: $value;
+  }
+}
+
+// overscroll -> overscroll-behavior
+@each $type, $value in $hu-overscroll-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}overflow-#{$type} {
+    overscroll-behavior: $value;
+  }
+}
+
+// padding
+@each $type, $properties in $hu-padding-types {
+  @each $scale, $value in $hu-padding-scale {
+    $class-name: #{$hu-namespace}#{$type}-#{$scale};
+
+    @if (index($hu-padding-modules, base)) {
+      @include hu-base($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-padding-modules, state)) {
+      @include hu-state($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-padding-modules, hocus)) {
+      @include hu-hocus($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-padding-modules, group-state)) {
+      @include hu-group-state($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-padding-modules, group-hover)) {
+      @include hu-group-hover($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-padding-modules, responsive)) {
+      @include hu-responsive($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @include hu-responsive-state($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @include hu-responsive-group-state($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-padding-modules, print)) {
+      @include hu-print($class-name) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}
+
+// pin -> bottom, left, right, top
+@each $type, $properties in $hu-pin-types {
+  @each $scale, $value in $hu-pin-scale {
+    .#{$hu-namespace}#{$type}-#{$scale} {
+      @each $property in $properties {
+        #{$property}: $value;
+      }
+    }
+
+    @include hu-state(#{$hu-namespace}#{$type}-#{$scale}) {
+      @each $property in $properties {
+        #{$property}: $value;
+      }
+    }
+
+    @include hu-group-state(#{$hu-namespace}#{$type}-#{$scale}) {
+      @each $property in $properties {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+// pointer-events
+@each $type, $value in $hu-pointer-events-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}pointer-events-#{$type} {
+    pointer-events: $value;
+  }
+
+  @include hu-state(#{$hu-namespace}pointer-events) {
+    pointer-events: $value;
+  }
+
+  @include hu-group-state(#{$hu-namespace}pointer-events) {
+    pointer-events: $value;
+  }
+}
+
+// position
+@each $type, $value in $hu-position-types {
+  $class-name: #{$hu-namespace}position-#{$type};
+  $property: position;
+  $value: if($value, $value, $type);
+
+  @if (index($hu-position-modules, base)) {
+    @include hu-base($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-position-modules, state)) {
+    @include hu-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-position-modules, hocus)) {
+    @include hu-hocus($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-position-modules, group-state)) {
+    @include hu-group-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-position-modules, group-hover)) {
+    @include hu-group-hover($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-position-modules, responsive)) {
+    @include hu-responsive($class-name) {
+      #{$property}: $value;
+    }
+
+    @if (index($hu-position-modules, state)) {
+      @include hu-responsive-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-position-modules, group-state)) {
+      @include hu-responsive-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if (index($hu-position-modules, print)) {
+    @include hu-print($class-name) {
+      #{$property}: $value;
+    }
+  }
+}
+
+// scroll-behavior
+.#{$hu-namespace}scroll-behavior {
+  scroll-behavior: smooth;
+}
+
+// svg-fill-color -> fill
+@each $hue, $colors in $hu-svg-fill-color-types {
+  @each $scale, $value in $colors {
+    $class-name: #{$hu-namespace}svg-fill-color-#{if($hue == current or $hue == inherit or $hue == transparent, "", unquote("#{$hue}-"))}#{$scale};
+    $property: fill;
+
+    @if (index($hu-svg-fill-color-modules, base)) {
+      @include hu-base($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-svg-fill-color-modules, state)) {
+      @include hu-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-svg-fill-color-modules, hocus)) {
+      @include hu-hocus($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-svg-fill-color-modules, group-state)) {
+      @include hu-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-svg-fill-color-modules, group-hover)) {
+      @include hu-group-hover($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-svg-fill-color-modules, responsive)) {
+      @include hu-responsive($class-name) {
+        #{$property}: $value;
+      }
+
+      @if (index($hu-svg-fill-modules, state)) {
+        @include hu-responsive-state($class-name) {
+          #{$property}: $value;
+        }
+      }
+
+      @if (index($hu-svg-fill-modules, group-state)) {
+        @include hu-responsive-group-state($class-name) {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-svg-fill-color-modules, print)) {
+      @include hu-print($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+// svg-stroke-color -> stroke
+@each $hue, $colors in $hu-svg-stroke-color-types {
+  @each $scale, $value in $colors {
+    $class-name: #{$hu-namespace}svg-stroke-color-#{if($hue == current or $hue == inherit or $hue == transparent, "", unquote("#{$hue}-"))}#{$scale};
+    $property: stroke;
+
+    @if (index($hu-svg-stroke-color-modules, base)) {
+      @include hu-base($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-svg-stroke-color-modules, state)) {
+      @include hu-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-svg-stroke-color-modules, hocus)) {
+      @include hu-hocus($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-svg-stroke-color-modules, group-state)) {
+      @include hu-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-svg-stroke-color-modules, group-hover)) {
+      @include hu-group-hover($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-svg-stroke-color-modules, responsive)) {
+      @include hu-responsive($class-name) {
+        #{$property}: $value;
+      }
+
+      @if (index($hu-svg-stroke-modules, state)) {
+        @include hu-responsive-state($class-name) {
+          #{$property}: $value;
+        }
+      }
+
+      @if (index($hu-svg-stroke-modules, group-state)) {
+        @include hu-responsive-group-state($class-name) {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if (index($hu-svg-stroke-color-modules, print)) {
+      @include hu-print($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+// table-border -> border-collapse
+@each $type, $value in $hu-table-border-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}table-border-#{$type} {
+    border-collapse: $value;
+  }
+}
+
+// table-layout
+@each $type, $value in $hu-table-layout-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}table-layout-#{$type} {
+    table-layout: $value;
+  }
+}
+
+// text-align
+@each $type, $value in $hu-text-align-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}text-align-#{$type} {
+    text-align: $value;
+  }
+
+  @include hu-responsive(#{$hu-namespace}text-align-#{$type}) {
+    text-align: $value;
+  }
+}
+
+// text-case -> text-transform
+@each $type, $value in $hu-text-case-types {
+  .#{$hu-namespace}text-case-#{$type} {
+    text-transform: $value;
+  }
+}
+
+// text-decoration
+@each $type, $value in $hu-text-decoration-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}text-decoration-#{$type} {
+    text-decoration: $value;
+  }
+}
+
+// vertical-align
+@each $type, $value in $hu-vertical-align-types {
+  $value: if($value, $value, $type);
+
+  .#{$hu-namespace}vertical-align-#{$type} {
+    vertical-align: $value;
+  }
+}
+
+// visibility
+@each $type, $value in $hu-visibility-types {
+  $class-name: #{$hu-namespace}visibility-#{$type};
+  $property: visibility;
+  $value: if($value, $value, $type);
+
+  @if (index($hu-visibility-modules, base)) {
+    @include hu-base($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-visibility-modules, state)) {
+    @include hu-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-visibility-modules, hocus)) {
+    @include hu-hocus($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-visibility-modules, group-state)) {
+    @include hu-group-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-visibility-modules, group-hover)) {
+    @include hu-group-hover($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-visibility-modules, responsive)) {
+    @include hu-responsive($class-name) {
+      #{$property}: $value;
+    }
+
+    @if (index($hu-visibility-modules, state)) {
+      @include hu-responsive-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-visibility-modules, group-state)) {
+      @include hu-responsive-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if (index($hu-visibility-modules, print)) {
+    @include hu-print($class-name) {
+      #{$property}: $value;
+    }
+  }
+}
+
+// white-space
+@each $type, $value in $hu-white-space-types {
+  .#{$hu-namespace}white-space-#{$type} {
+    width: $value;
+  }
+}
+
+// width
+@each $type, $value in $hu-width-types {
+  .#{$hu-namespace}width-#{$type} {
+    width: $value;
+  }
+
+  @include hu-responsive(#{$hu-namespace}width-#{$type}) {
+    width: $value;
+  }
+
+  @include hu-print(#{$hu-namespace}width-#{$type}) {
+    width: $value;
+  }
+}
+
+// z-index
+@each $type, $value in $hu-z-index-types {
+  $class-name: #{$hu-namespace}z-index-#{$type};
+  $property: z-index;
+  $value: if($value, $value, $type);
+
+  @if (index($hu-z-index-modules, base)) {
+    @include hu-base($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-z-index-modules, state)) {
+    @include hu-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-z-index-modules, hocus)) {
+    @include hu-hocus($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-z-index-modules, group-state)) {
+    @include hu-group-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-z-index-modules, group-hover)) {
+    @include hu-group-hover($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-z-index-modules, responsive)) {
+    @include hu-responsive($class-name) {
+      #{$property}: $value;
+    }
+
+    @if (index($hu-z-index-modules, state)) {
+      @include hu-responsive-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-z-index-modules, group-state)) {
+      @include hu-responsive-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if (index($hu-z-index-modules, print)) {
+    @include hu-print($class-name) {
+      #{$property}: $value;
+    }
+  }
+}
