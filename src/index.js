@@ -11,7 +11,7 @@ function App() {
     }
     
     head *:not(style),
-    body * {
+    body style {
       display: none;
     }
     
