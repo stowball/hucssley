@@ -1,0 +1,15 @@
+@function hu-get($original-map, $keys: null, $stack-trace-name: null) {
+  $map: $original-map;
+
+  @if ($keys) {
+    @each $key in $keys {
+      $map: map-get($map, $key);
+    }
+  }
+
+  @if ($map == null) {
+    $error: log-error("No map found for #{unquote($stack-trace-name)}(#{$keys}). Map contains #{$original-map}");
+  }
+
+  @return $map;
+}
