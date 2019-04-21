@@ -36,7 +36,7 @@ $hu-transition-easing-types: (
 
 // transition-easing -> transition-timing-function
 @each $type, $value in $hu-transition-easing-types {
-  $class-name: #{$hu-namespace}transition-easing-#{$type};
+  $class-name: hu-class-name(transition-easing-#{$type});
   $property: transition-timing-function;
   $value: if($value, $value, $type);
 

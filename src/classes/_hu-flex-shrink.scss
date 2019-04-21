@@ -3,7 +3,7 @@ $hu-flex-shrink-modules: (base, responsive);
 $hu-flex-shrink-types: $hu-flex-grow-types !default;
 
 @each $type, $value in $hu-flex-shrink-types {
-  $class-name: #{$hu-namespace}flex-shrink-#{$type};
+  $class-name: hu-class-name(flex-shrink-#{$type});
   $property: flex-shrink;
   $value: if($value, $value, $type);
 

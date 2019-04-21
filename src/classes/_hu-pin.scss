@@ -22,7 +22,7 @@ $hu-pin-types: (
 // pin -> bottom, left, right, top
 @each $type, $properties in $hu-pin-types {
   @each $scale, $value in $hu-pin-scale {
-    $class-name: #{$hu-namespace}#{$type}-#{$scale};
+    $class-name: hu-class-name(#{$type}-#{$scale});
 
     @if (index($hu-pin-modules, base)) {
       @include hu-base($class-name) {

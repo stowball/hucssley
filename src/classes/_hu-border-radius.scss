@@ -24,7 +24,7 @@ $hu-border-radius-types: (
 
 @each $type, $properties in $hu-border-radius-types {
   @each $scale, $value in $hu-border-radius-scale {
-    $class-name: #{$hu-namespace}#{$type}-#{$scale};
+    $class-name: hu-class-name(#{$type}-#{$scale});
 
     @if (index($hu-border-radius-modules, base)) {
       @include hu-base($class-name) {

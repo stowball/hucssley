@@ -8,7 +8,7 @@ $hu-overscroll-types: (
 
 // overscroll -> overscroll-behavior
 @each $type, $value in $hu-overscroll-types {
-  $class-name: #{$hu-namespace}overscroll-#{$type};
+  $class-name: hu-class-name(overscroll-#{$type});
   $property: overscroll-behavior;
   $value: if($value, $value, $type);
 

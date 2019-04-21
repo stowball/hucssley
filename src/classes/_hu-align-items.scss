@@ -13,7 +13,7 @@ $hu-align-items-types: (
 ) !default;
 
 @each $type, $value in $hu-align-items-types {
-  $class-name: #{$hu-namespace}align-items-#{$type};
+  $class-name: hu-class-name(align-items-#{$type});
   $property: align-items;
   $value: if($value, $value, $type);
 

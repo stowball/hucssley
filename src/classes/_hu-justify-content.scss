@@ -16,7 +16,7 @@ $hu-justify-content-types: (
 ) !default;
 
 @each $type, $value in $hu-justify-content-types {
-  $class-name: #{$hu-namespace}justify-content-#{$type};
+  $class-name: hu-class-name(justify-content-#{$type});
   $property: justify-content;
   $value: if($value, $value, $type);
 

@@ -7,7 +7,7 @@ $hu-flex-wrap-types: (
 ) !default;
 
 @each $type, $value in $hu-flex-wrap-types {
-  $class-name: #{$hu-namespace}flex-wrap-#{$type};
+  $class-name: hu-class-name(flex-wrap-#{$type});
   $property: flex-wrap;
   $value: if($value, $value, $type);
 

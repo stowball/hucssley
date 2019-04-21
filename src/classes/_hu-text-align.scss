@@ -8,7 +8,7 @@ $hu-text-align-types: (
 ) !default;
 
 @each $type, $value in $hu-text-align-types {
-  $class-name: #{$hu-namespace}text-align-#{$type};
+  $class-name: hu-class-name(text-align-#{$type});
   $property: text-align;
   $value: if($value, $value, $type);
 

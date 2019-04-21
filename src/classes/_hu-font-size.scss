@@ -14,7 +14,7 @@ $hu-font-size-types: (
 ) !default;
 
 @each $type, $value in $hu-font-size-types {
-  $class-name: #{$hu-namespace}font-size-#{$type};
+  $class-name: hu-class-name(font-size-#{$type});
   $property: font-size;
   $value: if($value, $value, $type);
 

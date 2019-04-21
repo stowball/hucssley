@@ -24,8 +24,8 @@ $hu-margin-types: (
 
 @each $type, $properties in $hu-margin-types {
   @each $scale, $value in $hu-margin-scale {
-    $class-name: #{$hu-namespace}#{$type}-#{$scale};
-    $class-name-negative: #{$hu-namespace}#{$type}-n#{$scale};
+    $class-name: hu-class-name(#{$type}-#{$scale});
+    $class-name-negative: hu-class-name(#{$type}-n#{$scale});
 
     @if (index($hu-margin-modules, base)) {
       @include hu-base($class-name) {

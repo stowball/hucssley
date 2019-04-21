@@ -9,7 +9,7 @@ $hu-white-space-types: (
 ) !default;
 
 @each $type, $value in $hu-white-space-types {
-  $class-name: #{$hu-namespace}white-space-#{$type};
+  $class-name: hu-class-name(white-space-#{$type});
   $property: white-space;
   $value: if($value, $value, $type);
 

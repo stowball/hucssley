@@ -9,7 +9,7 @@ $hu-text-case-types: (
 
 // text-case -> text-transform
 @each $type, $value in $hu-text-case-types {
-  $class-name: #{$hu-namespace}text-case-#{$type};
+  $class-name: hu-class-name(text-case-#{$type});
   $property: text-transform;
   $value: if($value, $value, $type);
 

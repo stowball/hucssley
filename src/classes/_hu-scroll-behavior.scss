@@ -6,7 +6,7 @@ $hu-scroll-behavior-types: (
 ) !default;
 
 @each $type, $value in $hu-scroll-behavior-types {
-  $class-name: #{$hu-namespace}scroll-behavior-#{$type};
+  $class-name: hu-class-name(scroll-behavior-#{$type});
   $property: scroll-behavior;
   $value: if($value, $value, $type);
 

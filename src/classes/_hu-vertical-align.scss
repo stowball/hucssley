@@ -10,7 +10,7 @@ $hu-vertical-align-types: (
 ) !default;
 
 @each $type, $value in $hu-vertical-align-types {
-  $class-name: #{$hu-namespace}vertical-align-#{$type};
+  $class-name: hu-class-name(vertical-align-#{$type});
   $property: vertical-align;
   $value: if($value, $value, $type);
 

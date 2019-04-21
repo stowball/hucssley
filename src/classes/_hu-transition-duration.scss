@@ -11,7 +11,7 @@ $hu-transition-duration-types: (
 ) !default;
 
 @each $type, $value in $hu-transition-duration-types {
-  $class-name: #{$hu-namespace}transition-duration-#{$type};
+  $class-name: hu-class-name(transition-duration-#{$type});
   $property: transition-duration;
   $value: if($value, $value, $type);
 

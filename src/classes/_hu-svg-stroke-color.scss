@@ -5,7 +5,7 @@ $hu-svg-stroke-color-types: $hu-svg-fill-color-types !default;
 // svg-stroke-color -> stroke
 @each $hue, $colors in $hu-svg-stroke-color-types {
   @each $scale, $value in $colors {
-    $class-name: #{$hu-namespace}svg-stroke-color-#{if($hue == current or $hue == inherit or $hue == transparent, "", unquote("#{$hue}-"))}#{$scale};
+    $class-name: hu-class-name(svg-stroke-color-#{$hue}-#{$scale});
     $property: stroke;
 
     @if (index($hu-color-modules, base)) {

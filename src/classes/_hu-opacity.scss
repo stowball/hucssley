@@ -17,7 +17,7 @@ $hu-opacity-types: (
 ) !default;
 
 @each $type, $value in $hu-opacity-types {
-  $class-name: #{$hu-namespace}opacity-#{$type};
+  $class-name: hu-class-name(opacity-#{$type});
   $property: opacity;
   $value: if($value, $value, $type);
 

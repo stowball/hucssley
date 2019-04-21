@@ -10,7 +10,7 @@ $hu-order-types: (
 ) !default;
 
 @each $type, $value in $hu-order-types {
-  $class-name: #{$hu-namespace}order-#{$type};
+  $class-name: hu-class-name(order-#{$type});
   $property: order;
   $value: if($value, $value, $type);
 

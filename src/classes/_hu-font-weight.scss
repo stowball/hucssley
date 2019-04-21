@@ -6,7 +6,7 @@ $hu-font-weight-types: (
 ) !default;
 
 @each $type, $value in $hu-font-weight-types {
-  $class-name: #{$hu-namespace}font-weight-#{$type};
+  $class-name: hu-class-name(font-weight-#{$type});
   $property: font-weight;
   $value: if($value, $value, $type);
 

@@ -9,7 +9,7 @@ $hu-border-style-types: (
 ) !default;
 
 @each $type, $value in $hu-border-style-types {
-  $class-name: #{$hu-namespace}border-style-#{$type};
+  $class-name: hu-class-name(border-style-#{$type});
   $property: border-style;
   $value: if($value, $value, $type);
 

@@ -7,7 +7,7 @@ $hu-backface-types: (
 
 // backface -> backface-visibility
 @each $type, $value in $hu-backface-types {
-  $class-name: #{$hu-namespace}backface-#{$type};
+  $class-name: hu-class-name(backface-#{$type});
   $property: backface-visibility;
   $value: if($value, $value, $type);
 

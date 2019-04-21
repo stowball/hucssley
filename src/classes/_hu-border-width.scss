@@ -7,7 +7,7 @@ $hu-border-width-types: (
 ) !default;
 
 @each $type, $value in $hu-border-width-types {
-  $class-name: #{$hu-namespace}border-width-#{$type};
+  $class-name: hu-class-name(border-width-#{$type});
   $property: border-width;
   $value: if($value, $value, $type);
 

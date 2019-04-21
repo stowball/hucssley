@@ -15,7 +15,7 @@ $hu-display-types: (
 ) !default;
 
 @each $type, $value in $hu-display-types {
-  $class-name: #{$hu-namespace}display-#{$type};
+  $class-name: hu-class-name(display-#{$type});
   $property: display;
   $value: if($value, $value, $type);
 

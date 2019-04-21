@@ -11,7 +11,7 @@ $hu-cursor-types: (
 ) !default;
 
 @each $type, $value in $hu-cursor-types {
-  $class-name: #{$hu-namespace}cursor-#{$type};
+  $class-name: hu-class-name(cursor-#{$type});
   $property: cursor;
   $value: if($value, $value, $type);
 

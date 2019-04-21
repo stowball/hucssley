@@ -3,7 +3,7 @@ $hu-align-self-modules: (base, responsive) !default;
 $hu-align-self-types: $hu-align-items-types !default;
 
 @each $type, $value in $hu-align-self-types {
-  $class-name: #{$hu-namespace}align-self-#{$type};
+  $class-name: hu-class-name(align-self-#{$type});
   $property: align-self;
   $value: if($value, $value, $type);
 

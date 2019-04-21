@@ -15,7 +15,7 @@ $hu-align-content-types: (
 ) !default;
 
 @each $type, $value in $hu-align-content-types {
-  $class-name: #{$hu-namespace}align-content-#{$type};
+  $class-name: hu-class-name(align-content-#{$type});
   $property: align-content;
   $value: if($value, $value, $type);
 

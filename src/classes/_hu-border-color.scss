@@ -4,7 +4,7 @@ $hu-border-color-types: $hu-colors !default;
 
 @each $hue, $colors in $hu-border-color-types {
   @each $scale, $value in $colors {
-    $class-name: #{$hu-namespace}border-color-#{if($hue == current or $hue == inherit or $hue == transparent, "", unquote("#{$hue}-"))}#{$scale};
+    $class-name: hu-class-name(border-color-#{$hue}-#{$scale});
     $property: border-color;
 
     @if (index($hu-border-color-modules, base)) {

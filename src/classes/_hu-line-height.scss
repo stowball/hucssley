@@ -15,7 +15,7 @@ $hu-line-height-types: (
 ) !default;
 
 @each $type, $value in $hu-line-height-types {
-  $class-name: #{$hu-namespace}line-height-#{$type};
+  $class-name: hu-class-name(line-height-#{$type});
   $property: line-height;
   $value: if($value, $value, $type);
 

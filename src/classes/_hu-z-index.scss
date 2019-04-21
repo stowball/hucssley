@@ -19,7 +19,7 @@ $hu-z-index-types: (
 ) !default;
 
 @each $type, $value in $hu-z-index-types {
-  $class-name: #{$hu-namespace}z-index-#{$type};
+  $class-name: hu-class-name(z-index-#{$type});
   $property: z-index;
   $value: if($value, $value, $type);
 

@@ -23,7 +23,7 @@ $hu-width-types: (
 ) !default;
 
 @each $type, $value in $hu-width-types {
-  $class-name: #{$hu-namespace}width-#{$type};
+  $class-name: hu-class-name(width-#{$type});
   $property: width;
   $value: if($value, $value, $type);
 

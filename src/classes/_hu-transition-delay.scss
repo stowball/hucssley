@@ -11,7 +11,7 @@ $hu-transition-delay-types: (
 ) !default;
 
 @each $type, $value in $hu-transition-delay-types {
-  $class-name: #{$hu-namespace}transition-delay-#{$type};
+  $class-name: hu-class-name(transition-delay-#{$type});
   $property: transition-delay;
   $value: if($value, $value, $type);
 

@@ -11,7 +11,7 @@ $hu-flex-grow-types: (
 ) !default;
 
 @each $type, $value in $hu-flex-grow-types {
-  $class-name: #{$hu-namespace}flex-grow-#{$type};
+  $class-name: hu-class-name(flex-grow-#{$type});
   $property: flex-grow;
   $value: if($value, $value, $type);
 

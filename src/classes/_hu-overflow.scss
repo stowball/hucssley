@@ -7,7 +7,7 @@ $hu-overflow-types: (
 ) !default;
 
 @each $type, $value in $hu-overflow-types {
-  $class-name: #{$hu-namespace}overflow-#{$type};
+  $class-name: hu-class-name(overflow-#{$type});
   $property: overflow;
   $value: if($value, $value, $type);
 

@@ -6,7 +6,7 @@ $hu-visibility-types: (
 ) !default;
 
 @each $type, $value in $hu-visibility-types {
-  $class-name: #{$hu-namespace}visibility-#{$type};
+  $class-name: hu-class-name(visibility-#{$type});
   $property: visibility;
   $value: if($value, $value, $type);
 

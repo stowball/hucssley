@@ -5,7 +5,7 @@ $hu-bg-color-types: $hu-colors !default;
 // bg-color -> background-color
 @each $hue, $colors in $hu-bg-color-types {
   @each $scale, $value in $colors {
-    $class-name: #{$hu-namespace}bg-color-#{if($hue == current or $hue == inherit or $hue == transparent, "", unquote("#{$hue}-"))}#{$scale};
+    $class-name: hu-class-name(bg-color-#{$hue}-#{$scale});
     $property: background-color;
 
     @if (index($hu-bg-color-modules, base)) {

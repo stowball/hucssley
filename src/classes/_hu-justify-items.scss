@@ -17,7 +17,7 @@ $hu-justify-items-types: (
 ) !default;
 
 @each $type, $value in $hu-justify-items-types {
-  $class-name: #{$hu-namespace}justify-items-#{$type};
+  $class-name: hu-class-name(justify-items-#{$type});
   $property: justify-items;
   $value: if($value, $value, $type);
 

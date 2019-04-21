@@ -9,7 +9,7 @@ $hu-position-types: (
 ) !default;
 
 @each $type, $value in $hu-position-types {
-  $class-name: #{$hu-namespace}position-#{$type};
+  $class-name: hu-class-name(position-#{$type});
   $property: position;
   $value: if($value, $value, $type);
 

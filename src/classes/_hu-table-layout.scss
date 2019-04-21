@@ -6,7 +6,7 @@ $hu-table-layout-types: (
 ) !default;
 
 @each $type, $value in $hu-table-layout-types {
-  $class-name: #{$hu-namespace}table-layout-#{$type};
+  $class-name: hu-class-name(table-layout-#{$type});
   $property: table-layout;
   $value: if($value, $value, $type);
 

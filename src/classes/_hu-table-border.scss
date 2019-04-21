@@ -7,7 +7,7 @@ $hu-table-border-types: (
 
 // table-border -> border-collapse
 @each $type, $value in $hu-table-border-types {
-  $class-name: #{$hu-namespace}table-border-#{$type};
+  $class-name: hu-class-name(table-border-#{$type});
   $property: border-collapse;
   $value: if($value, $value, $type);
 

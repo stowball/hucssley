@@ -4,7 +4,7 @@ $hu-color-types: $hu-colors !default;
 
 @each $hue, $colors in $hu-color-types {
   @each $scale, $value in $colors {
-    $class-name: #{$hu-namespace}color-#{if($hue == current or $hue == inherit or $hue == transparent, "", unquote("#{$hue}-"))}#{$scale};
+    $class-name: hu-class-name(color-#{$hue}-#{$scale});
     $property: color;
 
     @if (index($hu-color-modules, base)) {

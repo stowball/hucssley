@@ -11,7 +11,7 @@ $hu-transition-property-types: (
 ) !default;
 
 @each $type, $value in $hu-transition-property-types {
-  $class-name: #{$hu-namespace}transition-property-#{$type};
+  $class-name: hu-class-name(transition-property-#{$type});
   $property: transition-property;
   $value: if($value, $value, $type);
 

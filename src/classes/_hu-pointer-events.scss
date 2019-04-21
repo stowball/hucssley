@@ -6,7 +6,7 @@ $hu-pointer-events-types: (
 ) !default;
 
 @each $type, $value in $hu-pointer-events-types {
-  $class-name: #{$hu-namespace}pointer-events-#{$type};
+  $class-name: hu-class-name(pointer-events-#{$type});
   $property: pointer-events;
   $value: if($value, $value, $type);
 

@@ -14,7 +14,7 @@ $hu-padding-types: (
 
 @each $type, $properties in $hu-padding-types {
   @each $scale, $value in $hu-padding-scale {
-    $class-name: #{$hu-namespace}#{$type}-#{$scale};
+    $class-name: hu-class-name(#{$type}-#{$scale});
 
     @if (index($hu-padding-modules, base)) {
       @include hu-base($class-name) {

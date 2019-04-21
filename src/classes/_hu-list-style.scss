@@ -14,7 +14,7 @@ $hu-list-style-types: (
 ) !default;
 
 @each $type, $value in $hu-list-style-types {
-  $class-name: #{$hu-namespace}list-style-#{$type};
+  $class-name: hu-class-name(list-style-#{$type});
   $property: list-style;
   $value: if($value, $value, $type);
 

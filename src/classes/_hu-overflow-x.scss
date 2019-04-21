@@ -3,7 +3,7 @@ $hu-overflow-x-modules: $hu-overflow-modules !default;
 $hu-overflow-x-types: $hu-overflow-types !default;
 
 @each $type, $value in $hu-overflow-x-types {
-  $class-name: #{$hu-namespace}overflow-x-#{$type};
+  $class-name: hu-class-name(overflow-x-#{$type});
   $property: overflow-x;
   $value: if($value, $value, $type);
 

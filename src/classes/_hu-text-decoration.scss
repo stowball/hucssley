@@ -7,7 +7,7 @@ $hu-text-decoration-types: (
 ) !default;
 
 @each $type, $value in $hu-text-decoration-types {
-  $class-name: #{$hu-namespace}text-decoration-#{$type};
+  $class-name: hu-class-name(text-decoration-#{$type});
   $property: text-decoration;
   $value: if($value, $value, $type);
 

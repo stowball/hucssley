@@ -7,7 +7,7 @@ $hu-font-family-types: (
 ) !default;
 
 @each $type, $value in $hu-font-family-types {
-  $class-name: #{$hu-namespace}font-family-#{$type};
+  $class-name: hu-class-name(font-family-#{$type});
   $property: font-family;
   $value: if($value, $value, $type);
 

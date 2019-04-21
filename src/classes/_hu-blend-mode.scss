@@ -21,7 +21,7 @@ $hu-blend-mode-types: (
 
 // blend-mode -> mix-blend-mode
 @each $type, $value in $hu-blend-mode-types {
-  $class-name: #{$hu-namespace}blend-mode-#{$type};
+  $class-name: hu-class-name(blend-mode-#{$type});
   $property: mix-blend-mode;
   $value: if($value, $value, $type);
 

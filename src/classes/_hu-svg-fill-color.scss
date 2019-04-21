@@ -5,7 +5,7 @@ $hu-svg-fill-color-types: map-merge($hu-colors, (current: (current: currentColor
 // svg-fill-color -> fill
 @each $hue, $colors in $hu-svg-fill-color-types {
   @each $scale, $value in $colors {
-    $class-name: #{$hu-namespace}svg-fill-color-#{if($hue == current or $hue == inherit or $hue == transparent, "", unquote("#{$hue}-"))}#{$scale};
+    $class-name: hu-class-name(svg-fill-color-#{$hue}-#{$scale});
     $property: fill;
 
     @if (index($hu-color-modules, base)) {

@@ -3,7 +3,7 @@ $hu-max-height-modules: (base, print);
 $hu-max-height-types: $hu-height-types !default;
 
 @each $type, $value in $hu-max-height-types {
-  $class-name: #{$hu-namespace}max-height-#{$type};
+  $class-name: hu-class-name(max-height-#{$type});
   $property: max-height;
   $value: if($value, $value, $type);
 

@@ -6,7 +6,7 @@ $hu-box-sizing-types: (
 ) !default;
 
 @each $type, $value in $hu-box-sizing-types {
-  $class-name: #{$hu-namespace}box-sizing-#{$type};
+  $class-name: hu-class-name(box-sizing-#{$type});
   $property: box-sizing;
   $value: if($value, $value, $type);
 

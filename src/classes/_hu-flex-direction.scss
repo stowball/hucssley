@@ -8,7 +8,7 @@ $hu-flex-direction-types: (
 ) !default;
 
 @each $type, $value in $hu-flex-direction-types {
-  $class-name: #{$hu-namespace}flex-direction-#{$type};
+  $class-name: hu-class-name(flex-direction-#{$type});
   $property: flex-direction;
   $value: if($value, $value, $type);
 
