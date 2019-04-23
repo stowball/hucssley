@@ -1,8 +1,9 @@
 @function hu-class-name($class-name) {
-  $class-name: hu-string-replace($class-name, 'current-current', 'current');
-  $class-name: hu-string-replace($class-name, 'inherit-inherit', 'inherit');
-  $class-name: hu-string-replace($class-name, 'none-none', 'none');
-  $class-name: hu-string-replace($class-name, 'transparent-transparent', 'transparent');
+  $replacements: ("current", "inherit", "none", "transparent");
+
+  @each $replacement in $replacements {
+    $class-name: hu-string-replace($class-name, #{$replacement}-#{$replacement}, $replacement);
+  }
 
   @return #{$hu-namespace}#{$class-name};
 }

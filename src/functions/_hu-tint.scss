@@ -1,0 +1,3 @@
+@function hu-tint($color, $percentage) {
+  @return mix(#fff, $color, $percentage);
+}

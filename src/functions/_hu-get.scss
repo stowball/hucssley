@@ -8,7 +8,7 @@
   }
 
   @if ($map == null) {
-    $error: log-error("No map found for #{unquote($stack-trace-name)}(#{$keys}). Map contains #{$original-map}");
+    $error: hu-log-error("No map found for #{unquote($stack-trace-name)}(#{$keys}). Map contains #{$original-map}");
   }
 
   @return $map;
