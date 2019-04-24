@@ -1,4 +1,4 @@
-$hu-momentum-scrolling-modules: (base);
+$hu-momentum-scrolling-modules: (base) !default;
 
 // momentum-scrolling -> webkit-overflow-scrolling
 @if (index($hu-momentum-scrolling-modules, base)) {

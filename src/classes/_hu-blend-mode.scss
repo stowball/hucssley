@@ -17,7 +17,7 @@ $hu-blend-mode-types: (
   saturation,
   screen,
   soft-light,
-);
+) !default;
 
 // blend-mode -> mix-blend-mode
 @each $type, $value in $hu-blend-mode-types {
