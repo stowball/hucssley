@@ -1,0 +1,7 @@
+@mixin hu-parent($class-name, $parent-selectors) {
+  @each $parent-selector in $parent-selectors {
+    .#{$parent-selector} .#{$parent-selector}--#{$class-name} {
+      @content;
+    }
+  }
+}
