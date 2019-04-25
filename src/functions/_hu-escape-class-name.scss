@@ -1,0 +1,7 @@
+@function hu-escape-class-name($class-name) {
+  @each $escape-type, $escape-value in $hu-escape-class-name-types {
+    $class-name: hu-string-replace($class-name, $escape-type, $escape-value);
+  }
+
+  @return $class-name;
+}

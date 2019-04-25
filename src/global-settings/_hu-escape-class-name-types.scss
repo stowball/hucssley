@@ -1,0 +1,9 @@
+// See https://mathiasbynens.be/notes/css-escapes
+// See https://www.branah.com/unicode-converter
+// Use a custom Purgecss extractor: /(?:[A-Za-z0-9]|-|_|:|<|>|@)+/g
+$hu-escape-class-name-types: (
+  ":": "\\00003a",
+  "<": "\\00003c",
+  ">": "\\00003e",
+  "@": "\\000040",
+) !default;
