@@ -1,5 +1,5 @@
 $hu-f-rem-context: 16px !default;
 
 @function hu-rem($target, $context: $hu-f-rem-context) {
-  @return strip-unit($target / $context) * 1rem;
+  @return hu-strip-unit($target / $context) * 1rem;
 }

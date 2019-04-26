@@ -2,14 +2,14 @@ $hu-margin-modules: (base, responsive) !default;
 
 $hu-margin-scale: (
   0: 0,
-  100: 2px,
-  200: 4px,
-  300: 8px,
-  400: 16px,
-  500: 24px,
-  600: 32px,
-  700: 48px,
-  800: 64px,
+  100: hu-rem(2),
+  200: hu-rem(4),
+  300: hu-rem(8),
+  400: hu-rem(16),
+  500: hu-rem(24),
+  600: hu-rem(32),
+  700: hu-rem(48),
+  800: hu-rem(64),
 ) !default;
 
 $hu-margin-types: (

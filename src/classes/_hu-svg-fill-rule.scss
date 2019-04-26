@@ -1,0 +1,66 @@
+$hu-svg-fill-rule-modules: (base) !default;
+
+$hu-svg-fill-rule-types: (
+  even-odd: evenodd,
+) !default;
+
+// svg-fill-rule -> fill-rule
+@each $type, $value in $hu-svg-fill-rule-types {
+  $class-name: hu-class-name(svg-fill-rule-#{$type});
+  $property: fill-rule;
+  $value: if($value, $value, $type);
+
+  @if (index($hu-svg-fill-rule-modules, base)) {
+    @include hu-base($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-svg-fill-rule-modules, state)) {
+    @include hu-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-svg-fill-rule-modules, hocus)) {
+    @include hu-hocus($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-svg-fill-rule-modules, group-state)) {
+    @include hu-group-state($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-svg-fill-rule-modules, group-hover)) {
+    @include hu-group-hover($class-name) {
+      #{$property}: $value;
+    }
+  }
+
+  @if (index($hu-svg-fill-rule-modules, responsive)) {
+    @include hu-responsive($class-name) {
+      #{$property}: $value;
+    }
+
+    @if (index($hu-svg-fill-rule-modules, state)) {
+      @include hu-responsive-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if (index($hu-svg-fill-rule-modules, group-state)) {
+      @include hu-responsive-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+  }
+
+  @if (index($hu-svg-fill-rule-modules, print)) {
+    @include hu-print($class-name) {
+      #{$property}: $value;
+    }
+  }
+}

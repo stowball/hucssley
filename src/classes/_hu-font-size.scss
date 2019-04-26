@@ -1,16 +1,16 @@
 $hu-font-size-modules: (base, responsive) !default;
 
 $hu-font-size-types: (
-  100: 10px,
-  200: 12px,
-  300: 14px,
-  400: 16px,
-  500: 18px,
-  600: 20px,
-  700: 22px,
-  800: 24px,
-  900: 26px,
-  1000: 28px,
+  100: hu-rem(10),
+  200: hu-rem(12),
+  300: hu-rem(14),
+  400: hu-rem(16),
+  500: hu-rem(18),
+  600: hu-rem(20),
+  700: hu-rem(22),
+  800: hu-rem(24),
+  900: hu-rem(26),
+  1000: hu-rem(28),
 ) !default;
 
 @each $type, $value in $hu-font-size-types {
