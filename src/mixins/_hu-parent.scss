@@ -1,53 +1,55 @@
 @mixin hu-parent($class-name, $parent-selectors, $modules: (base)) {
-  @each $parent in $parent-selectors {
-    $escaped-parent: hu-escape-class-name($parent);
+  @each $module in $modules {
+    @each $parent in $parent-selectors {
+      $escaped-parent: hu-escape-class-name($parent);
 
-    @if (index($modules, base)) {
-      .#{$escaped-parent} .#{$escaped-parent}__#{$class-name} {
-        @content;
-      }
-    }
-
-    @if (index($modules, state)) {
-      @each $state in $hu-states {
-        .#{$escaped-parent}.#{$state} .#{$escaped-parent}__#{$state}--#{$class-name} {
+      @if ($module == base) {
+        .#{$escaped-parent} .#{$escaped-parent}__#{$class-name} {
           @content;
         }
       }
-    }
 
-    @if (index($modules, hocus)) {
-      .#{$escaped-parent}:focus .#{$escaped-parent}__hocus--#{$class-name},
-      .#{$escaped-parent}:hover .#{$escaped-parent}__hocus--#{$class-name} {
-        @content;
-      }
-    }
-
-    @if (index($modules, responsive)) {
-      @each $bp-scale, $bp-value in $hu-breakpoints {
-        .#{$escaped-parent} .#{$escaped-parent}__bp-#{$bp-scale}--#{$class-name} {
-          @media (min-width: $bp-value) {
+      @if ($module == state) {
+        @each $state in $hu-states {
+          .#{$escaped-parent}.#{$state} .#{$escaped-parent}__#{$state}--#{$class-name} {
             @content;
           }
         }
+      }
 
-        @if (index($modules, state)) {
-          @each $state in $hu-states {
-            .#{$escaped-parent}.#{$state} .#{$escaped-parent}__bp-#{$bp-scale}-#{$state}--#{$class-name} {
-              @media (min-width: $bp-value) {
-                @content;
+      @if ($module == hocus) {
+        .#{$escaped-parent}:focus .#{$escaped-parent}__hocus--#{$class-name},
+        .#{$escaped-parent}:hover .#{$escaped-parent}__hocus--#{$class-name} {
+          @content;
+        }
+      }
+
+      @if ($module == responsive) {
+        @each $bp-scale, $bp-value in $hu-breakpoints {
+          .#{$escaped-parent} .#{$escaped-parent}__bp-#{$bp-scale}--#{$class-name} {
+            @media (min-width: $bp-value) {
+              @content;
+            }
+          }
+
+          @if (index($modules, state)) {
+            @each $state in $hu-states {
+              .#{$escaped-parent}.#{$state} .#{$escaped-parent}__bp-#{$bp-scale}-#{$state}--#{$class-name} {
+                @media (min-width: $bp-value) {
+                  @content;
+                }
               }
             }
           }
         }
       }
-    }
 
-    @if (index($modules, print)) {
-      @media print {
-        .#{$escaped-parent} .#{$escaped-parent}__print--#{$class-name} {
-          @include hu-bump-specificity {
-            @content;
+      @if ($module == print) {
+        @media print {
+          .#{$escaped-parent} .#{$escaped-parent}__print--#{$class-name} {
+            @include hu-bump-specificity {
+              @content;
+            }
           }
         }
       }

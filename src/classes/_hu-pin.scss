@@ -20,78 +20,80 @@ $hu-pin-types: (
 ) !default;
 
 // pin -> bottom, left, right, top
-@each $type, $properties in $hu-pin-types {
-  @each $scale, $value in $hu-pin-scale {
-    $class-name: hu-class-name(#{$type}-#{$scale});
+@each $module in hu-format-modules($hu-pin-modules) {
+  @each $type, $properties in $hu-pin-types {
+    @each $scale, $value in $hu-pin-scale {
+      $class-name: hu-class-name(#{$type}-#{$scale});
 
-    @if (index($hu-pin-modules, base)) {
-      @include hu-base($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-    }
-
-    @if (index($hu-pin-modules, state)) {
-      @include hu-state($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-    }
-
-    @if (index($hu-pin-modules, hocus)) {
-      @include hu-hocus($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-    }
-
-    @if (index($hu-pin-modules, group-state)) {
-      @include hu-group-state($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-    }
-
-    @if (index($hu-pin-modules, group-hover)) {
-      @include hu-group-hover($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-    }
-
-    @if (index($hu-pin-modules, responsive)) {
-      @include hu-responsive($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-
-      @if (index($hu-pin-modules, state)) {
-        @include hu-responsive-state($class-name) {
+      @if ($module == base) {
+        @include hu-base($class-name) {
           @each $property in $properties {
             #{$property}: $value;
           }
         }
       }
 
-      @if (index($hu-pin-modules, group-state)) {
-        @include hu-responsive-group-state($class-name) {
+      @if ($module == state) {
+        @include hu-state($class-name) {
           @each $property in $properties {
             #{$property}: $value;
           }
         }
       }
-    }
 
-    @if (index($hu-pin-modules, print)) {
-      @include hu-print($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
+      @if ($module == hocus) {
+        @include hu-hocus($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+      }
+
+      @if ($module == group-state) {
+        @include hu-group-state($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+      }
+
+      @if ($module == group-hover) {
+        @include hu-group-hover($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+      }
+
+      @if ($module == responsive) {
+        @include hu-responsive($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+
+        @if (index($hu-pin-modules, state)) {
+          @include hu-responsive-state($class-name) {
+            @each $property in $properties {
+              #{$property}: $value;
+            }
+          }
+        }
+
+        @if (index($hu-pin-modules, group-state)) {
+          @include hu-responsive-group-state($class-name) {
+            @each $property in $properties {
+              #{$property}: $value;
+            }
+          }
+        }
+      }
+
+      @if ($module == print) {
+        @include hu-print($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
         }
       }
     }

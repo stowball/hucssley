@@ -1,10 +1,10 @@
-$hu-module-order: (base, state, hocus, group-state, group-hover, responsive, print);
+$hu-format-modules-order: (base, state, hocus, group-state, group-hover, responsive, print);
 
 @function hu-format-modules($list) {
   $list: hu-remove-list-duplicates($list);
   $ordered-list: ();
 
-  @each $module in $hu-module-order {
+  @each $module in $hu-format-modules-order {
     @if (index($list, $module)) {
       $ordered-list: append($ordered-list, $module);
 

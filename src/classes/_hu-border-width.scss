@@ -6,62 +6,64 @@ $hu-border-width-types: (
   200: 2px,
 ) !default;
 
-@each $type, $value in $hu-border-width-types {
-  $class-name: hu-class-name(border-width-#{$type});
-  $property: border-width;
-  $value: if($value, $value, $type);
+@each $module in hu-format-modules($hu-border-width-modules) {
+  @each $type, $value in $hu-border-width-types {
+    $class-name: hu-class-name(border-width-#{$type});
+    $property: border-width;
+    $value: if($value, $value, $type);
 
-  @if (index($hu-border-width-modules, base)) {
-    @include hu-base($class-name) {
-      #{$property}: $value;
-    }
-  }
-
-  @if (index($hu-border-width-modules, state)) {
-    @include hu-state($class-name) {
-      #{$property}: $value;
-    }
-  }
-
-  @if (index($hu-border-width-modules, hocus)) {
-    @include hu-hocus($class-name) {
-      #{$property}: $value;
-    }
-  }
-
-  @if (index($hu-border-width-modules, group-state)) {
-    @include hu-group-state($class-name) {
-      #{$property}: $value;
-    }
-  }
-
-  @if (index($hu-border-width-modules, group-hover)) {
-    @include hu-group-hover($class-name) {
-      #{$property}: $value;
-    }
-  }
-
-  @if (index($hu-border-width-modules, responsive)) {
-    @include hu-responsive($class-name) {
-      #{$property}: $value;
-    }
-
-    @if (index($hu-border-width-modules, state)) {
-      @include hu-responsive-state($class-name) {
+    @if ($module == base) {
+      @include hu-base($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if (index($hu-border-width-modules, group-state)) {
-      @include hu-responsive-group-state($class-name) {
+    @if ($module == state) {
+      @include hu-state($class-name) {
         #{$property}: $value;
       }
     }
-  }
 
-  @if (index($hu-border-width-modules, print)) {
-    @include hu-print($class-name) {
-      #{$property}: $value;
+    @if ($module == hocus) {
+      @include hu-hocus($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if ($module == group-state) {
+      @include hu-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if ($module == group-hover) {
+      @include hu-group-hover($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if ($module == responsive) {
+      @include hu-responsive($class-name) {
+        #{$property}: $value;
+      }
+
+      @if (index($hu-border-width-modules, state)) {
+        @include hu-responsive-state($class-name) {
+          #{$property}: $value;
+        }
+      }
+
+      @if (index($hu-border-width-modules, group-state)) {
+        @include hu-responsive-group-state($class-name) {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if ($module == print) {
+      @include hu-print($class-name) {
+        #{$property}: $value;
+      }
     }
   }
 }

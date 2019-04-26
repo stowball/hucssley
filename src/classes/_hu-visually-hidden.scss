@@ -12,40 +12,40 @@ $hu-visually-hidden-modules: (base) !default;
   width: 1px;
 }
 
-@if (index($hu-visually-hidden-modules, base)) {
+@each $module in hu-format-modules($hu-visually-hidden-modules) {
   $class-name: hu-class-name(visually-hidden);
 
-  @if (index($hu-visually-hidden-modules, base)) {
+  @if ($module == base) {
     @include hu-base($class-name) {
       @include _hu-visually-hidden-declarations;
     }
   }
 
-  @if (index($hu-visually-hidden-modules, state)) {
+  @if ($module == state) {
     @include hu-state($class-name) {
       @include _hu-visually-hidden-declarations;
     }
   }
 
-  @if (index($hu-visually-hidden-modules, hocus)) {
+  @if ($module == hocus) {
     @include hu-hocus($class-name) {
       @include _hu-visually-hidden-declarations;
     }
   }
 
-  @if (index($hu-visually-hidden-modules, group-state)) {
+  @if ($module == group-state) {
     @include hu-group-state($class-name) {
       @include _hu-visually-hidden-declarations;
     }
   }
 
-  @if (index($hu-visually-hidden-modules, group-hover)) {
+  @if ($module == group-hover) {
     @include hu-group-hover($class-name) {
       @include _hu-visually-hidden-declarations;
     }
   }
 
-  @if (index($hu-visually-hidden-modules, responsive)) {
+  @if ($module == responsive) {
     @include hu-responsive($class-name) {
       @include _hu-visually-hidden-declarations;
     }
@@ -63,7 +63,7 @@ $hu-visually-hidden-modules: (base) !default;
     }
   }
 
-  @if (index($hu-visually-hidden-modules, print)) {
+  @if ($module == print) {
     @include hu-print($class-name) {
       @include _hu-visually-hidden-declarations;
     }

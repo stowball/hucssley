@@ -22,78 +22,80 @@ $hu-border-radius-types: (
   border-radius-tr: border-top-right-radius,
 ) !default;
 
-@each $type, $properties in $hu-border-radius-types {
-  @each $scale, $value in $hu-border-radius-scale {
-    $class-name: hu-class-name(#{$type}-#{$scale});
+@each $module in hu-format-modules($hu-border-radius-modules) {
+  @each $type, $properties in $hu-border-radius-types {
+    @each $scale, $value in $hu-border-radius-scale {
+      $class-name: hu-class-name(#{$type}-#{$scale});
 
-    @if (index($hu-border-radius-modules, base)) {
-      @include hu-base($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-    }
-
-    @if (index($hu-border-radius-modules, state)) {
-      @include hu-state($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-    }
-
-    @if (index($hu-border-radius-modules, hocus)) {
-      @include hu-hocus($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-    }
-
-    @if (index($hu-border-radius-modules, group-state)) {
-      @include hu-group-state($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-    }
-
-    @if (index($hu-border-radius-modules, group-hover)) {
-      @include hu-group-hover($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-    }
-
-    @if (index($hu-border-radius-modules, responsive)) {
-      @include hu-responsive($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-
-      @if (index($hu-border-radius-modules, state)) {
-        @include hu-responsive-state($class-name) {
+      @if ($module == base) {
+        @include hu-base($class-name) {
           @each $property in $properties {
             #{$property}: $value;
           }
         }
       }
 
-      @if (index($hu-border-radius-modules, group-state)) {
-        @include hu-responsive-group-state($class-name) {
+      @if ($module == state) {
+        @include hu-state($class-name) {
           @each $property in $properties {
             #{$property}: $value;
           }
         }
       }
-    }
 
-    @if (index($hu-border-radius-modules, print)) {
-      @include hu-print($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
+      @if ($module == hocus) {
+        @include hu-hocus($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+      }
+
+      @if ($module == group-state) {
+        @include hu-group-state($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+      }
+
+      @if ($module == group-hover) {
+        @include hu-group-hover($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+      }
+
+      @if ($module == responsive) {
+        @include hu-responsive($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+
+        @if (index($hu-border-radius-modules, state)) {
+          @include hu-responsive-state($class-name) {
+            @each $property in $properties {
+              #{$property}: $value;
+            }
+          }
+        }
+
+        @if (index($hu-border-radius-modules, group-state)) {
+          @include hu-responsive-group-state($class-name) {
+            @each $property in $properties {
+              #{$property}: $value;
+            }
+          }
+        }
+      }
+
+      @if ($module == print) {
+        @include hu-print($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
         }
       }
     }

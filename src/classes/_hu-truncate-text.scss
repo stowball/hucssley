@@ -13,77 +13,79 @@ $hu-truncate-text-types: (
   ),
 ) !default;
 
-@each $type, $properties in $hu-truncate-text-types {
-  $class-name: hu-class-name(#{$type});
+@each $module in hu-format-modules($hu-truncate-text-modules) {
+  @each $type, $properties in $hu-truncate-text-types {
+    $class-name: hu-class-name(#{$type});
 
-  @if (index($hu-truncate-text-modules, base)) {
-    @include hu-base($class-name) {
-      @each $property, $value in $properties {
-        #{$property}: $value;
-      }
-    }
-  }
-
-  @if (index($hu-truncate-text-modules, state)) {
-    @include hu-state($class-name) {
-      @each $property, $value in $properties {
-        #{$property}: $value;
-      }
-    }
-  }
-
-  @if (index($hu-truncate-text-modules, hocus)) {
-    @include hu-hocus($class-name) {
-      @each $property, $value in $properties {
-        #{$property}: $value;
-      }
-    }
-  }
-
-  @if (index($hu-truncate-text-modules, group-state)) {
-    @include hu-group-state($class-name) {
-      @each $property, $value in $properties {
-        #{$property}: $value;
-      }
-    }
-  }
-
-  @if (index($hu-truncate-text-modules, group-hover)) {
-    @include hu-group-hover($class-name) {
-      @each $property, $value in $properties {
-        #{$property}: $value;
-      }
-    }
-  }
-
-  @if (index($hu-truncate-text-modules, responsive)) {
-    @include hu-responsive($class-name) {
-      @each $property, $value in $properties {
-        #{$property}: $value;
-      }
-    }
-
-    @if (index($hu-truncate-text-modules, state)) {
-      @include hu-responsive-state($class-name) {
+    @if ($module == base) {
+      @include hu-base($class-name) {
         @each $property, $value in $properties {
           #{$property}: $value;
         }
       }
     }
 
-    @if (index($hu-truncate-text-modules, group-state)) {
-      @include hu-responsive-group-state($class-name) {
+    @if ($module == state) {
+      @include hu-state($class-name) {
         @each $property, $value in $properties {
           #{$property}: $value;
         }
       }
     }
-  }
 
-  @if (index($hu-truncate-text-modules, staprint)) {
-    @include hu-print($class-name) {
-      @each $property, $value in $properties {
-        #{$property}: $value;
+    @if ($module == hocus) {
+      @include hu-hocus($class-name) {
+        @each $property, $value in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if ($module == group-state) {
+      @include hu-group-state($class-name) {
+        @each $property, $value in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if ($module == group-hover) {
+      @include hu-group-hover($class-name) {
+        @each $property, $value in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if ($module == responsive) {
+      @include hu-responsive($class-name) {
+        @each $property, $value in $properties {
+          #{$property}: $value;
+        }
+      }
+
+      @if (index($hu-truncate-text-modules, state)) {
+        @include hu-responsive-state($class-name) {
+          @each $property, $value in $properties {
+            #{$property}: $value;
+          }
+        }
+      }
+
+      @if (index($hu-truncate-text-modules, group-state)) {
+        @include hu-responsive-group-state($class-name) {
+          @each $property, $value in $properties {
+            #{$property}: $value;
+          }
+        }
+      }
+    }
+
+    @if ($module == staprint) {
+      @include hu-print($class-name) {
+        @each $property, $value in $properties {
+          #{$property}: $value;
+        }
       }
     }
   }

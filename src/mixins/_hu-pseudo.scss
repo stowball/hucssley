@@ -1,77 +1,79 @@
 @mixin hu-pseudo($class-name, $pseudos, $modules: (base)) {
-  @each $pseudo in $pseudos {
-    $pseudo-class-name: #{pseudo}-#{hu-string-replace($pseudo, ":", "")};
+  @each $module in $modules {
+    @each $pseudo in $pseudos {
+      $pseudo-class-name: #{pseudo}-#{hu-string-replace($pseudo, ":", "")};
 
-    @if (index($modules, base)) {
-      .#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
-        @content;
-      }
-    }
-
-    @if (index($modules, state)) {
-      @each $state in $hu-states {
-        .#{$state}.#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+      @if ($module == base) {
+        .#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
           @content;
         }
       }
-    }
 
-    @if (index($modules, hocus)) {
-      .hocus-#{$pseudo-class-name}--#{$class-name}:focus#{$pseudo},
-      .hocus-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo},{
-        @content;
-      }
-    }
-
-    @if (index($modules, group-state)) {
-      @each $state in $hu-states {
-        .group.#{$state} .group__#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
-          @content;
-        }
-      }
-    }
-
-    @if (index($modules, group-hover)) {
-      .group:hover .group__hover-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
-        @content;
-      }
-    }
-
-    @if (index($modules, responsive)) {
-      @each $bp-scale, $bp-value in $hu-breakpoints {
-        .bp-#{$bp-scale}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
-          @media (min-width: $bp-value) {
+      @if ($module == state) {
+        @each $state in $hu-states {
+          .#{$state}.#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @content;
           }
         }
+      }
 
-        @if (index($modules, state)) {
-          @each $state in $hu-states {
-            .#{$state}.bp-#{$bp-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
-              @media (min-width: $bp-value) {
-                @content;
+      @if ($module == hocus) {
+        .hocus-#{$pseudo-class-name}--#{$class-name}:focus#{$pseudo},
+        .hocus-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo},{
+          @content;
+        }
+      }
+
+      @if ($module == group-state) {
+        @each $state in $hu-states {
+          .group.#{$state} .group__#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+            @content;
+          }
+        }
+      }
+
+      @if ($module == group-hover) {
+        .group:hover .group__hover-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+          @content;
+        }
+      }
+
+      @if ($module == responsive) {
+        @each $bp-scale, $bp-value in $hu-breakpoints {
+          .bp-#{$bp-scale}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+            @media (min-width: $bp-value) {
+              @content;
+            }
+          }
+
+          @if (index($modules, state)) {
+            @each $state in $hu-states {
+              .#{$state}.bp-#{$bp-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+                @media (min-width: $bp-value) {
+                  @content;
+                }
+              }
+            }
+          }
+
+          @if (index($modules, group-state)) {
+            @each $state in $hu-states {
+              .group.#{$state} .group__bp-#{$bp-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+                @media (min-width: $bp-value) {
+                  @content;
+                }
               }
             }
           }
         }
-
-        @if (index($modules, group-state)) {
-          @each $state in $hu-states {
-            .group.#{$state} .group__bp-#{$bp-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
-              @media (min-width: $bp-value) {
-                @content;
-              }
-            }
-          }
-        }
       }
-    }
 
-    @if (index($modules, print)) {
-      @media print {
-        .print-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
-          @include hu-bump-specificity {
-            @content;
+      @if ($module == print) {
+        @media print {
+          .print-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+            @include hu-bump-specificity {
+              @content;
+            }
           }
         }
       }

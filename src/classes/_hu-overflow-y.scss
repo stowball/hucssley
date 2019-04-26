@@ -2,62 +2,64 @@ $hu-overflow-y-modules: $hu-overflow-modules !default;
 
 $hu-overflow-y-types: $hu-overflow-types !default;
 
-@each $type, $value in $hu-overflow-y-types {
-  $class-name: hu-class-name(overflow-y-#{$type});
-  $property: overflow-y;
-  $value: if($value, $value, $type);
+@each $module in hu-format-modules($hu-overflow-y-modules) {
+  @each $type, $value in $hu-overflow-y-types {
+    $class-name: hu-class-name(overflow-y-#{$type});
+    $property: overflow-y;
+    $value: if($value, $value, $type);
 
-  @if (index($hu-overflow-y-modules, base)) {
-    @include hu-base($class-name) {
-      #{$property}: $value;
-    }
-  }
-
-  @if (index($hu-overflow-y-modules, state)) {
-    @include hu-state($class-name) {
-      #{$property}: $value;
-    }
-  }
-
-  @if (index($hu-overflow-y-modules, hocus)) {
-    @include hu-hocus($class-name) {
-      #{$property}: $value;
-    }
-  }
-
-  @if (index($hu-overflow-y-modules, group-state)) {
-    @include hu-group-state($class-name) {
-      #{$property}: $value;
-    }
-  }
-
-  @if (index($hu-overflow-y-modules, group-hover)) {
-    @include hu-group-hover($class-name) {
-      #{$property}: $value;
-    }
-  }
-
-  @if (index($hu-overflow-y-modules, responsive)) {
-    @include hu-responsive($class-name) {
-      #{$property}: $value;
-    }
-
-    @if (index($hu-overflow-y-modules, state)) {
-      @include hu-responsive-state($class-name) {
+    @if ($module == base) {
+      @include hu-base($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if (index($hu-overflow-y-modules, group-state)) {
-      @include hu-responsive-group-state($class-name) {
+    @if ($module == state) {
+      @include hu-state($class-name) {
         #{$property}: $value;
       }
     }
-  }
 
-  @if (index($hu-overflow-y-modules, print)) {
-    @include hu-print($class-name) {
-      #{$property}: $value;
+    @if ($module == hocus) {
+      @include hu-hocus($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if ($module == group-state) {
+      @include hu-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if ($module == group-hover) {
+      @include hu-group-hover($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @if ($module == responsive) {
+      @include hu-responsive($class-name) {
+        #{$property}: $value;
+      }
+
+      @if (index($hu-overflow-y-modules, state)) {
+        @include hu-responsive-state($class-name) {
+          #{$property}: $value;
+        }
+      }
+
+      @if (index($hu-overflow-y-modules, group-state)) {
+        @include hu-responsive-group-state($class-name) {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @if ($module == print) {
+      @include hu-print($class-name) {
+        #{$property}: $value;
+      }
     }
   }
 }

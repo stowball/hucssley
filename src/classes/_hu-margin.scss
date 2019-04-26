@@ -22,133 +22,135 @@ $hu-margin-types: (
   margin-v: (margin-bottom, margin-top),
 ) !default;
 
-@each $type, $properties in $hu-margin-types {
-  @each $scale, $value in $hu-margin-scale {
-    $class-name: hu-class-name(#{$type}-#{$scale});
-    $class-name-negative: hu-class-name(#{$type}-n#{$scale});
+@each $module in hu-format-modules($hu-margin-modules) {
+  @each $type, $properties in $hu-margin-types {
+    @each $scale, $value in $hu-margin-scale {
+      $class-name: hu-class-name(#{$type}-#{$scale});
+      $class-name-negative: hu-class-name(#{$type}-n#{$scale});
 
-    @if (index($hu-margin-modules, base)) {
-      @include hu-base($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-
-      @include hu-base($class-name-negative) {
-        @each $property in $properties {
-          #{$property}: $value * -1;
-        }
-      }
-    }
-
-    @if (index($hu-margin-modules, state)) {
-      @include hu-state($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-
-      @include hu-state($class-name-negative) {
-        @each $property in $properties {
-          #{$property}: $value * -1;
-        }
-      }
-    }
-
-    @if (index($hu-margin-modules, hocus)) {
-      @include hu-hocus($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-
-      @include hu-hocus($class-name-negative) {
-        @each $property in $properties {
-          #{$property}: $value * -1;
-        }
-      }
-    }
-
-    @if (index($hu-margin-modules, group-state)) {
-      @include hu-group-state($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-
-      @include hu-group-state($class-name-negative) {
-        @each $property in $properties {
-          #{$property}: $value * -1;
-        }
-      }
-    }
-
-    @if (index($hu-margin-modules, group-hover)) {
-      @include hu-group-hover($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-
-      @include hu-group-hover($class-name-negative) {
-        @each $property in $properties {
-          #{$property}: $value * -1;
-        }
-      }
-    }
-
-    @if (index($hu-margin-modules, responsive)) {
-      @include hu-responsive($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
-        }
-      }
-
-      @include hu-responsive($class-name-negative) {
-        @each $property in $properties {
-          #{$property}: $value * -1;
-        }
-      }
-
-      @if (index($hu-margin-modules, state)) {
-        @include hu-responsive-state($class-name) {
+      @if ($module == base) {
+        @include hu-base($class-name) {
           @each $property in $properties {
             #{$property}: $value;
           }
         }
 
-        @include hu-responsive-state($class-name-negative) {
+        @include hu-base($class-name-negative) {
           @each $property in $properties {
             #{$property}: $value * -1;
           }
         }
       }
 
-      @if (index($hu-margin-modules, group-state)) {
-        @include hu-responsive-group-state($class-name) {
+      @if ($module == state) {
+        @include hu-state($class-name) {
           @each $property in $properties {
             #{$property}: $value;
           }
         }
 
-        @include hu-responsive-group-state($class-name-negative) {
+        @include hu-state($class-name-negative) {
           @each $property in $properties {
             #{$property}: $value * -1;
           }
         }
       }
-    }
 
-    @if (index($hu-margin-modules, print)) {
-      @include hu-print($class-name) {
-        @each $property in $properties {
-          #{$property}: $value;
+      @if ($module == hocus) {
+        @include hu-hocus($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+
+        @include hu-hocus($class-name-negative) {
+          @each $property in $properties {
+            #{$property}: $value * -1;
+          }
         }
       }
 
-      @include hu-print($class-name-negative) {
-        @each $property in $properties {
-          #{$property}: $value * -1;
+      @if ($module == group-state) {
+        @include hu-group-state($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+
+        @include hu-group-state($class-name-negative) {
+          @each $property in $properties {
+            #{$property}: $value * -1;
+          }
+        }
+      }
+
+      @if ($module == group-hover) {
+        @include hu-group-hover($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+
+        @include hu-group-hover($class-name-negative) {
+          @each $property in $properties {
+            #{$property}: $value * -1;
+          }
+        }
+      }
+
+      @if ($module == responsive) {
+        @include hu-responsive($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+
+        @include hu-responsive($class-name-negative) {
+          @each $property in $properties {
+            #{$property}: $value * -1;
+          }
+        }
+
+        @if (index($hu-margin-modules, state)) {
+          @include hu-responsive-state($class-name) {
+            @each $property in $properties {
+              #{$property}: $value;
+            }
+          }
+
+          @include hu-responsive-state($class-name-negative) {
+            @each $property in $properties {
+              #{$property}: $value * -1;
+            }
+          }
+        }
+
+        @if (index($hu-margin-modules, group-state)) {
+          @include hu-responsive-group-state($class-name) {
+            @each $property in $properties {
+              #{$property}: $value;
+            }
+          }
+
+          @include hu-responsive-group-state($class-name-negative) {
+            @each $property in $properties {
+              #{$property}: $value * -1;
+            }
+          }
+        }
+      }
+
+      @if ($module == print) {
+        @include hu-print($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+
+        @include hu-print($class-name-negative) {
+          @each $property in $properties {
+            #{$property}: $value * -1;
+          }
         }
       }
     }
