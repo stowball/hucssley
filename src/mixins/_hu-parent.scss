@@ -1,4 +1,6 @@
 @mixin hu-parent($class-name, $parent-selectors, $modules: (base)) {
+  $modules: hu-format-modules($modules);
+
   @each $module in $modules {
     @each $parent in $parent-selectors {
       $escaped-parent: hu-escape-class-name($parent);

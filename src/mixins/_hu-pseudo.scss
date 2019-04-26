@@ -1,4 +1,6 @@
 @mixin hu-pseudo($class-name, $pseudos, $modules: (base)) {
+  $modules: hu-format-modules($modules);
+
   @each $module in $modules {
     @each $pseudo in $pseudos {
       $pseudo-class-name: #{pseudo}-#{hu-string-replace($pseudo, ":", "")};
