@@ -1,0 +1,16 @@
+$hu-module-order: (base, state, hocus, group-state, group-hover, responsive, print);
+
+@function hu-format-modules($list) {
+  $list: hu-remove-list-duplicates($list);
+  $ordered-list: ();
+
+  @each $module in $hu-module-order {
+    @if (index($list, $module)) {
+      $ordered-list: append($ordered-list, $module);
+
+      $list: set-nth($list, index($list, $module), null);
+    }
+  }
+
+  @return join($ordered-list, $list);
+}

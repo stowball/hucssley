@@ -1,0 +1,16 @@
+@function hu-remove-list-duplicates($list, $recursive: false) {
+  $result: ();
+
+  @each $item in $list {
+    @if (not index($result, $item)) {
+      @if (length($item) > 1 and $recursive) {
+        $result: append($result, hu-remove-list-duplicates($item, $recursive));
+      }
+      @else {
+        $result: append($result, $item);
+      }
+    }
+  }
+
+  @return $result;
+}
