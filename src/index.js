@@ -9,12 +9,12 @@ function App() {
       {`* {
       display: block;
     }
-    
+
     head *:not(style),
     body style {
       display: none;
     }
-    
+
     style {
       font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
       font-size: 0.875em;

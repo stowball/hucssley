@@ -3,3 +3,24 @@
 @import "global-settings/index";
 @import "reset/index";
 @import "classes/index";
+@each $type in $hu-display-types {
+  @include hu-pseudo(hu-class-name(display-#{$type}), ("::after", ":first-child"), (base, hocus, group-hover, group-state, print, responsive, state)) {
+    display: $type;
+  }
+}
+
+@include hu-pseudo(hu-class-name(custom-placeholder), ("::placeholder")) {
+  color: red;
+  font-size: 20px;
+  opacity: 1;
+}
+
+@include hu-parent(hu-class-name(font-size-small), "eqio-<400") {
+  font-size: small;
+}
+
+@each $type in $hu-display-types {
+  @include hu-parent(hu-class-name(display-#{$type}), ("device:ios", "eqio->700"), (base, hocus, state)) {
+    display: $type;
+  }
+}
