@@ -70,6 +70,16 @@
         }
       }
 
+      @if ($module == reduced-motion) {
+        @media (prefers-reduced-motion: reduce) {
+          .reduced-motion-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+            @include hu-bump-specificity {
+              @content;
+            }
+          }
+        }
+      }
+
       @if ($module == print) {
         @media print {
           .print-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {

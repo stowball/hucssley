@@ -1,0 +1,9 @@
+@mixin hu-reduced-motion($class-name) {
+  @media (prefers-reduced-motion: reduce) {
+    .reduced-motion--#{$class-name} {
+      @include hu-bump-specificity {
+        @content;
+      }
+    }
+  }
+}

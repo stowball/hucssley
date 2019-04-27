@@ -1,4 +1,4 @@
-$hu-transition-easing-modules: (base, group-hover, group-state, state) !default;
+$hu-transition-easing-modules: (base, group-hover, group-state, reduced-motion, state) !default;
 
 $hu-transition-easing-types: (
   ease: ease,
@@ -86,6 +86,12 @@ $hu-transition-easing-types: (
         @include hu-responsive-group-state($class-name) {
           #{$property}: $value;
         }
+      }
+    }
+
+    @if ($module == reduced-motion) {
+      @include hu-reduced-motion($class-name) {
+        #{$property}: $value;
       }
     }
 

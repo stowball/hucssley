@@ -1,4 +1,4 @@
-$hu-transition-property-modules: (base, group-hover, group-state, state) !default;
+$hu-transition-property-modules: (base, group-hover, group-state, reduced-motion, state) !default;
 
 $hu-transition-property-types: (
   all,
@@ -61,6 +61,12 @@ $hu-transition-property-types: (
         @include hu-responsive-group-state($class-name) {
           #{$property}: $value;
         }
+      }
+    }
+
+    @if ($module == reduced-motion) {
+      @include hu-reduced-motion($class-name) {
+        #{$property}: $value;
       }
     }
 

@@ -46,6 +46,16 @@
         }
       }
 
+      @if ($module == reduced-motion) {
+        @media (prefers-reduced-motion: reduce) {
+          .#{$escaped-parent} .#{$escaped-parent}__reduced-motion--#{$class-name} {
+            @include hu-bump-specificity {
+              @content;
+            }
+          }
+        }
+      }
+
       @if ($module == print) {
         @media print {
           .#{$escaped-parent} .#{$escaped-parent}__print--#{$class-name} {
