@@ -1,4 +1,4 @@
-$hu-display-modules: (base, hocus, group-hover, group-state, print, responsive, state) !default;
+$hu-display-modules: (base, focus, hover, hocus, group-hover, group-state, print, responsive, state) !default;
 
 $hu-display-types: (
   block,
@@ -32,8 +32,8 @@ $hu-display-types: (
       }
     }
 
-    @if ($module == hocus) {
-      @include hu-hocus($class-name) {
+    @if ($module == focus or $module == hocus or $module == hover) {
+      @include hu-hocus($class-name, $module) {
         #{$property}: $value;
       }
     }

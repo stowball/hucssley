@@ -1,6 +1,21 @@
-@mixin hu-hocus($class-name) {
-  .hocus--#{$class-name}:focus,
-  .hocus--#{$class-name}:hover {
-    @content;
+$hu-hocus-focus-prefix: "" !default;
+$hu-hocus-focus-pseudo: ":focus" !default;
+
+@mixin hu-hocus($class-name, $module: hocus) {
+  @if ($module == focus) {
+    #{$hu-hocus-focus-prefix} .focus--#{$class-name}#{$hu-hocus-focus-pseudo} {
+      @content;
+    }
+  }
+  @elseif ($module == hover) {
+    .hover--#{$class-name}:hover {
+      @content;
+    }
+  }
+  @elseif ($module == hocus) {
+    #{$hu-hocus-focus-prefix} .hocus--#{$class-name}#{$hu-hocus-focus-pseudo},
+    .hocus--#{$class-name}:hover {
+      @content;
+    }
   }
 }

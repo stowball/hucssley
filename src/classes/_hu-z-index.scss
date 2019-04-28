@@ -36,8 +36,8 @@ $hu-z-index-types: (
       }
     }
 
-    @if ($module == hocus) {
-      @include hu-hocus($class-name) {
+    @if ($module == focus or $module == hocus or $module == hover) {
+      @include hu-hocus($class-name, $module) {
         #{$property}: $value;
       }
     }

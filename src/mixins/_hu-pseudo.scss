@@ -19,9 +19,21 @@
         }
       }
 
+      @if ($module == focus) {
+        #{$hu-hocus-focus-prefix} .focus-#{$pseudo-class-name}--#{$class-name}#{$hu-hocus-focus-pseudo}#{$pseudo} {
+          @content;
+        }
+      }
+      
+      @if ($module == hover) {
+        .hover-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
+          @content;
+        }
+      }
+      
       @if ($module == hocus) {
-        .hocus-#{$pseudo-class-name}--#{$class-name}:focus#{$pseudo},
-        .hocus-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo},{
+        #{$hu-hocus-focus-prefix} .hocus-#{$pseudo-class-name}--#{$class-name}#{$hu-hocus-focus-pseudo}#{$pseudo},
+        .hocus-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
           @content;
         }
       }

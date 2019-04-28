@@ -19,8 +19,20 @@
         }
       }
 
+      @if ($module == focus) {
+        #{$hu-hocus-focus-prefix} .#{$escaped-parent}#{$hu-hocus-focus-pseudo} .#{$escaped-parent}__focus--#{$class-name} {
+          @content;
+        }
+      }
+      
+      @if ($module == hover) {
+        .#{$escaped-parent}:hover .#{$escaped-parent}__hover--#{$class-name} {
+          @content;
+        }
+      }
+      
       @if ($module == hocus) {
-        .#{$escaped-parent}:focus .#{$escaped-parent}__hocus--#{$class-name},
+        #{$hu-hocus-focus-prefix} .#{$escaped-parent}#{$hu-hocus-focus-pseudo} .#{$escaped-parent}__hocus--#{$class-name},
         .#{$escaped-parent}:hover .#{$escaped-parent}__hocus--#{$class-name} {
           @content;
         }

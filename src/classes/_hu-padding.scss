@@ -33,8 +33,8 @@ $hu-padding-types: (
         }
       }
 
-      @if ($module == hocus) {
-        @include hu-hocus($class-name) {
+      @if ($module == focus or $module == hocus or $module == hover) {
+        @include hu-hocus($class-name, $module) {
           @each $property in $properties {
             #{$property}: $value;
           }
