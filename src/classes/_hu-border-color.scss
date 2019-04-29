@@ -1,64 +1,80 @@
-$hu-border-color-modules: $hu-bg-color-modules !default;
-
-$hu-border-color-types: $hu-colors !default;
-
 @each $module in hu-format-modules($hu-border-color-modules) {
   @each $hue, $colors in $hu-border-color-types {
-    @each $scale, $value in $colors {
-      $class-name: hu-class-name(border-color-#{$hue}-#{$scale});
-      $property: border-color;
+    @each $color-scale, $color-value in $colors {
+      @each $side-type, $side-properties in $hu-border-color-sides {
+        $side-properties: if($side-properties, $side-properties, $side-type);
+        $class-name: hu-class-name(#{$side-type}-color-#{$hue}-#{$color-scale});
 
-      @if ($module == base) {
-        @include hu-base($class-name) {
-          #{$property}: $value;
-        }
-      }
-
-      @if ($module == state) {
-        @include hu-state($class-name) {
-          #{$property}: $value;
-        }
-      }
-
-      @if ($module == focus or $module == hocus or $module == hover) {
-        @include hu-hocus($class-name, $module) {
-          #{$property}: $value;
-        }
-      }
-
-      @if ($module == group-state) {
-        @include hu-group-state($class-name) {
-          #{$property}: $value;
-        }
-      }
-
-      @if ($module == group-hover) {
-        @include hu-group-hover($class-name) {
-          #{$property}: $value;
-        }
-      }
-
-      @if ($module == responsive) {
-        @include hu-responsive($class-name) {
-          #{$property}: $value;
-        }
-
-        @if (index($hu-border-color-modules, state)) {
-          @include hu-responsive-state($class-name) {
-            #{$property}: $value;
+        @if ($module == base) {
+          @include hu-base($class-name) {
+            @each $property in $side-properties {
+              #{$property}-color: $color-value;
+            }
           }
         }
 
-        @if (index($hu-border-color-modules, group-state)) {
-          @include hu-responsive-group-state($class-name) {
-            #{$property}: $value;
+        @else if ($module == focus or $module == hocus or $module == hover) {
+          @include hu-hocus($class-name, $module) {
+            @each $property in $side-properties {
+              #{$property}-color: $color-value;
+            }
           }
         }
-      }
 
-      @if ($module == print) {
-        @include hu-print($class-name) {
-          #{$property}: $value;
+        @else if ($module == state) {
+          @include hu-state($class-name) {
+            @each $property in $side-properties {
+              #{$property}-color: $color-value;
+            }
+          }
+        }
+
+        @else if ($module == group-hover) {
+          @include hu-group-hover($class-name) {
+            @each $property in $side-properties {
+              #{$property}-color: $color-value;
+            }
+          }
+        }
+
+        @else if ($module == group-state) {
+          @include hu-group-state($class-name) {
+            @each $property in $side-properties {
+              #{$property}-color: $color-value;
+            }
+          }
+        }
+
+        @else if ($module == responsive) {
+          @include hu-responsive($class-name) {
+            @each $property in $side-properties {
+              #{$property}-color: $color-value;
+            }
+          }
+
+          @if (index($hu-border-color-modules, state)) {
+            @include hu-responsive-state($class-name) {
+              @each $property in $side-properties {
+              #{$property}-color: $color-value;
+            }
+            }
+          }
+
+          @if (index($hu-border-color-modules, group-state)) {
+            @include hu-responsive-group-state($class-name) {
+              @each $property in $side-properties {
+              #{$property}-color: $color-value;
+            }
+            }
+          }
+        }
+
+        @else if ($module == print) {
+          @include hu-print($class-name) {
+            @each $property in $side-properties {
+              #{$property}-color: $color-value;
+            }
+          }
         }
       }
     }

@@ -1,18 +1,3 @@
-$hu-truncate-text-modules: (base, group-state, state) !default;
-
-$hu-truncate-text-types: (
-  truncate-text-off: (
-    overflow: visible,
-    text-overflow: initial,
-    white-space: wrap
-  ),
-  truncate-text-on: (
-    overflow: hidden,
-    text-overflow: ellipsis,
-    white-space: nowrap
-  ),
-) !default;
-
 @each $module in hu-format-modules($hu-truncate-text-modules) {
   @each $type, $properties in $hu-truncate-text-types {
     $class-name: hu-class-name(#{$type});
@@ -25,15 +10,7 @@ $hu-truncate-text-types: (
       }
     }
 
-    @if ($module == state) {
-      @include hu-state($class-name) {
-        @each $property, $value in $properties {
-          #{$property}: $value;
-        }
-      }
-    }
-
-    @if ($module == focus or $module == hocus or $module == hover) {
+    @else if ($module == focus or $module == hocus or $module == hover) {
       @include hu-hocus($class-name, $module) {
         @each $property, $value in $properties {
           #{$property}: $value;
@@ -41,15 +18,15 @@ $hu-truncate-text-types: (
       }
     }
 
-    @if ($module == group-state) {
-      @include hu-group-state($class-name) {
+    @else if ($module == state) {
+      @include hu-state($class-name) {
         @each $property, $value in $properties {
           #{$property}: $value;
         }
       }
     }
 
-    @if ($module == group-hover) {
+    @else if ($module == group-hover) {
       @include hu-group-hover($class-name) {
         @each $property, $value in $properties {
           #{$property}: $value;
@@ -57,7 +34,15 @@ $hu-truncate-text-types: (
       }
     }
 
-    @if ($module == responsive) {
+    @else if ($module == group-state) {
+      @include hu-group-state($class-name) {
+        @each $property, $value in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+
+    @else if ($module == responsive) {
       @include hu-responsive($class-name) {
         @each $property, $value in $properties {
           #{$property}: $value;

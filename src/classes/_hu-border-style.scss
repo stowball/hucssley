@@ -1,70 +1,80 @@
-$hu-border-style-modules: (base) !default;
-
-$hu-border-style-types: (
-  none,
-  dashed,
-  double,
-  dotted,
-  solid,
-) !default;
-
 @each $module in hu-format-modules($hu-border-style-modules) {
   @each $type, $value in $hu-border-style-types {
-    $class-name: hu-class-name(border-style-#{$type});
-    $property: border-style;
-    $value: if($value, $value, $type);
+    @each $side-type, $side-properties in $hu-border-color-sides {
+      $side-properties: if($side-properties, $side-properties, $side-type);
+      $class-name: hu-class-name(#{$side-type}-style-#{$type});
+      $value: if($value, $value, $type);
 
-    @if ($module == base) {
-      @include hu-base($class-name) {
-        #{$property}: $value;
-      }
-    }
-
-    @if ($module == state) {
-      @include hu-state($class-name) {
-        #{$property}: $value;
-      }
-    }
-
-    @if ($module == focus or $module == hocus or $module == hover) {
-      @include hu-hocus($class-name, $module) {
-        #{$property}: $value;
-      }
-    }
-
-    @if ($module == group-state) {
-      @include hu-group-state($class-name) {
-        #{$property}: $value;
-      }
-    }
-
-    @if ($module == group-hover) {
-      @include hu-group-hover($class-name) {
-        #{$property}: $value;
-      }
-    }
-
-    @if ($module == responsive) {
-      @include hu-responsive($class-name) {
-        #{$property}: $value;
-      }
-
-      @if (index($hu-border-style-modules, state)) {
-        @include hu-responsive-state($class-name) {
-          #{$property}: $value;
+      @if ($module == base) {
+        @include hu-base($class-name) {
+          @each $property in $side-properties {
+            #{$property}-style: $value;
+          }
         }
       }
 
-      @if (index($hu-border-style-modules, group-state)) {
-        @include hu-responsive-group-state($class-name) {
-          #{$property}: $value;
+      @else if ($module == focus or $module == hocus or $module == hover) {
+        @include hu-hocus($class-name, $module) {
+          @each $property in $side-properties {
+            #{$property}-style: $value;
+          }
         }
       }
-    }
 
-    @if ($module == print) {
-      @include hu-print($class-name) {
-        #{$property}: $value;
+      @else if ($module == state) {
+        @include hu-state($class-name) {
+          @each $property in $side-properties {
+            #{$property}-style: $value;
+          }
+        }
+      }
+
+      @else if ($module == group-hover) {
+        @include hu-group-hover($class-name) {
+          @each $property in $side-properties {
+            #{$property}-style: $value;
+          }
+        }
+      }
+
+      @else if ($module == group-state) {
+        @include hu-group-state($class-name) {
+          @each $property in $side-properties {
+            #{$property}-style: $value;
+          }
+        }
+      }
+
+      @else if ($module == responsive) {
+        @include hu-responsive($class-name) {
+          @each $property in $side-properties {
+            #{$property}-style: $value;
+          }
+        }
+
+        @if (index($hu-border-color-modules, state)) {
+          @include hu-responsive-state($class-name) {
+            @each $property in $side-properties {
+            #{$property}-style: $value;
+          }
+          }
+        }
+
+        @if (index($hu-border-color-modules, group-state)) {
+          @include hu-responsive-group-state($class-name) {
+            @each $property in $side-properties {
+            #{$property}-style: $value;
+          }
+          }
+        }
+      }
+
+      @else if ($module == print) {
+        @include hu-print($class-name) {
+          @each $property in $side-properties {
+            #{$property}-style: $value;
+          }
+        }
       }
     }
   }

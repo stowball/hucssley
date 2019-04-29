@@ -1,27 +1,3 @@
-$hu-border-radius-modules: (base, responsive) !default;
-
-$hu-border-radius-scale: (
-  0: 0,
-  100: 1px,
-  200: 2px,
-  300: 3px,
-  400: 4px,
-  500: 5px,
-  1000: 1000px,
-) !default;
-
-$hu-border-radius-types: (
-  border-radius: border-radius,
-  border-radius-b: (border-bottom-left-radius, border-bottom-right-radius),
-  border-radius-bl: border-bottom-left-radius,
-  border-radius-br: border-bottom-right-radius,
-  border-radius-l: (border-bottom-left-radius, border-top-left-radius),
-  border-radius-r: (border-bottom-right-radius, border-top-right-radius),
-  border-radius-t: (border-top-left-radius, border-top-right-radius),
-  border-radius-tl: border-top-left-radius,
-  border-radius-tr: border-top-right-radius,
-) !default;
-
 @each $module in hu-format-modules($hu-border-radius-modules) {
   @each $type, $properties in $hu-border-radius-types {
     @each $scale, $value in $hu-border-radius-scale {
@@ -35,15 +11,7 @@ $hu-border-radius-types: (
         }
       }
 
-      @if ($module == state) {
-        @include hu-state($class-name) {
-          @each $property in $properties {
-            #{$property}: $value;
-          }
-        }
-      }
-
-      @if ($module == focus or $module == hocus or $module == hover) {
+      @else if ($module == focus or $module == hocus or $module == hover) {
         @include hu-hocus($class-name, $module) {
           @each $property in $properties {
             #{$property}: $value;
@@ -51,15 +19,15 @@ $hu-border-radius-types: (
         }
       }
 
-      @if ($module == group-state) {
-        @include hu-group-state($class-name) {
+      @else if ($module == state) {
+        @include hu-state($class-name) {
           @each $property in $properties {
             #{$property}: $value;
           }
         }
       }
 
-      @if ($module == group-hover) {
+      @else if ($module == group-hover) {
         @include hu-group-hover($class-name) {
           @each $property in $properties {
             #{$property}: $value;
@@ -67,7 +35,15 @@ $hu-border-radius-types: (
         }
       }
 
-      @if ($module == responsive) {
+      @else if ($module == group-state) {
+        @include hu-group-state($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+      }
+
+      @else if ($module == responsive) {
         @include hu-responsive($class-name) {
           @each $property in $properties {
             #{$property}: $value;
@@ -91,7 +67,7 @@ $hu-border-radius-types: (
         }
       }
 
-      @if ($module == print) {
+      @else if ($module == print) {
         @include hu-print($class-name) {
           @each $property in $properties {
             #{$property}: $value;

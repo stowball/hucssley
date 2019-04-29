@@ -11,7 +11,26 @@
         }
       }
 
-      @if ($module == state) {
+      @else if ($module == focus) {
+        #{$hu-hocus-focus-prefix} .#{$escaped-parent}#{$hu-hocus-focus-pseudo} .#{$escaped-parent}__focus--#{$class-name} {
+          @content;
+        }
+      }
+
+      @else if ($module == hover) {
+        .#{$escaped-parent}:hover .#{$escaped-parent}__hover--#{$class-name} {
+          @content;
+        }
+      }
+
+      @else if ($module == hocus) {
+        #{$hu-hocus-focus-prefix} .#{$escaped-parent}#{$hu-hocus-focus-pseudo} .#{$escaped-parent}__hocus--#{$class-name},
+        .#{$escaped-parent}:hover .#{$escaped-parent}__hocus--#{$class-name} {
+          @content;
+        }
+      }
+
+      @else if ($module == state) {
         @each $state in $hu-states {
           .#{$escaped-parent}.#{$state} .#{$escaped-parent}__#{$state}--#{$class-name} {
             @content;
@@ -19,26 +38,7 @@
         }
       }
 
-      @if ($module == focus) {
-        #{$hu-hocus-focus-prefix} .#{$escaped-parent}#{$hu-hocus-focus-pseudo} .#{$escaped-parent}__focus--#{$class-name} {
-          @content;
-        }
-      }
-      
-      @if ($module == hover) {
-        .#{$escaped-parent}:hover .#{$escaped-parent}__hover--#{$class-name} {
-          @content;
-        }
-      }
-      
-      @if ($module == hocus) {
-        #{$hu-hocus-focus-prefix} .#{$escaped-parent}#{$hu-hocus-focus-pseudo} .#{$escaped-parent}__hocus--#{$class-name},
-        .#{$escaped-parent}:hover .#{$escaped-parent}__hocus--#{$class-name} {
-          @content;
-        }
-      }
-
-      @if ($module == responsive) {
+      @else if ($module == responsive) {
         @each $bp-scale, $bp-value in $hu-breakpoints {
           .#{$escaped-parent} .#{$escaped-parent}__bp-#{$bp-scale}--#{$class-name} {
             @media (min-width: $bp-value) {
@@ -58,7 +58,7 @@
         }
       }
 
-      @if ($module == reduced-motion) {
+      @else if ($module == reduced-motion) {
         @media (prefers-reduced-motion: reduce) {
           .#{$escaped-parent} .#{$escaped-parent}__reduced-motion--#{$class-name} {
             @include hu-bump-specificity {
@@ -68,7 +68,7 @@
         }
       }
 
-      @if ($module == print) {
+      @else if ($module == print) {
         @media print {
           .#{$escaped-parent} .#{$escaped-parent}__print--#{$class-name} {
             @include hu-bump-specificity {

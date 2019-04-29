@@ -1,19 +1,3 @@
-$hu-line-height-modules: (base, responsive) !default;
-
-$hu-line-height-types: (
-  0: 0,
-  100: 1,
-  200: 1.2,
-  300: 1.4,
-  400: 1.6,
-  500: 1.8,
-  600: 2,
-  700: 2.2,
-  800: 2.4,
-  900: 2.6,
-  1000: 2.8,
-) !default;
-
 @each $module in hu-format-modules($hu-line-height-modules) {
   @each $type, $value in $hu-line-height-types {
     $class-name: hu-class-name(line-height-#{$type});
@@ -26,31 +10,31 @@ $hu-line-height-types: (
       }
     }
 
-    @if ($module == state) {
-      @include hu-state($class-name) {
-        #{$property}: $value;
-      }
-    }
-
-    @if ($module == focus or $module == hocus or $module == hover) {
+    @else if ($module == focus or $module == hocus or $module == hover) {
       @include hu-hocus($class-name, $module) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-state) {
-      @include hu-group-state($class-name) {
+    @else if ($module == state) {
+      @include hu-state($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-hover) {
+    @else if ($module == group-hover) {
       @include hu-group-hover($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == responsive) {
+    @else if ($module == group-state) {
+      @include hu-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @else if ($module == responsive) {
       @include hu-responsive($class-name) {
         #{$property}: $value;
       }
@@ -68,7 +52,7 @@ $hu-line-height-types: (
       }
     }
 
-    @if ($module == print) {
+    @else if ($module == print) {
       @include hu-print($class-name) {
         #{$property}: $value;
       }

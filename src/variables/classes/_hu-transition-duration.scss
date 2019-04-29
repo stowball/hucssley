@@ -1,0 +1,11 @@
+$hu-transition-duration-modules: (base, group-hover, group-state, reduced-motion, state) !default;
+
+$hu-transition-duration-types: (
+  0: 0s,
+  100: 0.1s,
+  200: 0.2s,
+  300: 0.3s,
+  400: 0.4s,
+  500: 0.5s,
+  1000: 1s,
+) !default;

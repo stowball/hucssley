@@ -1,23 +1,3 @@
-$hu-z-index-modules: (base, hocus, group-hover, group-state, state) !default;
-
-$hu-z-index-types: (
-  auto,
-  inherit,
-  -1,
-  0,
-  100,
-  200,
-  300,
-  400,
-  500,
-  600,
-  700,
-  800,
-  900,
-  1000,
-  9999,
-) !default;
-
 @each $module in hu-format-modules($hu-z-index-modules) {
   @each $type, $value in $hu-z-index-types {
     $class-name: hu-class-name(z-index-#{$type});
@@ -30,31 +10,31 @@ $hu-z-index-types: (
       }
     }
 
-    @if ($module == state) {
-      @include hu-state($class-name) {
-        #{$property}: $value;
-      }
-    }
-
-    @if ($module == focus or $module == hocus or $module == hover) {
+    @else if ($module == focus or $module == hocus or $module == hover) {
       @include hu-hocus($class-name, $module) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-state) {
-      @include hu-group-state($class-name) {
+    @else if ($module == state) {
+      @include hu-state($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-hover) {
+    @else if ($module == group-hover) {
       @include hu-group-hover($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == responsive) {
+    @else if ($module == group-state) {
+      @include hu-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @else if ($module == responsive) {
       @include hu-responsive($class-name) {
         #{$property}: $value;
       }
@@ -72,7 +52,7 @@ $hu-z-index-types: (
       }
     }
 
-    @if ($module == print) {
+    @else if ($module == print) {
       @include hu-print($class-name) {
         #{$property}: $value;
       }

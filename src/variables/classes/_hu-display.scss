@@ -1,0 +1,15 @@
+$hu-display-modules: (base, focus, hover, hocus, group-hover, group-state, print, responsive, state) !default;
+
+$hu-display-types: (
+  block,
+  flex,
+  grid,
+  inline,
+  inline-block,
+  inline-flex,
+  inline-grid,
+  none,
+  table,
+  table-cell,
+  table-row,
+) !default;

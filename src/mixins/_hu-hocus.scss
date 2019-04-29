@@ -7,12 +7,12 @@ $hu-hocus-focus-pseudo: ":focus" !default;
       @content;
     }
   }
-  @elseif ($module == hover) {
+  @else if ($module == hover) {
     .hover--#{$class-name}:hover {
       @content;
     }
   }
-  @elseif ($module == hocus) {
+  @else if ($module == hocus) {
     #{$hu-hocus-focus-prefix} .hocus--#{$class-name}#{$hu-hocus-focus-pseudo},
     .hocus--#{$class-name}:hover {
       @content;

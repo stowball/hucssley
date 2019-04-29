@@ -11,7 +11,26 @@
         }
       }
 
-      @if ($module == state) {
+      @else if ($module == focus) {
+        #{$hu-hocus-focus-prefix} .focus-#{$pseudo-class-name}--#{$class-name}#{$hu-hocus-focus-pseudo}#{$pseudo} {
+          @content;
+        }
+      }
+
+      @else if ($module == hover) {
+        .hover-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
+          @content;
+        }
+      }
+
+      @else if ($module == hocus) {
+        #{$hu-hocus-focus-prefix} .hocus-#{$pseudo-class-name}--#{$class-name}#{$hu-hocus-focus-pseudo}#{$pseudo},
+        .hocus-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
+          @content;
+        }
+      }
+
+      @else if ($module == state) {
         @each $state in $hu-states {
           .#{$state}.#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @content;
@@ -19,26 +38,13 @@
         }
       }
 
-      @if ($module == focus) {
-        #{$hu-hocus-focus-prefix} .focus-#{$pseudo-class-name}--#{$class-name}#{$hu-hocus-focus-pseudo}#{$pseudo} {
-          @content;
-        }
-      }
-      
-      @if ($module == hover) {
-        .hover-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
-          @content;
-        }
-      }
-      
-      @if ($module == hocus) {
-        #{$hu-hocus-focus-prefix} .hocus-#{$pseudo-class-name}--#{$class-name}#{$hu-hocus-focus-pseudo}#{$pseudo},
-        .hocus-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
+      @else if ($module == group-hover) {
+        .group:hover .group__hover-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
           @content;
         }
       }
 
-      @if ($module == group-state) {
+      @else if ($module == group-state) {
         @each $state in $hu-states {
           .group.#{$state} .group__#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @content;
@@ -46,13 +52,7 @@
         }
       }
 
-      @if ($module == group-hover) {
-        .group:hover .group__hover-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
-          @content;
-        }
-      }
-
-      @if ($module == responsive) {
+      @else if ($module == responsive) {
         @each $bp-scale, $bp-value in $hu-breakpoints {
           .bp-#{$bp-scale}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @media (min-width: $bp-value) {
@@ -82,7 +82,7 @@
         }
       }
 
-      @if ($module == reduced-motion) {
+      @else if ($module == reduced-motion) {
         @media (prefers-reduced-motion: reduce) {
           .reduced-motion-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @include hu-bump-specificity {
@@ -92,7 +92,7 @@
         }
       }
 
-      @if ($module == print) {
+      @else if ($module == print) {
         @media print {
           .print-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @include hu-bump-specificity {

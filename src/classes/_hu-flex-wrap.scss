@@ -1,11 +1,3 @@
-$hu-flex-wrap-modules: (base, responsive) !default;
-
-$hu-flex-wrap-types: (
-  no-wrap: nowrap,
-  wrap: wrap,
-  wrap-reverse: wrap-reverse,
-) !default;
-
 @each $module in hu-format-modules($hu-flex-wrap-modules) {
   @each $type, $value in $hu-flex-wrap-types {
     $class-name: hu-class-name(flex-wrap-#{$type});
@@ -18,31 +10,31 @@ $hu-flex-wrap-types: (
       }
     }
 
-    @if ($module == state) {
-      @include hu-state($class-name) {
-        #{$property}: $value;
-      }
-    }
-
-    @if ($module == focus or $module == hocus or $module == hover) {
+    @else if ($module == focus or $module == hocus or $module == hover) {
       @include hu-hocus($class-name, $module) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-state) {
-      @include hu-group-state($class-name) {
+    @else if ($module == state) {
+      @include hu-state($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-hover) {
+    @else if ($module == group-hover) {
       @include hu-group-hover($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == responsive) {
+    @else if ($module == group-state) {
+      @include hu-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @else if ($module == responsive) {
       @include hu-responsive($class-name) {
         #{$property}: $value;
       }
@@ -60,7 +52,7 @@ $hu-flex-wrap-types: (
       }
     }
 
-    @if ($module == print) {
+    @else if ($module == print) {
       @include hu-print($class-name) {
         #{$property}: $value;
       }

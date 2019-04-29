@@ -1,13 +1,3 @@
-$hu-white-space-modules: (base) !default;
-
-$hu-white-space-types: (
-  no-wrap: nowrap,
-  normal: normal,
-  pre: pre,
-  pre-line: pre-line,
-  pre-wrap: pre-wrap,
-) !default;
-
 @each $module in hu-format-modules($hu-white-space-modules) {
   @each $type, $value in $hu-white-space-types {
     $class-name: hu-class-name(white-space-#{$type});
@@ -20,31 +10,31 @@ $hu-white-space-types: (
       }
     }
 
-    @if ($module == state) {
-      @include hu-state($class-name) {
-        #{$property}: $value;
-      }
-    }
-
-    @if ($module == focus or $module == hocus or $module == hover) {
+    @else if ($module == focus or $module == hocus or $module == hover) {
       @include hu-hocus($class-name, $module) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-state) {
-      @include hu-group-state($class-name) {
+    @else if ($module == state) {
+      @include hu-state($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-hover) {
+    @else if ($module == group-hover) {
       @include hu-group-hover($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == responsive) {
+    @else if ($module == group-state) {
+      @include hu-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @else if ($module == responsive) {
       @include hu-responsive($class-name) {
         #{$property}: $value;
       }
@@ -62,7 +52,7 @@ $hu-white-space-types: (
       }
     }
 
-    @if ($module == print) {
+    @else if ($module == print) {
       @include hu-print($class-name) {
         #{$property}: $value;
       }

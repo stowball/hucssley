@@ -1,24 +1,3 @@
-$hu-pin-modules: (base, group-state, responsive, state) !default;
-
-$hu-pin-scale: (
-  0: 0,
-  50: 50%,
-  100: 100%,
-  auto: auto,
-) !default;
-
-$hu-pin-types: (
-  pin-a: (bottom, left, right, top),
-  pin-b: bottom,
-  pin-bl: (bottom, left),
-  pin-br: (bottom, right),
-  pin-l: left,
-  pin-r: right,
-  pin-t: top,
-  pin-tl: (left, top),
-  pin-tr: (right, top),
-) !default;
-
 // pin -> bottom, left, right, top
 @each $module in hu-format-modules($hu-pin-modules) {
   @each $type, $properties in $hu-pin-types {
@@ -33,15 +12,7 @@ $hu-pin-types: (
         }
       }
 
-      @if ($module == state) {
-        @include hu-state($class-name) {
-          @each $property in $properties {
-            #{$property}: $value;
-          }
-        }
-      }
-
-      @if ($module == focus or $module == hocus or $module == hover) {
+      @else if ($module == focus or $module == hocus or $module == hover) {
         @include hu-hocus($class-name, $module) {
           @each $property in $properties {
             #{$property}: $value;
@@ -49,15 +20,15 @@ $hu-pin-types: (
         }
       }
 
-      @if ($module == group-state) {
-        @include hu-group-state($class-name) {
+      @else if ($module == state) {
+        @include hu-state($class-name) {
           @each $property in $properties {
             #{$property}: $value;
           }
         }
       }
 
-      @if ($module == group-hover) {
+      @else if ($module == group-hover) {
         @include hu-group-hover($class-name) {
           @each $property in $properties {
             #{$property}: $value;
@@ -65,7 +36,15 @@ $hu-pin-types: (
         }
       }
 
-      @if ($module == responsive) {
+      @else if ($module == group-state) {
+        @include hu-group-state($class-name) {
+          @each $property in $properties {
+            #{$property}: $value;
+          }
+        }
+      }
+
+      @else if ($module == responsive) {
         @include hu-responsive($class-name) {
           @each $property in $properties {
             #{$property}: $value;
@@ -89,7 +68,7 @@ $hu-pin-types: (
         }
       }
 
-      @if ($module == print) {
+      @else if ($module == print) {
         @include hu-print($class-name) {
           @each $property in $properties {
             #{$property}: $value;

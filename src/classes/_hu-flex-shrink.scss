@@ -1,7 +1,3 @@
-$hu-flex-shrink-modules: (base, responsive) !default;
-
-$hu-flex-shrink-types: $hu-flex-grow-types !default;
-
 @each $module in hu-format-modules($hu-flex-shrink-modules) {
   @each $type, $value in $hu-flex-shrink-types {
     $class-name: hu-class-name(flex-shrink-#{$type});
@@ -14,31 +10,31 @@ $hu-flex-shrink-types: $hu-flex-grow-types !default;
       }
     }
 
-    @if ($module == state) {
-      @include hu-state($class-name) {
-        #{$property}: $value;
-      }
-    }
-
-    @if ($module == focus or $module == hocus or $module == hover) {
+    @else if ($module == focus or $module == hocus or $module == hover) {
       @include hu-hocus($class-name, $module) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-state) {
-      @include hu-group-state($class-name) {
+    @else if ($module == state) {
+      @include hu-state($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-hover) {
+    @else if ($module == group-hover) {
       @include hu-group-hover($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == responsive) {
+    @else if ($module == group-state) {
+      @include hu-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @else if ($module == responsive) {
       @include hu-responsive($class-name) {
         #{$property}: $value;
       }
@@ -56,7 +52,7 @@ $hu-flex-shrink-types: $hu-flex-grow-types !default;
       }
     }
 
-    @if ($module == print) {
+    @else if ($module == print) {
       @include hu-print($class-name) {
         #{$property}: $value;
       }

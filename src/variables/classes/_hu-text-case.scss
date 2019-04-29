@@ -1,0 +1,8 @@
+$hu-text-case-modules: (base) !default;
+
+$hu-text-case-types: (
+  lower: lowercase,
+  normal: none,
+  title: capitalize,
+  upper: uppercase,
+) !default;

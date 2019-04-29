@@ -1,11 +1,3 @@
-$hu-overflow-modules: (base, print, responsive) !default;
-
-$hu-overflow-types: (
-  auto,
-  hidden,
-  visible,
-) !default;
-
 @each $module in hu-format-modules($hu-overflow-modules) {
   @each $type, $value in $hu-overflow-types {
     $class-name: hu-class-name(overflow-#{$type});
@@ -18,31 +10,31 @@ $hu-overflow-types: (
       }
     }
 
-    @if ($module == state) {
-      @include hu-state($class-name) {
-        #{$property}: $value;
-      }
-    }
-
-    @if ($module == focus or $module == hocus or $module == hover) {
+    @else if ($module == focus or $module == hocus or $module == hover) {
       @include hu-hocus($class-name, $module) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-state) {
-      @include hu-group-state($class-name) {
+    @else if ($module == state) {
+      @include hu-state($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-hover) {
+    @else if ($module == group-hover) {
       @include hu-group-hover($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == responsive) {
+    @else if ($module == group-state) {
+      @include hu-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @else if ($module == responsive) {
       @include hu-responsive($class-name) {
         #{$property}: $value;
       }
@@ -60,7 +52,7 @@ $hu-overflow-types: (
       }
     }
 
-    @if ($module == print) {
+    @else if ($module == print) {
       @include hu-print($class-name) {
         #{$property}: $value;
       }

@@ -1,19 +1,3 @@
-$hu-display-modules: (base, focus, hover, hocus, group-hover, group-state, print, responsive, state) !default;
-
-$hu-display-types: (
-  block,
-  flex,
-  grid,
-  inline,
-  inline-block,
-  inline-flex,
-  inline-grid,
-  none,
-  table,
-  table-cell,
-  table-row,
-) !default;
-
 @each $module in hu-format-modules($hu-display-modules) {
   @each $type, $value in $hu-display-types {
     $class-name: hu-class-name(display-#{$type});
@@ -26,31 +10,31 @@ $hu-display-types: (
       }
     }
 
-    @if ($module == state) {
-      @include hu-state($class-name) {
-        #{$property}: $value;
-      }
-    }
-
-    @if ($module == focus or $module == hocus or $module == hover) {
+    @else if ($module == focus or $module == hocus or $module == hover) {
       @include hu-hocus($class-name, $module) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-state) {
-      @include hu-group-state($class-name) {
+    @else if ($module == state) {
+      @include hu-state($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-hover) {
+    @else if ($module == group-hover) {
       @include hu-group-hover($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == responsive) {
+    @else if ($module == group-state) {
+      @include hu-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @else if ($module == responsive) {
       @include hu-responsive($class-name) {
         #{$property}: $value;
       }
@@ -68,7 +52,7 @@ $hu-display-types: (
       }
     }
 
-    @if ($module == print) {
+    @else if ($module == print) {
       @include hu-print($class-name) {
         #{$property}: $value;
       }

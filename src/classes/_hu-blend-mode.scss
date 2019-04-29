@@ -1,24 +1,3 @@
-$hu-blend-mode-modules: (base) !default;
-
-$hu-blend-mode-types: (
-  color,
-  color-burn,
-  color-dodge,
-  darken,
-  difference,
-  exclusion,
-  hard-light,
-  hue,
-  lighten,
-  luminosity,
-  multiply,
-  normal,
-  overlay,
-  saturation,
-  screen,
-  soft-light,
-) !default;
-
 // blend-mode -> mix-blend-mode
 @each $module in hu-format-modules($hu-blend-mode-modules) {
   @each $type, $value in $hu-blend-mode-types {
@@ -32,31 +11,31 @@ $hu-blend-mode-types: (
       }
     }
 
-    @if ($module == state) {
-      @include hu-state($class-name) {
-        #{$property}: $value;
-      }
-    }
-
-    @if ($module == focus or $module == hocus or $module == hover) {
+    @else if ($module == focus or $module == hocus or $module == hover) {
       @include hu-hocus($class-name, $module) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-state) {
-      @include hu-group-state($class-name) {
+    @else if ($module == state) {
+      @include hu-state($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-hover) {
+    @else if ($module == group-hover) {
       @include hu-group-hover($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == responsive) {
+    @else if ($module == group-state) {
+      @include hu-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @else if ($module == responsive) {
       @include hu-responsive($class-name) {
         #{$property}: $value;
       }
@@ -74,7 +53,7 @@ $hu-blend-mode-types: (
       }
     }
 
-    @if ($module == print) {
+    @else if ($module == print) {
       @include hu-print($class-name) {
         #{$property}: $value;
       }

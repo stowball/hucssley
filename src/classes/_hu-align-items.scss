@@ -1,17 +1,3 @@
-$hu-align-items-modules: (base, responsive) !default;
-
-$hu-align-items-types: (
-  auto,
-  center,
-  end,
-  flex-end,
-  flex-start,
-  normal,
-  self-end,
-  self-start,
-  start,
-) !default;
-
 @each $module in hu-format-modules($hu-align-items-modules) {
   @each $type, $value in $hu-align-items-types {
     $class-name: hu-class-name(align-items-#{$type});
@@ -24,31 +10,31 @@ $hu-align-items-types: (
       }
     }
 
-    @if ($module == state) {
-      @include hu-state($class-name) {
-        #{$property}: $value;
-      }
-    }
-
-    @if ($module == focus or $module == hocus or $module == hover) {
+    @else if ($module == focus or $module == hocus or $module == hover) {
       @include hu-hocus($class-name, $module) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-state) {
-      @include hu-group-state($class-name) {
+    @else if ($module == state) {
+      @include hu-state($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == group-hover) {
+    @else if ($module == group-hover) {
       @include hu-group-hover($class-name) {
         #{$property}: $value;
       }
     }
 
-    @if ($module == responsive) {
+    @else if ($module == group-state) {
+      @include hu-group-state($class-name) {
+        #{$property}: $value;
+      }
+    }
+
+    @else if ($module == responsive) {
       @include hu-responsive($class-name) {
         #{$property}: $value;
       }
@@ -66,7 +52,7 @@ $hu-align-items-types: (
       }
     }
 
-    @if ($module == print) {
+    @else if ($module == print) {
       @include hu-print($class-name) {
         #{$property}: $value;
       }
