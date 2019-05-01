@@ -1,10 +1,26 @@
 @each $module in hu-format-modules($hu-truncate-text-modules) {
   @each $type, $properties in $hu-truncate-text-types {
     $class-name: hu-class-name(#{$type});
-    
+
     @include hu-generic($class-name, $module, $hu-truncate-text-modules) {
       @each $property, $value in $properties {
         #{$property}: $value;
+      }
+    }
+  }
+}
+
+@if index($hu-truncate-text-modules, responsive) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $type, $value in $hu-truncate-text-types {
+        $class-name: hu-class-name(#{$type});
+
+        @include hu-responsive($class-name, $bp-scale, $hu-truncate-text-modules) {
+          @each $property, $value in $properties {
+            #{$property}: $value;
+          }
+        }
       }
     }
   }

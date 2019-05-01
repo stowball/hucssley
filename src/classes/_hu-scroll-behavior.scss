@@ -9,3 +9,19 @@
     }
   }
 }
+
+@if index($hu-scroll-behavior-modules, responsive) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $type, $value in $hu-scroll-behavior-types {
+        $class-name: hu-class-name(scroll-behavior-#{$type});
+        $property: scroll-behavior;
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $bp-scale, $hu-scroll-behavior-modules) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-$hu-format-modules-order: (base, focus, hover, hocus, state, group-hover, group-state, responsive, reduced-motion, print);
+$hu-format-modules-order: (base, focus, hover, hocus, state, group-hover, group-state, reduced-motion, print);
 
 @function hu-format-modules($list) {
   $list: hu-remove-list-duplicates($list);

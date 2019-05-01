@@ -9,3 +9,19 @@
     }
   }
 }
+
+@if index($hu-vertical-align-modules, responsive) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $type, $value in $hu-vertical-align-types {
+        $class-name: hu-class-name(vertical-align-#{$type});
+        $property: vertical-align;
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $bp-scale, $hu-vertical-align-modules) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}

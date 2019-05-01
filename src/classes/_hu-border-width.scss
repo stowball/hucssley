@@ -13,3 +13,21 @@
     }
   }
 }
+
+@if index($hu-border-width-modules, responsive) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $scale, $value in $hu-border-width-scale {
+        @each $type, $properties in $hu-border-width-types {
+          $class-name: hu-class-name(#{$side-type}-width-#{$type});
+
+          @include hu-responsive($class-name, $bp-scale, $hu-border-width-modules) {
+            @each $property in $properties {
+              #{$property}: $value;
+            }
+          }
+        }
+      }
+    }
+  }
+}

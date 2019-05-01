@@ -11,3 +11,20 @@
     }
   }
 }
+
+@if index($hu-bg-color-modules, responsive) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $hue, $colors in $hu-bg-color-types {
+        @each $scale, $value in $colors {
+          $class-name: hu-class-name(bg-color-#{$hue}-#{$scale});
+          $property: background-color;
+
+          @include hu-responsive($class-name, $bp-scale, $hu-bg-color-modules) {
+            #{$property}: $value;
+          }
+        }
+      }
+    }
+  }
+}

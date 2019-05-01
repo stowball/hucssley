@@ -52,36 +52,6 @@
         }
       }
 
-      @else if ($module == responsive) {
-        @each $bp-scale, $bp-value in $hu-breakpoints {
-          .bp-#{$bp-scale}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
-            @media (min-width: $bp-value) {
-              @content;
-            }
-          }
-
-          @if (index($modules, state)) {
-            @each $state in $hu-states {
-              .#{$state}.bp-#{$bp-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
-                @media (min-width: $bp-value) {
-                  @content;
-                }
-              }
-            }
-          }
-
-          @if (index($modules, group-state)) {
-            @each $state in $hu-states {
-              .group.#{$state} .group__bp-#{$bp-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
-                @media (min-width: $bp-value) {
-                  @content;
-                }
-              }
-            }
-          }
-        }
-      }
-
       @else if ($module == reduced-motion) {
         @media (prefers-reduced-motion: reduce) {
           .reduced-motion-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
@@ -97,6 +67,36 @@
           .print-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @include hu-bump-specificity {
               @content;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @if index($modules, responsive) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @media (min-width: $bp-value) {
+        @each $pseudo in $pseudos {
+          $pseudo-class-name: #{pseudo}-#{hu-string-replace($pseudo, ":", "")};
+
+          .bp-#{$bp-scale}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+            @content;
+          }
+
+          @if (index($modules, state)) {
+            @each $state in $hu-states {
+              .#{$state}.bp-#{$bp-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+                @content;
+              }
+            }
+          }
+
+          @if (index($modules, group-state)) {
+            @each $state in $hu-states {
+              .group.#{$state} .group__bp-#{$bp-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+                @content;
+              }
             }
           }
         }

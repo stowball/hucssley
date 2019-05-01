@@ -10,3 +10,19 @@
     }
   }
 }
+
+@if index($hu-text-case-modules, responsive) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $type, $value in $hu-text-case-types {
+        $class-name: hu-class-name(text-case-#{$type});
+        $property: text-transform;
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $bp-scale, $hu-text-case-modules) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}

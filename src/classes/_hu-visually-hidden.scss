@@ -1,15 +1,33 @@
+@mixin _hu-visually-hidden-declarations {
+  border: none;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 @each $module in hu-format-modules($hu-visually-hidden-modules) {
   $class-name: hu-class-name(visually-hidden);
 
   @include hu-generic($class-name, $module, $hu-visually-hidden-modules) {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
+    @include _hu-visually-hidden-declarations;
+  }
+}
+
+@if index($hu-visually-hidden-modules, responsive) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $type, $value in $hu-visually-hidden-types {
+        $class-name: hu-class-name(visually-hidden);
+
+        @include hu-responsive($class-name, $bp-scale, $hu-visually-hidden-modules) {
+          @include _hu-visually-hidden-declarations;
+        }
+      }
+    }
   }
 }

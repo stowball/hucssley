@@ -1,11 +1,29 @@
 @each $module in hu-format-modules($hu-border-radius-modules) {
-  @each $type, $properties in $hu-border-radius-types {
-    @each $scale, $value in $hu-border-radius-scale {
+  @each $scale, $value in $hu-border-radius-scale {
+    @each $type, $properties in $hu-border-radius-types {
       $class-name: hu-class-name(#{$type}-#{$scale});
 
       @include hu-generic($class-name, $module, $hu-border-radius-modules) {
         @each $property in $properties {
           #{$property}: $value;
+        }
+      }
+    }
+  }
+}
+
+@if index($hu-border-radius-modules, responsive) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $scale, $value in $hu-border-radius-scale {
+        @each $type, $properties in $hu-border-radius-types {
+          $class-name: hu-class-name(#{$type}-#{$scale});
+
+          @include hu-responsive($class-name, $bp-scale, $hu-border-radius-modules) {
+            @each $property in $properties {
+              #{$property}: $value;
+            }
+          }
         }
       }
     }

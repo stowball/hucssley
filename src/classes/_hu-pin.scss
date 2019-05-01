@@ -1,12 +1,30 @@
 // pin -> bottom, left, right, top
 @each $module in hu-format-modules($hu-pin-modules) {
-  @each $type, $properties in $hu-pin-types {
-    @each $scale, $value in $hu-pin-scale {
+  @each $scale, $value in $hu-pin-scale {
+    @each $type, $properties in $hu-pin-types {
       $class-name: hu-class-name(#{$type}-#{$scale});
 
       @include hu-generic($class-name, $module, $hu-pin-modules) {
         @each $property in $properties {
           #{$property}: $value;
+        }
+      }
+    }
+  }
+}
+
+@if index($hu-pin-modules, responsive) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $scale, $value in $hu-pin-scale {
+        @each $type, $properties in $hu-pin-types {
+          $class-name: hu-class-name(#{$type}-#{$scale});
+
+          @include hu-responsive($class-name, $bp-scale, $hu-pin-modules) {
+            @each $property in $properties {
+              #{$property}: $value;
+            }
+          }
         }
       }
     }

@@ -9,3 +9,19 @@
     }
   }
 }
+
+@if index($hu-font-family-modules, responsive) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $type, $value in $hu-font-family-types {
+        $class-name: hu-class-name(font-family-#{$type});
+        $property: font-family;
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $bp-scale, $hu-font-family-modules) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}

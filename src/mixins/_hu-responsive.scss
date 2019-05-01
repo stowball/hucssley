@@ -1,9 +1,17 @@
-@mixin hu-responsive($class-name) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    .bp-#{$bp-scale}--#{$class-name} {
-      @media (min-width: $bp-value) {
-        @content;
-      }
+@mixin hu-responsive($class-name, $bp-scale, $modules) {
+  @include hu-responsive-base($class-name, $bp-scale) {
+    @content;
+  }
+
+  @if (index($modules, state)) {
+    @include hu-responsive-state($class-name, $bp-scale) {
+      @content;
+    }
+  }
+
+  @if (index($modules, group-state)) {
+    @include hu-responsive-group-state($class-name, $bp-scale) {
+      @content;
     }
   }
 }

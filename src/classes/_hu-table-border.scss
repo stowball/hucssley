@@ -10,3 +10,19 @@
     }
   }
 }
+
+@if index($hu-table-border-modules, responsive) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $type, $value in $hu-table-border-types {
+        $class-name: hu-class-name(table-border-#{$type});
+        $property: border-collapse;
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $bp-scale, $hu-table-border-modules) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}

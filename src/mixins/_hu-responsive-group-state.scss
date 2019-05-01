@@ -1,11 +1,7 @@
-@mixin hu-responsive-group-state($class-name) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @each $state in $hu-states {
-      .group.#{$state} .group__bp-#{$bp-scale}-#{$state}--#{$class-name} {
-        @media (min-width: $bp-value) {
-          @content;
-        }
-      }
+@mixin hu-responsive-group-state($class-name, $bp-scale) {
+  @each $state in $hu-states {
+    .group.#{$state} .group__bp-#{$bp-scale}-#{$state}--#{$class-name} {
+      @content;
     }
   }
 }

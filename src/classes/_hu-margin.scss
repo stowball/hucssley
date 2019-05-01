@@ -84,54 +84,6 @@
         }
       }
 
-      @else if ($module == responsive) {
-        @include hu-responsive($class-name) {
-          @each $property in $properties {
-            #{$property}: $value;
-          }
-        }
-
-        @if (type-of($value) == number) {
-          @include hu-responsive($class-name-negative) {
-            @each $property in $properties {
-              #{$property}: $value * -1;
-            }
-          }
-        }
-
-        @if (index($hu-margin-modules, state)) {
-          @include hu-responsive-state($class-name) {
-            @each $property in $properties {
-              #{$property}: $value;
-            }
-          }
-
-          @if (type-of($value) == number) {
-            @include hu-responsive-state($class-name-negative) {
-              @each $property in $properties {
-                #{$property}: $value * -1;
-              }
-            }
-          }
-        }
-
-        @if (index($hu-margin-modules, group-state)) {
-          @include hu-responsive-group-state($class-name) {
-            @each $property in $properties {
-              #{$property}: $value;
-            }
-          }
-
-          @if (type-of($value) == number) {
-            @include hu-responsive-group-state($class-name-negative) {
-              @each $property in $properties {
-                #{$property}: $value * -1;
-              }
-            }
-          }
-        }
-      }
-
       @else if ($module == print) {
         @include hu-print($class-name) {
           @each $property in $properties {
@@ -143,6 +95,65 @@
           @include hu-print($class-name-negative) {
             @each $property in $properties {
               #{$property}: $value * -1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@if index($hu-margin-modules, responsive) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $scale, $value in $hu-margin-scale {
+        @each $type, $properties in $hu-margin-types {
+          $class-name: hu-class-name(#{$type}-#{$scale});
+          $class-name-negative: hu-class-name(#{$type}-n#{$scale});
+
+          @include hu-responsive-base($class-name, $bp-scale) {
+            @each $property in $properties {
+              #{$property}: $value;
+            }
+          }
+
+          @if (type-of($value) == number) {
+            @include hu-responsive-base($class-name-negative, $bp-scale) {
+              @each $property in $properties {
+                #{$property}: $value * -1;
+              }
+            }
+          }
+
+          @if (index($hu-margin-modules, state)) {
+            @include hu-responsive-state($class-name, $bp-scale) {
+              @each $property in $properties {
+                #{$property}: $value;
+              }
+            }
+
+            @if (type-of($value) == number) {
+              @include hu-responsive-state($class-name-negative, $bp-scale) {
+                @each $property in $properties {
+                  #{$property}: $value * -1;
+                }
+              }
+            }
+          }
+
+          @if (index($hu-margin-modules, group-state)) {
+            @include hu-responsive-group-state($class-name, $bp-scale) {
+              @each $property in $properties {
+                #{$property}: $value;
+              }
+            }
+
+            @if (type-of($value) == number) {
+              @include hu-responsive-group-state($class-name-negative, $bp-scale) {
+                @each $property in $properties {
+                  #{$property}: $value * -1;
+                }
+              }
             }
           }
         }

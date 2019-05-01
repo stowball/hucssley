@@ -32,24 +32,6 @@
       }
     }
 
-    @else if ($module == responsive) {
-      @include hu-responsive($class-name) {
-        @content;
-      }
-
-      @if (index($raw-modules, state)) {
-        @include hu-responsive-state($class-name) {
-          @content;
-        }
-      }
-
-      @if (index($raw-modules, group-state)) {
-        @include hu-responsive-group-state($class-name) {
-          @content;
-        }
-      }
-    }
-    
     @else if ($module == reduced-motion) {
       @include hu-reduced-motion($class-name) {
         @content;

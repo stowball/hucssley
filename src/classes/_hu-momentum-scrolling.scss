@@ -8,3 +8,19 @@
     #{$property}: $value;
   }
 }
+
+@if index($hu-momentum-scrolling-modules, responsive) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $type, $value in $hu-momentum-scrolling-types {
+        $class-name: hu-class-name(momentum-scrolling-#{$type});
+        $property: -webkit-overflow-scrolling;
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $bp-scale, $hu-momentum-scrolling-modules) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}

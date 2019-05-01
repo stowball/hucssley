@@ -9,3 +9,19 @@
     }
   }
 }
+
+@if index($hu-display-modules, responsive) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $type, $value in $hu-display-types {
+        $class-name: hu-class-name(display-#{$type});
+        $property: display;
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $bp-scale, $hu-display-modules) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}
