@@ -1,0 +1,65 @@
+@mixin hu-generic($class-name, $modules, $raw-modules) {
+  $modules: hu-format-modules($modules);
+
+  @each $module in $modules {
+    @if ($module == base) {
+      @include hu-base($class-name) {
+        @content;
+      }
+    }
+
+    @else if ($module == focus or $module == hocus or $module == hover) {
+      @include hu-hocus($class-name, $module) {
+        @content;
+      }
+    }
+
+    @else if ($module == state) {
+      @include hu-state($class-name) {
+        @content;
+      }
+    }
+
+    @else if ($module == group-hover) {
+      @include hu-group-hover($class-name) {
+        @content;
+      }
+    }
+
+    @else if ($module == group-state) {
+      @include hu-group-state($class-name) {
+        @content;
+      }
+    }
+
+    @else if ($module == responsive) {
+      @include hu-responsive($class-name) {
+        @content;
+      }
+
+      @if (index($raw-modules, state)) {
+        @include hu-responsive-state($class-name) {
+          @content;
+        }
+      }
+
+      @if (index($raw-modules, group-state)) {
+        @include hu-responsive-group-state($class-name) {
+          @content;
+        }
+      }
+    }
+    
+    @else if ($module == reduced-motion) {
+      @include hu-reduced-motion($class-name) {
+        @content;
+      }
+    }
+
+    @else if ($module == print) {
+      @include hu-print($class-name) {
+        @content;
+      }
+    }
+  }
+}

@@ -1,57 +1,15 @@
 @each $module in hu-format-modules($hu-visually-hidden-modules) {
   $class-name: hu-class-name(visually-hidden);
 
-  @if ($module == base) {
-    @include hu-base($class-name) {
-      @include _hu-visually-hidden-declarations;
-    }
-  }
-
-  @else if ($module == focus or $module == hocus or $module == hover) {
-    @include hu-hocus($class-name, $module) {
-      @include _hu-visually-hidden-declarations;
-    }
-  }
-
-  @else if ($module == state) {
-    @include hu-state($class-name) {
-      @include _hu-visually-hidden-declarations;
-    }
-  }
-
-  @else if ($module == group-hover) {
-    @include hu-group-hover($class-name) {
-      @include _hu-visually-hidden-declarations;
-    }
-  }
-
-  @else if ($module == group-state) {
-    @include hu-group-state($class-name) {
-      @include _hu-visually-hidden-declarations;
-    }
-  }
-
-  @else if ($module == responsive) {
-    @include hu-responsive($class-name) {
-      @include _hu-visually-hidden-declarations;
-    }
-
-    @if (index($hu-visually-hidden-modules, state)) {
-      @include hu-responsive-state($class-name) {
-        @include _hu-visually-hidden-declarations;
-      }
-    }
-
-    @if (index($hu-visually-hidden-modules, group-state)) {
-      @include hu-responsive-group-state($class-name) {
-        @include _hu-visually-hidden-declarations;
-      }
-    }
-  }
-
-  @else if ($module == print) {
-    @include hu-print($class-name) {
-      @include _hu-visually-hidden-declarations;
-    }
+  @include hu-generic($class-name, $module, $hu-visually-hidden-modules) {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
   }
 }

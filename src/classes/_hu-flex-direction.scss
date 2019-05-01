@@ -4,58 +4,8 @@
     $property: flex-direction;
     $value: if($value, $value, $type);
 
-    @if ($module == base) {
-      @include hu-base($class-name) {
-        #{$property}: $value;
-      }
-    }
-
-    @else if ($module == focus or $module == hocus or $module == hover) {
-      @include hu-hocus($class-name, $module) {
-        #{$property}: $value;
-      }
-    }
-
-    @else if ($module == state) {
-      @include hu-state($class-name) {
-        #{$property}: $value;
-      }
-    }
-
-    @else if ($module == group-hover) {
-      @include hu-group-hover($class-name) {
-        #{$property}: $value;
-      }
-    }
-
-    @else if ($module == group-state) {
-      @include hu-group-state($class-name) {
-        #{$property}: $value;
-      }
-    }
-
-    @else if ($module == responsive) {
-      @include hu-responsive($class-name) {
-        #{$property}: $value;
-      }
-
-      @if (index($hu-flex-direction-modules, state)) {
-        @include hu-responsive-state($class-name) {
-          #{$property}: $value;
-        }
-      }
-
-      @if (index($hu-flex-direction-modules, group-state)) {
-        @include hu-responsive-group-state($class-name) {
-          #{$property}: $value;
-        }
-      }
-    }
-
-    @else if ($module == print) {
-      @include hu-print($class-name) {
-        #{$property}: $value;
-      }
+    @include hu-generic($class-name, $module, $hu-flex-direction-modules) {
+      #{$property}: $value;
     }
   }
 }

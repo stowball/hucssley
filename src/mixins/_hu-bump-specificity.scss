@@ -1,5 +1,11 @@
-@mixin hu-bump-specificity() {
-  @at-root #{&}#{&} {
+@mixin hu-bump-specificity($specificity: 2) {
+  $selector: #{&};
+  
+  @for $i from 1 through $specificity {
+    $selector: #{$selector}#{&};
+  }
+  
+  @at-root #{$selector} {
     @content;
   }
 }
