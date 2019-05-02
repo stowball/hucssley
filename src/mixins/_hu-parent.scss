@@ -38,26 +38,6 @@
         }
       }
 
-      @else if ($module == responsive) {
-        @each $bp-scale, $bp-value in $hu-breakpoints {
-          .#{$escaped-parent} .#{$escaped-parent}__bp-#{$bp-scale}--#{$class-name} {
-            @media (min-width: $bp-value) {
-              @content;
-            }
-          }
-
-          @if (index($modules, state)) {
-            @each $state in $hu-states {
-              .#{$escaped-parent}.#{$state} .#{$escaped-parent}__bp-#{$bp-scale}-#{$state}--#{$class-name} {
-                @media (min-width: $bp-value) {
-                  @content;
-                }
-              }
-            }
-          }
-        }
-      }
-
       @else if ($module == reduced-motion) {
         @media (prefers-reduced-motion: reduce) {
           .#{$escaped-parent} .#{$escaped-parent}__reduced-motion--#{$class-name} {
@@ -73,6 +53,28 @@
           .#{$escaped-parent} .#{$escaped-parent}__print--#{$class-name} {
             @include hu-bump-specificity {
               @content;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @if index($modules, responsive) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @media (min-width: $bp-value) {
+        @each $parent in $parent-selectors {
+          $escaped-parent: hu-escape-class-name($parent);
+
+          .#{$escaped-parent} .#{$escaped-parent}__bp-#{$bp-scale}--#{$class-name} {
+            @content;
+          }
+
+          @if (index($modules, state)) {
+            @each $state in $hu-states {
+              .#{$escaped-parent}.#{$state} .#{$escaped-parent}__bp-#{$bp-scale}-#{$state}--#{$class-name} {
+                @content;
+              }
             }
           }
         }
