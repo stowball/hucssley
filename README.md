@@ -13,17 +13,14 @@ node-sass --watch --recursive --output dist --output-style expanded --indent-wid
 ## Suggested usage
 
 ```scss
-@import "hucssley/functions/index";
-@import "hucssley/mixins/index";
-@import "hucssley/variables/index";
+@import "hucssley/helpers";
 
 @import "styles/variables/index";
   // @import "global/index";
   // @import "classes/index";
   // @import "reset/index";
 
-@import "hucssley/reset/index";
-@import "hucssley/classes/index";
+@import "hucssley/styles";
 
 @import "styles/classes/index";
 ```
