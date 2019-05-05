@@ -1,0 +1,27 @@
+@each $module in hu-format-modules($hu-bg-size-modules) {
+  @each $type, $value in $hu-bg-size-types {
+    $class-name: hu-class-name(bg-size-#{$type});
+    $property: background-size;
+    $value: if($value, $value, $type);
+
+    @include hu-generic($class-name, $module, $hu-bg-size-modules) {
+      #{$property}: $value;
+    }
+  }
+}
+
+@if index($hu-bg-size-modules, responsive) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $type, $value in $hu-bg-size-types {
+        $class-name: hu-class-name(bg-size-#{$type});
+        $property: background-size;
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $bp-scale, $hu-bg-size-modules) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}
