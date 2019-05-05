@@ -1,0 +1,20 @@
+$hu-pos-modules: (base, group-state, responsive, state) !default;
+
+$hu-pos-scale: (
+  0: 0,
+  50: 50%,
+  100: 100%,
+  auto: auto,
+) !default;
+
+$hu-pos-types: (
+  pos-a: (bottom, left, right, top),
+  pos-b: bottom,
+  pos-bl: (bottom, left),
+  pos-br: (bottom, right),
+  pos-l: left,
+  pos-r: right,
+  pos-t: top,
+  pos-tl: (left, top),
+  pos-tr: (right, top),
+) !default;

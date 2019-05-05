@@ -1,0 +1,32 @@
+// pos -> bottom, left, right, top
+@each $module in hu-format-modules($hu-pos-modules) {
+  @each $scale, $value in $hu-pos-scale {
+    @each $type, $properties in $hu-pos-types {
+      $class-name: hu-class-name(#{$type}-#{$scale});
+
+      @include hu-generic($class-name, $module, $hu-pos-modules) {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}
+
+@if index($hu-pos-modules, responsive) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $scale, $value in $hu-pos-scale {
+        @each $type, $properties in $hu-pos-types {
+          $class-name: hu-class-name(#{$type}-#{$scale});
+
+          @include hu-responsive($class-name, $bp-scale, $hu-pos-modules) {
+            @each $property in $properties {
+              #{$property}: $value;
+            }
+          }
+        }
+      }
+    }
+  }
+}
