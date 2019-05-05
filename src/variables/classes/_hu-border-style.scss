@@ -1,14 +1,6 @@
-$hu-border-style-modules: (base) !default;
+$hu-border-style-modules: $hu-border-modules !default;
 
-$hu-border-style-sides: (
-  border: border,
-  border-b: border-bottom,
-  border-l: border-left,
-  border-r: border-right,
-  border-t: border-top,
-  border-h: (border-left, border-right),
-  border-v: (border-bottom, border-top),
-) !default;
+$hu-border-style-sides: $hu-border-sides !default;
 
 $hu-border-style-types: (
   none,
