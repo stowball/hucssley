@@ -8,7 +8,6 @@ $hu-pos-scale: (
 ) !default;
 
 $hu-pos-types: (
-  pos-a: (bottom, left, right, top),
   pos-b: bottom,
   pos-bl: (bottom, left),
   pos-br: (bottom, right),
@@ -16,5 +15,6 @@ $hu-pos-types: (
   pos-r: right,
   pos-t: top,
   pos-tl: (left, top),
+  pos-tlbr: (bottom, left, right, top),
   pos-tr: (right, top),
 ) !default;
