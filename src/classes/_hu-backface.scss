@@ -11,7 +11,7 @@
   }
 }
 
-@if index($hu-backface-modules, responsive) {
+@if (index($hu-backface-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
     @media (min-width: $bp-value) {
       @each $type, $value in $hu-backface-types {

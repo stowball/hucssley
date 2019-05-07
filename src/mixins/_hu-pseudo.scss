@@ -74,7 +74,7 @@
     }
   }
 
-  @if index($modules, responsive) {
+  @if (index($modules, responsive)) {
     @each $bp-scale, $bp-value in $hu-breakpoints {
       @media (min-width: $bp-value) {
         @each $pseudo in $pseudos {

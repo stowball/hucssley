@@ -103,7 +103,7 @@
   }
 }
 
-@if index($hu-margin-modules, responsive) {
+@if (index($hu-margin-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
     @media (min-width: $bp-value) {
       @each $scale, $value in $hu-margin-scale {

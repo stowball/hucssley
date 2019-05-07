@@ -12,7 +12,7 @@
 }
 
 
-@if index($hu-overscroll-modules, responsive) {
+@if (index($hu-overscroll-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
     @media (min-width: $bp-value) {
       @each $type, $value in $hu-overscroll-types {

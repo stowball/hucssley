@@ -11,7 +11,7 @@
   }
 }
 
-@if index($hu-color-modules, responsive) {
+@if (index($hu-color-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
     @media (min-width: $bp-value) {
       @each $hue, $colors in $hu-color-types {

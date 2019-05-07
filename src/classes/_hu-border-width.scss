@@ -14,7 +14,7 @@
   }
 }
 
-@if index($hu-border-width-modules, responsive) {
+@if (index($hu-border-width-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
     @media (min-width: $bp-value) {
       @each $scale, $value in $hu-border-width-scale {

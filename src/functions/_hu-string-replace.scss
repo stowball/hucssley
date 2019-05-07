@@ -1,4 +1,4 @@
-@function hu-string-replace($string, $search, $replace: "") {
+@function hu-string-replace($string, $search, $replace) {
   $index: str-index($string, $search);
 
   @if ($index) {

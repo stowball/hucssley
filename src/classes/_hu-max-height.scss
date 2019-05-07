@@ -10,7 +10,7 @@
   }
 }
 
-@if index($hu-max-height-modules, responsive) {
+@if (index($hu-max-height-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
     @media (min-width: $bp-value) {
       @each $type, $value in $hu-max-height-types {

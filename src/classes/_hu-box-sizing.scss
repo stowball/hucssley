@@ -10,7 +10,7 @@
   }
 }
 
-@if index($hu-box-sizing-modules, responsive) {
+@if (index($hu-box-sizing-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
     @media (min-width: $bp-value) {
       @each $type, $value in $hu-box-sizing-types {
