@@ -1,0 +1,30 @@
+// theme__color -> color
+@each $module in hu-format-modules($hu-theme-color-modules) {
+  @each $theme, $keys in $hu-themes {
+    @each $key, $value in $keys {
+      $class-name: hu-class-name(color-#{$key});
+      $property: color;
+
+      @include hu-theme($class-name, $theme, $module) {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+@if (index($hu-theme-color-modules, responsive)) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $theme, $keys in $hu-themes {
+        @each $key, $value in $keys {
+          $class-name: hu-class-name(color-#{$key});
+          $property: color;
+
+          @include hu-theme-responsive($class-name, $theme, $hu-theme-bg-color-modules, $theme) {
+            #{$property}: $value;
+          }
+        }
+      }
+    }
+  }
+}

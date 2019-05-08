@@ -1,15 +1,16 @@
-@mixin hu-parent-responsive($class-name, $parents, $modules, $bp-scale) {
+@mixin hu-parent-responsive($class-name, $parents, $modules, $bp-scale, $child-string-to-strip: null) {
   @if index($modules, responsive) {
     @each $parent in $parents {
       $escaped-parent: hu-escape-class-name($parent);
-  
-      .#{$escaped-parent} .#{$escaped-parent}__bp-#{$bp-scale}--#{$class-name} {
+      $escaped-child: if($child-string-to-strip, hu-string-replace($escaped-parent, $child-string-to-strip, ""), $escaped-parent);
+
+      .#{$escaped-parent} .#{$escaped-child}__bp-#{$bp-scale}--#{$class-name} {
         @content;
       }
 
       @if (index($modules, state)) {
         @each $state in $hu-states {
-          .#{$escaped-parent}.#{$state} .#{$escaped-parent}__bp-#{$bp-scale}-#{$state}--#{$class-name} {
+          .#{$escaped-parent}.#{$state} .#{$escaped-child}__bp-#{$bp-scale}-#{$state}--#{$class-name} {
             @content;
           }
         }

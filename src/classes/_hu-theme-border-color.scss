@@ -1,0 +1,38 @@
+// theme__border-color -> border-color
+@each $module in hu-format-modules($hu-theme-border-color-modules) {
+  @each $theme, $keys in $hu-themes {
+    @each $key, $value in $keys {
+      @each $side-type, $side-properties in $hu-theme-border-color-sides {
+        $side-properties: if($side-properties, $side-properties, $side-type);
+        $class-name: hu-class-name(#{$side-type}-color-#{$key});
+
+        @include hu-theme($class-name, $theme, $module) {
+          @each $property in $side-properties {
+            #{$property}-color: $value;
+          }
+        }
+      }
+    }
+  }
+}
+
+@if (index($hu-theme-border-color-modules, responsive)) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $theme, $keys in $hu-themes {
+        @each $key, $value in $keys {
+          @each $side-type, $side-properties in $hu-theme-border-color-sides {
+            $side-properties: if($side-properties, $side-properties, $side-type);
+            $class-name: hu-class-name(#{$side-type}-color-#{$key});
+
+            @include hu-theme-responsive($class-name, $theme, $hu-theme-bg-color-modules, $bp-scale) {
+              @each $property in $side-properties {
+                #{$property}-color: $value;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
