@@ -1,4 +1,13 @@
-$hu-colors: (
+$hu-colors-keywords: (
+  inherit: (
+    inherit: inherit,
+  ),
+  transparent: (
+    transparent: transparent,
+  )
+);
+
+$hu-colors: hu-append((
   neutral: (
     0: #fff,
     100: #fafbfd,
@@ -29,11 +38,5 @@ $hu-colors: (
   red: (
     100: #fffdfc,
     1000: #b40b00,
-  ),
-  inherit: (
-    inherit: inherit,
-  ),
-  transparent: (
-    transparent: transparent,
-  ),
+  )), $hu-colors-keywords
 ) !default;

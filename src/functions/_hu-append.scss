@@ -1,0 +1,7 @@
+@function hu-append($source, $target) {
+  @if (type-of($source) == map and type-of($target) == map) {
+    @return map-merge($source, $target);
+  }
+
+  @return append($source, $target);
+}
