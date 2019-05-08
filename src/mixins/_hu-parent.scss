@@ -1,8 +1,6 @@
-@mixin hu-parent($class-name, $parent-selectors, $modules: (base)) {
-  $modules: hu-format-modules($modules);
-
-  @each $module in $modules {
-    @each $parent in $parent-selectors {
+@mixin hu-parent($class-name, $parents, $modules) {
+  @each $module in hu-format-modules($modules) {
+    @each $parent in $parents {
       $escaped-parent: hu-escape-class-name($parent);
 
       @if ($module == base) {
@@ -53,28 +51,6 @@
           .#{$escaped-parent} .#{$escaped-parent}__print--#{$class-name} {
             @include hu-bump-specificity {
               @content;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  @if index($modules, responsive) {
-    @each $bp-scale, $bp-value in $hu-breakpoints {
-      @media (min-width: $bp-value) {
-        @each $parent in $parent-selectors {
-          $escaped-parent: hu-escape-class-name($parent);
-
-          .#{$escaped-parent} .#{$escaped-parent}__bp-#{$bp-scale}--#{$class-name} {
-            @content;
-          }
-
-          @if (index($modules, state)) {
-            @each $state in $hu-states {
-              .#{$escaped-parent}.#{$state} .#{$escaped-parent}__bp-#{$bp-scale}-#{$state}--#{$class-name} {
-                @content;
-              }
             }
           }
         }

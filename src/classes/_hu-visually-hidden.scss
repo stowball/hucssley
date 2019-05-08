@@ -13,7 +13,7 @@
 @each $module in hu-format-modules($hu-visually-hidden-modules) {
   $class-name: hu-class-name(visually-hidden);
 
-  @include hu-generic($class-name, $module, $hu-visually-hidden-modules) {
+  @include hu-generic($class-name, $module) {
     @include _hu-visually-hidden-declarations;
   }
 }

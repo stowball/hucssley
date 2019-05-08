@@ -4,7 +4,7 @@
     $property: transition-property;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-transition-property-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }

@@ -5,7 +5,7 @@
       $class-name: hu-class-name(#{$side-type}-width-#{$type});
       $value: if($value, $value, $type);
 
-      @include hu-generic($class-name, $module, $hu-border-width-modules) {
+      @include hu-generic($class-name, $module) {
         @each $property in $side-properties {
           #{$property}-width: $value;
         }

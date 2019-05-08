@@ -6,7 +6,7 @@
 @each $module in hu-format-modules($hu-font-smoothing-modules) {
   $class-name: hu-class-name(font-smoothing);
 
-  @include hu-generic($class-name, $module, $hu-font-smoothing-modules) {
+  @include hu-generic($class-name, $module) {
     @include _hu-font-smoothing-declarations;
   }
 }

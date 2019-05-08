@@ -1,0 +1,27 @@
+@mixin hu-pseudo-responsive($class-name, $pseudos, $modules, $bp-scale) {
+  @if (index($modules, responsive)) {
+    @each $pseudo in $pseudos {
+      $pseudo-class-name: #{pseudo}-#{hu-string-replace($pseudo, ":", "")};
+
+      .bp-#{$bp-scale}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+        @content;
+      }
+
+      @if (index($modules, state)) {
+        @each $state in $hu-states {
+          .#{$state}.bp-#{$bp-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+            @content;
+          }
+        }
+      }
+
+      @if (index($modules, group-state)) {
+        @each $state in $hu-states {
+          .group.#{$state} .group__bp-#{$bp-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+            @content;
+          }
+        }
+      }
+    }
+  }
+}

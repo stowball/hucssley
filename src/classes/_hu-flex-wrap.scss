@@ -4,7 +4,7 @@
     $property: flex-wrap;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-flex-wrap-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }

@@ -4,7 +4,7 @@
     $property: opacity;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-opacity-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }

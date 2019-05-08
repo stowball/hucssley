@@ -4,7 +4,7 @@
     @each $type, $properties in $hu-pos-types {
       $class-name: hu-class-name(#{$type}-#{$scale});
 
-      @include hu-generic($class-name, $module, $hu-pos-modules) {
+      @include hu-generic($class-name, $module) {
         @each $property in $properties {
           #{$property}: $value;
         }

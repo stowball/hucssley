@@ -4,7 +4,7 @@
     $property: display;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-display-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }

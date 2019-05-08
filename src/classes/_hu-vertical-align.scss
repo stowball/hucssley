@@ -4,7 +4,7 @@
     $property: vertical-align;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-vertical-align-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }

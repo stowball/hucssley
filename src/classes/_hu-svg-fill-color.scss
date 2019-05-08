@@ -5,7 +5,7 @@
       $class-name: hu-class-name(svg-fill-color-#{$hue}-#{$scale});
       $property: fill;
 
-      @include hu-generic($class-name, $module, $hu-svg-fill-color-modules) {
+      @include hu-generic($class-name, $module) {
         #{$property}: $value;
       }
     }

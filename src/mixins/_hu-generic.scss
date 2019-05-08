@@ -1,4 +1,4 @@
-@mixin hu-generic($class-name, $modules, $raw-modules) {
+@mixin hu-generic($class-name, $modules) {
   $modules: hu-format-modules($modules);
 
   @each $module in $modules {

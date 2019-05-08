@@ -3,7 +3,7 @@
     @each $type, $properties in $hu-border-radius-types {
       $class-name: hu-class-name(#{$type}-#{$scale});
 
-      @include hu-generic($class-name, $module, $hu-border-radius-modules) {
+      @include hu-generic($class-name, $module) {
         @each $property in $properties {
           #{$property}: $value;
         }

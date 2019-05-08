@@ -5,7 +5,7 @@
       $class-name: hu-class-name(bg-color-#{$hue}-#{$scale});
       $property: background-color;
 
-      @include hu-generic($class-name, $module, $hu-bg-color-modules) {
+      @include hu-generic($class-name, $module) {
         #{$property}: $value;
       }
     }

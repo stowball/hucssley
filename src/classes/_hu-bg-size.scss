@@ -4,7 +4,7 @@
     $property: background-size;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-bg-size-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }

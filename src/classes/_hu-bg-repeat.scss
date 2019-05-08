@@ -4,7 +4,7 @@
     $property: background-repeat;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-bg-repeat-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }

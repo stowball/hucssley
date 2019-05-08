@@ -4,7 +4,7 @@
     $property: visibility;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-visibility-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }

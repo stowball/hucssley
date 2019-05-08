@@ -4,7 +4,7 @@
     $property: white-space;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-white-space-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }

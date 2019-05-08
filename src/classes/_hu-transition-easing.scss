@@ -5,7 +5,7 @@
     $property: transition-timing-function;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-transition-easing-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }

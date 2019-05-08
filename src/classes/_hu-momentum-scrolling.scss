@@ -4,7 +4,7 @@
   $property: -webkit-overflow-scrolling;
   $value: touch;
 
-  @include hu-generic($class-name, $module, $hu-momentum-scrolling-modules) {
+  @include hu-generic($class-name, $module) {
     #{$property}: $value;
   }
 }

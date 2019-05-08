@@ -4,7 +4,7 @@
     $property: z-index;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-z-index-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }

@@ -4,7 +4,7 @@
     $property: align-items;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-align-items-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }

@@ -4,7 +4,7 @@
     $property: text-align;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-text-align-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }

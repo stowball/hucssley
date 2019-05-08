@@ -4,7 +4,7 @@
     $property: justify-content;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-justify-content-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }

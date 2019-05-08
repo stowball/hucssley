@@ -4,7 +4,7 @@
     $property: box-sizing;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-box-sizing-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }

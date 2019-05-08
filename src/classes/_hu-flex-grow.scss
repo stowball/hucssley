@@ -4,7 +4,7 @@
     $property: flex-grow;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-flex-grow-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }

@@ -5,7 +5,7 @@
       $class-name: hu-class-name(#{$side-type}-style-#{$type});
       $value: if($value, $value, $type);
 
-      @include hu-generic($class-name, $module, $hu-border-style-modules) {
+      @include hu-generic($class-name, $module) {
         @each $property in $side-properties {
           #{$property}-style: $value;
         }

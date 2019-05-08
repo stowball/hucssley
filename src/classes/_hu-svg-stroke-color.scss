@@ -5,7 +5,7 @@
       $class-name: hu-class-name(svg-stroke-color-#{$hue}-#{$scale});
       $property: stroke;
 
-      @include hu-generic($class-name, $module, $hu-svg-stroke-color-modules) {
+      @include hu-generic($class-name, $module) {
         #{$property}: $value;
       }
     }

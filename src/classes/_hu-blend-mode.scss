@@ -5,7 +5,7 @@
     $property: mix-blend-mode;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-blend-mode-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }

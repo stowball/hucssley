@@ -4,7 +4,7 @@
     $property: flex-shrink;
     $value: if($value, $value, $type);
 
-    @include hu-generic($class-name, $module, $hu-flex-shrink-modules) {
+    @include hu-generic($class-name, $module) {
       #{$property}: $value;
     }
   }
