@@ -1,17 +1,6 @@
-$hu-margin-modules: (base, responsive) !default;
+$hu-margin-modules: $hu-spacing-modules !default;
 
-$hu-margin-scale: (
-  0: 0,
-  100: hu-rem(2),
-  200: hu-rem(4),
-  300: hu-rem(8),
-  400: hu-rem(16),
-  500: hu-rem(24),
-  600: hu-rem(32),
-  700: hu-rem(48),
-  800: hu-rem(64),
-  auto: auto,
-) !default;
+$hu-margin-scale: $hu-spacing-scale !default;
 
 $hu-margin-types: (
   margin: margin,
