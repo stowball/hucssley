@@ -126,6 +126,7 @@ template {
 }
 
 a {
+  display: inline-block;
   text-decoration: none;
 }
 
@@ -134,7 +135,7 @@ strong {
   font-weight: bolder;
 }
 
-button{
+button {
   @if ($hu-reset-box-sizing != border-box) {
     box-sizing: $hu-reset-box-sizing;
   }

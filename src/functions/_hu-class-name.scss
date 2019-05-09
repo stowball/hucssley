@@ -1,10 +1,7 @@
 @function hu-class-name($class-name) {
-  $replacements: ("current", "inherit", "none", "transparent");
+  $replacement: hu-remove-string-duplicates($class-name);
 
-  @each $replacement in $replacements {
-    $class-name: hu-string-replace($class-name, #{$replacement}-#{$replacement}, $replacement);
-  }
-
+  $class-name: hu-string-replace($class-name, #{$replacement}-#{$replacement}, $replacement);
   $class-name: hu-escape-class-name($class-name);
 
   @return #{$hu-namespace}#{$class-name};

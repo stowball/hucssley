@@ -1,0 +1,27 @@
+@each $module in hu-format-modules($hu-letter-spacing-modules) {
+  @each $type, $value in $hu-letter-spacing-types {
+    $class-name: hu-class-name(letter-spacing-#{$type});
+    $property: letter-spacing;
+    $value: if($value, $value, $type);
+
+    @include hu-generic($class-name, $module) {
+      #{$property}: $value;
+    }
+  }
+}
+
+@if (index($hu-letter-spacing-modules, responsive)) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $type, $value in $hu-letter-spacing-types {
+        $class-name: hu-class-name(letter-spacing-#{$type});
+        $property: letter-spacing;
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $bp-scale, $hu-letter-spacing-modules) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}

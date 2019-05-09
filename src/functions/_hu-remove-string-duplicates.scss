@@ -1,0 +1,16 @@
+@function hu-remove-string-duplicates($string) {
+   $index: str-index($string, "-");
+   $last-index: $index;
+   $sliced-str: $string;
+   
+   @while ($index) {
+      $sliced-str: str-slice($sliced-str, $index + 1);
+      $index: str-index($sliced-str, "-");
+      
+      @if ($index) {
+        $last-index: $index + $last-index;
+      }
+   }
+   
+   @return str-slice($string, $last-index + 1);
+}
