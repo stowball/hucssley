@@ -4,6 +4,7 @@
 @import "hu-appearance";
 @import "hu-backface";
 @import "hu-bg-color";
+@import "hu-bg-image";
 @import "hu-bg-position-x";
 @import "hu-bg-position-y";
 @import "hu-bg-repeat";
@@ -15,12 +16,14 @@
 @import "hu-border-width";
 @import "hu-box-sizing";
 @import "hu-color";
+@import "hu-columns";
 @import "hu-cursor";
 @import "hu-display";
 @import "hu-flex-direction";
 @import "hu-flex-grow";
 @import "hu-flex-shrink";
 @import "hu-flex-wrap";
+@import "hu-float";
 @import "hu-font-family";
 @import "hu-font-smoothing";
 @import "hu-font-size";
@@ -58,6 +61,7 @@
 @import "hu-theme-bg-color";
 @import "hu-theme-border-color";
 @import "hu-theme-color";
+@import "hu-transform";
 @import "hu-transition-delay";
 @import "hu-transition-duration";
 @import "hu-transition-property";
