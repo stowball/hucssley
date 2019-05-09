@@ -214,6 +214,10 @@ ul {
   list-style: none;
 }
 
+table {
+  border-collapse: collapse;
+}
+
 td,
 th {
   @if ($hu-reset-box-sizing == border-box) {
