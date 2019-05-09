@@ -1,0 +1,15 @@
+$hu-rotate-modules: (base) !default;
+
+$hu-rotate-types: (
+  n360: rotate(-360deg),
+  n270: rotate(-270deg),
+  n180: rotate(-180deg),
+  n90: rotate(-90deg),
+  n45: rotate(-45deg),
+  0: rotate(0),
+  45: rotate(45deg),
+  90: rotate(90deg),
+  180: rotate(180deg),
+  270: rotate(270deg),
+  360: rotate(360deg),
+) !default;

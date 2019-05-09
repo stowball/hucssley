@@ -1,0 +1,27 @@
+@each $module in hu-format-modules($hu-translate-x-modules) {
+  @each $type, $value in $hu-translate-x-types {
+    $class-name: hu-class-name(translate-x-#{$type});
+    $property: transform;
+    $value: if($value, $value, $type);
+
+    @include hu-generic($class-name, $module) {
+      #{$property}: $value;
+    }
+  }
+}
+
+@if (index($hu-translate-x-modules, responsive)) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @media (min-width: $bp-value) {
+      @each $type, $value in $hu-translate-x-types {
+        $class-name: hu-class-name(translate-x-#{$type});
+        $property: translate-x;
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $bp-scale, $hu-translate-x-modules) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}
