@@ -14,7 +14,7 @@
 
 @if (index($hu-svg-fill-color-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
-    @media (min-width: $bp-value) {
+    @include hu-media-query($bp-value) {
       @each $hue, $colors in $hu-svg-fill-color-types {
         @each $scale, $value in $colors {
           $class-name: hu-class-name(svg-fill-color-#{$hue}-#{$scale});

@@ -12,7 +12,7 @@
 
 @if (index($hu-overflow-x-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
-    @media (min-width: $bp-value) {
+    @include hu-media-query($bp-value) {
       @each $type, $value in $hu-overflow-x-types {
         $class-name: hu-class-name(overflow-x-#{$type});
         $property: overflow-x;

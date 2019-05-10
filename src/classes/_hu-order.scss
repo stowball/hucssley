@@ -12,7 +12,7 @@
 
 @if (index($hu-order-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
-    @media (min-width: $bp-value) {
+    @include hu-media-query($bp-value) {
       @each $type, $value in $hu-order-types {
         $class-name: hu-class-name(order-#{$type});
         $property: order;

@@ -12,7 +12,7 @@
 
 @if (index($hu-flex-shrink-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
-    @media (min-width: $bp-value) {
+    @include hu-media-query($bp-value) {
       @each $type, $value in $hu-flex-shrink-types {
         $class-name: hu-class-name(flex-shrink-#{$type});
         $property: flex-shrink;

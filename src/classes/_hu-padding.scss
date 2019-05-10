@@ -14,7 +14,7 @@
 
 @if (index($hu-padding-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
-    @media (min-width: $bp-value) {
+    @include hu-media-query($bp-value) {
       @each $scale, $value in $hu-padding-scale {
         @each $type, $properties in $hu-padding-types {
           $class-name: hu-class-name(#{$type}-#{$scale});

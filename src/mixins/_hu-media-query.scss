@@ -1,0 +1,27 @@
+@mixin hu-media-query($breakpoint) {
+  @if (type-of($breakpoint) == map) {
+    $max-width: if(map-has-key($breakpoint, max), hu-get($breakpoint, max), null);
+    $min-width: if(map-has-key($breakpoint, min), hu-get($breakpoint, min), null);
+
+    @if ($max-width and $min-width) {
+      @media (min-width: $min-width) and (max-width: $max-width) {
+        @content;
+      }
+    }
+    @else if ($max-width) {
+      @media (max-width: $max-width) {
+        @content;
+      }
+    }
+    @else if ($min-width) {
+      @media (min-width: $min-width) {
+        @content;
+      }
+    }
+  }
+  @else {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  }
+}

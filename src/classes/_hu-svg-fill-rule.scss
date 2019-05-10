@@ -13,7 +13,7 @@
 
 @if (index($hu-svg-fill-rule-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
-    @media (min-width: $bp-value) {
+    @include hu-media-query($bp-value) {
       @each $type, $value in $hu-svg-fill-rule-types {
         $class-name: hu-class-name(svg-fill-rule-#{$type});
         $property: fill-rule;

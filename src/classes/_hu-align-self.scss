@@ -12,7 +12,7 @@
 
 @if (index($hu-align-self-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
-    @media (min-width: $bp-value) {
+    @include hu-media-query($bp-value) {
       @each $type, $value in $hu-align-self-types {
         $class-name: hu-class-name(align-self-#{$type});
         $property: align-self;

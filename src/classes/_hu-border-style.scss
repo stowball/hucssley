@@ -16,7 +16,7 @@
 
 @if (index($hu-border-style-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
-    @media (min-width: $bp-value) {
+    @include hu-media-query($bp-value) {
       @each $scale, $value in $hu-border-style-scale {
         @each $type, $properties in $hu-border-style-types {
           $class-name: hu-class-name(#{$side-type}-style-#{$type});

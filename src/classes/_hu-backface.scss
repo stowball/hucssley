@@ -13,7 +13,7 @@
 
 @if (index($hu-backface-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
-    @media (min-width: $bp-value) {
+    @include hu-media-query($bp-value) {
       @each $type, $value in $hu-backface-types {
         $class-name: hu-class-name(backface-#{$type});
         $property: backface-visibility;

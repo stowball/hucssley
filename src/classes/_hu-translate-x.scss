@@ -13,7 +13,7 @@
 
 @if (index($hu-translate-x-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
-    @media (min-width: $bp-value) {
+    @include hu-media-query($bp-value) {
       @each $type, $value in $hu-translate-x-types {
         $class-name: hu-class-name(translate-x-#{$type});
         $property: translate-x;

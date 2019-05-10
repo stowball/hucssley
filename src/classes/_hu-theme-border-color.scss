@@ -18,7 +18,7 @@
 
 @if (index($hu-theme-border-color-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
-    @media (min-width: $bp-value) {
+    @include hu-media-query($bp-value) {
       @each $theme, $keys in $hu-themes {
         @each $key, $value in $keys {
           @each $side-type, $side-properties in $hu-theme-border-color-sides {

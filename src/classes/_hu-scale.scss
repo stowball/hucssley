@@ -13,7 +13,7 @@
 
 @if (index($hu-scale-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
-    @media (min-width: $bp-value) {
+    @include hu-media-query($bp-value) {
       @each $type, $value in $hu-scale-types {
         $class-name: hu-class-name(scale-#{$type});
         $property: scale;

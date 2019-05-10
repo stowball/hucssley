@@ -14,7 +14,7 @@
 
 @if (index($hu-theme-color-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
-    @media (min-width: $bp-value) {
+    @include hu-media-query($bp-value) {
       @each $theme, $keys in $hu-themes {
         @each $key, $value in $keys {
           $class-name: hu-class-name(color-#{$key});

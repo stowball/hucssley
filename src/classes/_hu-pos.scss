@@ -15,7 +15,7 @@
 
 @if (index($hu-pos-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
-    @media (min-width: $bp-value) {
+    @include hu-media-query($bp-value) {
       @each $scale, $value in $hu-pos-scale {
         @each $type, $properties in $hu-pos-types {
           $class-name: hu-class-name(#{$type}-#{$scale});
