@@ -1,3 +1,9 @@
 $hu-translate-y-modules: $hu-translate-x-modules !default;
 
-$hu-translate-y-types: $hu-translate-x-types !default;
+$hu-translate-y-types: (
+  n100: translateY(-100%),
+  n50: translateY(-50%),
+  0: translateY(0),
+  50: translateY(50%),
+  100: translateY(100%),
+) !default;
