@@ -1,15 +1,16 @@
-$hu-scale-modules: (base) !default;
+$hu-scale-modules: (hocus) !default;
 
 $hu-scale-types: (
   0: scale(0),
   50: scale(0.5),
-  70: scale(0.7),
   80: scale(0.8),
+  85: scale(0.85),
   90: scale(0.9),
+  95: scale(0.95),
   100: scale(1),
+  105: scale(1.05),
   110: scale(1.1),
+  115: scale(1.15),
   120: scale(1.2),
-  130: scale(1.3),
   150: scale(1.5),
-  200: scale(2),
 ) !default;

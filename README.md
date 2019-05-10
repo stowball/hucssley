@@ -15,12 +15,15 @@ node-sass --watch --recursive --output dist --output-style expanded --indent-wid
 ```scss
 @import "hucssley/helpers";
 
-@import "styles/variables/index";
-  // @import "global/index";
-  // @import "classes/index";
-  // @import "reset/index";
+@import "hucssley/variables/global/index";
+@import "custom/variables/global";
+
+@import "hucssley/variables/classes/index";
+@import "custom/variables/classes"; // set class overrides before if you don't need access to the defaults
+
+@import "hucssley/variables/reset/index";
+@import "custom/variables/reset";
 
 @import "hucssley/styles";
-
-@import "styles/classes/index";
+@import "custom/classes";
 ```
