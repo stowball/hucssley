@@ -1,0 +1,13 @@
+@if ($hu-debug == true) {
+  head,
+  head style {
+    display: block !important;
+  }
+
+  style {
+    font-family: monospace !important;
+    font-size: 14px !important;
+    padding: 10px !important;
+    white-space: pre-wrap !important;
+  }
+}
