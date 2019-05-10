@@ -1,9 +1,9 @@
 $hu-translate-x-modules: (base) !default;
 
 $hu-translate-x-types: (
-  n100: translateX(-100%),
-  n50: translateX(-50%),
-  0: translateX(0),
-  50: translateX(50%),
-  100: translateX(100%),
+  n100: -100%,
+  n50: -50%,
+  0: 0,
+  50: 50%,
+  100: 100%,
 ) !default;

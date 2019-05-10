@@ -1,3 +1,4 @@
+// translate-x -> transform: translateX
 @each $module in hu-format-modules($hu-translate-x-modules) {
   @each $type, $value in $hu-translate-x-types {
     $class-name: hu-class-name(translate-x-#{$type});
@@ -5,7 +6,7 @@
     $value: if($value, $value, $type);
 
     @include hu-generic($class-name, $module) {
-      #{$property}: $value;
+      #{$property}: translateX($value);
     }
   }
 }

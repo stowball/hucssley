@@ -1,3 +1,4 @@
+// rotate -> transform: rotate
 @each $module in hu-format-modules($hu-rotate-modules) {
   @each $type, $value in $hu-rotate-types {
     $class-name: hu-class-name(rotate-#{$type});
@@ -5,7 +6,7 @@
     $value: if($value, $value, $type);
 
     @include hu-generic($class-name, $module) {
-      #{$property}: $value;
+      #{$property}: rotate($value);
     }
   }
 }

@@ -1,3 +1,4 @@
+// translate-y -> transform: translateY
 @each $module in hu-format-modules($hu-translate-y-modules) {
   @each $type, $value in $hu-translate-y-types {
     $class-name: hu-class-name(translate-y-#{$type});
@@ -5,7 +6,7 @@
     $value: if($value, $value, $type);
 
     @include hu-generic($class-name, $module) {
-      #{$property}: $value;
+      #{$property}: translateY($value);
     }
   }
 }
