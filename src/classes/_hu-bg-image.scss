@@ -1,3 +1,4 @@
+// bg-image -> background-image
 @each $module in hu-format-modules($hu-bg-image-modules) {
   @each $type, $value in $hu-bg-image-types {
     $class-name: hu-class-name(bg-image-#{$type});

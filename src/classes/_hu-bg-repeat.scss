@@ -1,3 +1,4 @@
+// bg-repeat -> background-repeat
 @each $module in hu-format-modules($hu-bg-repeat-modules) {
   @each $type, $value in $hu-bg-repeat-types {
     $class-name: hu-class-name(bg-#{$type});

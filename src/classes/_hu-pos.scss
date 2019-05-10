@@ -1,4 +1,4 @@
-// pos -> bottom, left, right, top
+// pos-[b,l,r,t] -> bottom, left, right, top
 @each $module in hu-format-modules($hu-pos-modules) {
   @each $scale, $value in $hu-pos-scale {
     @each $type, $properties in $hu-pos-types {
