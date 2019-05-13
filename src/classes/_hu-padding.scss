@@ -19,7 +19,7 @@
         @each $type, $properties in $hu-padding-types {
           $class-name: hu-class-name(#{$type}-#{$scale});
 
-          @include hu-responsive($class-name, $bp-scale, $hu-padding-modules) {
+          @include hu-responsive($class-name, $hu-padding-modules, $bp-scale) {
             @each $property in $properties {
               #{$property}: $value;
             }

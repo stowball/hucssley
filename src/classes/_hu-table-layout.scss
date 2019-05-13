@@ -18,7 +18,7 @@
         $property: table-layout;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-table-layout-modules) {
+        @include hu-responsive($class-name, $hu-table-layout-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

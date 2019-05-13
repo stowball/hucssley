@@ -20,7 +20,7 @@
         $property: overscroll-behavior;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-overscroll-modules) {
+        @include hu-responsive($class-name, $hu-overscroll-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

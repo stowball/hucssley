@@ -18,7 +18,7 @@
         $property: shadow;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-shadow-modules) {
+        @include hu-responsive($class-name, $hu-shadow-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

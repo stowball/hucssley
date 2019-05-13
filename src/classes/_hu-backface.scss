@@ -19,7 +19,7 @@
         $property: backface-visibility;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-backface-modules) {
+        @include hu-responsive($class-name, $hu-backface-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

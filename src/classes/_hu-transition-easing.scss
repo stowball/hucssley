@@ -19,7 +19,7 @@
         $property: transition-easing;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-transition-easing-modules) {
+        @include hu-responsive($class-name, $hu-transition-easing-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

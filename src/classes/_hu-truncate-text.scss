@@ -16,7 +16,7 @@
       @each $type, $value in $hu-truncate-text-types {
         $class-name: hu-class-name(#{$type});
 
-        @include hu-responsive($class-name, $bp-scale, $hu-truncate-text-modules) {
+        @include hu-responsive($class-name, $hu-truncate-text-modules, $bp-scale) {
           @each $property, $value in $properties {
             #{$property}: $value;
           }

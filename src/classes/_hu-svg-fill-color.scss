@@ -20,7 +20,7 @@
           $class-name: hu-class-name(svg-fill-color-#{$hue}-#{$scale});
           $property: fill;
 
-          @include hu-responsive($class-name, $bp-scale, $hu-svg-fill-color-modules) {
+          @include hu-responsive($class-name, $hu-svg-fill-color-modules, $bp-scale) {
             #{$property}: $value;
           }
         }

@@ -19,7 +19,7 @@
         $property: background-image;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-bg-image-modules) {
+        @include hu-responsive($class-name, $hu-bg-image-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

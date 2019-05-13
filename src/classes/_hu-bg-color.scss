@@ -20,7 +20,7 @@
           $class-name: hu-class-name(bg-color-#{$hue}-#{$scale});
           $property: background-color;
 
-          @include hu-responsive($class-name, $bp-scale, $hu-bg-color-modules) {
+          @include hu-responsive($class-name, $hu-bg-color-modules, $bp-scale) {
             #{$property}: $value;
           }
         }

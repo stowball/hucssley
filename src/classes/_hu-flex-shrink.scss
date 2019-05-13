@@ -18,7 +18,7 @@
         $property: flex-shrink;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-flex-shrink-modules) {
+        @include hu-responsive($class-name, $hu-flex-shrink-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

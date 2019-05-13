@@ -19,7 +19,7 @@
         $property: mix-blend-mode;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-blend-mode-modules) {
+        @include hu-responsive($class-name, $hu-blend-mode-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

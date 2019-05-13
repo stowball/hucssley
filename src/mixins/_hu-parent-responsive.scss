@@ -4,8 +4,10 @@
       $escaped-parent: hu-escape-class-name($parent);
       $escaped-child: if($child-string-to-strip, hu-string-replace($escaped-parent, $child-string-to-strip, ""), $escaped-parent);
 
-      .#{$escaped-parent} .#{$escaped-child}__bp-#{$bp-scale}--#{$class-name} {
-        @content;
+      @if (index($modules, base)) {
+        .#{$escaped-parent} .#{$escaped-child}__bp-#{$bp-scale}--#{$class-name} {
+          @content;
+        }
       }
 
       @if (index($modules, state)) {

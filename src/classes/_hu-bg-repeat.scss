@@ -19,7 +19,7 @@
         $property: background-repeat;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-bg-repeat-modules) {
+        @include hu-responsive($class-name, $hu-bg-repeat-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

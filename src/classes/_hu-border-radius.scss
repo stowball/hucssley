@@ -19,7 +19,7 @@
         @each $type, $properties in $hu-border-radius-types {
           $class-name: hu-class-name(#{$type}-#{$scale});
 
-          @include hu-responsive($class-name, $bp-scale, $hu-border-radius-modules) {
+          @include hu-responsive($class-name, $hu-border-radius-modules, $bp-scale) {
             @each $property in $properties {
               #{$property}: $value;
             }

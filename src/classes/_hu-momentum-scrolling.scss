@@ -17,7 +17,7 @@
         $property: -webkit-overflow-scrolling;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-momentum-scrolling-modules) {
+        @include hu-responsive($class-name, $hu-momentum-scrolling-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

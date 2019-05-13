@@ -21,7 +21,7 @@
         @each $type, $properties in $hu-border-width-types {
           $class-name: hu-class-name(#{$side-type}-width-#{$type});
 
-          @include hu-responsive($class-name, $bp-scale, $hu-border-width-modules) {
+          @include hu-responsive($class-name, $hu-border-width-modules, $bp-scale) {
             @each $property in $properties {
               #{$property}: $value;
             }

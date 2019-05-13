@@ -18,7 +18,7 @@
         $property: min-height;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-min-height-modules) {
+        @include hu-responsive($class-name, $hu-min-height-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

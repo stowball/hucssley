@@ -18,7 +18,7 @@
         $property: flex-grow;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-flex-grow-modules) {
+        @include hu-responsive($class-name, $hu-flex-grow-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

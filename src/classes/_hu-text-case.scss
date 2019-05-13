@@ -19,7 +19,7 @@
         $property: text-transform;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-text-case-modules) {
+        @include hu-responsive($class-name, $hu-text-case-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

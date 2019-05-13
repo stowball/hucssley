@@ -3,8 +3,10 @@
     @each $pseudo in $pseudos {
       $pseudo-class-name: #{pseudo}-#{hu-string-replace($pseudo, ":", "")};
 
-      .bp-#{$bp-scale}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
-        @content;
+      @if (index($modules, base)) {
+        .bp-#{$bp-scale}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+          @content;
+        }
       }
 
       @if (index($modules, state)) {

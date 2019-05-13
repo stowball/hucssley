@@ -18,7 +18,7 @@
         $property: columns;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-columns-modules) {
+        @include hu-responsive($class-name, $hu-columns-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

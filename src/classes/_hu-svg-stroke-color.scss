@@ -20,7 +20,7 @@
           $class-name: hu-class-name(svg-stroke-color-#{$hue}-#{$scale});
           $property: stroke;
 
-          @include hu-responsive($class-name, $bp-scale, $hu-svg-stroke-color-modules) {
+          @include hu-responsive($class-name, $hu-svg-stroke-color-modules, $bp-scale) {
             #{$property}: $value;
           }
         }

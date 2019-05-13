@@ -19,7 +19,7 @@
         $property: border-collapse;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-table-border-modules) {
+        @include hu-responsive($class-name, $hu-table-border-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

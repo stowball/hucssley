@@ -19,7 +19,7 @@
         $property: fill-rule;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-svg-fill-rule-modules) {
+        @include hu-responsive($class-name, $hu-svg-fill-rule-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

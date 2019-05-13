@@ -18,7 +18,7 @@
         $property: white-space;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-white-space-modules) {
+        @include hu-responsive($class-name, $hu-white-space-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

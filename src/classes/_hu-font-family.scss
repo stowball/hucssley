@@ -18,7 +18,7 @@
         $property: font-family;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-font-family-modules) {
+        @include hu-responsive($class-name, $hu-font-family-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

@@ -19,7 +19,7 @@
         $property: position;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-position-modules) {
+        @include hu-responsive($class-name, $hu-position-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

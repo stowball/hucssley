@@ -18,7 +18,7 @@
         $property: z-index;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-z-index-modules) {
+        @include hu-responsive($class-name, $hu-z-index-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

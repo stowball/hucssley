@@ -1,6 +1,8 @@
-@mixin hu-responsive($class-name, $bp-scale, $modules) {
-  @include hu-responsive-base($class-name, $bp-scale) {
-    @content;
+@mixin hu-responsive($class-name, $modules, $bp-scale) {
+  @if (index($modules, base)) {
+    @include hu-responsive-base($class-name, $bp-scale) {
+      @content;
+    }
   }
 
   @if (index($modules, state)) {

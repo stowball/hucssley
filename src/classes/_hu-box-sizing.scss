@@ -18,7 +18,7 @@
         $property: box-sizing;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-box-sizing-modules) {
+        @include hu-responsive($class-name, $hu-box-sizing-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

@@ -19,7 +19,7 @@
         $property: translate-y;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-translate-y-modules) {
+        @include hu-responsive($class-name, $hu-translate-y-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

@@ -18,7 +18,7 @@
         $property: list-style;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-list-style-modules) {
+        @include hu-responsive($class-name, $hu-list-style-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

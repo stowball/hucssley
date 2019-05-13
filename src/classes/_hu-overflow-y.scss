@@ -18,7 +18,7 @@
         $property: overflow-y;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-overflow-y-modules) {
+        @include hu-responsive($class-name, $hu-overflow-y-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

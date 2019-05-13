@@ -19,7 +19,7 @@
         $property: rotate;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-rotate-modules) {
+        @include hu-responsive($class-name, $hu-rotate-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

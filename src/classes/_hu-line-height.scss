@@ -18,7 +18,7 @@
         $property: line-height;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-line-height-modules) {
+        @include hu-responsive($class-name, $hu-line-height-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

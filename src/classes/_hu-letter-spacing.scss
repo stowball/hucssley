@@ -18,7 +18,7 @@
         $property: letter-spacing;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-letter-spacing-modules) {
+        @include hu-responsive($class-name, $hu-letter-spacing-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

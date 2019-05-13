@@ -19,7 +19,7 @@
         $property: scale;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-scale-modules) {
+        @include hu-responsive($class-name, $hu-scale-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

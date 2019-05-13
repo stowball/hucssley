@@ -18,7 +18,7 @@
         $property: visibility;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-visibility-modules) {
+        @include hu-responsive($class-name, $hu-visibility-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

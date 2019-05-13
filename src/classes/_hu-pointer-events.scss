@@ -19,7 +19,7 @@
         $property: pointer-events;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-pointer-events-modules) {
+        @include hu-responsive($class-name, $hu-pointer-events-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

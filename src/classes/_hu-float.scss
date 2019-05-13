@@ -18,7 +18,7 @@
         $property: float;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-float-modules) {
+        @include hu-responsive($class-name, $hu-float-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

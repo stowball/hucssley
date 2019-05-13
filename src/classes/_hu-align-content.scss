@@ -18,7 +18,7 @@
         $property: align-content;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-align-content-modules) {
+        @include hu-responsive($class-name, $hu-align-content-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

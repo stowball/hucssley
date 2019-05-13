@@ -18,7 +18,7 @@
         $property: width;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-width-modules) {
+        @include hu-responsive($class-name, $hu-width-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

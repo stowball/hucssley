@@ -20,7 +20,7 @@
         @each $type, $properties in $hu-pos-types {
           $class-name: hu-class-name(#{$type}-#{$scale});
 
-          @include hu-responsive($class-name, $bp-scale, $hu-pos-modules) {
+          @include hu-responsive($class-name, $hu-pos-modules, $bp-scale) {
             @each $property in $properties {
               #{$property}: $value;
             }

@@ -18,7 +18,7 @@
         $property: justify-items;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-justify-items-modules) {
+        @include hu-responsive($class-name, $hu-justify-items-modules, $bp-scale) {
           #{$property}: $value;
         }
       }

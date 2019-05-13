@@ -24,7 +24,7 @@
       @each $type, $value in $hu-visually-hidden-types {
         $class-name: hu-class-name(visually-hidden);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-visually-hidden-modules) {
+        @include hu-responsive($class-name, $hu-visually-hidden-modules, $bp-scale) {
           @include _hu-visually-hidden-declarations;
         }
       }

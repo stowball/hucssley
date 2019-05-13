@@ -24,7 +24,7 @@
             $side-properties: if($side-properties, $side-properties, $side-type);
             $class-name: hu-class-name(#{$side-type}-color-#{$hue}-#{$color-scale});
 
-            @include hu-responsive($class-name, $bp-scale, $hu-border-color-modules) {
+            @include hu-responsive($class-name, $hu-border-color-modules, $bp-scale) {
               @each $property in $side-properties {
                 #{$property}-color: $color-value;
               }

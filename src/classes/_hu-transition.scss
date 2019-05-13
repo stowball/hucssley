@@ -18,7 +18,7 @@
         $property: transition;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $bp-scale, $hu-transition-modules) {
+        @include hu-responsive($class-name, $hu-transition-modules, $bp-scale) {
           #{$property}: $value;
         }
       }
