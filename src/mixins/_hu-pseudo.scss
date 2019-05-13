@@ -10,7 +10,7 @@
       }
 
       @else if ($module == focus) {
-        #{$hu-hocus-focus-prefix} .focus-#{$pseudo-class-name}--#{$class-name}#{$hu-hocus-focus-pseudo}#{$pseudo} {
+        #{$hu-focus-parent} .focus-#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo} {
           @content;
         }
       }
@@ -22,7 +22,7 @@
       }
 
       @else if ($module == hocus) {
-        #{$hu-hocus-focus-prefix} .hocus-#{$pseudo-class-name}--#{$class-name}#{$hu-hocus-focus-pseudo}#{$pseudo},
+        #{$hu-focus-parent} .hocus-#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo},
         .hocus-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
           @content;
         }

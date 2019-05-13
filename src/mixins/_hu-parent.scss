@@ -11,7 +11,7 @@
       }
 
       @else if ($module == focus) {
-        #{$hu-hocus-focus-prefix} .#{$escaped-parent}#{$hu-hocus-focus-pseudo} .#{$escaped-child}__focus--#{$class-name} {
+        #{$hu-focus-parent} .#{$escaped-parent}#{$hu-focus-pseudo} .#{$escaped-child}__focus--#{$class-name} {
           @content;
         }
       }
@@ -23,7 +23,7 @@
       }
 
       @else if ($module == hocus) {
-        #{$hu-hocus-focus-prefix} .#{$escaped-parent}#{$hu-hocus-focus-pseudo} .#{$escaped-child}__hocus--#{$class-name},
+        #{$hu-focus-parent} .#{$escaped-parent}#{$hu-focus-pseudo} .#{$escaped-child}__hocus--#{$class-name},
         .#{$escaped-parent}:hover .#{$escaped-child}__hocus--#{$class-name} {
           @content;
         }
