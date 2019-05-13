@@ -1,4 +1,4 @@
-// scale-x -> transform: scale
+// scale -> transform: scale
 @each $module in hu-format-modules($hu-scale-modules) {
   @each $type, $value in $hu-scale-types {
     $class-name: hu-class-name(scale-#{$type});
