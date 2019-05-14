@@ -1,12 +1,14 @@
-@each $module in hu-format-modules($hu-truncate-text-modules) {
-  @each $type, $properties in $hu-truncate-text-types {
-    $class-name: hu-class-name(#{$type});
+@mixin _hu-truncate-text-declarations {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
-    @include hu-generic($class-name, $module) {
-      @each $property, $value in $properties {
-        #{$property}: $value;
-      }
-    }
+@each $module in hu-format-modules($hu-truncate-text-modules) {
+  $class-name: hu-class-name(truncate-text);
+
+  @include hu-generic($class-name, $module) {
+    @include _hu-truncate-text-declarations;
   }
 }
 
@@ -14,12 +16,10 @@
   @each $bp-scale, $bp-value in $hu-breakpoints {
     @include hu-media-query($bp-value) {
       @each $type, $value in $hu-truncate-text-types {
-        $class-name: hu-class-name(#{$type});
+        $class-name: hu-class-name(truncate-text);
 
         @include hu-responsive($class-name, $hu-truncate-text-modules, $bp-scale) {
-          @each $property, $value in $properties {
-            #{$property}: $value;
-          }
+          @include _hu-truncate-text-declarations;
         }
       }
     }

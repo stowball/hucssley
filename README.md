@@ -321,7 +321,7 @@ For `group` classes to take effect, a parent has to be given the raw `.group` cl
 </html>
 ```
 
-Be careful when using groups, because they will affect all `.group__` children. A child `.group` does not reset the actions of a parent `.group`, so you could end up with unexpected behavior.
+Be careful when using groups, because they will affect all `.group__` children. A child `.group` does not reset the actions of a parent `.group`, so you could end up with unexpected behaviour. It's recommended to use groups on near ancestors to leaf nodes.
 
 *Note: `.browser-mobile` is an example of a custom parent selector, and is not included in Hucssley by default.*
 

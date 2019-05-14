@@ -1566,30 +1566,11 @@ $hu-translate-y-types: $hu-translate-x-types;
 ### hu-truncate-text
 
 ```scss
-$hu-truncate-text-modules: (base, group-state, state);
-
-$hu-truncate-text-types: (
-  truncate-text-off: (
-    overflow: visible,
-    text-overflow: initial,
-    white-space: wrap
-  ),
-  truncate-text-on: (
-    overflow: hidden,
-    text-overflow: ellipsis,
-    white-space: nowrap
-  ),
-);
+$hu-truncate-text-modules: (base);
 ```
 
 ```css
-.truncate-text-off {
-  overflow: visible;
-  text-overflow: initial;
-  white-space: wrap;
-}
-
-.truncate-text-on {
+.truncate-text {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

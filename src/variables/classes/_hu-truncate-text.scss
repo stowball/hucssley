@@ -1,14 +1,1 @@
-$hu-truncate-text-modules: (base, group-state, state) !default;
-
-$hu-truncate-text-types: (
-  truncate-text-off: (
-    overflow: visible,
-    text-overflow: initial,
-    white-space: wrap
-  ),
-  truncate-text-on: (
-    overflow: hidden,
-    text-overflow: ellipsis,
-    white-space: nowrap
-  ),
-) !default;
+$hu-truncate-text-modules: (base) !default;
