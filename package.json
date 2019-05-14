@@ -4,11 +4,10 @@
   "description": "",
   "keywords": [],
   "main": "src/_index.scss",
-  "dependencies": {
-    "node-sass": "4.10.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "doctoc": "^1.4.0"
+    "doctoc": "^1.4.0",
+    "node-sass": "^4.12.0"
   },
   "scripts": {
     "tocs": "doctoc . --github"
