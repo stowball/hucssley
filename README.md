@@ -78,7 +78,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
 
 ## What's in the box?
 
-Currently, Hucssley provides utilities for ~100 CSS properties, of which multiple, sensible default values are generated. Each utility is also created for various "modules", whether that's at certain breakpoints, UI states, user interactions, for print or more.
+Currently, Hucssley provides utility classes for over 110 CSS properties, of which multiple, sensible default values are generated. Each utility is also created for various "modules", whether that's at certain breakpoints, UI states, user interactions, for print or more.
 
 Each utility is completely customisable; they can be partially renamed, have values changed, have their modules altered or be omitted entirely.
 
@@ -233,6 +233,10 @@ would be available as the following base class:
 Some classes deviate by default though:
 
 ```css
+animation-count -> animation-iteration-count
+animation-easing -> animation-timing-function
+animation-mode -> animation-fill-mode
+animation-state -> animation-play-state
 backface -> backface-visibility
 bg-color -> background-color
 bg-image -> background-image

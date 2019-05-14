@@ -1,0 +1,27 @@
+@each $module in hu-format-modules($hu-animation-delay-modules) {
+  @each $type, $value in $hu-animation-delay-types {
+    $class-name: hu-class-name(animation-delay-#{$type});
+    $property: animation-delay;
+    $value: if($value, $value, $type);
+
+    @include hu-generic($class-name, $module) {
+      #{$property}: $value;
+    }
+  }
+}
+
+@if (index($hu-animation-delay-modules, responsive)) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @include hu-media-query($bp-value) {
+      @each $type, $value in $hu-animation-delay-types {
+        $class-name: hu-class-name(animation-delay-#{$type});
+        $property: animation-delay;
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $hu-animation-delay-modules, $bp-scale) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+// animation-easing -> animation-timing-function
+@each $module in hu-format-modules($hu-animation-easing-modules) {
+  @each $type, $value in $hu-animation-easing-types {
+    $class-name: hu-class-name(animation-easing-#{$type});
+    $property: animation-timing-function;
+    $value: if($value, $value, $type);
+
+    @include hu-generic($class-name, $module) {
+      #{$property}: $value;
+    }
+  }
+}
+
+@if (index($hu-animation-easing-modules, responsive)) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @include hu-media-query($bp-value) {
+      @each $type, $value in $hu-animation-easing-types {
+        $class-name: hu-class-name(animation-easing-#{$type});
+        $property: animation-timing-function;
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $hu-animation-easing-modules, $bp-scale) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}
