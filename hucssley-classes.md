@@ -77,6 +77,7 @@ Hucssley provides ~100 classes out-of-the-box, which have been sensibly pre-conf
   - [hu-momentum-scrolling](#hu-momentum-scrolling)
   - [hu-opacity](#hu-opacity)
   - [hu-order](#hu-order)
+  - [hu-outline](#hu-outline)
   - [hu-overflow](#hu-overflow)
   - [hu-overflow-x](#hu-overflow-x)
   - [hu-overflow-y](#hu-overflow-y)
@@ -1093,6 +1094,16 @@ $hu-order-types: (
   3,
   4,
   5,
+);
+```
+
+### hu-outline
+
+```scss
+$hu-outline-modules: (focus, hocus);
+
+$hu-outline-types: (
+  none,
 );
 ```
 

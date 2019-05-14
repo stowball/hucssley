@@ -1,0 +1,27 @@
+@each $module in hu-format-modules($hu-outline-modules) {
+  @each $type, $value in $hu-outline-types {
+    $class-name: hu-class-name(outline-#{$type});
+    $property: outline;
+    $value: if($value, $value, $type);
+
+    @include hu-generic($class-name, $module) {
+      #{$property}: $value;
+    }
+  }
+}
+
+@if (index($hu-outline-modules, responsive)) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @include hu-media-query($bp-value) {
+      @each $type, $value in $hu-outline-types {
+        $class-name: hu-class-name(outline-#{$type});
+        $property: outline;
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $hu-outline-modules, $bp-scale) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}
