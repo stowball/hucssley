@@ -1,0 +1,27 @@
+@each $module in hu-format-modules($hu-grid-column-gap-modules) {
+  @each $type, $value in $hu-grid-column-gap-types {
+    $class-name: hu-class-name(grid-column-gap-#{$type});
+    $property: grid-column-gap;
+    $value: if($value, $value, $type);
+
+    @include hu-generic($class-name, $module) {
+      #{$property}: $value;
+    }
+  }
+}
+
+@if (index($hu-grid-column-gap-modules, responsive)) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @include hu-media-query($bp-value) {
+      @each $type, $value in $hu-grid-column-gap-types {
+        $class-name: hu-class-name(grid-column-gap-#{$type});
+        $property: grid;
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $hu-grid-column-gap-modules, $bp-scale) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}

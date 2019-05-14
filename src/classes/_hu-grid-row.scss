@@ -1,0 +1,27 @@
+@each $module in hu-format-modules($hu-grid-row-modules) {
+  @each $type, $value in $hu-grid-row-types {
+    $class-name: hu-class-name(grid-row-#{$type});
+    $property: grid-row;
+    $value: if($value, $value, $type);
+
+    @include hu-generic($class-name, $module) {
+      #{$property}: $value;
+    }
+  }
+}
+
+@if (index($hu-grid-row-modules, responsive)) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @include hu-media-query($bp-value) {
+      @each $type, $value in $hu-grid-row-types {
+        $class-name: hu-class-name(grid-row-#{$type});
+        $property: grid;
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $hu-grid-row-modules, $bp-scale) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}
