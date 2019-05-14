@@ -1,6 +1,6 @@
 # Hucssley classes
 
-Hucssley provides ~100 classes out-of-the-box, which have been sensibly pre-configured to get up and running, fast. Some are placeholders for more complex things, like `grid`, `shadow` and `transform` that don't map 1:1 to a property/value pair and are more likely to be customized to suit your project.
+Hucssley provides ~100 classes out-of-the-box, which have been sensibly pre-configured to get up and running, fast. Some are placeholders with empty variables for more complex things, like `grid`, `shadow` and `transform` that either don't map 1:1 to a property/value pair, and/or are more likely unable to be standardised to suit your project.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -122,15 +122,15 @@ Hucssley provides ~100 classes out-of-the-box, which have been sensibly pre-conf
 
 ### Modules
 
-Each class will have an appropriately named `$hu-[class-name]-modules` variable, which determines what modules types (if any), it is generated for.
+Each class will have an appropriately named `$hu-[class-name]-modules` variable, which determines what module types (if any), it is generated for.
 
 Modules accepts a list of the following values: `(base, focus, hover, hocus, state, group-hover, group-state, reduced-motion, print)` or empty `()`. The order of the modules is not important, as Hucssley will intelligently order them for you to produce the desired output.
 
 ### Simple Types
 
-Each class will have an appropriately name `$hu-[class-name]-types` variable, which determines what class name suffixes, values that will be used.
+Each class will have an appropriately name `$hu-[class-name]-types` variable, which determines what class name suffixes and values that will be used.
 
-`$hu-[class-name]-modules` can either accept a list or a map.
+`$hu-[class-name]-types` can either accept a list or a map.
 
 #### Lists
 
@@ -162,7 +162,7 @@ Will generate:
 
 #### Maps
 
-If using a map, the majority of class names will use the map keys as the class name suffix, and the map values as the CSS value. This allows you to customize the class names to suit your workflow, or fix [mistakes in CSS](https://wiki.csswg.org/ideas/mistakes).
+If using a map, the majority of class names will use the map keys as the class name suffix, and the map values as the CSS value. This allows you to customise the class names to suit your workflow, or fix [mistakes in CSS](https://wiki.csswg.org/ideas/mistakes).
 
 The following variable:
 
@@ -274,9 +274,9 @@ Hopefully you can see how the maps controlled the resultant class name format, p
 
 ## Configuring classes
 
-To customize the modules, types and scales used, you simply need to re-assign the relevant variable in a custom Sass stylesheet.
+To customise the modules, types and scales used, you simply need to re-assign the relevant variable in a custom Sass stylesheet.
 
-When importing and using Hucssley, we recommend taking this approach to customize and override existing classes and variables.
+When importing and using Hucssley, we recommend taking this approach to customise and override existing classes and variables.
 
 ```scss
 @import "hucssley/helpers";
@@ -286,7 +286,7 @@ When importing and using Hucssley, we recommend taking this approach to customiz
 
 @import "hucssley/variables/classes/index";
 @import "custom/variables/classes/index";
-set class overrides before if you don't need access to the defaults & want changes to flow through referenced vars
+// set class overrides before if you don't need access to the defaults & want changes to flow through referenced vars
 
 @import "hucssley/variables/reset/index";
 @import "custom/variables/reset/index";
@@ -297,7 +297,7 @@ set class overrides before if you don't need access to the defaults & want chang
 
 ## What's in the box?
 
-Below is a complete list of all the classes in Hucssley by default and their individual configurations. You'll see that some classes reference the same variables, to make customizing them to your specific project easier.
+Below is a complete list of all the classes in Hucssley by default, and their individual configurations. You'll see that some classes reference the same variables, to make customising them to your specific project easier.
 
 *Note: Classes map 1:1 to with CSS properties unless otherwise specified.*
 

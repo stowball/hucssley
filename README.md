@@ -10,7 +10,7 @@ Hucssley has a few goals:
 2. To allow anyone of any skill to rapidly build for the web without unknowingly causing CSS bloat or fighting against some of CSS's core, but sometimes difficult to understand principals.
 3. To provide the tools required to build UI for any breakpoint, user interaction or UI state.
 4. To be completely platform agnostic and portable between front-end stacks, with Sass being the only dependency.
-5. To be highly flexible to your needs, with the ability to easily customize existing classes and create new ones.
+5. To be highly flexible to your needs, with the ability to easily customise existing classes and create new ones.
 
 To understand the reasoning behind its creation, please read [Rethinking CSS](/rethinking-css.md).
 
@@ -70,7 +70,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
   - [The template](#the-template)
   - [Component definition](#component-definition)
   - [Using the component](#using-the-component)
-- [Managing file size](#managing-file-size)
+- [Controlling file size](#controlling-file-size)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -182,7 +182,7 @@ If you want to use Hucssley as it comes, then it's as simple as:
 @import "hucssley/index";
 ```
 
-However, if you want to customize Hucssley, we recommend taking this approach:
+However, if you want to customise Hucssley, we recommend taking this approach:
 
 ```scss
 @import "hucssley/helpers";
@@ -298,7 +298,7 @@ Children of groups can respond to user and UI interaction via groups. Their synt
 .browser-mobile__font-size-700
 ```
 
-For `group` classes to take effect, a parent has to be given the raw group class, and raw state class if applicable:
+For `group` classes to take effect, a parent has to be given the raw `.group` class, and raw state class if applicable:
 
 ```html
 <html class="browser-mobile">
@@ -358,7 +358,7 @@ To override the default configuration in Hucssley, you'll need to understand the
 
 Hucssley's configuration is split in to 3 sections: `reset`, `global` and `classes`.
 
-* **Reset** configuration uses plain variables to customize "generic" styles like whether `box-sizing: border-box` should be used by default.
+* **Reset** configuration uses plain variables to customise "generic" styles like whether `box-sizing: border-box` should be used by default.
 * **Global** configuration mostly uses maps to handle things like the default responsive breakpoints, colors, spacings, UI states and themes.
 * **Classes** provides list and map variables to adjust the modules, and values for each class individually. Some classes (like those which deal with color) inherit from the same base variable by default, so only 1 change is required to affect all `border-color`, `background-color` and `color` classes. All classes can be generated at individual modules described above.
 
@@ -388,7 +388,7 @@ hu-prepend((a, b), (c));
 
 Will prepend the `$target` list or map to the `$source` list or map.
 
-With both of the above functions, they have to be of the same type. when used with maps, they actually perform a `map-merge`, so existing keys in `$source` will also be overwritten with `$target`'s, should they exist there.
+With both of the above functions, they have to be of the same type. When used with maps, they actually perform a `map-merge`, so existing keys in `$source` will also be overwritten with `$target`'s, should they exist there.
 
 #### `hu-get`
 
@@ -410,7 +410,7 @@ hu-em(20px);
 // -> 1.25em
 ```
 
-Will convert a target to pixel value to its `em` equivalent.
+Will convert a target pixel value to its `em` equivalent.
 
 ```scss
 @function hu-rem($target, $context: 16);
@@ -419,7 +419,7 @@ hu-rem(24px);
 // -> 1.5rem
 ```
 
-Will convert a target to pixel value to its `rem` equivalent.
+Will convert a target pixel value to its `rem` equivalent.
 
 #### `hu-tint` and `hu-shade`
 
@@ -443,7 +443,7 @@ Will mix the specified `$color` with a `$percentage` of black.
 
 ### Reset
 
-Here is a list of variables and default value that are available to customise in the CSS reset:
+Here is a list of variables and default values that are available to customise the CSS reset:
 
 ```scss
 $hu-reset-box-sizing: border-box;
@@ -529,7 +529,7 @@ $hu-colors: (
 
 To customise the palette, you can either `hu-append` or `hu-prepend` other maps to complement the existing, or start fresh by re-assigning `$hu-colors` to a new map of colours entirely.
 
-We recommend also `hu-appending` `$hu-colors-keywords` to your brand new palette to ensure you can use classes like `bg-color-transparent` and `color-inherit`;
+We recommend also `hu-append`ing `$hu-colors-keywords` to your brand new palette to ensure you can use classes like `bg-color-transparent` and `color-inherit`;
 
 Here is an example of setting a completely new palette:
 
@@ -589,7 +589,7 @@ If the value of an `$hu-breakpoints` key is a number, it will compile it to a `(
 
 If, however, you provide a map which has keys named `min` or `max`, you can choose to output `(min-width)`, `(max-width)` or a combined `(min-width) and (max-width)` media query.
 
-To demonstrate, this variable:
+To demonstrate:
 
 ```scss
 $hu-breakpoints: (
@@ -615,7 +615,7 @@ would generate the following `bp-` classes:
 }
 ```
 
-Notice how, apart from the `bp-` prefix, Hucssley does not dictate the breakpoint class name format. so should you wish to use ranges like `small` or `medium`, or device types like `tablet`, or `desktop`, it's entirely up to you.
+Notice how, apart from the `bp-` prefix, Hucssley does not dictate the breakpoint class name format, so, should you wish to use ranges like `small` or `medium`, or device types like `tablet`, or `desktop`, it's entirely up to you.
 
 #### UI states: `$hu-states`
 
@@ -683,7 +683,7 @@ $hu-border-sides: (
 $hu-border-types: $hu-colors;
 ```
 
-In conjunction with variables specific to each class name, a lot of classes like are generated:
+In conjunction with variables specific to each class name, classes like the following are generated:
 
 ```css
 .border-color-neutral-0
@@ -692,9 +692,9 @@ In conjunction with variables specific to each class name, a lot of classes like
 .border-h-width-200
 ```
 
-#### Controlling `:focus`: `$hu-hocus-focus-parent` and `$hu-hocus-focus-pseudo`
+#### Controlling focus: `$hu-hocus-focus-parent` and `$hu-hocus-focus-pseudo`
 
-By default, the `focus` and `hocus` modules generate classes which use a `:focus` pseudo-class. This can be customized, should you wish to use `:focus-visible` or even in conjunction with a polyfill.
+By default, the `focus` and `hocus` modules generate classes which use a `:focus` pseudo-class. This can be customised, should you wish to use `:focus-visible` or even in conjunction with a polyfill.
 
 ```scss
 $hu-focus-pseudo: ":focus-visible";
@@ -781,7 +781,7 @@ By setting `$hu-debug: true;` before `@import "hucssley/styles";` all of the CSS
 
 ### Classes
 
-Every class in Hucssley can be completely customized to individually change the properties, values and modules used.
+Every class in Hucssley can be completely customised to individually change the properties, values and modules used.
 
 **For details of all the classes provided by default and their configuration, please read [Hucssley classes](/hucssley-classes.md).**
 
@@ -882,7 +882,7 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `group-hover`, `group-
 
 Generates the responsive `base`, `state` and `group-state` module styles for a class (in that order).
 
-*Note: it does not generate the required media queries, as they need to be created in a specific manner as described below.*
+*Note: it does not generate the required media queries, as they need to be [created in a specific manner as described below](#writing-the-class-logic).*
 
 ```scss
 @mixin hu-responsive($class-name, $one-or-multiple-modules, $breakpoint-scale);
@@ -932,13 +932,13 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `reduced-motion` and `
 */
 ```
 
-The optional `$child-string-to-strip` argument is to remove characters before the `__`, and can be useful if you create a generic child class that can respond to any parent selector, such as is used in when generating themes.
+The optional `$child-string-to-strip` argument is to remove characters before the `__`, and can be useful if you create a generic child class that can respond to any parent selector, such as is used when generating themes.
 
 #### `hu-parent-responsive`
 
 Generates the responsive `base` and `state` module styles for a parent selector class (in that order).
 
-*Note: it does not generate the required media queries, as they need to be created in a specific manner as described below.*
+*Note: it does not generate the required media queries, as they need to be [created in a specific manner as described below](#writing-the-class-logic).*
 
 ```scss
 @mixin hu-parent-responsive($class-name, $parent-selectors, $one-or-multiple-modules, $breakpoint-scale, $child-string-to-strip?) {
@@ -970,7 +970,7 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `reduced-motion` and `
 }
 
 /* ->
-pseudo-before--hu-display-block::before {
+.pseudo-before--hu-display-block::before {
   display: block;
 }
 
@@ -996,7 +996,7 @@ pseudo-before--hu-display-block::before {
 
 Generates the responsive `base` and `state` module styles for a pseudo selector class (in that order).
 
-*Note: it does not generate the required media queries, as they need to be created in a specific manner as described below.*
+*Note: it does not generate the required media queries, as they need to be [created in a specific manner as described below](#writing-the-class-logic).*
 
 ```scss
 @mixin hu-pseudo-responsive($class-name, $pseudo-selectors, $one-or-multiple-modules, $breakpoint-scale) {
@@ -1317,8 +1317,6 @@ By using class names, you are also able to annotate browser-specifc fixes alongs
 
 Let's create a button in Vue:
 
-### The template
-
 ### Component definition
 
 We create a basic component with 3 props that change the appearance, and create a styles object that simply has strings of Hucssley class names that will be applied by default, and in the different forms.
@@ -1340,14 +1338,27 @@ export default {
       type: String,
     },
   },
+  data() {
+    return {
+      isSelected: false,
+    };
+  },
+  methods: {
+    toggleSelected() {
+      this.isSelected = !this.isSelected;
+    },
+  },
   created() {
     this.styles = {
       base: `
         font-weight-700
+        min-width-0 // fixes IE
         transition-duration-100
         transition-easing-ease
         transition-property-all
         hocus--scale-105
+        is-selected--bg-color-neutral-700
+        is-selected--color-neutral-0
       `,
       type: {
         primary: `
@@ -1376,7 +1387,7 @@ export default {
         `,
       },
     };
-  };
+  },
 };
 ```
 
@@ -1390,40 +1401,44 @@ Which means our `template` is as simple as creating an array of the various `sty
       styles.shape[shape],
       styles.size[size],
       styles.type[type],
+      isSelected && 'is-selected',
     ]"
+    v-on:click="toggleSelected"
   >
     <slot></slot>
   </button>
 </template>
 ```
 
+The `template` itself is ridiculously simple. You can tell at a glance exactly which class names will be added under any UI condition, and, in the generated HTML you'll even be able to see an IE-specific hack!
+
 ### Using the component
 
-The following shows how we can quickly use and customize a component's appearance by setting the appropriate props, **and** that we can customize the component on a per-instance basis by merging the passed in `class` attribute with the root component `class` (which happens automagically in Vue).
+The following shows how we can quickly use and customise a component's appearance by setting the appropriate props, **and** that we can customise the component on a per-instance basis by merging the passed in `class` attribute with the root component `class` (which happens automagically in Vue).
 
 ```html
 <button-hu
-  class="margin-r-500 margin-t-500"
+  class="margin-500"
 >
   Primary
 </button-hu>
 
 <button-hu
-  class="margin-r-500 margin-t-500"
+  class="margin-500"
   type="secondary"
 >
   Secondary
 </button-hu>
 
 <button-hu
-  class="margin-r-500 margin-t-500"
+  class="margin-500"
   shape="rounded"
 >
   Primary Rounded
 </button-hu>
 
 <button-hu
-  class="margin-r-500 margin-t-500"
+  class="margin-500"
   shape="rounded"
   type="secondary"
 >
@@ -1431,7 +1446,7 @@ The following shows how we can quickly use and customize a component's appearanc
 </button-hu>
 
 <button-hu
-  class="margin-r-500 margin-t-500"
+  class="margin-500"
   size="large"
   type="primary"
 >
@@ -1439,7 +1454,7 @@ The following shows how we can quickly use and customize a component's appearanc
 </button-hu>
 
 <button-hu
-  class="margin-r-500 margin-t-500"
+  class="margin-500"
   size="large"
   type="secondary"
 >
@@ -1447,7 +1462,7 @@ The following shows how we can quickly use and customize a component's appearanc
 </button-hu>
 
 <button-hu
-  class="margin-r-500 margin-t-500"
+  class="margin-500"
   shape="rounded"
   size="large"
   type="primary"
@@ -1456,7 +1471,7 @@ The following shows how we can quickly use and customize a component's appearanc
 </button-hu>
 
 <button-hu
-  class="margin-r-500 margin-t-500"
+  class="margin-500"
   shape="rounded"
   size="large"
   type="secondary"
@@ -1467,9 +1482,9 @@ The following shows how we can quickly use and customize a component's appearanc
 
 ---
 
-## Managing file size
+## Controlling file size
 
-While Hucssley almost every possible class you'd ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.8 MB. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 114 KB.
+While Hucssley creates almost every possible class you'd ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.8 MB. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 114 KB, which ironically, is still a lot smaller than lots of other "production" CSS in the wild.
 
 Hucssley is infinitely customizable, so you can set the variables of modules you'll never use to `()` so they won't output, and of course, limiting the amount of colors, breakpoints, and spacing scales will also help.
 

@@ -26,7 +26,7 @@ In this article, I hope to define what I feel are the biggest issues with CSS, a
 
 While the syntax of, and writing CSS is very easy to learn and understand, product development teams the world over equally struggle with how to define and implement a maintainable, scalable CSS architecture.
 
-Part of the problem is that CSS is so easy, that everyone on the team, regardless of their expertise, will at some point write it. This contribution of varying skill levels often results in a slimy, distasteful tin of home-brand spaghetti and the next point…
+Part of the problem is that CSS is so easy, that everyone on the team, regardless of their expertise, will at some point write it. This contribution of varying skill levels often results in a slimy, distasteful can of home-brand spaghetti and the next point…
 
 ## Bloat is easy
 
