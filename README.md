@@ -101,7 +101,7 @@ Hucssley also comes with:
 
 ## A working example
 
-The following example demonstrates how you can use Hucssley out-of-the-box to create easily create a responsive, accessible, interactive component.
+The following example demonstrates how you can use Hucssley out-of-the-box to easily create a responsive, accessible, interactive component.
 
 ```html
 <div class="
@@ -150,7 +150,6 @@ The following example demonstrates how you can use Hucssley out-of-the-box to cr
         Disability support workers who love what you love
       </p>
       <a
-        href="#"
         class="
           bg-color-blue-1000
           border-color-neutral-700
@@ -166,7 +165,9 @@ The following example demonstrates how you can use Hucssley out-of-the-box to cr
           bp-768--padding-v-400
           hocus--bg-color-blue-600
           hocus--scale-105
-      ">
+        "
+        href="#"
+      >
         Find your connection
       </a>
     </div>
@@ -223,7 +224,7 @@ This property:
 }
 ```
 
-would be available available as the following, base class:
+would be available as the following base class:
 
 ```css
 .align-items-flex-end
@@ -257,9 +258,9 @@ translate-y -> transform: translateY
 
 If a value is a negative number, its class name output will use `-n[value]`, such as `margin-l-n100` instead of `margin-l--100`, to make it obvious that it's "negative" and to not be confused with the "modifying" syntax described below. 
 
-If the last two words separated by a hyphen are identical, then the last word will automatically be omitted. For instance `.flex-wrap` is used instead of `flex-wrap-wrap`, but `flex-wrap-no-wrap` would be the equivalent `no-wrap` version.
+If the last two words separated by a hyphen are identical, then the last word will automatically be omitted. For instance `.flex-wrap` is used instead of `flex-wrap-wrap`, but `flex-wrap-no-wrap` would be the equivalent `nowrap` version.
 
-*Note: If a global namespace has been configured, it will always precede the base-class name.*
+*Note: If a global namespace has been configured, it will always precede the base class name.*
 
 #### Non-parent modules: `focus, hocus, hover, print, reduced-motion, responsive`
 
