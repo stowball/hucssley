@@ -50,7 +50,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
     - [Debug: `$hu-debug`](#debug-hu-debug)
   - [Classes](#classes)
 - [Creating custom classes](#creating-custom-classes)
-  - [Customizing "placeholder" classes](#customizing-placeholder-classes)
+  - [Customising "placeholder" classes](#customising-placeholder-classes)
   - [Helper Functions](#helper-functions)
     - [`hu-class-name`](#hu-class-name)
     - [`hu-format-modules`](#hu-format-modules)
@@ -179,25 +179,25 @@ The following example demonstrates how you can use Hucssley out-of-the-box to cr
 If you want to use Hucssley as it comes, then it's as simple as:
 
 ```scss
-@import "hucssley/index";
+@import "hucssley/src/index";
 ```
 
 However, if you want to customise Hucssley, we recommend taking this approach:
 
 ```scss
-@import "hucssley/helpers";
+@import "hucssley/src/helpers";
 
-@import "hucssley/variables/global/index";
+@import "hucssley/src/variables/global/index";
 // @import "custom/variables/global/index";
 
-@import "hucssley/variables/classes/index";
+@import "hucssley/src/variables/classes/index";
 // @import "custom/variables/classes/index";
 // set class overrides before if you don't need access to the defaults & want changes to flow through referenced vars
 
-@import "hucssley/variables/reset/index";
+@import "hucssley/src/variables/reset/index";
 // @import "custom/variables/reset/index";
 
-@import "hucssley/styles";
+@import "hucssley/src/styles";
 // @import "custom/classes/index";
 ```
 
@@ -777,7 +777,7 @@ $hu-namespace: `hu-`;
 
 With Hucssley generating every class for you, you may encounter scenarios where you need to debug the output when using [webpack's style-loader](https://webpack.js.org/loaders/style-loader) which outputs the CSS within a `<style>` tag in the `<head>`.
 
-By setting `$hu-debug: true;` before `@import "hucssley/styles";` all of the CSS will be printed to the screen, above your UI for you to review and debug.
+By setting `$hu-debug: true;` before `@import "hucssley/src/styles";` all of the CSS will be printed to the screen, above your UI for you to review and debug.
 
 ### Classes
 
@@ -791,7 +791,7 @@ Every class in Hucssley can be completely customised to individually change the 
 
 While Hucssley provides an abundance of classes out-of-the-box, there will absolutely be times where you need to create your own to achieve your desired UI, which is hopefully straight-forward to achieve.
 
-### Customizing "placeholder" classes
+### Customising "placeholder" classes
 
 Some of the default classes in Hucssley are merely provided as empty placeholders, because their usage is too specific to be generically useful for all projects. These placeholders help to reduce some of the "ceremony" needed with creating completely custom classes.
 
@@ -1486,7 +1486,7 @@ The following shows how we can quickly use and customise a component's appearanc
 
 While Hucssley creates almost every possible class you'd ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.8 MB. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 114 KB, which ironically, is still a lot smaller than lots of other "production" CSS in the wild.
 
-Hucssley is infinitely customizable, so you can set the variables of modules you'll never use to `()` so they won't output, and of course, limiting the amount of colors, breakpoints, and spacing scales will also help.
+Hucssley is infinitely customisable, so you can set the variables of modules you'll never use to `()` so they won't output, and of course, limiting the amount of colors, breakpoints, and spacing scales will also help.
 
 However, we can do better. And do it automatically. By utilising [Purgecss](https://purgecss.com) and the following `extractor` you'll be able to reduce your CSS output to only the classes that are used in your views:
 

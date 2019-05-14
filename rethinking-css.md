@@ -128,6 +128,6 @@ Hucssley has a few goals:
 2. To allow anyone of any skill to rapidly build for the web without unknowingly causing CSS bloat or fighting against some of CSS's core, but sometimes difficult to understand principals.
 3. To provide the tools required to build UI for any breakpoint, user interaction or UI state.
 4. To be completely platform agnostic and portable between front-end stacks, with Sass being the only dependency.
-5. To be highly flexible to your needs, with the ability to easily customize existing classes and create new ones.
+5. To be highly flexible to your needs, with the ability to easily customise existing classes and create new ones.
 
 For more information, please [read the docs](/README.md).
