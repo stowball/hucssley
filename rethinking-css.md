@@ -2,6 +2,26 @@
 
 In this article, I hope to define what I feel are the biggest issues with CSS, and ultimately, how those issues can be overcome.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of Contents
+
+- [CSS is hard](#css-is-hard)
+- [Bloat is easy](#bloat-is-easy)
+- [Specificity wars](#specificity-wars)
+- [Naming things is hard](#naming-things-is-hard)
+- [What's in a name?](#whats-in-a-name)
+- [Simpler views](#simpler-views)
+- [Platform agnostic](#platform-agnostic)
+- [Enforce consistency](#enforce-consistency)
+- [Flexible and customisable](#flexible-and-customisable)
+- [Easily tree-shaken](#easily-tree-shaken)
+- [Performant](#performant)
+- [Easy to learn](#easy-to-learn)
+- [Introducing Hucssley – Hireup's CSS Library](#introducing-hucssley--hireups-css-library)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## CSS is hard
 
 While the syntax of, and writing CSS is very easy to learn and understand, product development teams the world over equally struggle with how to define and implement a maintainable, scalable CSS architecture.

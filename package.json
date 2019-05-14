@@ -5,11 +5,12 @@
   "keywords": [],
   "main": "src/_index.scss",
   "dependencies": {
-    "node-sass": "4.10.0",
+    "node-sass": "4.10.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "doctoc": "^1.4.0"
+  },
   "scripts": {
-    "sass": "node-sass --recursive --output dist --output-style expanded --indent-width 2 --source-map true --source-map-contents src",
-    "sass:watch": "node-sass --watch --recursive --output dist --output-style expanded --indent-width 2 --source-map true --source-map-contents src"
+    "tocs": "doctoc . --github"
   }
 }

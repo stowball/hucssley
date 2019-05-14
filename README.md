@@ -16,6 +16,66 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
 
 ---
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of Contents
+
+- [What's in the box?](#whats-in-the-box)
+- [A working example](#a-working-example)
+- [Installation](#installation)
+- [Syntax](#syntax)
+  - [Modules](#modules)
+    - [Base: `base`](#base-base)
+    - [Non-parent modules: `focus, hocus, hover, print, reduced-motion, responsive`](#non-parent-modules-focus-hocus-hover-print-reduced-motion-responsive)
+    - [State modules: `state`](#state-modules-state)
+    - [Parent modules: `group-hover, group-state` and custom parent modules](#parent-modules-group-hover-group-state-and-custom-parent-modules)
+    - [Combining modules: `responsive` and `group-state, state`](#combining-modules-responsive-and-group-state-state)
+- [Scales](#scales)
+- [Configuration](#configuration)
+  - [Configuration helpers](#configuration-helpers)
+    - [`hu-append` and `hu-prepend`](#hu-append-and-hu-prepend)
+    - [`hu-get`](#hu-get)
+    - [`hu-em` and `hu-rem`](#hu-em-and-hu-rem)
+    - [`hu-tint` and `hu-shade`](#hu-tint-and-hu-shade)
+  - [Reset](#reset)
+  - [Global](#global)
+    - [Colors: `$hu-colors`](#colors-hu-colors)
+    - [Responsive breakpoints: `$hu-breakpoints`](#responsive-breakpoints-hu-breakpoints)
+    - [UI states: `$hu-states`](#ui-states-hu-states)
+    - [Spacings: `$hu-spacing-modules` and `$hu-spacing-scale`](#spacings-hu-spacing-modules-and-hu-spacing-scale)
+    - [Borders: `$hu-border-modules`, `$hu-border-sides` and `$hu-border-types`](#borders-hu-border-modules-hu-border-sides-and-hu-border-types)
+    - [Controlling `:focus`: `$hu-hocus-focus-parent` and `$hu-hocus-focus-pseudo`](#controlling-focus-hu-hocus-focus-parent-and-hu-hocus-focus-pseudo)
+    - [Themes: `$hu-themes`](#themes-hu-themes)
+    - [Namespace: `$hu-namespace`](#namespace-hu-namespace)
+    - [Debug: `$hu-debug`](#debug-hu-debug)
+  - [Classes](#classes)
+- [Creating custom classes](#creating-custom-classes)
+  - [Customizing "placeholder" classes](#customizing-placeholder-classes)
+  - [Helper Functions](#helper-functions)
+    - [`hu-class-name`](#hu-class-name)
+    - [`hu-format-modules`](#hu-format-modules)
+  - [Mixins](#mixins)
+    - [`hu-generic`](#hu-generic)
+    - [`hu-responsive`](#hu-responsive)
+    - [`hu-parent`](#hu-parent)
+    - [`hu-parent-responsive`](#hu-parent-responsive)
+    - [`hu-pseudo`](#hu-pseudo)
+    - [`hu-pseudo-responsive`](#hu-pseudo-responsive)
+- [Creating new classes](#creating-new-classes)
+  - [Defining the variables](#defining-the-variables)
+  - [Writing the class logic](#writing-the-class-logic)
+    - [Creating custom pseudo classes](#creating-custom-pseudo-classes)
+    - [Creating custom parent classes](#creating-custom-parent-classes)
+- [Creating components](#creating-components)
+  - [The template](#the-template)
+  - [Component definition](#component-definition)
+  - [Using the component](#using-the-component)
+- [Managing file size](#managing-file-size)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+---
+
 ## What's in the box?
 
 Currently, Hucssley provides utilities for ~100 CSS properties, of which multiple, sensible default values are generated. Each utility is also created for various "modules", whether that's at certain breakpoints, UI states, user interactions, for print or more.
@@ -162,7 +222,7 @@ This property:
 would be available available as the following, base class:
 
 ```css
-.align-items-center-flex-end
+.align-items-flex-end
 ```
 
 Some classes deviate by default though:
@@ -333,7 +393,7 @@ With both of the above functions, they have to be of the same type. when used wi
 #### `hu-get`
 
 ```scss
-@function hu-get($map, $path);;
+@function hu-get($map, $path);
 
 hu-get($hu-colors, neutral 1000);
 // -> #1a1a1a
