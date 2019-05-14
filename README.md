@@ -82,7 +82,11 @@ Currently, Hucssley provides utilities for ~100 CSS properties, of which multipl
 
 Each utility is completely customisable; they can be partially renamed, have values changed, have their modules altered or be omitted entirely.
 
-Hucssley does not come with classes that don't map explicitly to specific property types (such as `box-shadow`, background gradients and `transform`s), however, tailored, custom classes for these are simple to create. Hucssley does provide utility classes for truncating text and making elements "visually hidden" for accessibilty purposes.
+By default, Hucssley does not output classes for things that don't map explicitly to specific property types (such as `box-shadow`, background gradients and `transform`), but it does provide placeholder variables for these to make tailored, [custom classes simple to create](#creating-custom-classes).
+
+Hucssley also provides utility classes for truncating text and making elements "visually hidden" for accessibility purposes.
+
+For a complete list of the class names provided, read [Hucssley classes](/hucssley-classes.md).
 
 Hucssley also comes with:
 
@@ -318,7 +322,7 @@ For `group` classes to take effect, a parent has to be given the raw `.group` cl
 
 Be careful when using groups, because they will affect all `.group__` children. A child `.group` does not reset the actions of a parent `.group`, so you could end up with unexpected behavior.
 
-*Note: `.browser-mobile` is an example of a custom parent selector, and not included in Hucssley by default.*
+*Note: `.browser-mobile` is an example of a custom parent selector, and is not included in Hucssley by default.*
 
 #### Combining modules: `responsive` and `group-state, state`
 
@@ -333,7 +337,7 @@ Here the syntax is `bp-[responsive-scale]-[state-name]--[base-class]` for states
 
 ## Scales
 
-Compared with other libraries, where it makes sense, Hucssley favors a millennial scale (`0` - `1000`) to represent values instead of "names" like `xxl`, `mama-bear` etc. This can of course be completely customised.
+Where it makes sense, and compared with other libraries, Hucssley favours a millennial scale (`0` - `1000`) to represent values instead of "names" like `xxl`, `mama-bear` etc. This can of course be completely customised.
 
 By default, the following classes use a millennial scale:
 
