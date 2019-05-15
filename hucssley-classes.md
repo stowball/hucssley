@@ -1146,6 +1146,8 @@ $hu-margin-types: (
 );
 ```
 
+For every numeric `$hu-margin-scale` value, negative `-n[value]` classes are also created.
+
 ### hu-max-height
 
 ```scss
@@ -1256,8 +1258,8 @@ $hu-overflow-types: (
   auto,
   hidden,
   visible,
-  );
-  ```
+);
+```
 
 ### hu-overflow-x
 
