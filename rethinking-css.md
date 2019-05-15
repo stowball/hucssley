@@ -62,9 +62,9 @@ You'll never not have to come up with names for things (your components need to 
 
 You know it's name, but what does it do and why does it look that way at this breakpoint, within this context or in this browser? Why does this `.flag-layout` no longer look like a flag when it's in the sidebar?
 
-By looking at "semantic" class names in HTML alone, it's impossible to know. And of course, if you use a tool that uses/produces obtuse or hashed class names, it's even harder and offers little in regards to performance optimisations too.
+By looking at "semantic" class names in HTML alone, it's impossible to know. And of course, if you use a tool that uses/produces obtuse or hashed class names, it's even harder and offers little in regards to performance optimisations anyway.
 
-Once you've found the relevant HTML, you look in the CSS and have to trawl through multiple, overridden, cascaded styles to disseminate what you need, which isn't always easy, and only paints the picture for that exact combination of potential scenarios. Every strike-through seen in the inspector represents an inefficiency so should be a potential red flag.
+Once you've found the relevant HTML in your browser's Inspector, you then have to trawl through multiple, overridden, cascaded styles in the CSS Panel to disseminate what you need, which isn't always easy, and only paints the picture for that exact combination of potential scenarios. Every strike-through seen in the inspector represents an inefficiency so should be a potential red flag.
 
 You'll ultimately need to cross-reference what's rendered to the relevant source CSS, and make sure you've understood every permutation.
 
@@ -114,13 +114,15 @@ What if we could provide a styling solution whose API mostly matches plain CSS 1
 
 If we combine that with removing the need to juggle specificity, reducing the requirement to name things, having a consistent approach to styling every possible context and encouraging a mobile-first mentality, a developer's cognitive overhead and barrier to entry would be massively reduced.
 
-## Introducing Hucssley – Hireup's CSS Library
+So, with all that said…
 
-Hucssley is a CSS framework which provides atomic utility classes for rapidly building consistent and performant user interfaces. Using it should hopefully address all of the pain points and support the goals previously discussed.
+## Say hello to Hucssley – Hireup's CSS Library
+
+Hucssley is a Sass CSS framework which provides atomic utility classes for rapidly building consistent and performant user interfaces. Using it should hopefully address all of the pain points and support the goals mentioned previously.
 
 It is very different to traditional frameworks like Bootstrap or Semantic UI, as it contains zero pre-built UI components, instead providing you with the atomic building blocks necessary for **you** to create any UI component.
 
-This means we will need to re-write all of our UI components from scratch, but it will finally allow us to realise of our UX/UI team's dreams for the product without being saddled with all the associated baggage and concessions of 3rd party developers' implementations.
+This means we will need to re-write all of our UI components from scratch, but it will finally allow us to realise our UX/UI team's dreams for the product without being saddled with all the associated baggage and concessions of 3rd party developers' implementations.
 
 Hucssley has a few goals:
 
