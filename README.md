@@ -42,7 +42,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
     - [Colors: `$hu-colors`](#colors-hu-colors)
     - [Responsive breakpoints: `$hu-breakpoints`](#responsive-breakpoints-hu-breakpoints)
     - [UI states: `$hu-states`](#ui-states-hu-states)
-    - [Spacings: `$hu-spacing-modules` and `$hu-spacing-scale`](#spacings-hu-spacing-modules-and-hu-spacing-scale)
+    - [Spacing scale: `$hu-spacing-scale`](#spacing-scale-hu-spacing-scale)
     - [Borders: `$hu-border-modules`, `$hu-border-sides` and `$hu-border-types`](#borders-hu-border-modules-hu-border-sides-and-hu-border-types)
     - [Controlling `:focus`: `$hu-hocus-focus-parent` and `$hu-hocus-focus-pseudo`](#controlling-focus-hu-hocus-focus-parent-and-hu-hocus-focus-pseudo)
     - [Themes: `$hu-themes`](#themes-hu-themes)
@@ -645,15 +645,9 @@ $hu-states: (
 );
 ```
 
-#### Spacings: `$hu-spacing-modules` and `$hu-spacing-scale`
+#### Spacing scale: $hu-spacing-scale`
 
-By default, `margin` and `padding` classes are generated for the following modules: `base, responsive`:
-
-```
-$hu-spacing-modules: (base, responsive) !default;
-```
-
-And from the spacing scale defined in `$hu-spacing-scale`.
+By default, `margin` and `padding` classes are generated from the spacing scale defined in `$hu-spacing-scale`.
 
 ```scss
 $hu-spacing-scale: (

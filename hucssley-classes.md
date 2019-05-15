@@ -1131,7 +1131,7 @@ $hu-list-style-types: (
 ### hu-margin
 
 ```scss
-$hu-margin-modules: $hu-spacing-modules;
+$hu-margin-modules: (base, responsive);
 
 $hu-margin-scale: $hu-spacing-scale;
 
@@ -1294,7 +1294,7 @@ $hu-overscroll-types: (
 ### hu-padding
 
 ```scss
-$hu-padding-modules: $hu-spacing-modules;
+$hu-padding-modules: $hu-margin-modules;
 
 $hu-padding-scale: $hu-spacing-scale;
 
