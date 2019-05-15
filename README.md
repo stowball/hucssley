@@ -1427,27 +1427,27 @@ The following shows how we can quickly use and customise a component's appearanc
 
 ```html
 <button-hu
-  class="margin-500"
+  class="margin-400"
 >
   Primary
 </button-hu>
 
 <button-hu
-  class="margin-500"
+  class="margin-400"
   type="secondary"
 >
   Secondary
 </button-hu>
 
 <button-hu
-  class="margin-500"
+  class="margin-400"
   shape="rounded"
 >
   Primary Rounded
 </button-hu>
 
 <button-hu
-  class="margin-500"
+  class="margin-400"
   shape="rounded"
   type="secondary"
 >
@@ -1455,7 +1455,7 @@ The following shows how we can quickly use and customise a component's appearanc
 </button-hu>
 
 <button-hu
-  class="margin-500"
+  class="margin-400"
   size="large"
   type="primary"
 >
@@ -1463,7 +1463,7 @@ The following shows how we can quickly use and customise a component's appearanc
 </button-hu>
 
 <button-hu
-  class="margin-500"
+  class="margin-400"
   size="large"
   type="secondary"
 >
@@ -1471,7 +1471,7 @@ The following shows how we can quickly use and customise a component's appearanc
 </button-hu>
 
 <button-hu
-  class="margin-500"
+  class="margin-400"
   shape="rounded"
   size="large"
   type="primary"
@@ -1480,7 +1480,7 @@ The following shows how we can quickly use and customise a component's appearanc
 </button-hu>
 
 <button-hu
-  class="margin-500"
+  class="margin-400"
   shape="rounded"
   size="large"
   type="secondary"
@@ -1488,6 +1488,8 @@ The following shows how we can quickly use and customise a component's appearanc
   Secondary Large Rounded
 </button-hu>
 ```
+
+**A working demo can be seen here: https://codepen.io/stowball/full/NVdbyZ**
 
 ---
 
