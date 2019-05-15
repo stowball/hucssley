@@ -2,9 +2,9 @@
 
 Hucssley is very different to traditional frameworks like Bootstrap or Semantic UI, as it contains zero pre-built UI components, instead providing you with the atomic building blocks necessary for **you** to create any UI component.
 
-It honours the groundwork laid by earlier utility class libraries such as [Tachyons](https://tachyons.io) and [Tailwind](https://tailwindcss.com), while hoping to address some of their deficiencies,
+It honours the groundwork laid by earlier utility class libraries such as [Tachyons](https://tachyons.io) and [Tailwind](https://tailwindcss.com), while hoping to address some of their deficiencies.
 
-Hucssley has a few goals:
+To that end, Hucssley has a few goals:
 
 1. To be incredibly easy to learn and use, by providing a system of atomic classes that mostly map 1:1 with existing CSS properties.
 2. To allow anyone of any skill to rapidly build for the web without unknowingly causing CSS bloat or fighting against some of CSS's core, but sometimes difficult to understand principals.
@@ -91,10 +91,10 @@ For a complete list of the class names provided, read [Hucssley classes](/hucssl
 
 Hucssley also comes with:
 
-* A sensible CSS reset to make building UI easier.
+* A sensible, optional CSS reset to make building UI easier and more consistent.
 * Functions for converting `px` values to `em` and `rem` for improved accessibilty.
-* Functions to amend incrementally darken (`shade`) or lighten (`tint`) colours.
-* The ability to theme components based off a parent selector.
+* Functions to incrementally darken (`shade`) or lighten (`tint`) colours.
+* The ability to theme elements based off a parent selector.
 * The ability to create classes scoped to custom parent selectors.
 * The ability to create classes the map to pseudo-classes and pseudo-selectors.
 
@@ -649,7 +649,7 @@ $hu-states: (
 );
 ```
 
-#### Spacing scale: $hu-spacing-scale`
+#### Spacing scale: `$hu-spacing-scale`
 
 By default, `margin` and `padding` classes are generated from the spacing scale defined in `$hu-spacing-scale`.
 
