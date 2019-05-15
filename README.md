@@ -456,6 +456,7 @@ Will mix the specified `$color` with a `$percentage` of black.
 Here is a list of variables and default values that are available to customise the CSS reset:
 
 ```scss
+$hu-reset: true;
 $hu-reset-box-sizing: border-box;
 $hu-reset-html-background-color: #fff;
 $hu-reset-html-color: null;
@@ -467,6 +468,8 @@ $hu-reset-img-responsive: true;
 $hu-reset-input-focus-color: null;
 $hu-reset-input-placeholder-color: #767676;
 ```
+
+Hopefully the variables are self explanatory, but if not, please [review the source code](/src/reset/_index.scss) to see how they affect the reset styles.
 
 ### Global
 
@@ -1529,7 +1532,7 @@ which will produce:
 …
 ```
 
-You could then add the `hucssley` class to a direct ancestor of your newly integrated component.
+You could then add the `hucssley` class to a direct ancestor of your newly integrated component, or add it globally to the `<html>` element (although this could have unexpected side-effects if using the reset).
 
 If this still doesn't produce a high enough specificity bump, you can also use the `hu-bump-specificity($increase-to-specificity)` mixin to arbitrarily increase it further:
 
