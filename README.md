@@ -70,6 +70,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
   - [The template](#the-template)
   - [Component definition](#component-definition)
   - [Using the component](#using-the-component)
+- [Increasing specificity](#increasing-specificity)
 - [Controlling file size](#controlling-file-size)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -1486,6 +1487,74 @@ The following shows how we can quickly use and customise a component's appearanc
 ```
 
 **A working demo can be seen here: https://codepen.io/stowball/full/NVdbyZ**
+
+---
+
+## Increasing specificity
+
+While all of Hucssley's classes have an intentionally low specificity count, this could present issues if you're integrating it in to an existing project.
+
+Luckily, since Hucssley is written in Sass, you can easily wrap your imports in a new selector to convert every class to use a descendent selector.
+
+```scss
+@import "hucssley/src/helpers";
+
+@import "hucssley/src/variables/global/index";
+// @import "custom/variables/global/index";
+
+@import "hucssley/src/variables/classes/index";
+// @import "custom/variables/classes/index";
+// set class overrides before if you don't need access to the defaults & want changes to flow through referenced vars
+
+@import "hucssley/src/variables/reset/index";
+// @import "custom/variables/reset/index";
+
+.hucssley {
+  @import "hucssley/src/styles";
+  // @import "custom/classes/index";
+}
+```
+
+which will produce:
+
+```css
+.hucssley .align-content-baseline {
+  align-content: baseline;
+}
+
+.hucssley .align-content-center {
+  align-content: center;
+}
+
+…
+```
+
+You could then add the `hucssley` class to a direct ancestor of your newly integrated component.
+
+If this still doesn't produce a high enough specificity bump, you can also use the `hu-bump-specificity($increase-to-specificity)` mixin to arbitrarily increase it further:
+
+```scss
+.hucssley {
+  @include hu-bump-specificity(1) {
+    @import "hucssley/src/styles";
+    // @import "custom/classes/index";
+  }
+}
+```
+
+which produces:
+
+```css
+.hucssley.hucssley .align-content-baseline {
+  align-content: baseline;
+}
+
+.hucssley.hucssley .align-content-center {
+  align-content: center;
+}
+
+…
+```
 
 ---
 
