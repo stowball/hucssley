@@ -1316,7 +1316,7 @@ will generate the following:
 
 Since Hucssley outputs raw HTML class names, it's incredibly easy to integrate with any front-end "view" framework, to create custom components with small and simple styling APIs.
 
-By using class names, you are also able to annotate browser-specifc fixes alongside them in the HTML, which helps with understanding why "unnecessary" properties are there.
+By using raw class name strings, you are also able to annotate browser-specifc fixes alongside them in the HTML, which helps with understanding why "unnecessary" properties are there.
 
 Let's create a button in Vue:
 
@@ -1414,6 +1414,8 @@ Which means our `template` is as simple as creating an array of the various `sty
 ```
 
 The `template` itself is ridiculously simple. You can tell at a glance exactly which class names will be added under any UI condition, and, in the generated HTML you'll even be able to see an IE-specific hack!
+
+*Note: Unlike alternative frameworks, Hucssley encourages a utility-only, not utility-first mentality, so it's highly recommended that all components be created with a template partial or JavaScript component to keep your code DRY and reduce the opportunity for copy-paste errors.*
 
 ### Using the component
 
