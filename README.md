@@ -44,30 +44,36 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
     - [UI states: `$hu-states`](#ui-states-hu-states)
     - [Spacing scale: `$hu-spacing-scale`](#spacing-scale-hu-spacing-scale)
     - [Borders: `$hu-border-modules`, `$hu-border-sides` and `$hu-border-types`](#borders-hu-border-modules-hu-border-sides-and-hu-border-types)
-    - [Controlling `:focus`: `$hu-hocus-focus-parent` and `$hu-hocus-focus-pseudo`](#controlling-focus-hu-hocus-focus-parent-and-hu-hocus-focus-pseudo)
+    - [Controlling focus: `$hu-hocus-focus-parent` and `$hu-hocus-focus-pseudo`](#controlling-focus-hu-hocus-focus-parent-and-hu-hocus-focus-pseudo)
     - [Themes: `$hu-themes`](#themes-hu-themes)
     - [Namespace: `$hu-namespace`](#namespace-hu-namespace)
     - [Debug: `$hu-debug`](#debug-hu-debug)
   - [Classes](#classes)
 - [Creating custom classes](#creating-custom-classes)
   - [Customising "placeholder" classes](#customising-placeholder-classes)
-  - [Helper Functions](#helper-functions)
-    - [`hu-class-name`](#hu-class-name)
-    - [`hu-format-modules`](#hu-format-modules)
-  - [Mixins](#mixins)
-    - [`hu-generic`](#hu-generic)
-    - [`hu-responsive`](#hu-responsive)
-    - [`hu-parent`](#hu-parent)
-    - [`hu-parent-responsive`](#hu-parent-responsive)
-    - [`hu-pseudo`](#hu-pseudo)
-    - [`hu-pseudo-responsive`](#hu-pseudo-responsive)
-- [Creating new classes](#creating-new-classes)
-  - [Defining the variables](#defining-the-variables)
-  - [Writing the class logic](#writing-the-class-logic)
-    - [Creating custom pseudo classes](#creating-custom-pseudo-classes)
-    - [Creating custom parent classes](#creating-custom-parent-classes)
+  - [Creating new, "basic" classes](#creating-new-basic-classes)
+    - [Generic classes: `hu-classes`](#generic-classes-hu-classes)
+      - [Basic](#basic)
+      - [Custom class name](#custom-class-name)
+      - [Unique class with multiple declarations](#unique-class-with-multiple-declarations)
+    - [Pseudo classes: `hu-pseudo-classes`](#pseudo-classes-hu-pseudo-classes)
+    - [Parent classes: `hu-parent-classes`](#parent-classes-hu-parent-classes)
+  - [Creating new, "more complex" classes](#creating-new-more-complex-classes)
+    - [Helper Functions](#helper-functions)
+      - [`hu-class-name`](#hu-class-name)
+      - [`hu-format-modules`](#hu-format-modules)
+    - [Mixins](#mixins)
+      - [`hu-generic`](#hu-generic)
+      - [`hu-responsive`](#hu-responsive)
+      - [`hu-parent`](#hu-parent)
+      - [`hu-parent-responsive`](#hu-parent-responsive)
+      - [`hu-pseudo`](#hu-pseudo)
+      - [`hu-pseudo-responsive`](#hu-pseudo-responsive)
+    - [Defining the variables](#defining-the-variables)
+    - [Writing the class logic](#writing-the-class-logic)
+      - [Creating custom pseudo classes](#creating-custom-pseudo-classes)
+      - [Creating custom parent classes](#creating-custom-parent-classes)
 - [Creating components](#creating-components)
-  - [The template](#the-template)
   - [Component definition](#component-definition)
   - [Using the component](#using-the-component)
 - [Increasing specificity](#increasing-specificity)
@@ -248,6 +254,7 @@ bg-image -> background-image
 bg-position-x -> background-position-x
 bg-position-y -> background-position-y
 bg-repeat -> background-repeat
+bg-size -> background-size
 blend-mode -> mix-blend-mode
 momentum-scrolling -> webkit-overflow-scrolling
 overscroll -> overscroll-behavior
@@ -831,11 +838,210 @@ will generate:
 }
 ```
 
-### Helper Functions
+### Creating new, "basic" classes
 
-Although there's a defined pattern for creating your own classes, before you do, it's worth having a basic understanding of the functions and mixins you'll use.
+For the most common needs of creating new classes, Hucssley provides 3 easy ways of creating custom "generic", pseudo and parent utility classes.
 
-#### `hu-class-name`
+While the following examples all use `$-modules` and `$-types` variables that are provided by Hucssley, if creating your own, fully custom classes, we recommend setting them up in a way to cater for any complexity as your project grows, thus define the variables similarly to how the defaults are done. For examples and to learn more, please read [Hucssley classes](/hucssley-classes.md).
+
+#### Generic classes: `hu-classes`
+
+This mixin generates all of the normal classes for a specific property, modules and types. It's what Hucssley itself uses for 95% of the provided classes.
+
+```
+@mixin hu-classes($property, $modules, $types?);
+```
+
+It takes a `$property`, which can be either a CSS property or a map, a list of `$modules` and an optional list or map of `$types`. It also accepts `@content` if no `$types` are supplied.
+
+##### Basic
+
+```scss
+@include hu-classes(align-content, $hu-align-content-modules, $hu-align-content-types);
+
+/* ->
+.align-content-baseline {
+  align-content: baseline;
+}
+
+.align-content-center {
+  align-content: center;
+}
+
+…
+
+@media (min-width: 22.5em) {
+  .bp-360--align-content-baseline {
+    align-content: baseline;
+  }
+  
+  .bp-360--align-content-center {
+    align-content: center;
+  }
+}
+
+…
+*/
+```
+
+##### Custom class name
+
+By passing a map to `$property`, the map's key becomes the core class name, and the map's value becomes the CSS property.
+
+```scss
+@include hu-classes((fac: align-content), $hu-align-content-modules, $hu-align-content-types);
+
+/* ->
+.fac-baseline {
+  align-content: baseline;
+}
+
+.fac-center {
+  align-content: center;
+}
+
+…
+
+@media (min-width: 22.5em) {
+  .bp-360--fac-baseline {
+    align-content: baseline;
+  }
+  
+  .bp-360--fac-center {
+    align-content: center;
+  }
+}
+
+…
+*/
+```
+
+##### Unique class with multiple declarations
+
+By not proving a `$type` and passing in a `@content` block, you can create "one off" classes with multiple, static declarations.
+
+```scss
+@include hu-classes(font-smoothing, $hu-font-smoothing-modules) {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ->
+.font-smoothing {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 22.5em) {
+  .bp-360--font-smoothing {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+…
+*/
+```
+
+#### Pseudo classes: `hu-pseudo-classes`
+
+One benefit Hucssley has over other, similar libraries is that there is a defined method for easily creating pseudo classes. It behaves similarly to `$hu-classes`, but you also pass in a list of 1 or more pseudo elements you want to generate classes for.
+
+```
+@mixin hu-pseudo-classes($property, $pseudos, $modules, $types?);
+```
+
+```scss
+@include hu-pseudo-classes(display, ("::before", ":first-child"), $hu-display-modules, $hu-display-types);
+
+/* ->
+.pseudo-before--display-block::before {
+  display: block;
+}
+
+.pseudo-first-child--display-block:first-child {
+  display: block;
+}
+
+.pseudo-before--display-flex::before {
+  display: flex;
+}
+
+.pseudo-first-child--display-flex:first-child {
+  display: flex;
+}
+
+…
+
+@media (min-width: 22.5em) {
+  .bp-360-pseudo-before--display-block::before {
+    display: block;
+  }
+
+  .bp-360-pseudo-first-child--display-block:first-child {
+    display: block;
+  }
+  
+  .bp-360-pseudo-before--display-flex::before {
+    display: flex;
+  }
+
+  .bp-360-pseudo-first-child--display-flex:first-child {
+    display: flex;
+  }
+}
+
+…
+*/
+```
+
+As with `$hu-classes`, you can customise the class name by passing a map to `$property`, and you can create unique classes with multiple declarations by not proving a `$type` and passing in a `@content` block.
+
+#### Parent classes: `hu-parent-classes`
+
+Another benefit of Hucssley is that you can easily create custom parent classes, such as being able to respond to a `has-js` class. It behaves similarly to `$hu-pseudo-classes`, but you instead pass in a list of 1 or more parent elements you want to generate classes for.
+
+```
+@mixin hu-parent-classes($property, $parents, $modules, $types?);
+```
+
+```scss
+@include hu-parent-classes(display, (has-js), $hu-display-modules, $hu-display-types);
+
+/* ->
+.has-js .has-js__display-block {
+  display: block;
+}
+
+.has-js .has-js__display-flex {
+  display: flex;
+}
+
+…
+
+@media (min-width: 22.5em) {
+  .has-js .has-js__bp-360--display-block {
+    display: block;
+  }
+  
+  .has-js.is-active .has-js__bp-360-is-active--display-block {
+    display: block;
+  }
+}
+
+…
+*/
+```
+
+As with `$hu-classes`, you can customise the class name by passing a map to `$property`, and you can create unique classes with multiple declarations by not proving a `$type` and passing in a `@content` block.
+
+### Creating new, "more complex" classes
+
+Should you need to create classes that are more complex than what the 3 basic mixins described above can provide, you can follow a defined pattern for creating your own. However, before you do, it's worth having a basic understanding of the functions and mixins you'll use.
+
+#### Helper Functions
+
+##### `hu-class-name`
 
 This function formats a class name to append `$hu-namespace` (if applicable), convert duplicate final strings (e.g. `color-transparent-transparent` to `color-transparent`) and escape special characters like `:`, `<`, `>` and `@`.
 
@@ -846,7 +1052,7 @@ hu-class-name("eqio-<520-flex-wrap-wrap");
 // -> hu-eqio-\00003c520-flex-wrap
 ```
 
-#### `hu-format-modules`
+##### `hu-format-modules`
 
 This function removes duplicates and re-orders the list of modules in to the correct specificity order so you needn't worry about this aspect of your CSS.
 
@@ -857,11 +1063,11 @@ hu-format-modules((state, print, responsive, state, base));
 // -> (base, state, print, responsive)
 ```
 
-### Mixins
+#### Mixins
 
 *Note: All of the following examples assume `$hu-namespace: "hu-"` has been set.*
 
-#### `hu-generic`
+##### `hu-generic`
 
 Generates the `base`, `focus`, `hover`, `hocus`, `state`, `group-hover`, `group-state`, `reduced-motion` and `print` module styles for a class (in that order) while also adding the correct specificity.
 
@@ -889,7 +1095,7 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `group-hover`, `group-
 */
 ```
 
-#### `hu-responsive`
+##### `hu-responsive`
 
 Generates the responsive `base`, `state` and `group-state` module styles for a class (in that order).
 
@@ -913,7 +1119,7 @@ Generates the responsive `base`, `state` and `group-state` module styles for a c
 */
 ```
 
-#### `hu-parent`
+##### `hu-parent`
 
 Generates the `base`, `focus`, `hover`, `hocus`, `state`, `reduced-motion` and `print` module styles for a parent selector class (in that order) while also adding the correct specificity.
 
@@ -945,7 +1151,7 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `reduced-motion` and `
 
 The optional `$child-string-to-strip` argument is to remove characters before the `__`, and can be useful if you create a generic child class that can respond to any parent selector, such as is used when generating themes.
 
-#### `hu-parent-responsive`
+##### `hu-parent-responsive`
 
 Generates the responsive `base` and `state` module styles for a parent selector class (in that order).
 
@@ -969,7 +1175,7 @@ Generates the responsive `base` and `state` module styles for a parent selector 
 */
 ```
 
-#### `hu-pseudo`
+##### `hu-pseudo`
 
 Generates the `base`, `focus`, `hover`, `hocus`, `state`, `reduced-motion` and `print` module styles for a pseudo selector class (in that order) while also adding the correct specificity.
 
@@ -1003,7 +1209,7 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `reduced-motion` and `
 */
 ```
 
-#### `hu-pseudo-responsive`
+##### `hu-pseudo-responsive`
 
 Generates the responsive `base` and `state` module styles for a pseudo selector class (in that order).
 
@@ -1027,19 +1233,13 @@ Generates the responsive `base` and `state` module styles for a pseudo selector 
 */
 ```
 
----
-
-## Creating new classes
-
 Now we have a basic understanding of the functions and mixins used to create classes, we can follow Hucssley's approach to create our own.
 
-Let's write some classes to size icons…
+Let's write some classes to size icons with both `height` and `width` declarations…
 
-### Defining the variables
+#### Defining the variables
 
-Regardless of how simple you think the class may be, we recommend setting it up in a way to cater for any complexity as your project grows, so let's first define the variables required.
-
-Each class needs to know which modules it will be created for, and the types and values to use.
+As with the OOTB classes, each custom class needs to know which modules it will be created for, and the types and values to use, so let's create the variables for that.
 
 ```scss
 $icon-size-modules: (base, responsive);
@@ -1052,7 +1252,7 @@ $icon-size-types: (
 
 *Note: Don't prefix custom variables with `hu-` to ensure you don't accidentally overwrite future updates to Hucssley.*
 
-### Writing the class logic
+#### Writing the class logic
 
 Although the mixins described above can take a list of modules, to ensure the correct class name order is produced for multiple types, it is recommended to manually loop over the modules externally by following this pattern:
 
@@ -1144,7 +1344,7 @@ The output from these 2 blocks is:
 // and all other breakpoints defined…
 ```
 
-#### Creating custom pseudo classes
+##### Creating custom pseudo classes
 
 One benefit Hucssley has over other, similar libraries is that there is a defined method for easily creating pseudo classes. As with "generic" classes, you'll need 2 code blocks, but instead of calling `hu-generic` and `hu-responsive`, you call `hu-pseudo` and `hu-pseudo-responsive` with the appropriate, documented arguments.
 
@@ -1232,7 +1432,7 @@ Generates the following:
 // and all other breakpoints defined…
 ```
 
-#### Creating custom parent classes
+##### Creating custom parent classes
 
 Similarly, custom parent classes can also easily be generated with the `hu-parent` and `hu-parent-responsive` mixins:
 

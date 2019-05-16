@@ -18,7 +18,7 @@ In this article, I hope to define what I feel are the biggest issues with CSS, a
 - [Easily tree-shaken](#easily-tree-shaken)
 - [Performant](#performant)
 - [Easy to learn](#easy-to-learn)
-- [Introducing Hucssley – Hireup's CSS Library](#introducing-hucssley--hireups-css-library)
+- [Say hello to Hucssley – Hireup's CSS Library](#say-hello-to-hucssley--hireups-css-library)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

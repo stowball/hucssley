@@ -1,0 +1,25 @@
+@mixin hu-generic-classes($property, $modules, $types: null) {
+  $content-exists: content-exists();
+  $class-name-property: if(type-of($property) == map, nth(map-keys($property), 1), $property);
+  $property: if(type-of($property) == map, nth(map-values($property), 1), $property);
+  
+  @each $module in hu-format-modules($modules) {
+    @if ($types) {
+      @each $type, $value in $types {
+        $class-name: hu-class-name(#{$class-name-property}-#{$type});
+        $value: if($value, $value, $type);
+
+        @include hu-generic($class-name, $module) {
+          #{$property}: $value;
+        }
+      }
+    }
+    @else if ($content-exists) {
+      $class-name: hu-class-name($class-name-property);
+      
+      @include hu-generic($class-name, $module) {
+        @content;
+      }
+    }
+  }
+}

@@ -1,28 +1,2 @@
 // blend-mode -> mix-blend-mode
-@each $module in hu-format-modules($hu-blend-mode-modules) {
-  @each $type, $value in $hu-blend-mode-types {
-    $class-name: hu-class-name(blend-mode-#{$type});
-    $property: mix-blend-mode;
-    $value: if($value, $value, $type);
-
-    @include hu-generic($class-name, $module) {
-      #{$property}: $value;
-    }
-  }
-}
-
-@if (index($hu-blend-mode-modules, responsive)) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @include hu-media-query($bp-value) {
-      @each $type, $value in $hu-blend-mode-types {
-        $class-name: hu-class-name(blend-mode-#{$type});
-        $property: mix-blend-mode;
-        $value: if($value, $value, $type);
-
-        @include hu-responsive($class-name, $hu-blend-mode-modules, $bp-scale) {
-          #{$property}: $value;
-        }
-      }
-    }
-  }
-}
+@include hu-classes((blend-mode: mix-blend-mode), $hu-blend-mode-modules, $hu-blend-mode-types);

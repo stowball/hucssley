@@ -1,0 +1,26 @@
+@mixin hu-parent-generic-classes($property, $parents, $modules, $types: null, $child-string-to-strip: null) {
+  $content-exists: content-exists();
+  
+  $class-name-property: if(type-of($property) == map, nth(map-keys($property), 1), $property);
+  $property: if(type-of($property) == map, nth(map-values($property), 1), $property);
+  
+  @each $module in hu-format-modules($modules) {
+    @if ($types) {
+      @each $type, $value in $types {
+        $class-name: hu-class-name(#{$class-name-property}-#{$type});
+        $value: if($value, $value, $type);
+
+        @include hu-parent($class-name, $parents, $module, $child-string-to-strip) {
+          #{$property}: $value;
+        }
+      }
+    }
+    @else if ($content-exists) {
+      $class-name: hu-class-name($class-name-property);
+      
+      @include hu-parent($class-name, $parents, $module, $child-string-to-strip) {
+        @content;
+      }
+    }
+  }
+}

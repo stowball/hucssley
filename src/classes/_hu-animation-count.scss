@@ -1,28 +1,2 @@
 // animation-count -> animation-iteration-count
-@each $module in hu-format-modules($hu-animation-count-modules) {
-  @each $type, $value in $hu-animation-count-types {
-    $class-name: hu-class-name(animation-count-#{$type});
-    $property: animation-iteration-count;
-    $value: if($value, $value, $type);
-
-    @include hu-generic($class-name, $module) {
-      #{$property}: $value;
-    }
-  }
-}
-
-@if (index($hu-animation-count-modules, responsive)) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @include hu-media-query($bp-value) {
-      @each $type, $value in $hu-animation-count-types {
-        $class-name: hu-class-name(animation-count-#{$type});
-        $property: animation-iteration-count;
-        $value: if($value, $value, $type);
-
-        @include hu-responsive($class-name, $hu-animation-count-modules, $bp-scale) {
-          #{$property}: $value;
-        }
-      }
-    }
-  }
-}
+@include hu-classes((animation-count: animation-iteration-count), $hu-animation-count-modules, $hu-animation-count-types);

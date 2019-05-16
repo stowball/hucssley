@@ -1,28 +1,2 @@
 // table-border -> border-collapse
-@each $module in hu-format-modules($hu-table-border-modules) {
-  @each $type, $value in $hu-table-border-types {
-    $class-name: hu-class-name(table-border-#{$type});
-    $property: border-collapse;
-    $value: if($value, $value, $type);
-
-    @include hu-generic($class-name, $module) {
-      #{$property}: $value;
-    }
-  }
-}
-
-@if (index($hu-table-border-modules, responsive)) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @include hu-media-query($bp-value) {
-      @each $type, $value in $hu-table-border-types {
-        $class-name: hu-class-name(table-border-#{$type});
-        $property: border-collapse;
-        $value: if($value, $value, $type);
-
-        @include hu-responsive($class-name, $hu-table-border-modules, $bp-scale) {
-          #{$property}: $value;
-        }
-      }
-    }
-  }
-}
+@include hu-classes((table-border: border-collapse), $hu-table-border-modules, $hu-table-border-types);

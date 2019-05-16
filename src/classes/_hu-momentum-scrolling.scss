@@ -1,26 +1,2 @@
-// momentum-scrolling -> webkit-overflow-scrolling
-@each $module in hu-format-modules($hu-momentum-scrolling-modules) {
-  $class-name: hu-class-name(momentum-scrolling);
-  $property: -webkit-overflow-scrolling;
-  $value: touch;
-
-  @include hu-generic($class-name, $module) {
-    #{$property}: $value;
-  }
-}
-
-@if (index($hu-momentum-scrolling-modules, responsive)) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @include hu-media-query($bp-value) {
-      @each $type, $value in $hu-momentum-scrolling-types {
-        $class-name: hu-class-name(momentum-scrolling-#{$type});
-        $property: -webkit-overflow-scrolling;
-        $value: if($value, $value, $type);
-
-        @include hu-responsive($class-name, $hu-momentum-scrolling-modules, $bp-scale) {
-          #{$property}: $value;
-        }
-      }
-    }
-  }
-}
+// momentum-scrolling -> -webkit-overflow-scrolling
+@include hu-classes((momentum-scrolling: -webkit-overflow-scrolling), $hu-momentum-scrolling-modules, $hu-momentum-scrolling-types);

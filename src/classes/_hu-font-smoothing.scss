@@ -1,26 +1,4 @@
-@mixin _hu-font-smoothing-declarations {
+@include hu-classes(font-smoothing, $hu-font-smoothing-modules) {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-}
-
-@each $module in hu-format-modules($hu-font-smoothing-modules) {
-  $class-name: hu-class-name(font-smoothing);
-
-  @include hu-generic($class-name, $module) {
-    @include _hu-font-smoothing-declarations;
-  }
-}
-
-@if (index($hu-font-smoothing-modules, responsive)) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @include hu-media-query($bp-value) {
-      @each $type, $value in $hu-font-smoothing-types {
-        $class-name: hu-class-name(font-smoothing);
-
-        @include hu-responsive($class-name, $hu-font-smoothing-modules, $bp-scale) {
-          @include _hu-font-smoothing-declarations;
-        }
-      }
-    }
-  }
 }

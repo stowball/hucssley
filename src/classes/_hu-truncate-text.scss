@@ -1,27 +1,5 @@
-@mixin _hu-truncate-text-declarations {
+@include hu-classes(truncate-text, $hu-truncate-text-modules) {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-@each $module in hu-format-modules($hu-truncate-text-modules) {
-  $class-name: hu-class-name(truncate-text);
-
-  @include hu-generic($class-name, $module) {
-    @include _hu-truncate-text-declarations;
-  }
-}
-
-@if (index($hu-truncate-text-modules, responsive)) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @include hu-media-query($bp-value) {
-      @each $type, $value in $hu-truncate-text-types {
-        $class-name: hu-class-name(truncate-text);
-
-        @include hu-responsive($class-name, $hu-truncate-text-modules, $bp-scale) {
-          @include _hu-truncate-text-declarations;
-        }
-      }
-    }
-  }
 }

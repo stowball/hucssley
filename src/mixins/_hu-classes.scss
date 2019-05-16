@@ -1,0 +1,9 @@
+@mixin hu-classes($property, $modules, $types: null) {
+  @include hu-generic-classes($property, $modules, $types) {
+    @content;
+  }
+  
+  @include hu-responsive-classes($property, $modules, $types) {
+    @content;
+  }
+}

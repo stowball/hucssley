@@ -594,6 +594,10 @@ $hu-bg-repeat-types: (
 
 ### hu-bg-size
 
+```
+bg-size -> background-size
+```
+
 ```scss
 $hu-bg-size-modules: (base);
 
@@ -1222,11 +1226,15 @@ $hu-min-width-types: (
 ### hu-momentum-scrolling
 
 ```
-momentum-scrolling -> webkit-overflow-scrolling
+momentum-scrolling -> -webkit-overflow-scrolling
 ```
 
 ```scss
 $hu-momentum-scrolling-modules: (base);
+
+$hu-momentum-scrolling-types: (
+  scrolling: touch,
+);
 ```
 
 ### hu-opacity
@@ -1452,14 +1460,6 @@ $hu-scroll-behavior-types: (
 );
 ```
 
-### hu-text-shadow
-
-```scss
-$hu-text-shadow-modules: ();
-
-$hu-text-shadow-types: ();
-```
-
 ### hu-svg-fill-color
 
 ```
@@ -1564,6 +1564,14 @@ $hu-text-decoration-types: (
   none,
   underline,
 );
+```
+
+### hu-text-shadow
+
+```scss
+$hu-text-shadow-modules: ();
+
+$hu-text-shadow-types: ();
 ```
 
 ### hu-theme-bg-color

@@ -1,28 +1,2 @@
 // text-case -> text-transform
-@each $module in hu-format-modules($hu-text-case-modules) {
-  @each $type, $value in $hu-text-case-types {
-    $class-name: hu-class-name(text-case-#{$type});
-    $property: text-transform;
-    $value: if($value, $value, $type);
-
-    @include hu-generic($class-name, $module) {
-      #{$property}: $value;
-    }
-  }
-}
-
-@if (index($hu-text-case-modules, responsive)) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @include hu-media-query($bp-value) {
-      @each $type, $value in $hu-text-case-types {
-        $class-name: hu-class-name(text-case-#{$type});
-        $property: text-transform;
-        $value: if($value, $value, $type);
-
-        @include hu-responsive($class-name, $hu-text-case-modules, $bp-scale) {
-          #{$property}: $value;
-        }
-      }
-    }
-  }
-}
+@include hu-classes((text-case: text-transform), $hu-text-case-modules, $hu-text-case-types);

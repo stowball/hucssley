@@ -1,28 +1,2 @@
 // backface -> backface-visibility
-@each $module in hu-format-modules($hu-backface-modules) {
-  @each $type, $value in $hu-backface-types {
-    $class-name: hu-class-name(backface-#{$type});
-    $property: backface-visibility;
-    $value: if($value, $value, $type);
-
-    @include hu-generic($class-name, $module) {
-      #{$property}: $value;
-    }
-  }
-}
-
-@if (index($hu-backface-modules, responsive)) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @include hu-media-query($bp-value) {
-      @each $type, $value in $hu-backface-types {
-        $class-name: hu-class-name(backface-#{$type});
-        $property: backface-visibility;
-        $value: if($value, $value, $type);
-
-        @include hu-responsive($class-name, $hu-backface-modules, $bp-scale) {
-          #{$property}: $value;
-        }
-      }
-    }
-  }
-}
+@include hu-classes((backface: backface-visibility), $hu-backface-modules, $hu-backface-types);

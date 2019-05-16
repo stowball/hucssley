@@ -1,4 +1,4 @@
-@mixin _hu-visually-hidden-declarations {
+@include hu-classes(visually-hidden, $hu-visually-hidden-modules) {
   border: none;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -8,26 +8,4 @@
   position: absolute;
   white-space: nowrap;
   width: 1px;
-}
-
-@each $module in hu-format-modules($hu-visually-hidden-modules) {
-  $class-name: hu-class-name(visually-hidden);
-
-  @include hu-generic($class-name, $module) {
-    @include _hu-visually-hidden-declarations;
-  }
-}
-
-@if (index($hu-visually-hidden-modules, responsive)) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @include hu-media-query($bp-value) {
-      @each $type, $value in $hu-visually-hidden-types {
-        $class-name: hu-class-name(visually-hidden);
-
-        @include hu-responsive($class-name, $hu-visually-hidden-modules, $bp-scale) {
-          @include _hu-visually-hidden-declarations;
-        }
-      }
-    }
-  }
 }

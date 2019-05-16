@@ -1,28 +1,2 @@
 // bg-position-x -> background-position-x
-@each $module in hu-format-modules($hu-bg-position-x-modules) {
-  @each $type, $value in $hu-bg-position-x-types {
-    $class-name: hu-class-name(bg-position-x-#{$type});
-    $property: background-position-x;
-    $value: if($value, $value, $type);
-
-    @include hu-generic($class-name, $module) {
-      #{$property}: $value;
-    }
-  }
-}
-
-@if (index($hu-bg-position-x-modules, responsive)) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @include hu-media-query($bp-value) {
-      @each $type, $value in $hu-bg-position-x-types {
-        $class-name: hu-class-name(bg-position-x-#{$type});
-        $property: background-position-x;
-        $value: if($value, $value, $type);
-
-        @include hu-responsive($class-name, $hu-bg-position-x-modules, $bp-scale) {
-          #{$property}: $value;
-        }
-      }
-    }
-  }
-}
+@include hu-classes((bg-position-x: background-position-x), $hu-bg-position-x-modules, $hu-bg-position-x-types);
