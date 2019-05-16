@@ -2,7 +2,7 @@
   @include hu-generic-classes($property, $modules, $types) {
     @content;
   }
-  
+
   @include hu-responsive-classes($property, $modules, $types) {
     @content;
   }

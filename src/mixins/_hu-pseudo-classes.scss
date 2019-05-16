@@ -2,7 +2,7 @@
   @include hu-pseudo-generic-classes($property, $pseudos, $modules, $types) {
     @content;
   }
-  
+
   @include hu-pseudo-responsive-classes($property, $pseudos, $modules, $types) {
     @content;
   }

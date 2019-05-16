@@ -2,7 +2,7 @@
   @include hu-parent-generic-classes($property, $parents, $modules, $types, $child-string-to-strip) {
     @content;
   }
-  
+
   @include hu-parent-responsive-classes($property, $parents, $modules, $types, $child-string-to-strip) {
     @content;
   }

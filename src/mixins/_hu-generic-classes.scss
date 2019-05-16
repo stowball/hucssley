@@ -2,7 +2,7 @@
   $content-exists: content-exists();
   $class-name-property: if(type-of($property) == map, nth(map-keys($property), 1), $property);
   $property: if(type-of($property) == map, nth(map-values($property), 1), $property);
-  
+
   @each $module in hu-format-modules($modules) {
     @if ($types) {
       @each $type, $value in $types {
@@ -16,7 +16,7 @@
     }
     @else if ($content-exists) {
       $class-name: hu-class-name($class-name-property);
-      
+
       @include hu-generic($class-name, $module) {
         @content;
       }

@@ -874,7 +874,7 @@ It takes a `$property`, which can be either a CSS property or a map, a list of `
   .bp-360--align-content-baseline {
     align-content: baseline;
   }
-  
+
   .bp-360--align-content-center {
     align-content: center;
   }
@@ -906,7 +906,7 @@ By passing a map to `$property`, the map's key becomes the core class name, and 
   .bp-360--fac-baseline {
     align-content: baseline;
   }
-  
+
   .bp-360--fac-center {
     align-content: center;
   }
@@ -981,7 +981,7 @@ One benefit Hucssley has over other, similar libraries is that there is a define
   .bp-360-pseudo-first-child--display-block:first-child {
     display: block;
   }
-  
+
   .bp-360-pseudo-before--display-flex::before {
     display: flex;
   }
@@ -1023,7 +1023,7 @@ Another benefit of Hucssley is that you can easily create custom parent classes,
   .has-js .has-js__bp-360--display-block {
     display: block;
   }
-  
+
   .has-js.is-active .has-js__bp-360-is-active--display-block {
     display: block;
   }
