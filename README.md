@@ -471,6 +471,7 @@ $hu-reset-html-overflow-y: null;
 $hu-reset-img-responsive: true;
 $hu-reset-input-placeholder-color: #767676;
 $hu-reset-remove-number-input-spinners: true;
+$hu-reset-text-input-appearance: textfield !default;
 ```
 
 Hopefully the variables are self explanatory, but if not, please [review the source code](/src/reset/_index.scss) to see how they affect the reset styles.

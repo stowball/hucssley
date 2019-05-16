@@ -222,12 +222,12 @@
   [type="text"],
   [type="url"],
   textarea {
-    appearance: textfield;
+    appearance: $hu-reset-text-input-appearance;
   }
 
   @if ($hu-reset-remove-number-input-spinners) {
     [type="number"] {
-      appearance: textfield;
+      appearance: $hu-reset-text-input-appearance;
 
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
@@ -235,7 +235,6 @@
         margin: 0;
       }
     }
-
   }
 
   ::placeholder {
