@@ -1231,10 +1231,6 @@ momentum-scrolling -> -webkit-overflow-scrolling
 
 ```scss
 $hu-momentum-scrolling-modules: (base);
-
-$hu-momentum-scrolling-types: (
-  scrolling: touch,
-);
 ```
 
 ### hu-opacity
