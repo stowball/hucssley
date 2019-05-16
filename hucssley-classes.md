@@ -1,6 +1,6 @@
 # Hucssley classes
 
-Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-configured to get up and running, fast. Some are placeholders with empty variables for more complex things, like `grid`, `shadow` and `transform` that either don't map 1:1 to a property/value pair, and/or are more likely unable to be standardised to suit your project.
+Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-configured to get up and running, fast. Some are placeholders with empty variables for more complex things, like `box-shadow`, `grid` and `transform` that either don't map 1:1 to a property/value pair, and/or are more likely unable to be standardised to suit your project.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -39,6 +39,7 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-border-radius](#hu-border-radius)
   - [hu-border-style](#hu-border-style)
   - [hu-border-width](#hu-border-width)
+  - [hu-box-shadow](#hu-box-shadow)
   - [hu-box-sizing](#hu-box-sizing)
   - [hu-color](#hu-color)
   - [hu-columns](#hu-columns)
@@ -98,7 +99,6 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-rotate](#hu-rotate)
   - [hu-scale](#hu-scale)
   - [hu-scroll-behavior](#hu-scroll-behavior)
-  - [hu-shadow](#hu-shadow)
   - [hu-svg-fill-color](#hu-svg-fill-color)
   - [hu-svg-fill-rule](#hu-svg-fill-rule)
   - [hu-svg-stroke-color](#hu-svg-stroke-color)
@@ -107,6 +107,7 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-text-align](#hu-text-align)
   - [hu-text-case](#hu-text-case)
   - [hu-text-decoration](#hu-text-decoration)
+  - [hu-text-shadow](#hu-text-shadow)
   - [hu-theme-bg-color](#hu-theme-bg-color)
   - [hu-theme-border-color](#hu-theme-border-color)
   - [hu-theme-color](#hu-theme-color)
@@ -692,6 +693,14 @@ $hu-border-width-types: (
   100: 1px,
   200: 2px,
 );
+```
+
+### hu-box-shadow
+
+```scss
+$hu-box-shadow-modules: ();
+
+$hu-box-shadow-types: ();
 ```
 
 ### hu-box-sizing
@@ -1425,12 +1434,12 @@ $hu-scroll-behavior-types: (
 );
 ```
 
-### hu-shadow
+### hu-text-shadow
 
 ```scss
-$hu-shadow-modules: ();
+$hu-text-shadow-modules: ();
 
-$hu-shadow-types: ();
+$hu-text-shadow-types: ();
 ```
 
 ### hu-svg-fill-color

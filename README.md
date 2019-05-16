@@ -254,7 +254,6 @@ overscroll -> overscroll-behavior
 pos-[b,l,r,t] -> bottom, left, right, top
 rotate -> transform: rotate
 scale -> transform: scale
-shadow -> box-shadow
 svg-fill-color -> fill
 svg-fill-rule -> fill-rule
 svg-stroke-color -> stroke
@@ -807,14 +806,14 @@ While Hucssley provides an abundance of classes out-of-the-box, there will absol
 
 Some of the default classes in Hucssley are merely provided as empty placeholders, because their usage is too specific to be generically useful for all projects. These placeholders help to reduce some of the "ceremony" needed with creating completely custom classes.
 
-A good example of this is for (box) shadows. By overriding the empty `$hu-shadow-modules` and `$hu-shadow-types` variables, developers can easily output `box-shadow`s appropriate for their project.
+A good example of this is for (box) shadows. By overriding the empty `$hu-box-shadow-modules` and `$hu-box-shadow-types` variables, developers can easily output `box-shadow`s appropriate for their project.
 
 The following snippet also demonstrates how you can use [configuration helper](#configuration-helpers) methods within your definitions:
 
 ```scss
-$hu-shadow-modules: (base);
+$hu-box-shadow-modules: (base);
 
-$hu-shadow-types: (
+$hu-box-shadow-types: (
   100: 0 hu-rem(2) hu-rem(10) rgba(hu-get($hu-colors, neutral 1000), 0.1),
   200: 0 hu-rem(4) hu-rem(12) rgba(hu-get($hu-colors, neutral 1000), 0.2),
 );
@@ -823,11 +822,11 @@ $hu-shadow-types: (
 will generate:
 
 ```css
-.shadow-100 {
+.box-shadow-100 {
   box-shadow: 0 0.125rem 0.625rem rgba(26, 26, 26, 0.1);
 }
 
-.shadow-200 {
+.box-shadow-200 {
   box-shadow: 0 0.25rem 0.75rem rgba(26, 26, 26, 0.2);
 }
 ```
