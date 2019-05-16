@@ -1,0 +1,27 @@
+@each $module in hu-format-modules($hu-flex-flow-modules) {
+  @each $type, $value in $hu-flex-flow-types {
+    $class-name: hu-class-name(flex-flow-#{$type});
+    $property: flex-flow;
+    $value: if($value, $value, $type);
+
+    @include hu-generic($class-name, $module) {
+      #{$property}: $value;
+    }
+  }
+}
+
+@if (index($hu-flex-flow-modules, responsive)) {
+  @each $bp-scale, $bp-value in $hu-breakpoints {
+    @include hu-media-query($bp-value) {
+      @each $type, $value in $hu-flex-flow-types {
+        $class-name: hu-class-name(flex-flow-#{$type});
+        $property: flex-flow;
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $hu-flex-flow-modules, $bp-scale) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}
