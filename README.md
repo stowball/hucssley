@@ -182,28 +182,32 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
 
 ## Installation
 
+```sh
+npm install github:stowball/hucssley#master
+```
+
 If you want to use Hucssley as it comes, then it's as simple as:
 
 ```scss
-@import "hucssley/src/index";
+@import "../node_modules/hucssley/src/index";
 ```
 
 However, if you want to customise Hucssley, we recommend taking this approach:
 
 ```scss
-@import "hucssley/src/helpers";
+@import "../node_modules/hucssley/src/helpers";
 
-@import "hucssley/src/variables/global/index";
+@import "../node_modules/hucssley/src/variables/global/index";
 // @import "custom/variables/global/index";
 
-@import "hucssley/src/variables/classes/index";
+@import "../node_modules/hucssley/src/variables/classes/index";
 // @import "custom/variables/classes/index";
 // set class overrides before if you don't need access to the defaults & want changes to flow through referenced vars
 
-@import "hucssley/src/variables/reset/index";
+@import "../node_modules/hucssley/src/variables/reset/index";
 // @import "custom/variables/reset/index";
 
-@import "hucssley/src/styles";
+@import "../node_modules/hucssley/src/styles";
 // @import "custom/classes/index";
 ```
 
@@ -465,8 +469,8 @@ $hu-reset-html-font-size: $hu-f-rem-context;
 $hu-reset-html-font-smoothing: true;
 $hu-reset-html-overflow-y: null;
 $hu-reset-img-responsive: true;
-$hu-reset-input-focus-color: null;
 $hu-reset-input-placeholder-color: #767676;
+$hu-reset-remove-number-input-spinners: true;
 ```
 
 Hopefully the variables are self explanatory, but if not, please [review the source code](/src/reset/_index.scss) to see how they affect the reset styles.
@@ -1118,7 +1122,7 @@ The output from these 2 blocks is:
     height: 1rem;
     width: 1rem;
   }
-  
+
   .bp-360--icon-size-200 {
     height: 1.5rem;
     width: 1.5rem;
@@ -1130,7 +1134,7 @@ The output from these 2 blocks is:
     height: 1rem;
     width: 1rem;
   }
-  
+
   .bp-480--icon-size-200 {
     height: 1.5rem;
     width: 1.5rem;
@@ -1206,7 +1210,7 @@ Generates the following:
     height: 1rem;
     width: 1rem;
   }
-  
+
   .bp-360-pseudo-before--icon-size-200::before {
     height: 1.5rem;
     width: 1.5rem;
@@ -1218,7 +1222,7 @@ Generates the following:
     height: 1rem;
     width: 1rem;
   }
-  
+
   .bp-480-pseudo-before--icon-size-200::before {
     height: 1.5rem;
     width: 1.5rem;

@@ -162,6 +162,12 @@
     font-size: 1em;
   }
 
+  [disabled],
+  :disabled {
+    cursor: default;
+    pointer-events: none;
+  }
+
   html {
     background-color: $hu-reset-html-background-color;
     color: $hu-reset-html-color;
@@ -194,23 +200,6 @@
     margin: 0;
   }
 
-  input:not([type="checkbox"]):not([type="file"]):not([type="radio"]),
-  select,
-  textarea {
-    @if ($hu-reset-box-sizing != border-box) {
-      box-sizing: $hu-reset-box-sizing;
-    }
-
-    &:focus {
-      background-color: $hu-reset-input-focus-color;
-    }
-  }
-
-  input:not([type="checkbox"]):not([type="file"]):not([type="radio"]),
-  textarea {
-    appearance: textfield;
-  }
-
   ol,
   ul {
     list-style: none;
@@ -227,22 +216,35 @@
     }
   }
 
-  [disabled],
-  :disabled {
-    cursor: default;
-    pointer-events: none;
+  [type="email"],
+  [type="search"],
+  [type="tel"],
+  [type="text"],
+  [type="url"],
+  textarea {
+    appearance: textfield;
   }
 
-  ::-webkit-search-decoration,
-  ::-webkit-search-cancel-button,
-  [type="number"]::-webkit-outer-spin-button,
-  [type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  @if ($hu-reset-remove-number-input-spinners) {
+    [type="number"] {
+      appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
   }
 
   ::placeholder {
     color: $hu-reset-input-placeholder-color;
     opacity: 1;
+  }
+
+  ::-webkit-search-decoration {
+    -webkit-appearance: none;
+    margin: 0;
   }
 }
