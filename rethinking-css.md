@@ -1,9 +1,9 @@
 # Rethinking CSS
 
-In this article I hope to define what I feel are the biggest issues with CSS and, ultimately, how those issues can be overcome.
+In this article, I hope to define what I feel are the biggest issues with CSS and, ultimately, how those issues can be overcome.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON’T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ## Table of Contents
 
 - [CSS is hard](#css-is-hard)
@@ -50,7 +50,7 @@ But what if we never need to worry about it? What if we could essentially reduce
 
 ## Naming things is hard
 
-When BEM was introduced to the front-end community it was a revelation. Ugly at first, but a revelation nonetheless. Within CSS’s global context, it allowed us to clearly express the hierarchy of components: its variants and their children.
+When BEM was introduced to the front-end community, it was a revelation. Ugly at first, but a revelation nonetheless. Within CSS’s global context, it allowed us to clearly express the hierarchy of components: its variants and their children.
 
 However, as always with introductory blog post tutorials, real-world usage didn’t align with the simplicity presented. How do you describe a discrete child block, that has its own children? How do you define UI states? Are they modifiers or something else entirely? Is that a `wrapper`, a `container` or an `inner`? What do we call the parent class? Is this a `.media-object`? It looks a like a `.flag-layout` to me.
 

@@ -290,7 +290,7 @@ translate-x -> transform: translateX
 translate-y -> transform: translateY
 ```
 
-If a value is a negative number, its class name output will use `-n[value]`, such as `margin-l-n100` instead of `margin-l-100`, to make it obvious that it’s “negative” and to not be confused with the “modifying” syntax described below.
+If a value is a negative number, its class name output will use `-n[value]`, such as `margin-l-n100` instead of `margin-l--100`, to make it obvious that it’s “negative” and to not be confused with the “modifying” syntax described below.
 
 If the last two words separated by a hyphen are identical, then the last word will automatically be omitted. For instance `.flex-wrap` is used instead of `flex-wrap-wrap`, but `flex-wrap-no-wrap` would be the equivalent `nowrap` version.
 
