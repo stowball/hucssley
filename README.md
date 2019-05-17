@@ -165,9 +165,9 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
           display-inline-block
           padding-h-400
           padding-v-300
-          transition-property-all
           transition-duration-200
           transition-easing-ease
+          transition-property-all
           bp-768--font-size-600
           bp-768--padding-h-500
           bp-768--padding-v-400
@@ -193,7 +193,7 @@ With [so many CSS utility libraries](https://css-tricks.com/need-css-utility-lib
 
 We wanted to [solve a lot of the problems](/rethinking-css.md) developers have with "normal" CSS and the ones Adam Silver poses in [The problem with atomic CSS](https://adamsilver.io/articles/the-problem-with-atomic-css/).
 
-Firstly, most utility libraries are hard to read, and more importantly hard to learn. They often use an obtuse, inconsistent syntax which has you reaching for the docs more often than you should. With Hucssley, the goal is "if you know CSS properties, you know Hucssley".
+Firstly, most utility libraries are hard to read, and more importantly hard to learn. They often use an obtuse, inconsistent syntax which has you reaching for the docs more often than you should. With Hucssley, the focus has been: "if you know CSS properties, you know Hucssley".
 
 Also, by using Sass under the hood, it supports an extremely deep pool of developers who already know the language and its wealth of features, and has great documentation and resources to boot.
 
