@@ -22,6 +22,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
 
 - [What's in the box?](#whats-in-the-box)
 - [A working example](#a-working-example)
+- [Why Hucssley?](#why-hucssley)
 - [Installation](#installation)
 - [Syntax](#syntax)
   - [Modules](#modules)
@@ -183,6 +184,24 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
 ```
 
 **You can see a live version here: https://codepen.io/stowball/full/WBoxOj**
+
+---
+
+## Why Hucssley?
+
+With [so many CSS utility libraries](https://css-tricks.com/need-css-utility-library/) already in existence, and with Tailwind being an extremely popular, close alternative, why does Hucssley exist and why might you want to use it?
+
+We wanted to [solve a lot of the problems](/rethinking-css.md) developers have with "normal" CSS and the ones Adam Silver poses in [The problem with atomic CSS](https://adamsilver.io/articles/the-problem-with-atomic-css/).
+
+Firstly, most utility libraries are hard to read, and more importantly hard to learn. They often use an obtuse, inconsistent syntax which has you reaching for the docs more often than you should. With Hucssley, the goal is "if you know CSS properties, you know Hucssley".
+
+Also, by using Sass under the hood, it supports an extremely deep pool of developers who already know the language and its wealth of features, and has great documentation and resources to boot.
+
+With other libraries, while the initial implementation period is very promising, it's when you hit the harder, more uncommon issues that you start to struggle. Out-of-the-box, Hucssley wants to provide you with all of the tools to build any UI regardless of the condition. This means we support every type of width media query, theming, pseudo selectors, user interaction states (`:hover`, `:focus-visible`), UI states (`is-expanded`, `is-loading`), and any kind of parent selector (for use with things like browser detection libraries, or element query polyfills).
+
+Lastly, Hucssley tries to be extremely flexible and easily configurable. If it doesn't provide something you need OOTB, it's hopefully very easy to build what you need in a consistent, Hucssley manner.
+
+So with you now intrigued, read the rest of the docs, have a play, and fall in love building UI…
 
 ---
 
