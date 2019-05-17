@@ -51,15 +51,15 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
     - [Debug: `$hu-debug`](#debug-hu-debug)
   - [Classes](#classes)
 - [Creating custom classes](#creating-custom-classes)
-  - [Customising "placeholder" classes](#customising-placeholder-classes)
-  - [Creating new, "basic" classes](#creating-new-basic-classes)
+  - [Customising “placeholder” classes](#customising-placeholder-classes)
+  - [Creating new, “basic” classes](#creating-new-basic-classes)
     - [Generic classes: `hu-classes`](#generic-classes-hu-classes)
       - [Basic](#basic)
       - [Custom class name](#custom-class-name)
       - [Unique class with multiple declarations](#unique-class-with-multiple-declarations)
     - [Pseudo classes: `hu-pseudo-classes`](#pseudo-classes-hu-pseudo-classes)
     - [Parent classes: `hu-parent-classes`](#parent-classes-hu-parent-classes)
-  - [Creating new, "more complex" classes](#creating-new-more-complex-classes)
+  - [Creating new, “more complex” classes](#creating-new-more-complex-classes)
     - [Helper Functions](#helper-functions)
       - [`hu-class-name`](#hu-class-name)
       - [`hu-format-modules`](#hu-format-modules)
@@ -86,13 +86,13 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
 
 ## What's in the box?
 
-Currently, Hucssley provides utility classes for over 110 CSS properties, of which multiple, sensible default values are generated. Each utility is also created for various "modules", whether that's at certain breakpoints, UI states, user interactions, for print or more.
+Currently, Hucssley provides utility classes for over 110 CSS properties, of which multiple, sensible default values are generated. Each utility is also created for various “modules”, whether that's at certain breakpoints, UI states, user interactions, for print or more.
 
 Each utility is completely customisable; they can be partially renamed, have values changed, have their modules altered or be omitted entirely.
 
 By default, Hucssley does not output classes for things that don't map explicitly to specific property types (such as `box-shadow`, background gradients and `transform`), but it does provide placeholder variables for these to make tailored, [custom classes simple to create](#creating-custom-classes).
 
-Hucssley also provides utility classes for truncating text and making elements "visually hidden" for accessibility purposes.
+Hucssley also provides utility classes for truncating text and making elements “visually hidden” for accessibility purposes.
 
 For a complete list of the class names provided, read [Hucssley classes](/hucssley-classes.md).
 
@@ -103,7 +103,7 @@ Hucssley also comes with:
 * Functions to incrementally darken (`shade`) or lighten (`tint`) colours.
 * The ability to theme elements based off a parent selector.
 * The ability to create classes scoped to custom parent selectors.
-* The ability to create classes the map to pseudo-classes and pseudo-selectors.
+* The ability to create classes that map to pseudo-classes and pseudo-selectors.
 
 ---
 
@@ -191,9 +191,9 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
 
 With [so many CSS utility libraries](https://css-tricks.com/need-css-utility-library/) already in existence, and with Tailwind being an extremely popular, close alternative, why does Hucssley exist and why might you want to use it?
 
-We wanted to [solve a lot of the problems](/rethinking-css.md) developers have with "normal" CSS and the ones Adam Silver poses in [The problem with atomic CSS](https://adamsilver.io/articles/the-problem-with-atomic-css/).
+We wanted to [solve a lot of the problems](/rethinking-css.md) developers have with “normal” CSS and the ones Adam Silver poses in [The problem with atomic CSS](https://adamsilver.io/articles/the-problem-with-atomic-css/).
 
-Firstly, most utility libraries are hard to read, and more importantly hard to learn. They often use an obtuse, inconsistent syntax which has you reaching for the docs more often than you should. With Hucssley, the focus has been: "if you know CSS properties, you know Hucssley".
+Firstly, most utility libraries are hard to read, and more importantly hard to learn. They often use an obtuse, inconsistent syntax which has you reaching for the docs more often than you should. With Hucssley, the focus has been: “if you know CSS properties, you know Hucssley”.
 
 Also, by using Sass under the hood, it supports an extremely deep pool of developers who already know the language and its wealth of features, and has great documentation and resources to boot.
 
@@ -290,7 +290,7 @@ translate-x -> transform: translateX
 translate-y -> transform: translateY
 ```
 
-If a value is a negative number, its class name output will use `-n[value]`, such as `margin-l-n100` instead of `margin-l--100`, to make it obvious that it's "negative" and to not be confused with the "modifying" syntax described below. 
+If a value is a negative number, its class name output will use `-n[value]`, such as `margin-l-n100` instead of `margin-l-100`, to make it obvious that it's “negative” and to not be confused with the “modifying” syntax described below.
 
 If the last two words separated by a hyphen are identical, then the last word will automatically be omitted. For instance `.flex-wrap` is used instead of `flex-wrap-wrap`, but `flex-wrap-no-wrap` would be the equivalent `nowrap` version.
 
@@ -298,7 +298,7 @@ If the last two words separated by a hyphen are identical, then the last word wi
 
 #### Non-parent modules: `focus, hocus, hover, print, reduced-motion, responsive`
 
-When you want to use class names scoped to "non-parent" modules, it follows a pattern of `[module-name][-module-variant])?--[base-class]`, for instance:
+When you want to use class names scoped to “non-parent” modules, it follows a pattern of `[module-name][-module-variant])?--[base-class]`, for instance:
 
 ```css
 .bp-768--align-items-center
@@ -372,7 +372,7 @@ Here the syntax is `bp-[responsive-scale]-[state-name]--[base-class]` for states
 
 ## Scales
 
-Where it makes sense, and compared with other libraries, Hucssley favours a millennial scale (`0` - `1000`) to represent values instead of "names" like `xxl`, `mama-bear` etc. This can of course be completely customised.
+Where it makes sense, and compared with other libraries, Hucssley favours a millennial scale (`0` - `1000`) to represent values instead of “names” like `xxl`, `mama-bear` etc. This can of course be completely customised.
 
 By default, the following classes use a millennial scale:
 
@@ -397,7 +397,7 @@ To override the default configuration in Hucssley, you'll need to understand the
 
 Hucssley's configuration is split in to 3 sections: `reset`, `global` and `classes`.
 
-* **Reset** configuration uses plain variables to customise "generic" styles like whether `box-sizing: border-box` should be used by default.
+* **Reset** configuration uses plain variables to customise “generic” styles like whether `box-sizing: border-box` should be used by default.
 * **Global** configuration mostly uses maps to handle things like the default responsive breakpoints, colors, spacings, UI states and themes.
 * **Classes** provides list and map variables to adjust the modules, and values for each class individually. Some classes (like those which deal with color) inherit from the same base variable by default, so only 1 change is required to affect all `border-color`, `background-color` and `color` classes. All classes can be generated at individual modules described above.
 
@@ -762,7 +762,7 @@ $hu-focus-pseudo: ":focus:not(.focus-visible)";
 
 #### Themes: `$hu-themes`
 
-As well as the standard `$hu-colors`, "color" classes can also be generated for theming your application based on the key/vaue pairs in this map.
+As well as the standard `$hu-colors`, “color” classes can also be generated for theming your application based on the key/vaue pairs in this map.
 
 By default, no themes are provided, but making your own is easy:
 
@@ -830,9 +830,9 @@ Every class in Hucssley can be completely customised to individually change the 
 
 While Hucssley provides an abundance of classes out-of-the-box, there will absolutely be times where you need to create your own to achieve your desired UI, which is hopefully straight-forward to achieve.
 
-### Customising "placeholder" classes
+### Customising “placeholder” classes
 
-Some of the default classes in Hucssley are merely provided as empty placeholders, because their usage is too specific to be generically useful for all projects. These placeholders help to reduce some of the "ceremony" needed with creating completely custom classes.
+Some of the default classes in Hucssley are merely provided as empty placeholders, because their usage is too specific to be generically useful for all projects. These placeholders help to reduce some of the “ceremony” needed with creating completely custom classes.
 
 A good example of this is for (box) shadows. By overriding the empty `$hu-box-shadow-modules` and `$hu-box-shadow-types` variables, developers can easily output `box-shadow`s appropriate for their project.
 
@@ -859,9 +859,9 @@ will generate:
 }
 ```
 
-### Creating new, "basic" classes
+### Creating new, “basic” classes
 
-For the most common needs of creating new classes, Hucssley provides 3 easy ways of creating custom "generic", pseudo and parent utility classes.
+For the most common needs of creating new classes, Hucssley provides 3 easy ways of creating custom “generic”, pseudo and parent utility classes.
 
 While the following examples all use `$-modules` and `$-types` variables that are provided by Hucssley, if creating your own, fully custom classes, we recommend setting them up in a way to cater for any complexity as your project grows, thus define the variables similarly to how the defaults are done. For examples and to learn more, please read [Hucssley classes](/hucssley-classes.md).
 
@@ -939,7 +939,7 @@ By passing a map to `$property`, the map's key becomes the core class name, and 
 
 ##### Unique class with multiple declarations
 
-By not proving a `$type` and passing in a `@content` block, you can create "one off" classes with multiple, static declarations.
+By not proving a `$type` and passing in a `@content` block, you can create “one off” classes with multiple, static declarations.
 
 ```scss
 @include hu-classes(font-smoothing, $hu-font-smoothing-modules) {
@@ -1056,7 +1056,7 @@ Another benefit of Hucssley is that you can easily create custom parent classes,
 
 As with `$hu-classes`, you can customise the class name by passing a map to `$property`, and you can create unique classes with multiple declarations by not proving a `$type` and passing in a `@content` block.
 
-### Creating new, "more complex" classes
+### Creating new, “more complex” classes
 
 Should you need to create classes that are more complex than what the 3 basic mixins described above can provide, you can follow a defined pattern for creating your own. However, before you do, it's worth having a basic understanding of the functions and mixins you'll use.
 
@@ -1290,7 +1290,7 @@ Although the mixins described above can take a list of modules, to ensure the co
     // call hu-generic with the $class-name and $module
     @include hu-generic($class-name, $module) {
       // write your declarations, using $value as the CSS value
-      height: $value; 
+      height: $value;
       width: $value;
     }
   }
@@ -1316,7 +1316,7 @@ The above loop doesn't generate the responsive classes. If we generated them wit
         // call hu-responsive with the $class-name, *all* modules and $bp-scale
         @include hu-responsive($class-name, $icon-size-modules, $bp-scale) {
           // write your declarations, using $value as the CSS value
-          height: $value; 
+          height: $value;
           width: $value;
         }
       }
@@ -1367,7 +1367,7 @@ The output from these 2 blocks is:
 
 ##### Creating custom pseudo classes
 
-One benefit Hucssley has over other, similar libraries is that there is a defined method for easily creating pseudo classes. As with "generic" classes, you'll need 2 code blocks, but instead of calling `hu-generic` and `hu-responsive`, you call `hu-pseudo` and `hu-pseudo-responsive` with the appropriate, documented arguments.
+One benefit Hucssley has over other, similar libraries is that there is a defined method for easily creating pseudo classes. As with “generic” classes, you'll need 2 code blocks, but instead of calling `hu-generic` and `hu-responsive`, you call `hu-pseudo` and `hu-pseudo-responsive` with the appropriate, documented arguments.
 
 ```scss
 // loop through the formatted modules in order
@@ -1382,7 +1382,7 @@ One benefit Hucssley has over other, similar libraries is that there is a define
     // call hu-pseudo with the $class-name, pseudo selectors and $module
     @include hu-pseudo($class-name, ("::before"), $module) {
       // write your declarations, using $value as the CSS value
-      height: $value; 
+      height: $value;
       width: $value;
     }
   }
@@ -1404,7 +1404,7 @@ One benefit Hucssley has over other, similar libraries is that there is a define
         // call hu-pseudo responsive with the $class-name, pseudo selectors, *all* modules and $bp-scale
         @include hu-pseudo-responsive($class-name, ("::before"), $icon-size-modules, $bp-scale) {
           // write your declarations, using $value as the CSS value
-          height: $value; 
+          height: $value;
           width: $value;
         }
       }
@@ -1470,7 +1470,7 @@ Similarly, custom parent classes can also easily be generated with the `hu-paren
     // call hu-parent with the $class-name, parent selectors and $module
     @include hu-parent($class-name, (browser-mobile), $module) {
       // write your declarations, using $value as the CSS value
-      height: $value; 
+      height: $value;
       width: $value;
     }
   }
@@ -1492,7 +1492,7 @@ Similarly, custom parent classes can also easily be generated with the `hu-paren
         // call hu-parent-responsive with the $class-name, parent selectors, *all* modules and $bp-scale
         @include hu-parent-responsive($class-name, (browser-mobile), $icon-size-modules, $bp-scale) {
           // write your declarations, using $value as the CSS value
-          height: $value; 
+          height: $value;
           width: $value;
         }
       }
@@ -1543,9 +1543,9 @@ will generate the following:
 
 ## Creating components
 
-Since Hucssley outputs raw HTML class names, it's incredibly easy to integrate with any front-end "view" framework, to create custom components with small and simple styling APIs.
+Since Hucssley outputs raw HTML class names, it's incredibly easy to integrate with any front-end “view” framework, to create custom components with small and simple styling APIs.
 
-By using raw class name strings, you are also able to annotate browser-specifc fixes alongside them in the HTML, which helps with understanding why "unnecessary" properties are there.
+By using raw class name strings, you are also able to annotate browser-specifc fixes alongside them in the HTML, which helps with understanding why “unnecessary” properties are there.
 
 Let's create a button in Vue:
 
@@ -1790,7 +1790,7 @@ which produces:
 
 ## Controlling file size
 
-While Hucssley creates almost every possible class you'd ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.8 MB. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 114 KB, which ironically, is still a lot smaller than lots of other "production" CSS in the wild.
+While Hucssley creates almost every possible class you'd ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.8 MB. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 114 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
 
 Hucssley is infinitely customisable, so you can set the variables of modules you'll never use to `()` so they won't output, and of course, limiting the amount of colors, breakpoints, and spacing scales will also help.
 
@@ -1802,4 +1802,4 @@ extractor: class {
     return content.match(/(?:[A-Za-z0-9]|-|_|:|<|>|@)+/g) || [];
   }
 },
-``` 
+```
