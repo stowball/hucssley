@@ -199,7 +199,7 @@ Also, by using Sass under the hood, it supports an extremely deep pool of develo
 
 With other libraries, while the initial implementation period is very promising, it's when you hit the harder, more uncommon issues that you start to struggle. Out-of-the-box, Hucssley wants to provide you with all of the tools to build any UI regardless of the condition. This means we support every type of width media query, theming, pseudo selectors, user interaction states (`:hover`, `:focus-visible`), UI states (`is-expanded`, `is-loading`), and any kind of parent selector (for use with things like browser detection libraries, or element query polyfills).
 
-Lastly, Hucssley tries to be extremely flexible and easily configurable. If it doesn't provide something you need OOTB, it's hopefully very easy to build what you need in a consistent, Hucssley manner.
+Lastly, Hucssley tries to be extremely flexible and easily configurable. While it provides many more classes and features than other libraries OOTB, if it doesn't provide something you need, it's hopefully very easy to build what you need in a consistent, Hucssley manner.
 
 So with you now intrigued, read the rest of the docs, have a play, and fall in love building UI…
 
