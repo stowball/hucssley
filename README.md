@@ -1644,7 +1644,9 @@ Which means our `template` is as simple as creating an array of the various `sty
 
 The `template` itself is ridiculously simple. You can tell at a glance exactly which class names will be added under any UI condition, and, in the generated HTML you'll even be able to see an IE-specific hack!
 
-*Note: Unlike alternative frameworks, Hucssley encourages a utility-only, not utility-first mentality, so it's highly recommended that all components be created with a template partial or JavaScript component to keep your code DRY and reduce the opportunity for copy-paste errors.*
+Unlike alternative frameworks, Hucssley encourages a utility-only, not utility-first mentality, so it's highly recommended that all components be created with a template partial or JavaScript component to keep your code DRY and reduce the opportunity for copy-paste errors.
+
+Components with meaningful, semantic props that map to UI variations also reduce the learning curve and implementation for developers less experienced with CSS.
 
 ### Using the component
 
