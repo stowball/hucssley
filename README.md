@@ -30,6 +30,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
     - [Non-parent modules: `focus, hocus, hover, print, reduced-motion, responsive`](#non-parent-modules-focus-hocus-hover-print-reduced-motion-responsive)
     - [State modules: `state`](#state-modules-state)
     - [Parent modules: `group-hover, group-state` and custom parent modules](#parent-modules-group-hover-group-state-and-custom-parent-modules)
+      - [Custom parent modules](#custom-parent-modules)
     - [Combining modules: `responsive` and `group-state, state`](#combining-modules-responsive-and-group-state-state)
 - [Scales](#scales)
 - [Configuration](#configuration)
@@ -357,7 +358,13 @@ For `group` classes to take effect, a parent has to be given the raw `.group` cl
 
 Be careful when using groups, because they will affect all `.group__` children. A child `.group` does not reset the actions of a parent `.group`, so you could end up with unexpected behaviour. It’s recommended to use groups on near ancestors to leaf nodes.
 
-*Note: `.browser-mobile` is an example of a custom parent selector, and is not included in Hucssley by default.*
+##### Custom parent modules
+
+In the above example, we used a `browser-mobile__font-size-700` class name, which, while not included in Hucssley by default, hopefully illustrates how it can be used to style elements by any library or approach that adds a generic class to a parent element.
+
+Possible use cases are a browser detection library that may add `browser-mobile`, `browser-ie` etc to `<html>`, or an element/container queries alternative like [eqio](https://github.com/stowball/eqio), that adds classes such as `eqio->400` to a parent element, and would be targetable with `eqio->400__flex-direction-row` for example.
+
+For information, please read [Parent classes](#parent-classes).
 
 #### Combining modules: `responsive` and `group-state, state`
 
