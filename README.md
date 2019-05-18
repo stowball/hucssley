@@ -910,26 +910,26 @@ It takes a `$property`, which can be either a CSS property or a map, a list of `
 By passing a map to `$property`, the map’s key becomes the core class name, and the map’s value becomes the CSS property.
 
 ```scss
-@include hu-classes((fac: align-content), $hu-align-content-modules, $hu-align-content-types);
+@include hu-classes((transition-easing: transition-timing-function), $hu-transition-easing-modules, $hu-transition-easing-types);
 
 /* ->
-.fac-baseline {
-  align-content: baseline;
+.transition-easing-ease {
+  transition-timing-function: ease;
 }
 
-.fac-center {
-  align-content: center;
+.transition-easing-ease-in {
+  transition-timing-function: ease-in;
 }
 
 …
 
 @media (min-width: 22.5em) {
-  .bp-360--fac-baseline {
-    align-content: baseline;
+  .is-active.is-active--transition-easing-ease {
+    transition-timing-function: ease;
   }
 
-  .bp-360--fac-center {
-    align-content: center;
+  .is-active.is-active--transition-easing-ease-in {
+    transition-timing-function: ease-in;
   }
 }
 
