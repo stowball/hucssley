@@ -364,7 +364,7 @@ In the above example, we used a `browser-mobile__font-size-700` class name, whic
 
 Possible use cases are a browser detection library that may add `browser-mobile`, `browser-ie` etc to `<html>`, or an element/container queries alternative like [eqio](https://github.com/stowball/eqio), that adds classes such as `eqio->400` to a parent element, and would be targetable with `eqio->400__flex-direction-row` for example.
 
-For information, please read [Parent classes](#parent-classes).
+For information, please read [Parent classes](#parent-classes-hu-parent-classes).
 
 #### Combining modules: `responsive` and `group-state, state`
 
@@ -968,6 +968,26 @@ By not proving a `$type` and passing in a `@content` block, you can create “on
 }
 
 …
+*/
+```
+
+You could also use this technique to add complex `@supports` feature queries:
+
+```scss
+@include hu-classes(supports-blend-mode-multiply, (base)) {
+  @supports (mix-blend-mode: multiply) {
+    mix-blend-mode: multiply;
+    opacity: 1;
+  }
+}
+
+/* ->
+@supports (mix-blend-mode: multiply) {
+  .supports-blend-mode-multiply {
+    mix-blend-mode: multiply;
+    opacity: 1;
+  }
+}
 */
 ```
 
