@@ -13,7 +13,7 @@
             $value: if($value, $value, $type);
 
             @include hu-parent-responsive($class-name, $parents, $modules, $bp-scale, $child-string-to-strip) {
-              #{$property}: $value;
+              #{$property}: $value #{hu-important()};
             }
           }
         }

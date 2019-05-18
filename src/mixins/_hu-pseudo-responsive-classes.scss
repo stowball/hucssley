@@ -13,7 +13,7 @@
             $value: if($value, $value, $type);
 
             @include hu-pseudo-responsive($class-name, $pseudos, $modules, $bp-scale) {
-              #{$property}: $value;
+              #{$property}: $value #{hu-important()};
             }
           }
         }

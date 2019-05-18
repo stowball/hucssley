@@ -23,7 +23,7 @@
 
           @include hu-responsive($class-name, $hu-border-width-modules, $bp-scale) {
             @each $property in $properties {
-              #{$property}: $value;
+              #{$property}: $value #{hu-important()};
             }
           }
         }

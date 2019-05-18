@@ -6,7 +6,7 @@
 
       @include hu-generic($class-name, $module) {
         @each $property in $properties {
-          #{$property}: $value;
+          #{$property}: $value #{hu-important()};
         }
       }
     }
@@ -22,7 +22,7 @@
 
           @include hu-responsive($class-name, $hu-pos-modules, $bp-scale) {
             @each $property in $properties {
-              #{$property}: $value;
+              #{$property}: $value #{hu-important()};
             }
           }
         }

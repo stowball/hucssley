@@ -11,7 +11,7 @@
         $value: if($value, $value, $type);
 
         @include hu-parent($class-name, $parents, $module, $child-string-to-strip) {
-          #{$property}: $value;
+          #{$property}: $value #{hu-important()};
         }
       }
     }

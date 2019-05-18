@@ -7,7 +7,7 @@
 
       @include hu-generic($class-name, $module) {
         @each $property in $side-properties {
-          #{$property}-style: $value;
+          #{$property}-style: $value #{hu-important()};
         }
       }
     }
@@ -23,7 +23,7 @@
 
           @include hu-responsive($class-name, $hu-border-style-modules, $bp-scale) {
             @each $property in $properties {
-              #{$property}: $value;
+              #{$property}: $value #{hu-important()};
             }
           }
         }

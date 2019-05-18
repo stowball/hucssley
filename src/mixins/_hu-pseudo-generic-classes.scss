@@ -11,7 +11,7 @@
         $value: if($value, $value, $type);
 
         @include hu-pseudo($class-name, $pseudos, $module) {
-          #{$property}: $value;
+          #{$property}: $value #{hu-important()};
         }
       }
     }

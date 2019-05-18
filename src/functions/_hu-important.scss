@@ -1,0 +1,7 @@
+@function hu-important() {
+  @if ($hu-use-important) {
+    @return !important;
+  }
+
+  @return null;
+}

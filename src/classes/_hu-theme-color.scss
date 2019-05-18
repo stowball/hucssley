@@ -6,7 +6,7 @@
       $property: color;
 
       @include hu-theme($class-name, $theme, $module) {
-        #{$property}: $value;
+        #{$property}: $value #{hu-important()};
       }
     }
   }
@@ -21,7 +21,7 @@
           $property: color;
 
           @include hu-theme-responsive($class-name, $theme, $hu-theme-bg-color-modules, $theme) {
-            #{$property}: $value;
+            #{$property}: $value #{hu-important()};
           }
         }
       }

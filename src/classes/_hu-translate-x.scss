@@ -20,7 +20,7 @@
         $value: if($value, $value, $type);
 
         @include hu-responsive($class-name, $hu-translate-x-modules, $bp-scale) {
-          #{$property}: $value;
+          #{$property}: $value #{hu-important()};
         }
       }
     }

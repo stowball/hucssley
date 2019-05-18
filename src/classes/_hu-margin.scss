@@ -7,7 +7,7 @@
       @if ($module == base) {
         @include hu-base($class-name) {
           @each $property in $properties {
-            #{$property}: $value;
+            #{$property}: $value #{hu-important()};
           }
         }
 
@@ -23,7 +23,7 @@
       @else if ($module == focus or $module == hocus or $module == hover) {
         @include hu-hocus($class-name, $module) {
           @each $property in $properties {
-            #{$property}: $value;
+            #{$property}: $value #{hu-important()};
           }
         }
 
@@ -39,7 +39,7 @@
       @else if ($module == state) {
         @include hu-state($class-name) {
           @each $property in $properties {
-            #{$property}: $value;
+            #{$property}: $value #{hu-important()};
           }
         }
 
@@ -55,7 +55,7 @@
       @else if ($module == group-hover) {
         @include hu-group-hover($class-name) {
           @each $property in $properties {
-            #{$property}: $value;
+            #{$property}: $value #{hu-important()};
           }
         }
 
@@ -71,7 +71,7 @@
       @else if ($module == group-state) {
         @include hu-group-state($class-name) {
           @each $property in $properties {
-            #{$property}: $value;
+            #{$property}: $value #{hu-important()};
           }
         }
 
@@ -87,7 +87,7 @@
       @else if ($module == print) {
         @include hu-print($class-name) {
           @each $property in $properties {
-            #{$property}: $value;
+            #{$property}: $value #{hu-important()};
           }
         }
 
@@ -113,7 +113,7 @@
 
           @include hu-responsive-base($class-name, $bp-scale) {
             @each $property in $properties {
-              #{$property}: $value;
+              #{$property}: $value #{hu-important()};
             }
           }
 
@@ -128,7 +128,7 @@
           @if (index($hu-margin-modules, state)) {
             @include hu-responsive-state($class-name, $bp-scale) {
               @each $property in $properties {
-                #{$property}: $value;
+                #{$property}: $value #{hu-important()};
               }
             }
 
@@ -144,7 +144,7 @@
           @if (index($hu-margin-modules, group-state)) {
             @include hu-responsive-group-state($class-name, $bp-scale) {
               @each $property in $properties {
-                #{$property}: $value;
+                #{$property}: $value #{hu-important()};
               }
             }
 

@@ -49,6 +49,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
     - [Controlling focus: `$hu-hocus-focus-parent` and `$hu-hocus-focus-pseudo`](#controlling-focus-hu-hocus-focus-parent-and-hu-hocus-focus-pseudo)
     - [Themes: `$hu-themes`](#themes-hu-themes)
     - [Namespace: `$hu-namespace`](#namespace-hu-namespace)
+    - [Use important: `$hu-use-important`](#use-important-hu-use-important)
     - [Debug: `$hu-debug`](#debug-hu-debug)
   - [Classes](#classes)
 - [Creating custom classes](#creating-custom-classes)
@@ -64,6 +65,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
     - [Helper Functions](#helper-functions)
       - [`hu-class-name`](#hu-class-name)
       - [`hu-format-modules`](#hu-format-modules)
+      - [`hu-important`](#hu-important)
     - [Mixins](#mixins)
       - [`hu-generic`](#hu-generic)
       - [`hu-responsive`](#hu-responsive)
@@ -79,6 +81,8 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
   - [Component definition](#component-definition)
   - [Using the component](#using-the-component)
 - [Increasing specificity](#increasing-specificity)
+  - [Forcing `!important`](#forcing-important)
+  - [Quarantining with a descendent selector](#quarantining-with-a-descendent-selector)
 - [Controlling file size](#controlling-file-size)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -208,6 +212,8 @@ So with you now intrigued, read the rest of the docs, have a play, and fall in l
 
 ## Installation
 
+While Hucssley is still in early development, it has not been published to npm. However, you can still add it as a `dependency` of your project with:
+
 ```sh
 npm install github:stowball/hucssley#master
 ```
@@ -215,25 +221,25 @@ npm install github:stowball/hucssley#master
 If you want to use Hucssley as it comes, then it’s as simple as:
 
 ```scss
-@import "../node_modules/hucssley/src/index";
+@import "path_to_node_modules/hucssley/src/index";
 ```
 
 However, if you want to customise Hucssley, we recommend taking this approach:
 
 ```scss
-@import "../node_modules/hucssley/src/helpers";
+@import "path_to_node_modules/hucssley/src/helpers";
 
-@import "../node_modules/hucssley/src/variables/global/index";
+@import "path_to_node_modules/hucssley/src/variables/global/index";
 // @import "custom/variables/global/index";
 
-@import "../node_modules/hucssley/src/variables/classes/index";
+@import "path_to_node_modules/hucssley/src/variables/classes/index";
 // @import "custom/variables/classes/index";
 // set class overrides before if you don’t need access to the defaults & want changes to flow through referenced vars
 
-@import "../node_modules/hucssley/src/variables/reset/index";
+@import "path_to_node_modules/hucssley/src/variables/reset/index";
 // @import "custom/variables/reset/index";
 
-@import "../node_modules/hucssley/src/styles";
+@import "path_to_node_modules/hucssley/src/styles";
 // @import "custom/classes/index";
 ```
 
@@ -816,14 +822,41 @@ As mentioned earlier, Hucssley provides you the opportunity to namespace the cla
 ```scss
 $hu-namespace: `hu-`;
 
-// -> .hu-align-content-center, .bp-480--hu-flex-direction-column, .group__is-open--hu--display-flex
+/* ->
+.hu-align-content-center {}
+…
+.bp-480--hu-flex-direction-column {}
+…
+.group__is-open--hu--display-flex {}
+```
+
+#### Use important: `$hu-use-important`
+
+Determines whether all CSS declarations (including those in the [CSS reset](#reset)) are suffixed with the `!important` rule. Default is `false`.
+
+```scss
+$hu-use-important: true;
+
+/* ->
+.align-content-baseline {
+  align-content: baseline !important;
+}
+
+…
+
+.align-items-auto {
+  align-items: auto !important;
+}
+
+…
+*/
 ```
 
 #### Debug: `$hu-debug`
 
 With Hucssley generating every class for you, you may encounter scenarios where you need to debug the output when using [webpack’s style-loader](https://webpack.js.org/loaders/style-loader) which outputs the CSS within a `<style>` tag in the `<head>`.
 
-By setting `$hu-debug: true;` before `@import "hucssley/src/styles";` all of the CSS will be printed to the screen, above your UI for you to review and debug.
+By setting `$hu-debug: true;` before `@import "path_to_node_modules/hucssley/src/styles";` all of the CSS will be printed to the screen, above your UI for you to review and debug.
 
 ### Classes
 
@@ -1111,6 +1144,17 @@ hu-format-modules((state, print, responsive, state, base));
 // -> (base, state, print, responsive)
 ```
 
+##### `hu-important`
+
+Outputs `!important` when `$hu-use-important: true`.
+
+```scss
+@function hu-important();
+
+hu-important();
+// -> !important
+```
+
 #### Mixins
 
 *Note: All of the following examples assume `$hu-namespace: "hu-"` has been set.*
@@ -1123,7 +1167,7 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `group-hover`, `group-
 @mixin hu-generic($class-name, $one-or-multiple-modules);
 
 @include hu-generic(hu-class-name(display-block), (base, group-hover, print)) {
-  display: block;
+  display: block #{hu-important()};
 }
 
 /* ->
@@ -1153,7 +1197,7 @@ Generates the responsive `base`, `state` and `group-state` module styles for a c
 @mixin hu-responsive($class-name, $one-or-multiple-modules, $breakpoint-scale);
 
 @include hu-responsive(hu-class-name(display-block), (base, responsive, state), medium) {
-  display: block;
+  display: block #{hu-important()};
 }
 
 /* ->
@@ -1172,10 +1216,10 @@ Generates the responsive `base`, `state` and `group-state` module styles for a c
 Generates the `base`, `focus`, `hover`, `hocus`, `state`, `reduced-motion` and `print` module styles for a parent selector class (in that order) while also adding the correct specificity.
 
 ```scss
-@mixin hu-parent($class-name, $parent-selectors, $one-or-multiple-modules, $child-string-to-strip?) {
+@mixin hu-parent($class-name, $parent-selectors, $one-or-multiple-modules, $child-string-to-strip?);
 
 @include hu-parent(hu-class-name(display-block), (browser-edge, browser-ie), (base, hover)) {
-  display: block;
+  display: block #{hu-important()};
 }
 
 /* ->
@@ -1206,10 +1250,10 @@ Generates the responsive `base` and `state` module styles for a parent selector 
 *Note: it does not generate the required media queries, as they need to be [created in a specific manner as described below](#writing-the-class-logic).*
 
 ```scss
-@mixin hu-parent-responsive($class-name, $parent-selectors, $one-or-multiple-modules, $breakpoint-scale, $child-string-to-strip?) {
+@mixin hu-parent-responsive($class-name, $parent-selectors, $one-or-multiple-modules, $breakpoint-scale, $child-string-to-strip?);
 
 @include hu-parent-responsive(hu-class-name(display-block), (browser-edge, browser-ie), (base, responsive), medium) {
-  display: block;
+  display: block #{hu-important()};
 }
 
 /* ->
@@ -1228,10 +1272,10 @@ Generates the responsive `base` and `state` module styles for a parent selector 
 Generates the `base`, `focus`, `hover`, `hocus`, `state`, `reduced-motion` and `print` module styles for a pseudo selector class (in that order) while also adding the correct specificity.
 
 ```scss
-@mixin hu-pseudo($class-name, $pseudo-selectors, $one-or-multiple-modules) {
+@mixin hu-pseudo($class-name, $pseudo-selectors, $one-or-multiple-modules);
 
 @include hu-pseudo(hu-class-name(display-block), ("::before", ":first-child"), (base, reduced-motion)) {
-  display: block;
+  display: block #{hu-important()};
 }
 
 /* ->
@@ -1264,10 +1308,10 @@ Generates the responsive `base` and `state` module styles for a pseudo selector 
 *Note: it does not generate the required media queries, as they need to be [created in a specific manner as described below](#writing-the-class-logic).*
 
 ```scss
-@mixin hu-pseudo-responsive($class-name, $pseudo-selectors, $one-or-multiple-modules, $breakpoint-scale) {
+@mixin hu-pseudo-responsive($class-name, $pseudo-selectors, $one-or-multiple-modules, $breakpoint-scale);
 
 @include hu-pseudo-responsive(hu-class-name(display-block), ("::before", ":first-child"), (base, responsive), medium) {
-  display: block;
+  display: block #{hu-important()};
 }
 
 /* ->
@@ -1317,8 +1361,8 @@ Although the mixins described above can take a list of modules, to ensure the co
     // call hu-generic with the $class-name and $module
     @include hu-generic($class-name, $module) {
       // write your declarations, using $value as the CSS value
-      height: $value;
-      width: $value;
+      height: $value #{hu-important()};
+      width: $value #{hu-important()};
     }
   }
 }
@@ -1343,8 +1387,8 @@ The above loop doesn’t generate the responsive classes. If we generated them w
         // call hu-responsive with the $class-name, *all* modules and $bp-scale
         @include hu-responsive($class-name, $icon-size-modules, $bp-scale) {
           // write your declarations, using $value as the CSS value
-          height: $value;
-          width: $value;
+          height: $value #{hu-important()};
+          width: $value #{hu-important()};
         }
       }
     }
@@ -1409,8 +1453,8 @@ One benefit Hucssley has over other, similar libraries is that there is a define
     // call hu-pseudo with the $class-name, pseudo selectors and $module
     @include hu-pseudo($class-name, ("::before"), $module) {
       // write your declarations, using $value as the CSS value
-      height: $value;
-      width: $value;
+      height: $value #{hu-important()};
+      width: $value #{hu-important()};
     }
   }
 }
@@ -1431,8 +1475,8 @@ One benefit Hucssley has over other, similar libraries is that there is a define
         // call hu-pseudo responsive with the $class-name, pseudo selectors, *all* modules and $bp-scale
         @include hu-pseudo-responsive($class-name, ("::before"), $icon-size-modules, $bp-scale) {
           // write your declarations, using $value as the CSS value
-          height: $value;
-          width: $value;
+          height: $value #{hu-important()};
+          width: $value #{hu-important()};
         }
       }
     }
@@ -1497,8 +1541,8 @@ Similarly, custom parent classes can also easily be generated with the `hu-paren
     // call hu-parent with the $class-name, parent selectors and $module
     @include hu-parent($class-name, (browser-mobile), $module) {
       // write your declarations, using $value as the CSS value
-      height: $value;
-      width: $value;
+      height: $value #{hu-important()};
+      width: $value #{hu-important()};
     }
   }
 }
@@ -1519,8 +1563,8 @@ Similarly, custom parent classes can also easily be generated with the `hu-paren
         // call hu-parent-responsive with the $class-name, parent selectors, *all* modules and $bp-scale
         @include hu-parent-responsive($class-name, (browser-mobile), $icon-size-modules, $bp-scale) {
           // write your declarations, using $value as the CSS value
-          height: $value;
-          width: $value;
+          height: $value #{hu-important()};
+          width: $value #{hu-important()};
         }
       }
     }
@@ -1751,23 +1795,28 @@ The following shows how we can quickly use and customise a component’s appeara
 
 While all of Hucssley’s classes have an intentionally low specificity count, this could present issues if you’re integrating it in to an existing project.
 
-Luckily, since Hucssley is written in Sass, you can easily wrap your imports in a new selector to convert every class to use a descendent selector.
+Luckily, Hucssley provides two methods to increase the specificity:
+
+### Forcing `!important`
+
+Option one is to set `$hu-use-important: true;` anywhere before you `@import` the reset and class styles:
 
 ```scss
-@import "hucssley/src/helpers";
+$hu-use-important: true;
 
-@import "hucssley/src/variables/global/index";
-// @import "custom/variables/global/index";
+@import "path_to_node_modules/hucssley/src/styles";
+// @import "custom/classes/index";
+```
 
-@import "hucssley/src/variables/classes/index";
-// @import "custom/variables/classes/index";
-// set class overrides before if you don’t need access to the defaults & want changes to flow through referenced vars
+As [described earlier](#use-important-hu-use-important), this will add the `!important` rule to every declaration.
 
-@import "hucssley/src/variables/reset/index";
-// @import "custom/variables/reset/index";
+### Quarantining with a descendent selector
 
+Since Hucssley is written in Sass, you can easily wrap your imports in a new selector to convert every class to use a descendent selector.
+
+```scss
 .hucssley {
-  @import "hucssley/src/styles";
+  @import "path_to_node_modules/hucssley/src/styles";
   // @import "custom/classes/index";
 }
 ```
@@ -1793,7 +1842,7 @@ If this still doesn’t produce a high enough specificity bump, you can also use
 ```scss
 .hucssley {
   @include hu-bump-specificity(1) {
-    @import "hucssley/src/styles";
+    @import "path_to_node_modules/hucssley/src/styles";
     // @import "custom/classes/index";
   }
 }
@@ -1812,6 +1861,8 @@ which produces:
 
 …
 ```
+
+You could even use both methods together if you wanted to mega-raise your specificity count.
 
 ---
 
