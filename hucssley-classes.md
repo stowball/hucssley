@@ -1463,7 +1463,7 @@ svg-fill-color -> fill
 ```
 
 ```scss
-$hu-svg-fill-color-modules: $hu-bg-color-modules;
+$hu-svg-fill-color-modules: (base, group-hover);
 
 $hu-svg-fill-color-types: map-merge((current: (current: currentColor)), $hu-colors);
 ```
@@ -1489,7 +1489,7 @@ svg-stroke-color -> stroke
 ```
 
 ```scss
-$hu-svg-stroke-color-modules: $hu-bg-color-modules;
+$hu-svg-stroke-color-modules: $hu-svg-fill-color-modules;
 
 $hu-svg-stroke-color-types: $hu-svg-fill-color-types;
 ```

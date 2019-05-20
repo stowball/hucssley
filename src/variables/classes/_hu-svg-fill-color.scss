@@ -1,3 +1,3 @@
-$hu-svg-fill-color-modules: $hu-bg-color-modules !default;
+$hu-svg-fill-color-modules: (base, group-hover) !default;
 
 $hu-svg-fill-color-types: map-merge((current: (current: currentColor)), $hu-colors) !default;

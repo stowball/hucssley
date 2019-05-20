@@ -370,7 +370,7 @@ In the above example, we used a `browser-mobile__font-size-700` class name, whic
 
 Possible use cases are a browser detection library that may add `browser-mobile`, `browser-ie` etc to `<html>`, or an element/container queries alternative like [eqio](https://github.com/stowball/eqio), that adds classes such as `eqio->400` to a parent element, and would be targetable with `eqio->400__flex-direction-row` for example.
 
-For information, please read [Parent classes](#parent-classes-hu-parent-classes).
+For more information, please read [Parent classes](#parent-classes-hu-parent-classes).
 
 #### Combining modules: `responsive` and `group-state, state`
 
@@ -1868,7 +1868,7 @@ You could even use both methods together if you wanted to mega-raise your specif
 
 ## Controlling file size
 
-While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.8 MB. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 114 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
+While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.5 MB. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 98 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
 
 Hucssley is infinitely customisable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, breakpoints, and spacing scales will also help.
 
