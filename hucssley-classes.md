@@ -175,7 +175,7 @@ Will generate:
 
 #### Maps
 
-If using a map, the majority of class names will use the map keys as the class name suffix, and the map values as the CSS value. This allows you to customise the class names to suit your workflow, or fix [mistakes in CSS](https://wiki.csswg.org/ideas/mistakes).
+If using a map, the majority of class names will use the map keys as the class name suffix, and the map values as the CSS value. This allows you to customize the class names to suit your workflow, or fix [mistakes in CSS](https://wiki.csswg.org/ideas/mistakes).
 
 The following variable:
 
@@ -287,9 +287,9 @@ Hopefully you can see how the maps controlled the resultant class name format, p
 
 ## Configuring classes
 
-To customise the modules, types and scales used, you simply need to re-assign the relevant variable in a custom Sass stylesheet.
+To customize the modules, types and scales used, you simply need to re-assign the relevant variable in a custom Sass stylesheet.
 
-When importing and using Hucssley, we recommend taking this approach to customise and override existing classes and variables.
+When importing and using Hucssley, we recommend taking this approach to customize and override existing classes and variables.
 
 ```scss
 @import "hucssley/helpers";
@@ -310,7 +310,7 @@ When importing and using Hucssley, we recommend taking this approach to customis
 
 ## What's in the box?
 
-Below is a complete list of all the classes in Hucssley by default, and their individual configurations. You'll see that some classes reference the same variables, to make customising them to your specific project easier.
+Below is a complete list of all the classes in Hucssley by default, and their individual configurations. You'll see that some classes reference the same variables, to make customizing them to your specific project easier.
 
 *Note: Classes map 1:1 to with CSS properties unless otherwise specified.*
 

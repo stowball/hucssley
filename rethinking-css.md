@@ -36,7 +36,7 @@ While “thinking in components” (be it with help from a library like React or
 
 What if we could define an architecture whereby, at some threshold, the size of the final CSS would never increase as the project grows?
 
-Teams without dedicated UI Engineers also often reach for some kind pre-fabricated CSS UI framework, such as Bootstrap or Semantic UI, to get them building and realising UI quickly. While the initial development period is promising (foregoing the fact you’re now serving to users 200 colours and 20 components you’ll never use), bloat continues to worsen as you encounter the next problem…
+Teams without dedicated UI Engineers also often reach for some kind pre-fabricated CSS UI framework, such as Bootstrap or Semantic UI, to get them building and realising UI quickly. While the initial development period is promising (foregoing the fact you’re now serving to users 200 colors and 20 components you’ll never use), bloat continues to worsen as you encounter the next problem…
 
 ## Specificity wars
 
@@ -130,6 +130,6 @@ Hucssley has a few goals:
 2. To allow anyone of any skill to rapidly build for the web without unknowingly causing CSS bloat or fighting against some of CSS’s core, but sometimes difficult to understand, principals.
 3. To provide the tools required to build UI for any breakpoint, user interaction or UI state.
 4. To be completely platform agnostic and portable between front-end stacks, with Sass being the only dependency.
-5. To be highly flexible to your needs, with the ability to easily customise existing classes and create new ones.
+5. To be highly flexible to your needs, with the ability to easily customize existing classes and create new ones.
 
 For more information, please [read the docs](/README.md).

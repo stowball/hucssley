@@ -10,7 +10,7 @@ To that end, Hucssley has a few goals:
 2. To allow anyone of any skill to rapidly build for the web without unknowingly causing CSS bloat or fighting against some of CSS’s core, but sometimes difficult to understand principals.
 3. To provide the tools required to build UI for any breakpoint, user interaction or UI state.
 4. To be completely platform agnostic and portable between front-end stacks, with Sass being the only dependency.
-5. To be highly flexible to your needs, with the ability to easily customise existing classes and create new ones.
+5. To be highly flexible to your needs, with the ability to easily customize existing classes and create new ones.
 
 To understand the reasoning behind its creation, please read [Rethinking CSS](/rethinking-css.md).
 
@@ -53,7 +53,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
     - [Debug: `$hu-debug`](#debug-hu-debug)
   - [Classes](#classes)
 - [Creating custom classes](#creating-custom-classes)
-  - [Customising “placeholder” classes](#customising-placeholder-classes)
+  - [Customizing “placeholder” classes](#customizing-placeholder-classes)
   - [Creating new, “basic” classes](#creating-new-basic-classes)
     - [Generic classes: `hu-classes`](#generic-classes-hu-classes)
       - [Basic](#basic)
@@ -105,7 +105,7 @@ Hucssley also comes with:
 
 * A sensible, optional CSS reset to make building UI easier and more consistent.
 * Functions for converting `px` values to `em` and `rem` for improved accessibilty.
-* Functions to incrementally darken (`shade`) or lighten (`tint`) colours.
+* Functions to incrementally darken (`shade`) or lighten (`tint`) colors.
 * The ability to theme elements based off a parent selector.
 * The ability to create classes scoped to custom parent selectors.
 * The ability to create classes that map to pseudo-classes and pseudo-selectors.
@@ -224,7 +224,7 @@ If you want to use Hucssley as it comes, then it’s as simple as:
 @import "path_to_node_modules/hucssley/src/index";
 ```
 
-However, if you want to customise Hucssley, we recommend taking this approach:
+However, if you want to customize Hucssley, we recommend taking this approach:
 
 ```scss
 @import "path_to_node_modules/hucssley/src/helpers";
@@ -376,7 +376,7 @@ For more information, please read [Parent classes](#parent-classes-hu-parent-cla
 
 When a particular class is configured to use the `responsive` module, it will also output `state` and `group-state` classes should they have also been configured.
 
-Here the syntax is `bp-[responsive-scale]-[state-name]--[base-class]` for states, and `group__bp-[responsive-scale]-[state-name]--[class-name]`:
+Here the syntax is `bp-[responsive-scale]-[state-name]--[base-class]` for states, and `group__bp-[responsive-scale]-[state-name]--[base-class]`:
 
 ```css
 .bp-960-is-expanded--display-flex
@@ -385,7 +385,7 @@ Here the syntax is `bp-[responsive-scale]-[state-name]--[base-class]` for states
 
 ## Scales
 
-Where it makes sense, and compared with other libraries, Hucssley favours a millennial scale (`0` - `1000`) to represent values instead of “names” like `xxl`, `mama-bear` etc. This can of course be completely customised.
+Where it makes sense, and compared with other libraries, Hucssley favours a millennial scale (`0` - `1000`) to represent values instead of “names” like `xxl`, `mama-bear` etc. This can of course be completely customized.
 
 By default, the following classes use a millennial scale:
 
@@ -410,7 +410,7 @@ To override the default configuration in Hucssley, you’ll need to understand t
 
 Hucssley’s configuration is split in to 3 sections: `reset`, `global` and `classes`.
 
-* **Reset** configuration uses plain variables to customise “generic” styles like whether `box-sizing: border-box` should be used by default.
+* **Reset** configuration uses plain variables to customize “generic” styles like whether `box-sizing: border-box` should be used by default.
 * **Global** configuration mostly uses maps to handle things like the default responsive breakpoints, colors, spacings, UI states and themes.
 * **Classes** provides list and map variables to adjust the modules, and values for each class individually. Some classes (like those which deal with color) inherit from the same base variable by default, so only 1 change is required to affect all `border-color`, `background-color` and `color` classes. All classes can be generated at individual modules described above.
 
@@ -495,7 +495,7 @@ Will mix the specified `$color` with a `$percentage` of black.
 
 ### Reset
 
-Here is a list of variables and default values that are available to customise the CSS reset:
+Here is a list of variables and default values that are available to customize the CSS reset:
 
 ```scss
 $hu-reset: true;
@@ -518,7 +518,7 @@ Hopefully the variables are self explanatory, but if not, please [review the sou
 
 #### Colors: `$hu-colors`
 
-To get you started, Hucssley provides a generous palette of colours in the spectrum at multiple scales, as well as for keywords like `inherit` and `transparent`:
+To get you started, Hucssley provides a generous palette of colors in the spectrum at multiple scales, as well as for keywords like `inherit` and `transparent`:
 
 ```scss
 $hu-colors: (
@@ -583,7 +583,7 @@ $hu-colors: (
 
 **You can see the rendered palette here: https://codepen.io/stowball/full/JqbGvK**
 
-To customise the palette, you can either `hu-append` or `hu-prepend` other maps to complement the existing, or start fresh by re-assigning `$hu-colors` to a new map of colours entirely.
+To customize the palette, you can either `hu-append` or `hu-prepend` other maps to complement the existing, or start fresh by re-assigning `$hu-colors` to a new map of colors entirely.
 
 We recommend also `hu-append`ing `$hu-colors-keywords` to your brand new palette to ensure you can use classes like `bg-color-transparent` and `color-inherit`;
 
@@ -746,7 +746,7 @@ In conjunction with variables specific to each class name, classes like the foll
 
 #### Controlling focus: `$hu-hocus-focus-parent` and `$hu-hocus-focus-pseudo`
 
-By default, the `focus` and `hocus` modules generate classes which use a `:focus` pseudo-class. This can be customised, should you wish to use `:focus-visible` or even in conjunction with a polyfill.
+By default, the `focus` and `hocus` modules generate classes which use a `:focus` pseudo-class. This can be customized, should you wish to use `:focus-visible` or even in conjunction with a polyfill.
 
 ```scss
 $hu-focus-pseudo: ":focus-visible";
@@ -860,7 +860,7 @@ By setting `$hu-debug: true;` before `@import "path_to_node_modules/hucssley/src
 
 ### Classes
 
-Every class in Hucssley can be completely customised to individually change the properties, values and modules used.
+Every class in Hucssley can be completely customized to individually change the properties, values and modules used.
 
 **For details of all the classes provided by default and their configuration, please read [Hucssley classes](/hucssley-classes.md).**
 
@@ -870,7 +870,7 @@ Every class in Hucssley can be completely customised to individually change the 
 
 While Hucssley provides an abundance of classes out-of-the-box, there will absolutely be times where you need to create your own to achieve your desired UI, which is hopefully straight-forward to achieve.
 
-### Customising “placeholder” classes
+### Customizing “placeholder” classes
 
 Some of the default classes in Hucssley are merely provided as empty placeholders, because their usage is too specific to be generically useful for all projects. These placeholders help to reduce some of the “ceremony” needed with creating completely custom classes.
 
@@ -1076,7 +1076,7 @@ One benefit Hucssley has over other, similar libraries is that there is a define
 */
 ```
 
-As with `$hu-classes`, you can customise the class name by passing a map to `$property`, and you can create unique classes with multiple declarations by not proving a `$type` and passing in a `@content` block.
+As with `$hu-classes`, you can customize the class name by passing a map to `$property`, and you can create unique classes with multiple declarations by not proving a `$type` and passing in a `@content` block.
 
 #### Parent classes: `hu-parent-classes`
 
@@ -1114,7 +1114,7 @@ Another benefit of Hucssley is that you can easily create custom parent classes,
 */
 ```
 
-As with `$hu-classes`, you can customise the class name by passing a map to `$property`, and you can create unique classes with multiple declarations by not proving a `$type` and passing in a `@content` block.
+As with `$hu-classes`, you can customize the class name by passing a map to `$property`, and you can create unique classes with multiple declarations by not proving a `$type` and passing in a `@content` block.
 
 ### Creating new, “more complex” classes
 
@@ -1721,7 +1721,7 @@ Components with meaningful, semantic props that map to UI variations also reduce
 
 ### Using the component
 
-The following shows how we can quickly use and customise a component’s appearance by setting the appropriate props, **and** that we can customise the component on a per-instance basis by merging the passed in `class` attribute with the root component `class` (which happens automagically in Vue).
+The following shows how we can quickly use and customize a component’s appearance by setting the appropriate props, **and** that we can customize the component on a per-instance basis by merging the passed in `class` attribute with the root component `class` (which happens automagically in Vue).
 
 ```html
 <button-hu
