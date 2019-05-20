@@ -93,7 +93,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
 
 Currently, Hucssley provides utility classes for over 110 CSS properties, of which multiple, sensible default values are generated. Each utility is also created for various “modules”, whether that’s at certain breakpoints, UI states, user interactions, for print or more.
 
-Each utility is completely customisable; they can be partially renamed, have values changed, have their modules altered or be omitted entirely.
+Each utility is completely customizable; they can be partially renamed, have values changed, have their modules altered or be omitted entirely.
 
 By default, Hucssley does not output classes for things that don’t map explicitly to specific property types (such as `box-shadow`, background gradients and `transform`), but it does provide placeholder variables for these to make tailored, [custom classes simple to create](#creating-custom-classes).
 
@@ -1872,14 +1872,14 @@ You could even use both methods together if you wanted to mega-raise your specif
 
 While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.5 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 98 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
 
-Hucssley is infinitely customisable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, breakpoints, and spacing scales will also help.
+Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, breakpoints, and spacing scales will also help.
 
-However, we can do better. And do it automatically. By utilising [Purgecss](https://purgecss.com) and the following `extractor` you’ll be able to reduce your CSS output to only the classes that are used in your views:
+However, we can do better… and we can do it automatically. By utilizing [Purgecss](https://purgecss.com) and the following `extractor`, you’ll be able to reduce your CSS output to only the classes that are used in your views:
 
 ```js
 extractor: class {
   static extract(content) {
     return content.match(/(?:[A-Za-z0-9]|-|_|:|<|>|@)+/g) || [];
   }
-},
+}
 ```
