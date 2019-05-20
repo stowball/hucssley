@@ -1,14 +1,14 @@
 $hu-colors-keywords: (
-  inherit: (
-    inherit: inherit,
+  "inherit": (
+    "inherit": inherit,
   ),
-  transparent: (
-    transparent: transparent,
+  "transparent": (
+    "transparent": transparent,
   ),
 );
 
 $hu-colors: hu-append((
-  neutral: (
+  "neutral": (
     0: #ffffff,
     100: #e0e0e0,
     200: #c9c9c9,
@@ -21,7 +21,7 @@ $hu-colors: hu-append((
     900: #252525,
     1000: #1a1a1a,
   ),
-  red: (
+  "red": (
     100: #f9ecea,
     200: #f2c7c5,
     300: #ea9e9c,
@@ -33,7 +33,7 @@ $hu-colors: hu-append((
     900: #67211c,
     1000: #361110,
   ),
-  orange: (
+  "orange": (
     100: #faefea,
     200: #f4d5c6,
     300: #eeb89e,
@@ -45,7 +45,7 @@ $hu-colors: hu-append((
     900: #6a371f,
     1000: #371d11,
   ),
-  yellow: (
+  "yellow": (
     100: #fcfcec,
     200: #faf8ca,
     300: #f7f2a4,
@@ -57,7 +57,7 @@ $hu-colors: hu-append((
     900: #706d29,
     1000: #3b3a16,
   ),
-  green: (
+  "green": (
     100: #edfbf4,
     200: #cff8df,
     300: #aff4c9,
@@ -69,7 +69,7 @@ $hu-colors: hu-append((
     900: #356e46,
     1000: #1c3a25,
   ),
-  blue: (
+  "blue": (
     100: #ebf6fb,
     200: #ccebf8,
     300: #a8ddf4,
@@ -81,7 +81,7 @@ $hu-colors: hu-append((
     900: #2a556e,
     1000: #172e3a,
   ),
-  indigo: (
+  "indigo": (
     100: #ede9fa,
     200: #ccc5f6,
     300: #a79bf1,
@@ -93,7 +93,7 @@ $hu-colors: hu-append((
     900: #251a6b,
     1000: #141039,
   ),
-  violet: (
+  "violet": (
     100: #f8eafb,
     200: #eec7f7,
     300: #e39ff2,

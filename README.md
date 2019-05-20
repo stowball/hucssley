@@ -522,56 +522,56 @@ To get you started, Hucssley provides a generous palette of colors in the spectr
 
 ```scss
 $hu-colors: (
-  neutral: (
+  "neutral": (
     0: #ffffff,
     …
     500: #898989,
     …
     1000: #1a1a1a,
   ),
-  red: (
+  "red": (
     100: #f9ecea,
     …
     500: #d9524b,
     …
     1000: #361110,
   ),
-  orange: (
+  "orange": (
     100: #faefea,
     …
     500: #dc7d51,
     …
     1000: #371d11,
   ),
-  yellow: (
+  "yellow": (
     100: #fcfcec,
     …
     500: #e9e262,
     …
     1000: #3b3a16,
   ),
-  green: (
+  "green": (
     100: #edfbf4,
     …
     500: #7ae69a,
     …
     1000: #1c3a25,
   ),
-  blue: (
+  "blue": (
     100: #ebf6fb,
     …
     500: #67bbe5,
     …
     1000: #172e3a,
   ),
-  indigo: (
+  "indigo": (
     100: #ede9fa,
     …
     500: #5e4be1,
     …
     1000: #141039,
   ),
-  violet: (
+  "violet": (
     100: #f8eafb,
     …
     500: #cb54e3,
@@ -1870,7 +1870,7 @@ You could even use both methods together if you wanted to mega-raise your specif
 
 ## Controlling file size
 
-While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.5 MB. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 98 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
+While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.5 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 98 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
 
 Hucssley is infinitely customisable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, breakpoints, and spacing scales will also help.
 
