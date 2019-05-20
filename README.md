@@ -1082,6 +1082,8 @@ As with `$hu-classes`, you can customize the class name by passing a map to `$pr
 
 Another benefit of Hucssley is that you can easily create custom parent classes, such as being able to respond to a `has-js` class. It behaves similarly to `$hu-pseudo-classes`, but you instead pass in a list of 1 or more parent elements you want to generate classes for.
 
+*Note: `group-hover` and `group-state` modules are not used for custom parents.*
+
 ```
 @mixin hu-parent-classes($property, $parents, $modules, $types?);
 ```
@@ -1094,7 +1096,7 @@ Another benefit of Hucssley is that you can easily create custom parent classes,
   display: block;
 }
 
-.has-js .has-js__display-flex {
+.has-js .has-js__focus--display-block:focus {
   display: flex;
 }
 
@@ -1105,7 +1107,7 @@ Another benefit of Hucssley is that you can easily create custom parent classes,
     display: block;
   }
 
-  .has-js.is-active .has-js__bp-360-is-active--display-block {
+  .has-js .is-active.has-js__bp-360-is-active--display-block {
     display: block;
   }
 }

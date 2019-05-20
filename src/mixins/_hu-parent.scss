@@ -11,27 +11,27 @@
       }
 
       @else if ($module == focus) {
-        #{$hu-focus-parent} .#{$escaped-parent}#{$hu-focus-pseudo} .#{$escaped-child}__focus--#{$class-name} {
+        #{$hu-focus-parent} .#{$escaped-parent} .#{$escaped-child}__focus--#{$class-name}#{$hu-focus-pseudo} {
           @content;
         }
       }
 
       @else if ($module == hover) {
-        .#{$escaped-parent}:hover .#{$escaped-child}__hover--#{$class-name} {
+        .#{$escaped-parent} .#{$escaped-child}__hover--#{$class-name}:hover {
           @content;
         }
       }
 
       @else if ($module == hocus) {
-        #{$hu-focus-parent} .#{$escaped-parent}#{$hu-focus-pseudo} .#{$escaped-child}__hocus--#{$class-name},
-        .#{$escaped-parent}:hover .#{$escaped-child}__hocus--#{$class-name} {
+        #{$hu-focus-parent} .#{$escaped-parent} .#{$escaped-child}__hocus--#{$class-name}#{$hu-focus-pseudo},
+        .#{$escaped-parent} .#{$escaped-child}__hocus--#{$class-name}:hover {
           @content;
         }
       }
 
       @else if ($module == state) {
         @each $state in $hu-states {
-          .#{$escaped-parent}.#{$state} .#{$escaped-child}__#{$state}--#{$class-name} {
+          .#{$escaped-parent} .#{$state}.#{$escaped-child}__#{$state}--#{$class-name} {
             @content;
           }
         }

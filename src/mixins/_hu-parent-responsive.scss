@@ -12,7 +12,7 @@
 
       @if (index($modules, state)) {
         @each $state in $hu-states {
-          .#{$escaped-parent}.#{$state} .#{$escaped-child}__bp-#{$bp-scale}-#{$state}--#{$class-name} {
+          .#{$escaped-parent} .#{$state}.#{$escaped-child}__bp-#{$bp-scale}-#{$state}--#{$class-name} {
             @content;
           }
         }
