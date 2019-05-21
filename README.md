@@ -1024,6 +1024,34 @@ You could also use this technique to add complex `@supports` feature queries:
 */
 ```
 
+Of course, just because you can’t provide a `$type` argument to the mixin, it doesn’t mean you’re restricted from creating multiple classes, since you can easily wrap it in its own `@each` loop:
+
+```scss
+// if $types was map, also extract the $value variable and use that in the mixin's @content
+@each $type in $hu-blend-mode-types {
+  @include hu-classes(supports-blend-mode-#{$type}, $hu-blend-mode-modules) {
+    @supports (mix-blend-mode: #{$type}) {
+      mix-blend-mode: $type;
+    }
+  }
+}
+
+/* ->
+@supports (mix-blend-mode: color) {
+  .supports-blend-mode-color {
+    mix-blend-mode: color;
+  }
+}
+
+@supports (mix-blend-mode: color-burn) {
+  .supports-blend-mode-color-burn {
+    mix-blend-mode: color-burn;
+  }
+}
+
+…
+```
+
 #### Pseudo classes: `hu-pseudo-classes`
 
 One benefit Hucssley has over other, similar libraries is that there is a defined method for easily creating pseudo classes. It behaves similarly to `$hu-classes`, but you also pass in a list of 1 or more pseudo elements you want to generate classes for.
