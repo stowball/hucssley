@@ -1236,7 +1236,7 @@ $hu-momentum-scrolling-modules: (base);
 ### hu-opacity
 
 ```scss
-$hu-opacity-modules: (base);
+$hu-opacity-modules: (base, focus, hover, hocus, group-hover, group-state, state);
 
 $hu-opacity-types: (
   0: 0,
