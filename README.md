@@ -915,6 +915,8 @@ This mixin generates all of the normal classes for a specific property, modules 
 
 It takes a `$property`, which can be either a CSS property or a map, a list of `$modules` and an optional list or map of `$types`. It also accepts `@content` if no `$types` are supplied.
 
+*Note: This mixin is a wrapper around two other mixins, `hu-generic-classes()` and `hu-responsive-classes()`, which take exactly the same arguments.*
+
 ##### Basic
 
 ```scss
@@ -1052,6 +1054,8 @@ Of course, just because you can’t provide a `$type` argument to the mixin, it 
 …
 ```
 
+If your custom utilities also needs to support the `responsive` module, then you won’t be able to use the above method exactly. You can change `@include hu-classes` to `@include hu-generic-classes`, and also manually create the responsive classes using `hu-responsive()` as described in [Writing custom class logic](#writing-the-class-logic).
+
 #### Pseudo classes: `hu-pseudo-classes`
 
 One benefit Hucssley has over other, similar libraries is that there is a defined method for easily creating pseudo classes. It behaves similarly to `$hu-classes`, but you also pass in a list of 1 or more pseudo elements you want to generate classes for.
@@ -1059,6 +1063,8 @@ One benefit Hucssley has over other, similar libraries is that there is a define
 ```
 @mixin hu-pseudo-classes($property, $pseudos, $modules, $types?);
 ```
+
+This mixin is a wrapper around two other mixins, `hu-pseudo-generic-classes()` and `hu-pseudo-responsive-classes()`, which take exactly the same arguments.
 
 ```scss
 @include hu-pseudo-classes(display, ("::before", ":first-child"), $hu-display-modules, $hu-display-types);
@@ -1115,6 +1121,8 @@ Another benefit of Hucssley is that you can easily create custom parent classes,
 ```
 @mixin hu-parent-classes($property, $parents, $modules, $types?);
 ```
+
+This mixin is a wrapper around two other mixins, `hu-parent-generic-classes()` and `hu-parent-responsive-classes()`, which take exactly the same arguments.
 
 ```scss
 @include hu-parent-classes(display, (has-js), $hu-display-modules, $hu-display-types);
