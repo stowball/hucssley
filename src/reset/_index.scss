@@ -129,6 +129,9 @@
   a {
     display: inline-block #{hu-important()};
     text-decoration: none #{hu-important()};
+    @if ($hu-reset-text-decoration-skip-ink != auto) {
+      text-decoration-skip-ink: $hu-reset-text-decoration-skip-ink #{hu-important()};
+    }
   }
 
   b,
