@@ -1,4 +1,4 @@
-@function hu-get($original-map, $keys: null, $ignore-null: false, $stack-trace-name: null) {
+@function hu-get($original-map, $keys: null, $stack-trace-name: null) {
   $map: $original-map;
 
   @if ($keys) {
