@@ -319,7 +319,7 @@ When you want to use class names scoped to “non-parent” modules, it follows 
 .print--flex-direction-column
 ```
 
-In the above example, `hocus` is shortcut module for `:hover, :focus`, and `mq-768` is for a `(min-width: 768px)` breakpoint.
+In the above example, `hocus` is shortcut module for `:hover, :focus`, and `mq-768` is for a `(min-width: 768px)` media query.
 
 #### State modules: `state`
 
@@ -1365,7 +1365,7 @@ Generates the responsive `base`, `state` and `group-state` module styles for a c
 *Note: it does not generate the required media queries, as they need to be [created in a specific manner as described below](#writing-the-class-logic).*
 
 ```scss
-@mixin hu-responsive($class-name, $one-or-multiple-modules, $breakpoint-scale);
+@mixin hu-responsive($class-name, $one-or-multiple-modules, $media-query-scale);
 
 @include hu-responsive(hu-class-name(display-block), (base, responsive, state), medium) {
   display: block #{hu-important()};
@@ -1421,7 +1421,7 @@ Generates the responsive `base` and `state` module styles for a parent selector 
 *Note: it does not generate the required media queries, as they need to be [created in a specific manner as described below](#writing-the-class-logic).*
 
 ```scss
-@mixin hu-parent-responsive($class-name, $parent-selectors, $one-or-multiple-modules, $breakpoint-scale, $child-string-to-strip?);
+@mixin hu-parent-responsive($class-name, $parent-selectors, $one-or-multiple-modules, $media-query-scale, $child-string-to-strip?);
 
 @include hu-parent-responsive(hu-class-name(display-block), (browser-edge, browser-ie), (base, responsive), medium) {
   display: block #{hu-important()};
@@ -1479,7 +1479,7 @@ Generates the responsive `base` and `state` module styles for a pseudo selector 
 *Note: it does not generate the required media queries, as they need to be [created in a specific manner as described below](#writing-the-class-logic).*
 
 ```scss
-@mixin hu-pseudo-responsive($class-name, $pseudo-selectors, $one-or-multiple-modules, $breakpoint-scale);
+@mixin hu-pseudo-responsive($class-name, $pseudo-selectors, $one-or-multiple-modules, $media-query-scale);
 
 @include hu-pseudo-responsive(hu-class-name(display-block), ("::before", ":first-child"), (base, responsive), medium) {
   display: block #{hu-important()};
@@ -1544,9 +1544,9 @@ The above loop doesn’t generate the responsive classes. If we generated them w
 ```scss
 // only try this if responsive is a module
 @if index($icon-size-modules, responsive) {
-  // extract $mq-scale and $mq-value variables for each breakpoint
+  // extract $mq-scale and $mq-value variables for each media query
   @each $mq-scale, $mq-value in $hu-media-queries {
-    // call the media-query mixin with $mq-value, which supports breakpoint values as min/max maps
+    // call the media-query mixin with $mq-value, which supports media query values as min-h/max-w maps
     @include hu-media-query($mq-value) {
       // loop through and extract $type & $value variables from each item in $types
       @each $type, $value in $icon-size-types {
@@ -1632,9 +1632,9 @@ One benefit Hucssley has over other, similar libraries is that there is a define
 
 // only try this if responsive is a module
 @if index($icon-size-modules, responsive) {
-  // extract $mq-scale and $mq-value variables for each breakpoint
+  // extract $mq-scale and $mq-value variables for each media query
   @each $mq-scale, $mq-value in $hu-media-queries {
-    // call the media-query mixin with $mq-value, which supports breakpoint values as min/max maps
+    // call the media-query mixin with $mq-value, which supports media query values as min-h/max-w maps
     @include hu-media-query($mq-value) {
       // loop through and extract $type & $value variables from each item in $types
       @each $type, $value in $icon-size-types {
@@ -1720,9 +1720,9 @@ Similarly, custom parent classes can also easily be generated with the `hu-paren
 
 // only try this if responsive is a module
 @if index($icon-size-modules, responsive) {
-  // extract $mq-scale and $mq-value variables for each breakpoint
+  // extract $mq-scale and $mq-value variables for each media query
   @each $mq-scale, $mq-value in $hu-media-queries {
-    // call the media-query mixin with $mq-value, which supports breakpoint values as min/max maps
+    // call the media-query mixin with $mq-value, which supports media query values as min-h/max-w maps
     @include hu-media-query($mq-value) {
       // loop through and extract $type & $value variables from each item in $types
       @each $type, $value in $icon-size-types {
