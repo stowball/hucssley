@@ -2,7 +2,7 @@
   $core-modules: hu-get-class-modules($modules, core, $modules);
   $pseudos: hu-get-class-modules($modules, pseudos, null);
   $parents: hu-get-class-modules($modules, parents, null);
-  
+
   @include hu-generic-classes($property, $core-modules, $types) {
     @content;
   }
@@ -10,17 +10,17 @@
   @include hu-responsive-classes($property, $core-modules, $types) {
     @content;
   }
-  
+
   @if ($pseudos) {
     @include hu-pseudo-generic-classes($property, $pseudos, $core-modules, $types) {
       @content;
     }
-    
+
     @include hu-pseudo-responsive-classes($property, $pseudos, $core-modules, $types) {
       @content;
     }
   }
-  
+
   @if ($parents) {
     @include hu-parent-generic-classes($property, $parents, $core-modules, $types) {
       @content;

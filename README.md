@@ -457,7 +457,7 @@ hu-get($hu-colors, neutral 1000);
 // -> #1a1a1a
 ```
 
-Grabs the value at a specific path within a map.
+Gets the value at a specific path within a map.
 
 #### `hu-em` and `hu-rem`
 
@@ -1096,7 +1096,7 @@ $hu-display-modules: (
   .bp-360-pseudo-before--display-block::before {
     display: block;
   }
-  
+
   .bp-360-pseudo-first-child--display-block:first-child {
     display: block;
   }

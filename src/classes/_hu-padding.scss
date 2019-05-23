@@ -48,7 +48,7 @@ $hu-padding-parents: hu-get-class-modules($hu-padding-modules, parents, null);
       }
     }
   }
-  
+
   @if (index($hu-padding-core-modules, responsive)) {
     @each $bp-scale, $bp-value in $hu-breakpoints {
       @include hu-media-query($bp-value) {
@@ -82,7 +82,7 @@ $hu-padding-parents: hu-get-class-modules($hu-padding-modules, parents, null);
       }
     }
   }
-  
+
   @if (index($hu-padding-core-modules, responsive)) {
     @each $bp-scale, $bp-value in $hu-breakpoints {
       @include hu-media-query($bp-value) {
