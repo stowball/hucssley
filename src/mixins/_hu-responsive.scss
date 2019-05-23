@@ -1,18 +1,18 @@
-@mixin hu-responsive($class-name, $modules, $bp-scale) {
+@mixin hu-responsive($class-name, $modules, $mq-scale) {
   @if (index($modules, base)) {
-    @include hu-responsive-base($class-name, $bp-scale) {
+    @include hu-responsive-base($class-name, $mq-scale) {
       @content;
     }
   }
 
   @if (index($modules, state)) {
-    @include hu-responsive-state($class-name, $bp-scale) {
+    @include hu-responsive-state($class-name, $mq-scale) {
       @content;
     }
   }
 
   @if (index($modules, group-state)) {
-    @include hu-responsive-group-state($class-name, $bp-scale) {
+    @include hu-responsive-group-state($class-name, $mq-scale) {
       @content;
     }
   }

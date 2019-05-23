@@ -1,26 +1,40 @@
-@mixin hu-media-query($breakpoint) {
-  @if (type-of($breakpoint) == map) {
-    $max-width: if(map-has-key($breakpoint, max), hu-get($breakpoint, max), null);
-    $min-width: if(map-has-key($breakpoint, min), hu-get($breakpoint, min), null);
+@mixin hu-media-query($query) {
+  @if (type-of($query) == map) {
+    $expressions: (
+      min-height: if(map-has-key($query, min-h), hu-get($query, min-h), null),
+      max-height: if(map-has-key($query, max-h), hu-get($query, max-h), null),
+      min-width: if(map-has-key($query, min-w), hu-get($query, min-w), null),
+      max-width: if(map-has-key($query, max-w), hu-get($query, max-w), null),
+      orientation: if(map-has-key($query, orientation), hu-get($query, orientation), null),
+    );
 
-    @if ($max-width and $min-width) {
-      @media (min-width: $min-width) and (max-width: $max-width) {
-        @content;
+    @if (map-has-key($query, other)) {
+      @each $other-expression in hu-get($query, other) {
+        $expressions: hu-append($expressions, $other-expression);
       }
     }
-    @else if ($max-width) {
-      @media (max-width: $max-width) {
-        @content;
+
+    $query: "";
+    $valid-expression-index: 0;
+
+    @each $expression-type, $expression-value in $expressions {
+      @if ($expression-value) {
+        @if ($valid-expression-index > 0) {
+          $query: $query + " and ";
+        }
+
+        $query: $query + "(#{$expression-type}: #{$expression-value})";
+
+        $valid-expression-index: $valid-expression-index + 1;
       }
     }
-    @else if ($min-width) {
-      @media (min-width: $min-width) {
-        @content;
-      }
+
+    @media #{unquote($query)} {
+      @content;
     }
   }
   @else {
-    @media (min-width: $breakpoint) {
+    @media (min-width: $query) {
       @content;
     }
   }

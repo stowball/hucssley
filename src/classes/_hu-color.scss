@@ -16,14 +16,14 @@ $hu-color-parents: hu-get-class-modules($hu-color-modules, parents, null);
 }
 
 @if (index($hu-color-core-modules, responsive)) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @include hu-media-query($bp-value) {
+  @each $mq-scale, $mq-value in $hu-media-queries {
+    @include hu-media-query($mq-value) {
       @each $hue, $colors in $hu-color-types {
         @each $scale, $value in $colors {
           $class-name: hu-class-name(color-#{$hue}-#{$scale});
           $property: color;
 
-          @include hu-responsive($class-name, $hu-color-core-modules, $bp-scale) {
+          @include hu-responsive($class-name, $hu-color-core-modules, $mq-scale) {
             #{$property}: $value #{hu-important()};
           }
         }
@@ -47,14 +47,14 @@ $hu-color-parents: hu-get-class-modules($hu-color-modules, parents, null);
   }
 
   @if (index($hu-color-core-modules, responsive)) {
-    @each $bp-scale, $bp-value in $hu-breakpoints {
-      @include hu-media-query($bp-value) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
         @each $hue, $colors in $hu-color-types {
           @each $scale, $value in $colors {
             $class-name: hu-class-name(color-#{$hue}-#{$scale});
             $property: color;
 
-            @include hu-pseudo-responsive($class-name, $hu-color-pseudos, $hu-color-core-modules, $bp-scale) {
+            @include hu-pseudo-responsive($class-name, $hu-color-pseudos, $hu-color-core-modules, $mq-scale) {
               #{$property}: $value #{hu-important()};
             }
           }
@@ -79,14 +79,14 @@ $hu-color-parents: hu-get-class-modules($hu-color-modules, parents, null);
   }
 
   @if (index($hu-color-core-modules, responsive)) {
-    @each $bp-scale, $bp-value in $hu-breakpoints {
-      @include hu-media-query($bp-value) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
         @each $hue, $colors in $hu-color-types {
           @each $scale, $value in $colors {
             $class-name: hu-class-name(color-#{$hue}-#{$scale});
             $property: color;
 
-            @include hu-parent-responsive($class-name, $hu-color-parents, $hu-color-core-modules, $bp-scale) {
+            @include hu-parent-responsive($class-name, $hu-color-parents, $hu-color-core-modules, $mq-scale) {
               #{$property}: $value #{hu-important()};
             }
           }

@@ -1,17 +1,17 @@
-@mixin hu-pseudo-responsive($class-name, $pseudos, $modules, $bp-scale) {
+@mixin hu-pseudo-responsive($class-name, $pseudos, $modules, $mq-scale) {
   @if (index($modules, responsive)) {
     @each $pseudo in $pseudos {
       $pseudo-class-name: #{pseudo}-#{hu-string-replace($pseudo, ":", "")};
 
       @if (index($modules, base)) {
-        .bp-#{$bp-scale}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+        .mq-#{$mq-scale}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
           @content;
         }
       }
 
       @if (index($modules, state)) {
         @each $state in $hu-states {
-          .#{$state}.bp-#{$bp-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+          .#{$state}.mq-#{$mq-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @content;
           }
         }
@@ -19,7 +19,7 @@
 
       @if (index($modules, group-state)) {
         @each $state in $hu-states {
-          .group.#{$state} .group__bp-#{$bp-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+          .group.#{$state} .group__mq-#{$mq-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @content;
           }
         }

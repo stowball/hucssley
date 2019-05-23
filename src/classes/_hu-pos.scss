@@ -18,13 +18,13 @@ $hu-pos-parents: hu-get-class-modules($hu-pos-modules, parents, null);
 }
 
 @if (index($hu-pos-core-modules, responsive)) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @include hu-media-query($bp-value) {
+  @each $mq-scale, $mq-value in $hu-media-queries {
+    @include hu-media-query($mq-value) {
       @each $scale, $value in $hu-pos-scale {
         @each $type, $properties in $hu-pos-types {
           $class-name: hu-class-name(#{$type}-#{$scale});
 
-          @include hu-responsive($class-name, $hu-pos-core-modules, $bp-scale) {
+          @include hu-responsive($class-name, $hu-pos-core-modules, $mq-scale) {
             @each $property in $properties {
               #{$property}: $value #{hu-important()};
             }
@@ -51,13 +51,13 @@ $hu-pos-parents: hu-get-class-modules($hu-pos-modules, parents, null);
   }
 
   @if (index($hu-pos-core-modules, responsive)) {
-    @each $bp-scale, $bp-value in $hu-breakpoints {
-      @include hu-media-query($bp-value) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
         @each $scale, $value in $hu-pos-scale {
           @each $type, $properties in $hu-pos-types {
             $class-name: hu-class-name(#{$type}-#{$scale});
 
-            @include hu-pseudo-responsive($class-name, $hu-pos-pseudos, $hu-pos-core-modules, $bp-scale) {
+            @include hu-pseudo-responsive($class-name, $hu-pos-pseudos, $hu-pos-core-modules, $mq-scale) {
               @each $property in $properties {
                 #{$property}: $value #{hu-important()};
               }
@@ -85,13 +85,13 @@ $hu-pos-parents: hu-get-class-modules($hu-pos-modules, parents, null);
   }
 
   @if (index($hu-pos-core-modules, responsive)) {
-    @each $bp-scale, $bp-value in $hu-breakpoints {
-      @include hu-media-query($bp-value) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
         @each $scale, $value in $hu-pos-scale {
           @each $type, $properties in $hu-pos-types {
             $class-name: hu-class-name(#{$type}-#{$scale});
 
-            @include hu-parent-responsive($class-name, $hu-pos-parents, $hu-pos-core-modules, $bp-scale) {
+            @include hu-parent-responsive($class-name, $hu-pos-parents, $hu-pos-core-modules, $mq-scale) {
               @each $property in $properties {
                 #{$property}: $value #{hu-important()};
               }

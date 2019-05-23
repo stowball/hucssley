@@ -19,13 +19,13 @@ $hu-border-width-parents: hu-get-class-modules($hu-border-width-modules, parents
 }
 
 @if (index($hu-border-width-core-modules, responsive)) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @include hu-media-query($bp-value) {
+  @each $mq-scale, $mq-value in $hu-media-queries {
+    @include hu-media-query($mq-value) {
       @each $scale, $value in $hu-border-width-scale {
         @each $type, $properties in $hu-border-width-types {
           $class-name: hu-class-name(#{$side-type}-width-#{$type});
 
-          @include hu-responsive($class-name, $hu-border-width-core-modules, $bp-scale) {
+          @include hu-responsive($class-name, $hu-border-width-core-modules, $mq-scale) {
             @each $property in $properties {
               #{$property}: $value #{hu-important()};
             }
@@ -54,13 +54,13 @@ $hu-border-width-parents: hu-get-class-modules($hu-border-width-modules, parents
   }
 
   @if (index($hu-border-width-core-modules, responsive)) {
-    @each $bp-scale, $bp-value in $hu-breakpoints {
-      @include hu-media-query($bp-value) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
         @each $scale, $value in $hu-border-width-scale {
           @each $type, $properties in $hu-border-width-types {
             $class-name: hu-class-name(#{$side-type}-width-#{$type});
 
-            @include hu-pseudo-responsive($class-name, $hu-border-width-pseudos, $hu-border-width-core-modules, $bp-scale) {
+            @include hu-pseudo-responsive($class-name, $hu-border-width-pseudos, $hu-border-width-core-modules, $mq-scale) {
               @each $property in $properties {
                 #{$property}: $value #{hu-important()};
               }
@@ -90,13 +90,13 @@ $hu-border-width-parents: hu-get-class-modules($hu-border-width-modules, parents
   }
 
   @if (index($hu-border-width-core-modules, responsive)) {
-    @each $bp-scale, $bp-value in $hu-breakpoints {
-      @include hu-media-query($bp-value) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
         @each $scale, $value in $hu-border-width-scale {
           @each $type, $properties in $hu-border-width-types {
             $class-name: hu-class-name(#{$side-type}-width-#{$type});
 
-            @include hu-parent-responsive($class-name, $hu-border-width-parents, $hu-border-width-core-modules, $bp-scale) {
+            @include hu-parent-responsive($class-name, $hu-border-width-parents, $hu-border-width-core-modules, $mq-scale) {
               @each $property in $properties {
                 #{$property}: $value #{hu-important()};
               }

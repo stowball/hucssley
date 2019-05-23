@@ -42,7 +42,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
   - [Reset](#reset)
   - [Global](#global)
     - [Colors: `$hu-colors`](#colors-hu-colors)
-    - [Responsive breakpoints: `$hu-breakpoints`](#responsive-breakpoints-hu-breakpoints)
+    - [Media queries: `$hu-media-queries`](#media-queries-hu-media-queries)
     - [UI states: `$hu-states`](#ui-states-hu-states)
     - [Spacing scale: `$hu-spacing-scale`](#spacing-scale-hu-spacing-scale)
     - [Borders: `$hu-border-modules`, `$hu-border-sides` and `$hu-border-types`](#borders-hu-border-modules-hu-border-sides-and-hu-border-types)
@@ -93,7 +93,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
 
 ## What’s in the box?
 
-Currently, Hucssley provides utility classes for over 110 CSS properties, of which multiple, sensible default values are generated. Each utility is also created for various “modules”, whether that’s at certain breakpoints, UI states, user interactions, for print or more.
+Currently, Hucssley provides utility classes for over 110 CSS properties, of which multiple, sensible default values are generated. Each utility is also created for various “modules”, whether that’s at certain media queries, UI states, user interactions, for print or more.
 
 Each utility is completely customizable; they can be partially renamed, have values changed, have their modules altered or be omitted entirely.
 
@@ -134,8 +134,8 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
     flex-direction-column
     padding-500
     text-align-center
-    bp-768--flex-direction-row
-    bp-768--text-align-left
+    mq-768--flex-direction-row
+    mq-768--text-align-left
   ">
    <img
       alt=""
@@ -147,10 +147,10 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
         border-width-200
         margin-b-400
         width-50
-        bp-600--width-30
-        bp-768--margin-b-0
-        bp-768--margin-r-500
-        bp-768--width-20
+        mq-600--width-30
+        mq-768--margin-b-0
+        mq-768--margin-r-500
+        mq-768--width-20
       "
       src="https://hireup.cdn.prismic.io/hireup/89e15301c28e6396927d85e38e9c5d5833ebab09_kyle_357-bonnie.png"
     />
@@ -160,7 +160,7 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
         font-weight-700
         line-height-200
         margin-b-400
-        bp-768--font-size-800
+        mq-768--font-size-800
       ">
         Disability support workers who love what you love
       </p>
@@ -175,9 +175,9 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
           transition-duration-200
           transition-easing-ease
           transition-property-all
-          bp-768--font-size-600
-          bp-768--padding-h-500
-          bp-768--padding-v-400
+          mq-768--font-size-600
+          mq-768--padding-h-500
+          mq-768--padding-v-400
           hocus--bg-color-blue-600
           hocus--scale-105
         "
@@ -314,12 +314,12 @@ If the last two words separated by a hyphen are identical, then the last word wi
 When you want to use class names scoped to “non-parent” modules, it follows a pattern of `[module-name][-module-variant])?--[base-class]`, for instance:
 
 ```css
-.bp-768--align-items-center
+.mq-768--align-items-center
 .hocus--color-neutral-1000
 .print--flex-direction-column
 ```
 
-In the above example, `hocus` is shortcut module for `:hover, :focus`, and `bp-768` is for a `(min-width: 768px)` breakpoint.
+In the above example, `hocus` is shortcut module for `:hover, :focus`, and `mq-768` is for a `(min-width: 768px)` breakpoint.
 
 #### State modules: `state`
 
@@ -382,11 +382,11 @@ For more information, please read [Parent classes](#parent-classes-hu-parent-cla
 
 When a particular class is configured to use the `responsive` module, it will also output `state` and `group-state` classes should they have also been configured.
 
-Here the syntax is `bp-[responsive-scale]-[state-name]--[base-class]` for states, and `group__bp-[responsive-scale]-[state-name]--[base-class]`:
+Here the syntax is `mq-[responsive-scale]-[state-name]--[base-class]` for states, and `group__mq-[responsive-scale]-[state-name]--[base-class]`:
 
 ```css
-.bp-960-is-expanded--display-flex
-.group__bp-1200-is-collapsed--height-0
+.mq-960-is-expanded--display-flex
+.group__mq-1200-is-collapsed--height-0
 ```
 
 ## Scales
@@ -417,7 +417,7 @@ To override the default configuration in Hucssley, you’ll need to understand t
 Hucssley’s configuration is split in to 3 sections: `reset`, `global` and `classes`.
 
 * **Reset** configuration uses plain variables to customize “generic” styles like whether `box-sizing: border-box` should be used by default.
-* **Global** configuration mostly uses maps to handle things like the default responsive breakpoints, colors, spacings, UI states and themes.
+* **Global** configuration mostly uses maps to handle things like the default media queries, colors, spacings, UI states and themes.
 * **Classes** provides list and map variables to adjust the modules, and values for each class individually. Some classes (like those which deal with color) inherit from the same base variable by default, so only 1 change is required to affect all `border-color`, `background-color` and `color` classes. All classes can be generated at individual modules described above.
 
 As detailed in the [Installation](#installation) section, there is a preferred way of organizing any configuration overrides.
@@ -631,12 +631,12 @@ $hu-colors: hu-append((
 ), $hu-colors-keywords);
 ```
 
-#### Responsive breakpoints: `$hu-breakpoints`
+#### Media queries: `$hu-media-queries`
 
 Out-of-the-box, Hucssley provides the following 7 breakpoint values, with all being output for every `responsive` class name. It can be modified or replaced entirely to suit your project.
 
 ```scss
-$hu-breakpoints: (
+$hu-media-queries: (
   360: hu-em(360),
   480: hu-em(480),
   600: hu-em(600),
@@ -647,37 +647,83 @@ $hu-breakpoints: (
 );
 ```
 
-If the value of an `$hu-breakpoints` key is a number, it will compile it to a `(min-width: [value])` media query.
+If the value of an `$hu-media-queries` key is a number, it will compile it to a `(min-width: [value])` media query.
 
-If, however, you provide a map which has keys named `min` or `max`, you can choose to output `(min-width)`, `(max-width)` or a combined `(min-width) and (max-width)` media query.
+If, however, you provide a map with any of the following keys: `min-h`, `max-h`, `min-w`, `max-w`, and `orientation`, then appropriate `(min-height)`, `(max-height)`, `(min-width)`, `(max-width)` and `(orientation)` media queries will be output.
+
+Another special `other` key is also supported, which, when supplied with a map of key/value pairs will also output those as media query conditions, which will allow you to target every kind of [feature](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Media_features).
+
+If multiple keys exist, each media query condition will be combined with the `and` operator.
 
 To demonstrate:
 
 ```scss
-$hu-breakpoints: (
-  until-359: (max: hu-em(359)),
-  360: (min: hu-em(360)),
-  "600-767": (min: hu-em(600), max: hu-em(767)),
+$hu-media-queries: (
+  600: hu-em(600),
+  min-h-200: (min-h: hu-em(200)),
+  max-h-400: (max-h: hu-em(400)),
+  min-w-300: (min-w: hu-em(300)),
+  max-w-500: (max-w: hu-em(500)),
+  min-w-300-max-w-500: (min-w: hu-em(300), max-w: hu-em(500)),
+  landscape: (orientation: landscape),
+  coarse: (other: (pointer: coarse)),
+  min-res-200: (other: (min-resolution: 200dpi)),
+  all: (
+    min-h: hu-em(200),
+    max-h: hu-em(400),
+    min-w: hu-em(300),
+    max-w: hu-em(500),
+    orientation: landscape,
+    other: (pointer: coarse, min-resolution: 200dpi)
+  ),
 );
 ```
 
-would generate the following `bp-` classes:
+would generate the following `mq-` classes:
 
 ```css
-@media (max-width: 22.4375em) {
-  bp-until-359--… { … }
+@media (min-width: 37.5em) {
+  .mq-600--… { … }
 }
 
-@media (min-width: 22.5em) {
-  bp-360--… { … }
+@media (min-height: 12.5em) {
+  .mq-min-h-200--… { … }
 }
 
-@media (min-width: 37.5em) and (max-width: 47.9375em) {
-  bp-600-767--… { … }
+@media (max-height: 25em) {
+  .mq-max-h-400--… { … }
+}
+
+@media (min-width: 18.75em) {
+  .mq-min-w-300--… { … }
+}
+
+@media (max-width: 31.25em) {
+  .mq-max-w-500--… { … }
+}
+
+@media (min-width: 18.75em) and (max-width: 31.25em) {
+  .mq-min-w-300-max-w-500--… { … }
+}
+
+@media (orientation: landscape) {
+  .mq-landscape--… { … }
+}
+
+@media (pointer: coarse) {
+  .mq-coarse--… { … }
+}
+
+@media (min-resolution: 200dpi) {
+  .mq-min-res-200--… { … }
+}
+
+@media (min-height: 12.5em) and (max-height: 25em) and (min-width: 18.75em) and (max-width: 31.25em) and (orientation: landscape) and (pointer: coarse) and (min-resolution: 200dpi) {
+  .mq-all--… { … }
 }
 ```
 
-Notice how, apart from the `bp-` prefix, Hucssley does not dictate the breakpoint class name format, so, should you wish to use ranges like `small` or `medium`, or device types like `tablet`, or `desktop`, it’s entirely up to you.
+Notice how, apart from the `mq-` prefix, Hucssley does not dictate the media query class name format, so, should you wish to use ranges like `small` or `medium`, or device types like `tablet`, or `desktop`, it’s entirely up to you.
 
 #### UI states: `$hu-states`
 
@@ -831,7 +877,7 @@ $hu-namespace: `hu-`;
 /* ->
 .hu-align-content-center {}
 …
-.bp-480--hu-flex-direction-column {}
+.mq-480--hu-flex-direction-column {}
 …
 .group__is-open--hu--display-flex {}
 ```
@@ -941,11 +987,11 @@ It takes a `$property`, which can be either a CSS property or a map, a list or m
 …
 
 @media (min-width: 22.5em) {
-  .bp-360--align-content-baseline {
+  .mq-360--align-content-baseline {
     align-content: baseline;
   }
 
-  .bp-360--align-content-center {
+  .mq-360--align-content-center {
     align-content: center;
   }
 }
@@ -1003,7 +1049,7 @@ By not proving a `$type` and passing in a `@content` block, you can create “on
 }
 
 @media (min-width: 22.5em) {
-  .bp-360--font-smoothing {
+  .mq-360--font-smoothing {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
   }
@@ -1093,11 +1139,11 @@ $hu-display-modules: (
 …
 
 @media (min-width: 22.5em) {
-  .bp-360-pseudo-before--display-block::before {
+  .mq-360-pseudo-before--display-block::before {
     display: block;
   }
 
-  .bp-360-pseudo-first-child--display-block:first-child {
+  .mq-360-pseudo-first-child--display-block:first-child {
     display: block;
   }
 }
@@ -1176,19 +1222,19 @@ This mixin is a wrapper around two other mixins, `hu-pseudo-generic-classes()` a
 …
 
 @media (min-width: 22.5em) {
-  .bp-360-pseudo-before--display-block::before {
+  .mq-360-pseudo-before--display-block::before {
     display: block;
   }
 
-  .bp-360-pseudo-first-child--display-block:first-child {
+  .mq-360-pseudo-first-child--display-block:first-child {
     display: block;
   }
 
-  .bp-360-pseudo-before--display-flex::before {
+  .mq-360-pseudo-before--display-flex::before {
     display: flex;
   }
 
-  .bp-360-pseudo-first-child--display-flex:first-child {
+  .mq-360-pseudo-first-child--display-flex:first-child {
     display: flex;
   }
 }
@@ -1226,11 +1272,11 @@ This mixin is a wrapper around two other mixins, `hu-parent-generic-classes()` a
 …
 
 @media (min-width: 22.5em) {
-  .has-js .has-js__bp-360--display-block {
+  .has-js .has-js__mq-360--display-block {
     display: block;
   }
 
-  .has-js .is-active.has-js__bp-360-is-active--display-block {
+  .has-js .is-active.has-js__mq-360-is-active--display-block {
     display: block;
   }
 }
@@ -1326,11 +1372,11 @@ Generates the responsive `base`, `state` and `group-state` module styles for a c
 }
 
 /* ->
-.bp-medium--hu-display-block {
+.mq-medium--hu-display-block {
   display: block;
 }
 
-.is-active.bp-medium-is-active--hu-display-block {
+.is-active.mq-medium-is-active--hu-display-block {
   display: block;
 }
 */
@@ -1382,11 +1428,11 @@ Generates the responsive `base` and `state` module styles for a parent selector 
 }
 
 /* ->
-.browser-edge .browser-edge__bp-medium--hu-display-block {
+.browser-edge .browser-edge__mq-medium--hu-display-block {
   display: block;
 }
 
-.browser-ie .browser-ie__bp-medium--hu-display-block {
+.browser-ie .browser-ie__mq-medium--hu-display-block {
   display: block;
 }
 */
@@ -1440,11 +1486,11 @@ Generates the responsive `base` and `state` module styles for a pseudo selector 
 }
 
 /* ->
-.bp-medium-pseudo-before--display-block::before {
+.mq-medium-pseudo-before--display-block::before {
   display: block;
 }
 
-.bp-medium-pseudo-first-child--display-block:first-child {
+.mq-medium-pseudo-first-child--display-block:first-child {
   display: block;
 }
 */
@@ -1498,10 +1544,10 @@ The above loop doesn’t generate the responsive classes. If we generated them w
 ```scss
 // only try this if responsive is a module
 @if index($icon-size-modules, responsive) {
-  // extract $bp-scale and $bp-value variables for each breakpoint
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    // call the media-query mixin with $bp-value, which supports breakpoint values as min/max maps
-    @include hu-media-query($bp-value) {
+  // extract $mq-scale and $mq-value variables for each breakpoint
+  @each $mq-scale, $mq-value in $hu-media-queries {
+    // call the media-query mixin with $mq-value, which supports breakpoint values as min/max maps
+    @include hu-media-query($mq-value) {
       // loop through and extract $type & $value variables from each item in $types
       @each $type, $value in $icon-size-types {
         // define the class name you want, including the $type
@@ -1509,8 +1555,8 @@ The above loop doesn’t generate the responsive classes. If we generated them w
         // ensure $value supports $types that are both lists and maps
         $value: if($value, $value, $type);
 
-        // call hu-responsive with the $class-name, *all* modules and $bp-scale
-        @include hu-responsive($class-name, $icon-size-modules, $bp-scale) {
+        // call hu-responsive with the $class-name, *all* modules and $mq-scale
+        @include hu-responsive($class-name, $icon-size-modules, $mq-scale) {
           // write your declarations, using $value as the CSS value
           height: $value #{hu-important()};
           width: $value #{hu-important()};
@@ -1535,30 +1581,30 @@ The output from these 2 blocks is:
 }
 
 @media (min-width: 22.5em) {
-  .bp-360--icon-size-100 {
+  .mq-360--icon-size-100 {
     height: 1rem;
     width: 1rem;
   }
 
-  .bp-360--icon-size-200 {
+  .mq-360--icon-size-200 {
     height: 1.5rem;
     width: 1.5rem;
   }
 }
 
 @media (min-width: 30em) {
-  .bp-480--icon-size-100 {
+  .mq-480--icon-size-100 {
     height: 1rem;
     width: 1rem;
   }
 
-  .bp-480--icon-size-200 {
+  .mq-480--icon-size-200 {
     height: 1.5rem;
     width: 1.5rem;
   }
 }
 
-// and all other breakpoints defined…
+// and all other media queries defined…
 ```
 
 ##### Creating custom pseudo classes
@@ -1586,10 +1632,10 @@ One benefit Hucssley has over other, similar libraries is that there is a define
 
 // only try this if responsive is a module
 @if index($icon-size-modules, responsive) {
-  // extract $bp-scale and $bp-value variables for each breakpoint
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    // call the media-query mixin with $bp-value, which supports breakpoint values as min/max maps
-    @include hu-media-query($bp-value) {
+  // extract $mq-scale and $mq-value variables for each breakpoint
+  @each $mq-scale, $mq-value in $hu-media-queries {
+    // call the media-query mixin with $mq-value, which supports breakpoint values as min/max maps
+    @include hu-media-query($mq-value) {
       // loop through and extract $type & $value variables from each item in $types
       @each $type, $value in $icon-size-types {
         // define the class name you want, including the $type
@@ -1597,8 +1643,8 @@ One benefit Hucssley has over other, similar libraries is that there is a define
         // ensure $value supports $types that are both lists and maps
         $value: if($value, $value, $type);
 
-        // call hu-pseudo responsive with the $class-name, pseudo selectors, *all* modules and $bp-scale
-        @include hu-pseudo-responsive($class-name, ("::before"), $icon-size-modules, $bp-scale) {
+        // call hu-pseudo responsive with the $class-name, pseudo selectors, *all* modules and $mq-scale
+        @include hu-pseudo-responsive($class-name, ("::before"), $icon-size-modules, $mq-scale) {
           // write your declarations, using $value as the CSS value
           height: $value #{hu-important()};
           width: $value #{hu-important()};
@@ -1623,30 +1669,30 @@ Generates the following:
 }
 
 @media (min-width: 22.5em) {
-  .bp-360-pseudo-before--icon-size-100::before {
+  .mq-360-pseudo-before--icon-size-100::before {
     height: 1rem;
     width: 1rem;
   }
 
-  .bp-360-pseudo-before--icon-size-200::before {
+  .mq-360-pseudo-before--icon-size-200::before {
     height: 1.5rem;
     width: 1.5rem;
   }
 }
 
 @media (min-width: 30em) {
-  .bp-480-pseudo-before--icon-size-100::before {
+  .mq-480-pseudo-before--icon-size-100::before {
     height: 1rem;
     width: 1rem;
   }
 
-  .bp-480-pseudo-before--icon-size-200::before {
+  .mq-480-pseudo-before--icon-size-200::before {
     height: 1.5rem;
     width: 1.5rem;
   }
 }
 
-// and all other breakpoints defined…
+// and all other media queries defined…
 ```
 
 ##### Creating custom parent classes
@@ -1674,10 +1720,10 @@ Similarly, custom parent classes can also easily be generated with the `hu-paren
 
 // only try this if responsive is a module
 @if index($icon-size-modules, responsive) {
-  // extract $bp-scale and $bp-value variables for each breakpoint
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    // call the media-query mixin with $bp-value, which supports breakpoint values as min/max maps
-    @include hu-media-query($bp-value) {
+  // extract $mq-scale and $mq-value variables for each breakpoint
+  @each $mq-scale, $mq-value in $hu-media-queries {
+    // call the media-query mixin with $mq-value, which supports breakpoint values as min/max maps
+    @include hu-media-query($mq-value) {
       // loop through and extract $type & $value variables from each item in $types
       @each $type, $value in $icon-size-types {
         // define the class name you want, including the $type
@@ -1685,8 +1731,8 @@ Similarly, custom parent classes can also easily be generated with the `hu-paren
         // ensure $value supports $types that are both lists and maps
         $value: if($value, $value, $type);
 
-        // call hu-parent-responsive with the $class-name, parent selectors, *all* modules and $bp-scale
-        @include hu-parent-responsive($class-name, (browser-mobile), $icon-size-modules, $bp-scale) {
+        // call hu-parent-responsive with the $class-name, parent selectors, *all* modules and $mq-scale
+        @include hu-parent-responsive($class-name, (browser-mobile), $icon-size-modules, $mq-scale) {
           // write your declarations, using $value as the CSS value
           height: $value #{hu-important()};
           width: $value #{hu-important()};
@@ -1711,28 +1757,28 @@ will generate the following:
 }
 
 @media (min-width: 22.5em) {
-  .browser-mobile .browser-mobile__bp-360--icon-size-100 {
+  .browser-mobile .browser-mobile__mq-360--icon-size-100 {
     height: 1rem;
     width: 1rem;
   }
-  .browser-mobile .browser-mobile__bp-360--icon-size-200 {
+  .browser-mobile .browser-mobile__mq-360--icon-size-200 {
     height: 1.5rem;
     width: 1.5rem;
   }
 }
 
 @media (min-width: 30em) {
-  .browser-mobile .browser-mobile__bp-480--icon-size-100 {
+  .browser-mobile .browser-mobile__mq-480--icon-size-100 {
     height: 1rem;
     width: 1rem;
   }
-  .browser-mobile .browser-mobile__bp-480--icon-size-200 {
+  .browser-mobile .browser-mobile__mq-480--icon-size-200 {
     height: 1.5rem;
     width: 1.5rem;
   }
 }
 
-// and all other breakpoints defined…
+// and all other media queries defined…
 ```
 
 ---
@@ -1995,7 +2041,7 @@ You could even use both methods together if you wanted to mega-raise your specif
 
 While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.3 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 96 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
 
-Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, breakpoints, and spacing scales will also help.
+Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, media queries, and spacing scales will also help.
 
 However, we can do better… and we can do it automatically. By utilizing [Purgecss](https://purgecss.com) and the following `extractor`, you’ll be able to reduce your CSS output to only the classes that are used in your views:
 

@@ -5,14 +5,14 @@
     $class-name-property: if(type-of($property) == map, nth(map-keys($property), 1), $property);
     $property: if(type-of($property) == map, nth(map-values($property), 1), $property);
 
-    @each $bp-scale, $bp-value in $hu-breakpoints {
-      @include hu-media-query($bp-value) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
         @if ($types) {
           @each $type, $value in $types {
             $class-name: hu-class-name(#{$class-name-property}-#{$type});
             $value: if($value, $value, $type);
 
-            @include hu-parent-responsive($class-name, $parents, $modules, $bp-scale, $child-string-to-strip) {
+            @include hu-parent-responsive($class-name, $parents, $modules, $mq-scale, $child-string-to-strip) {
               #{$property}: $value #{hu-important()};
             }
           }
@@ -20,7 +20,7 @@
         @else if ($content-exists) {
           $class-name: hu-class-name($class-name-property);
 
-          @include hu-parent-responsive($class-name, $parents, $modules, $bp-scale, $child-string-to-strip) {
+          @include hu-parent-responsive($class-name, $parents, $modules, $mq-scale, $child-string-to-strip) {
             @content;
           }
         }

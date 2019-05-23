@@ -16,14 +16,14 @@ $hu-scale-parents: hu-get-class-modules($hu-scale-modules, parents, null);
 }
 
 @if (index($hu-scale-core-modules, responsive)) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @include hu-media-query($bp-value) {
+  @each $mq-scale, $mq-value in $hu-media-queries {
+    @include hu-media-query($mq-value) {
       @each $type, $value in $hu-scale-types {
         $class-name: hu-class-name(scale-#{$type});
         $property: scale;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $hu-scale-core-modules, $bp-scale) {
+        @include hu-responsive($class-name, $hu-scale-core-modules, $mq-scale) {
           #{$property}: $value #{hu-important()};
         }
       }
@@ -45,14 +45,14 @@ $hu-scale-parents: hu-get-class-modules($hu-scale-modules, parents, null);
   }
 
   @if (index($hu-scale-core-modules, responsive)) {
-    @each $bp-scale, $bp-value in $hu-breakpoints {
-      @include hu-media-query($bp-value) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
         @each $type, $value in $hu-scale-types {
           $class-name: hu-class-name(scale-#{$type});
           $property: scale;
           $value: if($value, $value, $type);
 
-          @include hu-pseudo-responsive($class-name, $hu-scale-pseudos, $hu-scale-core-modules, $bp-scale) {
+          @include hu-pseudo-responsive($class-name, $hu-scale-pseudos, $hu-scale-core-modules, $mq-scale) {
             #{$property}: $value #{hu-important()};
           }
         }
@@ -75,14 +75,14 @@ $hu-scale-parents: hu-get-class-modules($hu-scale-modules, parents, null);
   }
 
   @if (index($hu-scale-core-modules, responsive)) {
-    @each $bp-scale, $bp-value in $hu-breakpoints {
-      @include hu-media-query($bp-value) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
         @each $type, $value in $hu-scale-types {
           $class-name: hu-class-name(scale-#{$type});
           $property: scale;
           $value: if($value, $value, $type);
 
-          @include hu-parent-responsive($class-name, $hu-scale-parents, $hu-scale-core-modules, $bp-scale) {
+          @include hu-parent-responsive($class-name, $hu-scale-parents, $hu-scale-core-modules, $mq-scale) {
             #{$property}: $value #{hu-important()};
           }
         }

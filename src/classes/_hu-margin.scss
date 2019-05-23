@@ -26,21 +26,21 @@ $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
 }
 
 @if (index($hu-margin-core-modules, responsive)) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @include hu-media-query($bp-value) {
+  @each $mq-scale, $mq-value in $hu-media-queries {
+    @include hu-media-query($mq-value) {
       @each $scale, $value in $hu-margin-scale {
         @each $type, $properties in $hu-margin-types {
           $class-name: hu-class-name(#{$type}-#{$scale});
           $class-name-negative: hu-class-name(#{$type}-n#{$scale});
 
-          @include hu-responsive($class-name, $hu-margin-core-modules, $bp-scale) {
+          @include hu-responsive($class-name, $hu-margin-core-modules, $mq-scale) {
             @each $property in $properties {
               #{$property}: $value #{hu-important()};
             }
           }
 
           @if (type-of($value) == number) {
-            @include hu-responsive($class-name-negative, $hu-margin-core-modules, $bp-scale) {
+            @include hu-responsive($class-name-negative, $hu-margin-core-modules, $mq-scale) {
               @each $property in $properties {
                 #{$property}: $value * -1;
               }
@@ -77,21 +77,21 @@ $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
   }
 
   @if (index($hu-margin-core-modules, responsive)) {
-    @each $bp-scale, $bp-value in $hu-breakpoints {
-      @include hu-media-query($bp-value) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
         @each $scale, $value in $hu-margin-scale {
           @each $type, $properties in $hu-margin-types {
             $class-name: hu-class-name(#{$type}-#{$scale});
             $class-name-negative: hu-class-name(#{$type}-n#{$scale});
 
-            @include hu-pseudo-responsive($class-name, $hu-margin-pseudos, $hu-margin-core-modules, $bp-scale) {
+            @include hu-pseudo-responsive($class-name, $hu-margin-pseudos, $hu-margin-core-modules, $mq-scale) {
               @each $property in $properties {
                 #{$property}: $value #{hu-important()};
               }
             }
 
             @if (type-of($value) == number) {
-              @include hu-pseudo-responsive($class-name-negative, $hu-margin-pseudos, $hu-margin-core-modules, $bp-scale) {
+              @include hu-pseudo-responsive($class-name-negative, $hu-margin-pseudos, $hu-margin-core-modules, $mq-scale) {
                 @each $property in $properties {
                   #{$property}: $value * -1;
                 }
@@ -129,21 +129,21 @@ $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
   }
 
   @if (index($hu-margin-core-modules, responsive)) {
-    @each $bp-scale, $bp-value in $hu-breakpoints {
-      @include hu-media-query($bp-value) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
         @each $scale, $value in $hu-margin-scale {
           @each $type, $properties in $hu-margin-types {
             $class-name: hu-class-name(#{$type}-#{$scale});
             $class-name-negative: hu-class-name(#{$type}-n#{$scale});
 
-            @include hu-parent-responsive($class-name, $hu-margin-parents, $hu-margin-core-modules, $bp-scale) {
+            @include hu-parent-responsive($class-name, $hu-margin-parents, $hu-margin-core-modules, $mq-scale) {
               @each $property in $properties {
                 #{$property}: $value #{hu-important()};
               }
             }
 
             @if (type-of($value) == number) {
-              @include hu-parent-responsive($class-name-negative, $hu-margin-parents, $hu-margin-core-modules, $bp-scale) {
+              @include hu-parent-responsive($class-name-negative, $hu-margin-parents, $hu-margin-core-modules, $mq-scale) {
                 @each $property in $properties {
                   #{$property}: $value * -1;
                 }

@@ -17,14 +17,14 @@ $hu-svg-stroke-color-parents: hu-get-class-modules($hu-svg-stroke-color-modules,
 }
 
 @if (index($hu-svg-stroke-color-core-modules, responsive)) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @include hu-media-query($bp-value) {
+  @each $mq-scale, $mq-value in $hu-media-queries {
+    @include hu-media-query($mq-value) {
       @each $hue, $colors in $hu-svg-stroke-color-types {
         @each $scale, $value in $colors {
           $class-name: hu-class-name(svg-stroke-color-#{$hue}-#{$scale});
           $property: stroke;
 
-          @include hu-responsive($class-name, $hu-svg-stroke-color-core-modules, $bp-scale) {
+          @include hu-responsive($class-name, $hu-svg-stroke-color-core-modules, $mq-scale) {
             #{$property}: $value #{hu-important()};
           }
         }
@@ -48,14 +48,14 @@ $hu-svg-stroke-color-parents: hu-get-class-modules($hu-svg-stroke-color-modules,
   }
 
   @if (index($hu-svg-stroke-color-core-modules, responsive)) {
-    @each $bp-scale, $bp-value in $hu-breakpoints {
-      @include hu-media-query($bp-value) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
         @each $hue, $colors in $hu-svg-stroke-color-types {
           @each $scale, $value in $colors {
             $class-name: hu-class-name(svg-stroke-color-#{$hue}-#{$scale});
             $property: stroke;
 
-            @include hu-pseudo-responsive($class-name, $hu-svg-stroke-color-pseudos, $hu-svg-stroke-color-core-modules, $bp-scale) {
+            @include hu-pseudo-responsive($class-name, $hu-svg-stroke-color-pseudos, $hu-svg-stroke-color-core-modules, $mq-scale) {
               #{$property}: $value #{hu-important()};
             }
           }
@@ -80,14 +80,14 @@ $hu-svg-stroke-color-parents: hu-get-class-modules($hu-svg-stroke-color-modules,
   }
 
   @if (index($hu-svg-stroke-color-core-modules, responsive)) {
-    @each $bp-scale, $bp-value in $hu-breakpoints {
-      @include hu-media-query($bp-value) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
         @each $hue, $colors in $hu-svg-stroke-color-types {
           @each $scale, $value in $colors {
             $class-name: hu-class-name(svg-stroke-color-#{$hue}-#{$scale});
             $property: stroke;
 
-            @include hu-parent-responsive($class-name, $hu-svg-stroke-color-parents, $hu-svg-stroke-color-core-modules, $bp-scale) {
+            @include hu-parent-responsive($class-name, $hu-svg-stroke-color-parents, $hu-svg-stroke-color-core-modules, $mq-scale) {
               #{$property}: $value #{hu-important()};
             }
           }

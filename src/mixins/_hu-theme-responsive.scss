@@ -1,5 +1,5 @@
-@mixin hu-theme-responsive($class-name, $theme, $modules, $bp-scale) {
-  @include hu-parent-responsive($class-name, theme-#{$theme}, $modules, $bp-scale, "-" + $theme) {
+@mixin hu-theme-responsive($class-name, $theme, $modules, $mq-scale) {
+  @include hu-parent-responsive($class-name, theme-#{$theme}, $modules, $mq-scale, "-" + $theme) {
     @content;
   }
 }

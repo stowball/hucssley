@@ -16,14 +16,14 @@ $hu-translate-x-parents: hu-get-class-modules($hu-translate-x-modules, parents, 
 }
 
 @if (index($hu-translate-x-core-modules, responsive)) {
-  @each $bp-scale, $bp-value in $hu-breakpoints {
-    @include hu-media-query($bp-value) {
+  @each $mq-scale, $mq-value in $hu-media-queries {
+    @include hu-media-query($mq-value) {
       @each $type, $value in $hu-translate-x-types {
         $class-name: hu-class-name(translate-x-#{$type});
         $property: translate-x;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $hu-translate-x-core-modules, $bp-scale) {
+        @include hu-responsive($class-name, $hu-translate-x-core-modules, $mq-scale) {
           #{$property}: $value #{hu-important()};
         }
       }
@@ -45,14 +45,14 @@ $hu-translate-x-parents: hu-get-class-modules($hu-translate-x-modules, parents, 
   }
 
   @if (index($hu-translate-x-core-modules, responsive)) {
-    @each $bp-scale, $bp-value in $hu-breakpoints {
-      @include hu-media-query($bp-value) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
         @each $type, $value in $hu-translate-x-types {
           $class-name: hu-class-name(translate-x-#{$type});
           $property: translate-x;
           $value: if($value, $value, $type);
 
-          @include hu-pseudo-responsive($class-name, $hu-translate-x-pseudos, $hu-translate-x-core-modules, $bp-scale) {
+          @include hu-pseudo-responsive($class-name, $hu-translate-x-pseudos, $hu-translate-x-core-modules, $mq-scale) {
             #{$property}: $value #{hu-important()};
           }
         }
@@ -75,14 +75,14 @@ $hu-translate-x-parents: hu-get-class-modules($hu-translate-x-modules, parents, 
   }
 
   @if (index($hu-translate-x-core-modules, responsive)) {
-    @each $bp-scale, $bp-value in $hu-breakpoints {
-      @include hu-media-query($bp-value) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
         @each $type, $value in $hu-translate-x-types {
           $class-name: hu-class-name(translate-x-#{$type});
           $property: translate-x;
           $value: if($value, $value, $type);
 
-          @include hu-parent-responsive($class-name, $hu-translate-x-parents, $hu-translate-x-core-modules, $bp-scale) {
+          @include hu-parent-responsive($class-name, $hu-translate-x-parents, $hu-translate-x-core-modules, $mq-scale) {
             #{$property}: $value #{hu-important()};
           }
         }
