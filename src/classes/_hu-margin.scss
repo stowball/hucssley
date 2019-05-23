@@ -1,6 +1,6 @@
 @each $module in hu-format-modules($hu-margin-modules) {
-  @each $type, $properties in $hu-margin-types {
-    @each $scale, $value in $hu-margin-scale {
+  @each $scale, $value in $hu-margin-scale {
+    @each $type, $properties in $hu-margin-types {
       $class-name: hu-class-name(#{$type}-#{$scale});
       $class-name-negative: hu-class-name(#{$type}-n#{$scale});
 

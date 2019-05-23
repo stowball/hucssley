@@ -1,5 +1,5 @@
 @mixin hu-bump-specificity($specificity: 2) {
-  $selector: #{&};
+  $selector: &;
 
   @for $i from 1 through $specificity {
     $selector: #{$selector}#{&};
