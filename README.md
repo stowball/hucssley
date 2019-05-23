@@ -59,6 +59,8 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
       - [Basic](#basic)
       - [Custom class name](#custom-class-name)
       - [Unique class with multiple declarations](#unique-class-with-multiple-declarations)
+      - [Pseudo classes](#pseudo-classes)
+      - [Parent classes](#parent-classes)
     - [Pseudo classes: `hu-pseudo-classes`](#pseudo-classes-hu-pseudo-classes)
     - [Parent classes: `hu-parent-classes`](#parent-classes-hu-parent-classes)
   - [Creating new, “more complex” classes](#creating-new-more-complex-classes)
@@ -248,6 +250,10 @@ However, if you want to customize Hucssley, we recommend taking this approach:
 ## Syntax
 
 ### Modules
+
+The following core modules are available for all classes: `base`, `focus`, `hover`, `hocus`, `state`, `group-hover`, `group-state`, `reduced-motion`, and `print`.
+
+You can also use modules to generate pseudo and custom parent classes. Please read [Understanding class configuration: Modules](/hucssley-classes.md#modules) and [Generic classes: `hu-classes`](#generic-classes-hu-classes) for more information.
 
 #### Base: `base`
 
@@ -913,9 +919,10 @@ This mixin generates all of the normal classes for a specific property, modules 
 @mixin hu-classes($property, $modules, $types?);
 ```
 
-It takes a `$property`, which can be either a CSS property or a map, a list of `$modules` and an optional list or map of `$types`. It also accepts `@content` if no `$types` are supplied.
+It takes a `$property`, which can be either a CSS property or a map, a list or map of `$modules` and an optional list or map of `$types`. It also accepts `@content` if no `$types` are supplied.
 
-*Note: This mixin is a wrapper around two other mixins, `hu-generic-classes()` and `hu-responsive-classes()`, which take exactly the same arguments.*
+*Note: This mixin is a wrapper around six other mixins, `hu-generic-classes()` and `hu-responsive-classes()`, `hu-pseudo-generic-classes()`, `hu-pseudo-responsive-classes()`, `hu-parent-generic-classes()` and `hu-parent-responsive-classes()
+`.*
 
 ##### Basic
 
@@ -1056,9 +1063,89 @@ Of course, just because you can’t provide a `$type` argument to the mixin, it 
 
 If your custom utilities also needs to support the `responsive` module, then you won’t be able to use the above method exactly. You can change `@include hu-classes` to `@include hu-generic-classes`, and also manually create the responsive classes using `hu-responsive()` as described in [Writing custom class logic](#writing-the-class-logic).
 
+##### Pseudo classes
+
+One benefit Hucssley has over other, similar libraries is that there is a defined method for easily creating pseudo classes.
+
+If, as described in [Understanding class configuration: Advanced modules](/hucssley-classes.md#advanced-modules), you pass `$modules` as a map with a `pseudos` key, pseudo selector classes will also be generated for the complete list of modules.
+
+For example, given the following:
+
+```scss
+$hu-display-modules: (
+  core: $hu-display-modules,
+  pseudos: ("::before", ":first-child"),
+);
+
+@include hu-classes(display, $hu-display-modules, $hu-display-types);
+
+/* ->
+…
+
+.pseudo-before--display-block::before {
+  display: block;
+}
+
+.pseudo-first-child--display-block:first-child {
+  display: block;
+}
+
+…
+
+@media (min-width: 22.5em) {
+  .bp-360-pseudo-before--display-block::before {
+    display: block;
+  }
+  
+  .bp-360-pseudo-first-child--display-block:first-child {
+    display: block;
+  }
+}
+
+…
+*/
+```
+
+##### Parent classes
+
+Another benefit of Hucssley is that you can easily create custom parent classes, such as being able to respond to a `has-js` class. It behaves similarly to the above, but you instead provide a `parents` key with a list of one or more parent selector you want to generate classes for.
+
+```scss
+$hu-display-modules: (
+  core: $hu-display-modules,
+  parents: (has-js),
+);
+
+@include hu-classes(display, $hu-display-modules, $hu-display-types);
+
+/* ->
+…
+
+.has-js .has-js__display-block {
+  display: block;
+}
+
+.has-js .has-js__display-flex {
+  display: flex;
+}
+
+…
+
+.has-js .is-expanded.has-js__is-expanded--display-block {
+  display: block;
+}
+
+.has-js .is-expanded.has-js__is-expanded--display-flex {
+  display: flex;
+}
+
+…
+*/
+```
+
 #### Pseudo classes: `hu-pseudo-classes`
 
-One benefit Hucssley has over other, similar libraries is that there is a defined method for easily creating pseudo classes. It behaves similarly to `$hu-classes`, but you also pass in a list of 1 or more pseudo elements you want to generate classes for.
+While `hu-classes` will be suitable for most use cases, should you need, you can also explicitly create pseudo classes with the `hu-pseudo-classes()` mixin. It behaves similarly to `hu-classes()`, but it does not accept a map of modules, with you instead passing in a list of 1 or more pseudo elements you want to generate classes for.
 
 ```
 @mixin hu-pseudo-classes($property, $pseudos, $modules, $types?);
@@ -1114,7 +1201,7 @@ As with `$hu-classes`, you can customize the class name by passing a map to `$pr
 
 #### Parent classes: `hu-parent-classes`
 
-Another benefit of Hucssley is that you can easily create custom parent classes, such as being able to respond to a `has-js` class. It behaves similarly to `$hu-pseudo-classes`, but you instead pass in a list of 1 or more parent elements you want to generate classes for.
+While `hu-classes` will be suitable for most use cases, should you need, you can also explicitly create custom parent classes with the `hu-parent-classes()` mixin. It behaves similarly to `hu-pseudo-classes()`, but you instead pass in a list of 1 or more parent elements you want to generate classes for.
 
 *Note: `group-hover` and `group-state` modules are not used for custom parents.*
 

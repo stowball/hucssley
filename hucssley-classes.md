@@ -8,10 +8,11 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
 
 - [Understanding class configuration](#understanding-class-configuration)
   - [Modules](#modules)
-  - [Simple Types](#simple-types)
+    - [Advanced modules](#advanced-modules)
+  - [Simple types](#simple-types)
     - [Lists](#lists)
     - [Maps](#maps)
-  - [Complex types](#complex-types)
+  - [Advanced types](#advanced-types)
 - [Configuring classes](#configuring-classes)
 - [What's in the box?](#whats-in-the-box)
   - [hu-align-content](#hu-align-content)
@@ -137,9 +138,23 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
 
 Each class will have an appropriately named `$hu-[class-name]-modules` variable, which determines what module types (if any), it is generated for.
 
-Modules accepts a list of the following values: `(base, focus, hover, hocus, state, group-hover, group-state, reduced-motion, print)` or empty `()`. The order of the modules is not important, as Hucssley will intelligently order them for you to produce the desired output.
+The variable accepts either a list or map. If it is a list, it will accept the following values: `(base, focus, hover, hocus, state, group-hover, group-state, reduced-motion, print)` or empty `()`. The order of the modules is not important, as Hucssley will intelligently order them for you to produce the desired output.
 
-### Simple Types
+#### Advanced modules
+
+If the variable is a map, then it requires a property called `core` whose value is a list of modules as above. You can also provide keys of `parents` and `pseudos`, whose values will be a list of parent and pseudo selectors that will be generated for all of the `core` modules.
+
+For instance you could override the `display` classes like this:
+
+```scss
+$hu-display-modules: (
+  core: $hu-display-modules, // Use the existing list of modules as the `core` property
+  pseudos: ("::before", ":first-child"),
+  parents: (eqio-<400),
+);
+```
+
+### Simple types
 
 Each class will have an appropriately name `$hu-[class-name]-types` variable, which determines what class name suffixes and values that will be used.
 
@@ -205,7 +220,7 @@ Will generate:
 
 If a key/value pair is identical, the key will be automatically be omitted from the class name suffix, which is why `.flex-wrap` is created, instead of `flex-wrap-wrap`.
 
-### Complex types
+### Advanced types
 
 Some classes, also have a `$hu-[class-name]-scale` variable, in which case, they use both `$hu-[class-name]-types` and `$hu-[class-name]-scale` to determine the class name suffix, values **and CSS properties** generated.
 
