@@ -142,7 +142,7 @@ The variable accepts either a list or map. If it is a list, it will accept the f
 
 #### Advanced modules
 
-If the variable is a map, then it requires a property called `core` whose value is a list of modules as above. You can also provide keys of `parents` and `pseudos`, whose values will be a list of parent and pseudo selectors that will be generated for all of the `core` modules.
+If the variable is a map, it requires a property called `core` whose value is a list of modules as above. You can also provide keys of `parents` and `pseudos`, whose values will be a list of parent and pseudo selectors that will be generated for all of the `core` modules.
 
 For instance you could override the `display` classes like this:
 

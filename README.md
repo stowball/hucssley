@@ -1069,7 +1069,7 @@ One benefit Hucssley has over other, similar libraries is that there is a define
 
 If, as described in [Understanding class configuration: Advanced modules](/hucssley-classes.md#advanced-modules), you pass `$modules` as a map with a `pseudos` key, pseudo selector classes will also be generated for the complete list of modules.
 
-For example, given the following:
+For example:
 
 ```scss
 $hu-display-modules: (
@@ -1108,7 +1108,7 @@ $hu-display-modules: (
 
 ##### Parent classes
 
-Another benefit of Hucssley is that you can easily create custom parent classes, such as being able to respond to a `has-js` class. It behaves similarly to the above, but you instead provide a `parents` key with a list of one or more parent selector you want to generate classes for.
+Another benefit of Hucssley is that you can easily create custom parent classes, such as being able to respond to a `has-js` class. It behaves similarly to the above, but you instead provide a `parents` key with a list of one or more parent selectors you want to generate classes for.
 
 ```scss
 $hu-display-modules: (
@@ -1145,7 +1145,7 @@ $hu-display-modules: (
 
 #### Pseudo classes: `hu-pseudo-classes`
 
-While `hu-classes` will be suitable for most use cases, should you need, you can also explicitly create pseudo classes with the `hu-pseudo-classes()` mixin. It behaves similarly to `hu-classes()`, but it does not accept a map of modules, with you instead passing in a list of 1 or more pseudo elements you want to generate classes for.
+While `hu-classes` will be suitable for most use cases, should you need, you can also explicitly create pseudo classes with the `hu-pseudo-classes()` mixin. It behaves similarly to `hu-classes()`, but it does not accept a map of modules, with you instead passing in a list of one or more pseudo selectors you want to generate classes for.
 
 ```
 @mixin hu-pseudo-classes($property, $pseudos, $modules, $types?);
@@ -1201,7 +1201,7 @@ As with `$hu-classes`, you can customize the class name by passing a map to `$pr
 
 #### Parent classes: `hu-parent-classes`
 
-While `hu-classes` will be suitable for most use cases, should you need, you can also explicitly create custom parent classes with the `hu-parent-classes()` mixin. It behaves similarly to `hu-pseudo-classes()`, but you instead pass in a list of 1 or more parent elements you want to generate classes for.
+While `hu-classes` will be suitable for most use cases, should you need, you can also explicitly create custom parent classes with the `hu-parent-classes()` mixin. It behaves similarly to `hu-pseudo-classes()`, but you instead pass in a list of one or more parent elements you want to generate classes for.
 
 *Note: `group-hover` and `group-state` modules are not used for custom parents.*
 
