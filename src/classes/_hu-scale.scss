@@ -1,5 +1,9 @@
 // scale -> transform: scale
-@each $module in hu-format-modules($hu-scale-modules) {
+$hu-scale-core-modules: hu-get-class-modules($hu-scale-modules, core, $hu-scale-modules);
+$hu-scale-pseudos: hu-get-class-modules($hu-scale-modules, pseudos, null);
+$hu-scale-parents: hu-get-class-modules($hu-scale-modules, parents, null);
+
+@each $module in hu-format-modules($hu-scale-core-modules) {
   @each $type, $value in $hu-scale-types {
     $class-name: hu-class-name(scale-#{$type});
     $property: transform;
@@ -11,7 +15,7 @@
   }
 }
 
-@if (index($hu-scale-modules, responsive)) {
+@if (index($hu-scale-core-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
     @include hu-media-query($bp-value) {
       @each $type, $value in $hu-scale-types {
@@ -19,8 +23,68 @@
         $property: scale;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $hu-scale-modules, $bp-scale) {
+        @include hu-responsive($class-name, $hu-scale-core-modules, $bp-scale) {
           #{$property}: $value #{hu-important()};
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-scale-pseudos) {
+  @each $module in hu-format-modules($hu-scale-core-modules) {
+    @each $type, $value in $hu-scale-types {
+      $class-name: hu-class-name(scale-#{$type});
+      $property: transform;
+      $value: if($value, $value, $type);
+
+      @include hu-pseudo($class-name, $hu-scale-pseudos, $module) {
+        #{$property}: scale($value);
+      }
+    }
+  }
+
+  @if (index($hu-scale-core-modules, responsive)) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @include hu-media-query($bp-value) {
+        @each $type, $value in $hu-scale-types {
+          $class-name: hu-class-name(scale-#{$type});
+          $property: scale;
+          $value: if($value, $value, $type);
+
+          @include hu-pseudo-responsive($class-name, $hu-scale-pseudos, $hu-scale-core-modules, $bp-scale) {
+            #{$property}: $value #{hu-important()};
+          }
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-scale-parents) {
+  @each $module in hu-format-modules($hu-scale-core-modules) {
+    @each $type, $value in $hu-scale-types {
+      $class-name: hu-class-name(scale-#{$type});
+      $property: transform;
+      $value: if($value, $value, $type);
+
+      @include hu-parent($class-name, $hu-scale-parents, $module) {
+        #{$property}: scale($value);
+      }
+    }
+  }
+
+  @if (index($hu-scale-core-modules, responsive)) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @include hu-media-query($bp-value) {
+        @each $type, $value in $hu-scale-types {
+          $class-name: hu-class-name(scale-#{$type});
+          $property: scale;
+          $value: if($value, $value, $type);
+
+          @include hu-parent-responsive($class-name, $hu-scale-parents, $hu-scale-core-modules, $bp-scale) {
+            #{$property}: $value #{hu-important()};
+          }
         }
       }
     }

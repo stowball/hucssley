@@ -1,5 +1,9 @@
 // translate-x -> transform: translateX
-@each $module in hu-format-modules($hu-translate-x-modules) {
+$hu-translate-x-core-modules: hu-get-class-modules($hu-translate-x-modules, core, $hu-translate-x-modules);
+$hu-translate-x-pseudos: hu-get-class-modules($hu-translate-x-modules, pseudos, null);
+$hu-translate-x-parents: hu-get-class-modules($hu-translate-x-modules, parents, null);
+
+@each $module in hu-format-modules($hu-translate-x-core-modules) {
   @each $type, $value in $hu-translate-x-types {
     $class-name: hu-class-name(translate-x-#{$type});
     $property: transform;
@@ -11,7 +15,7 @@
   }
 }
 
-@if (index($hu-translate-x-modules, responsive)) {
+@if (index($hu-translate-x-core-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
     @include hu-media-query($bp-value) {
       @each $type, $value in $hu-translate-x-types {
@@ -19,8 +23,68 @@
         $property: translate-x;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $hu-translate-x-modules, $bp-scale) {
+        @include hu-responsive($class-name, $hu-translate-x-core-modules, $bp-scale) {
           #{$property}: $value #{hu-important()};
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-translate-x-pseudos) {
+  @each $module in hu-format-modules($hu-translate-x-core-modules) {
+    @each $type, $value in $hu-translate-x-types {
+      $class-name: hu-class-name(translate-x-#{$type});
+      $property: transform;
+      $value: if($value, $value, $type);
+
+      @include hu-pseudo($class-name, $hu-translate-x-pseudos, $module) {
+        #{$property}: translateX($value);
+      }
+    }
+  }
+
+  @if (index($hu-translate-x-core-modules, responsive)) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @include hu-media-query($bp-value) {
+        @each $type, $value in $hu-translate-x-types {
+          $class-name: hu-class-name(translate-x-#{$type});
+          $property: translate-x;
+          $value: if($value, $value, $type);
+
+          @include hu-pseudo-responsive($class-name, $hu-translate-x-pseudos, $hu-translate-x-core-modules, $bp-scale) {
+            #{$property}: $value #{hu-important()};
+          }
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-translate-x-parents) {
+  @each $module in hu-format-modules($hu-translate-x-core-modules) {
+    @each $type, $value in $hu-translate-x-types {
+      $class-name: hu-class-name(translate-x-#{$type});
+      $property: transform;
+      $value: if($value, $value, $type);
+
+      @include hu-parent($class-name, $hu-translate-x-parents, $module) {
+        #{$property}: translateX($value);
+      }
+    }
+  }
+
+  @if (index($hu-translate-x-core-modules, responsive)) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @include hu-media-query($bp-value) {
+        @each $type, $value in $hu-translate-x-types {
+          $class-name: hu-class-name(translate-x-#{$type});
+          $property: translate-x;
+          $value: if($value, $value, $type);
+
+          @include hu-parent-responsive($class-name, $hu-translate-x-parents, $hu-translate-x-core-modules, $bp-scale) {
+            #{$property}: $value #{hu-important()};
+          }
         }
       }
     }

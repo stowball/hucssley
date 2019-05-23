@@ -1,5 +1,9 @@
 // rotate -> transform: rotate
-@each $module in hu-format-modules($hu-rotate-modules) {
+$hu-rotate-core-modules: hu-get-class-modules($hu-rotate-modules, core, $hu-rotate-modules);
+$hu-rotate-pseudos: hu-get-class-modules($hu-rotate-modules, pseudos, null);
+$hu-rotate-parents: hu-get-class-modules($hu-rotate-modules, parents, null);
+
+@each $module in hu-format-modules($hu-rotate-core-modules) {
   @each $type, $value in $hu-rotate-types {
     $class-name: hu-class-name(rotate-#{$type});
     $property: transform;
@@ -11,7 +15,7 @@
   }
 }
 
-@if (index($hu-rotate-modules, responsive)) {
+@if (index($hu-rotate-core-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
     @include hu-media-query($bp-value) {
       @each $type, $value in $hu-rotate-types {
@@ -19,8 +23,68 @@
         $property: rotate;
         $value: if($value, $value, $type);
 
-        @include hu-responsive($class-name, $hu-rotate-modules, $bp-scale) {
+        @include hu-responsive($class-name, $hu-rotate-core-modules, $bp-scale) {
           #{$property}: $value #{hu-important()};
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-rotate-pseudos) {
+  @each $module in hu-format-modules($hu-rotate-core-modules) {
+    @each $type, $value in $hu-rotate-types {
+      $class-name: hu-class-name(rotate-#{$type});
+      $property: transform;
+      $value: if($value, $value, $type);
+
+      @include hu-pseudo($class-name, $hu-rotate-pseudos, $module) {
+        #{$property}: rotate($value);
+      }
+    }
+  }
+
+  @if (index($hu-rotate-core-modules, responsive)) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @include hu-media-query($bp-value) {
+        @each $type, $value in $hu-rotate-types {
+          $class-name: hu-class-name(rotate-#{$type});
+          $property: rotate;
+          $value: if($value, $value, $type);
+
+          @include hu-pseudo-responsive($class-name, $hu-rotate-pseudos, $hu-rotate-core-modules, $bp-scale) {
+            #{$property}: $value #{hu-important()};
+          }
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-rotate-parents) {
+  @each $module in hu-format-modules($hu-rotate-core-modules) {
+    @each $type, $value in $hu-rotate-types {
+      $class-name: hu-class-name(rotate-#{$type});
+      $property: transform;
+      $value: if($value, $value, $type);
+
+      @include hu-parent($class-name, $hu-rotate-parents, $module) {
+        #{$property}: rotate($value);
+      }
+    }
+  }
+
+  @if (index($hu-rotate-core-modules, responsive)) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @include hu-media-query($bp-value) {
+        @each $type, $value in $hu-rotate-types {
+          $class-name: hu-class-name(rotate-#{$type});
+          $property: rotate;
+          $value: if($value, $value, $type);
+
+          @include hu-parent-responsive($class-name, $hu-rotate-parents, $hu-rotate-core-modules, $bp-scale) {
+            #{$property}: $value #{hu-important()};
+          }
         }
       }
     }

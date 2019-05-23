@@ -1,4 +1,8 @@
-@each $module in hu-format-modules($hu-border-color-modules) {
+$hu-border-color-core-modules: hu-get-class-modules($hu-border-color-modules, core, $hu-border-color-modules);
+$hu-border-color-pseudos: hu-get-class-modules($hu-border-color-modules, pseudos, null);
+$hu-border-color-parents: hu-get-class-modules($hu-border-color-modules, parents, null);
+
+@each $module in hu-format-modules($hu-border-color-core-modules) {
   @each $hue, $colors in $hu-border-color-types {
     @each $color-scale, $color-value in $colors {
       @each $side-type, $side-properties in $hu-border-color-sides {
@@ -15,7 +19,7 @@
   }
 }
 
-@if (index($hu-border-color-modules, responsive)) {
+@if (index($hu-border-color-core-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
     @include hu-media-query($bp-value) {
       @each $hue, $colors in $hu-border-color-types {
@@ -24,9 +28,89 @@
             $side-properties: if($side-properties, $side-properties, $side-type);
             $class-name: hu-class-name(#{$side-type}-color-#{$hue}-#{$color-scale});
 
-            @include hu-responsive($class-name, $hu-border-color-modules, $bp-scale) {
+            @include hu-responsive($class-name, $hu-border-color-core-modules, $bp-scale) {
               @each $property in $side-properties {
                 #{$property}-color: $color-value #{hu-important()};
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-border-color-pseudos) {
+  @each $module in hu-format-modules($hu-border-color-core-modules) {
+    @each $hue, $colors in $hu-border-color-types {
+      @each $color-scale, $color-value in $colors {
+        @each $side-type, $side-properties in $hu-border-color-sides {
+          $side-properties: if($side-properties, $side-properties, $side-type);
+          $class-name: hu-class-name(#{$side-type}-color-#{$hue}-#{$color-scale});
+
+          @include hu-pseudo($class-name, $hu-border-color-pseudos, $module) {
+            @each $property in $side-properties {
+              #{$property}-color: $color-value #{hu-important()};
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @if (index($hu-border-color-core-modules, responsive)) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @include hu-media-query($bp-value) {
+        @each $hue, $colors in $hu-border-color-types {
+          @each $color-scale, $color-value in $colors {
+            @each $side-type, $side-properties in $hu-border-color-sides {
+              $side-properties: if($side-properties, $side-properties, $side-type);
+              $class-name: hu-class-name(#{$side-type}-color-#{$hue}-#{$color-scale});
+
+              @include hu-pseudo-responsive($class-name, $hu-border-color-pseudos, $hu-border-color-core-modules, $bp-scale) {
+                @each $property in $side-properties {
+                  #{$property}-color: $color-value #{hu-important()};
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-border-color-parents) {
+  @each $module in hu-format-modules($hu-border-color-core-modules) {
+    @each $hue, $colors in $hu-border-color-types {
+      @each $color-scale, $color-value in $colors {
+        @each $side-type, $side-properties in $hu-border-color-sides {
+          $side-properties: if($side-properties, $side-properties, $side-type);
+          $class-name: hu-class-name(#{$side-type}-color-#{$hue}-#{$color-scale});
+
+          @include hu-parent($class-name, $hu-border-color-parents, $module) {
+            @each $property in $side-properties {
+              #{$property}-color: $color-value #{hu-important()};
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @if (index($hu-border-color-core-modules, responsive)) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @include hu-media-query($bp-value) {
+        @each $hue, $colors in $hu-border-color-types {
+          @each $color-scale, $color-value in $colors {
+            @each $side-type, $side-properties in $hu-border-color-sides {
+              $side-properties: if($side-properties, $side-properties, $side-type);
+              $class-name: hu-class-name(#{$side-type}-color-#{$hue}-#{$color-scale});
+
+              @include hu-parent-responsive($class-name, $hu-border-color-parents, $hu-border-color-core-modules, $bp-scale) {
+                @each $property in $side-properties {
+                  #{$property}-color: $color-value #{hu-important()};
+                }
               }
             }
           }

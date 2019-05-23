@@ -1,0 +1,3 @@
+@function hu-get-class-modules($modules, $key, $fallback) {
+  @return if(type-of($modules) == map, hu-get($modules, $key, true), $fallback)
+}

@@ -1,5 +1,9 @@
 // svg-stroke-color -> stroke
-@each $module in hu-format-modules($hu-svg-stroke-color-modules) {
+$hu-svg-stroke-color-core-modules: hu-get-class-modules($hu-svg-stroke-color-modules, core, $hu-svg-stroke-color-modules);
+$hu-svg-stroke-color-pseudos: hu-get-class-modules($hu-svg-stroke-color-modules, pseudos, null);
+$hu-svg-stroke-color-parents: hu-get-class-modules($hu-svg-stroke-color-modules, parents, null);
+
+@each $module in hu-format-modules($hu-svg-stroke-color-core-modules) {
   @each $hue, $colors in $hu-svg-stroke-color-types {
     @each $scale, $value in $colors {
       $class-name: hu-class-name(svg-stroke-color-#{$hue}-#{$scale});
@@ -12,7 +16,7 @@
   }
 }
 
-@if (index($hu-svg-stroke-color-modules, responsive)) {
+@if (index($hu-svg-stroke-color-core-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
     @include hu-media-query($bp-value) {
       @each $hue, $colors in $hu-svg-stroke-color-types {
@@ -20,8 +24,72 @@
           $class-name: hu-class-name(svg-stroke-color-#{$hue}-#{$scale});
           $property: stroke;
 
-          @include hu-responsive($class-name, $hu-svg-stroke-color-modules, $bp-scale) {
+          @include hu-responsive($class-name, $hu-svg-stroke-color-core-modules, $bp-scale) {
             #{$property}: $value #{hu-important()};
+          }
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-svg-stroke-color-pseudos) {
+  @each $module in hu-format-modules($hu-svg-stroke-color-core-modules) {
+    @each $hue, $colors in $hu-svg-stroke-color-types {
+      @each $scale, $value in $colors {
+        $class-name: hu-class-name(svg-stroke-color-#{$hue}-#{$scale});
+        $property: stroke;
+
+        @include hu-pseudo($class-name, $hu-svg-stroke-color-pseudos, $module) {
+          #{$property}: $value #{hu-important()};
+        }
+      }
+    }
+  }
+
+  @if (index($hu-svg-stroke-color-core-modules, responsive)) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @include hu-media-query($bp-value) {
+        @each $hue, $colors in $hu-svg-stroke-color-types {
+          @each $scale, $value in $colors {
+            $class-name: hu-class-name(svg-stroke-color-#{$hue}-#{$scale});
+            $property: stroke;
+
+            @include hu-pseudo-responsive($class-name, $hu-svg-stroke-color-pseudos, $hu-svg-stroke-color-core-modules, $bp-scale) {
+              #{$property}: $value #{hu-important()};
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-svg-stroke-color-parents) {
+  @each $module in hu-format-modules($hu-svg-stroke-color-core-modules) {
+    @each $hue, $colors in $hu-svg-stroke-color-types {
+      @each $scale, $value in $colors {
+        $class-name: hu-class-name(svg-stroke-color-#{$hue}-#{$scale});
+        $property: stroke;
+
+        @include hu-parent($class-name, $hu-svg-stroke-color-parents, $module) {
+          #{$property}: $value #{hu-important()};
+        }
+      }
+    }
+  }
+
+  @if (index($hu-svg-stroke-color-core-modules, responsive)) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @include hu-media-query($bp-value) {
+        @each $hue, $colors in $hu-svg-stroke-color-types {
+          @each $scale, $value in $colors {
+            $class-name: hu-class-name(svg-stroke-color-#{$hue}-#{$scale});
+            $property: stroke;
+
+            @include hu-parent-responsive($class-name, $hu-svg-stroke-color-parents, $hu-svg-stroke-color-core-modules, $bp-scale) {
+              #{$property}: $value #{hu-important()};
+            }
           }
         }
       }

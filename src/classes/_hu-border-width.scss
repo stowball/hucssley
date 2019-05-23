@@ -1,4 +1,8 @@
-@each $module in hu-format-modules($hu-border-width-modules) {
+$hu-border-width-core-modules: hu-get-class-modules($hu-border-width-modules, core, $hu-border-width-modules);
+$hu-border-width-pseudos: hu-get-class-modules($hu-border-width-modules, pseudos, null);
+$hu-border-width-parents: hu-get-class-modules($hu-border-width-modules, parents, null);
+
+@each $module in hu-format-modules($hu-border-width-core-modules) {
   @each $type, $value in $hu-border-width-types {
     @each $side-type, $side-properties in $hu-border-color-sides {
       $side-properties: if($side-properties, $side-properties, $side-type);
@@ -14,16 +18,88 @@
   }
 }
 
-@if (index($hu-border-width-modules, responsive)) {
+@if (index($hu-border-width-core-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
     @include hu-media-query($bp-value) {
       @each $scale, $value in $hu-border-width-scale {
         @each $type, $properties in $hu-border-width-types {
           $class-name: hu-class-name(#{$side-type}-width-#{$type});
 
-          @include hu-responsive($class-name, $hu-border-width-modules, $bp-scale) {
+          @include hu-responsive($class-name, $hu-border-width-core-modules, $bp-scale) {
             @each $property in $properties {
               #{$property}: $value #{hu-important()};
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-border-width-pseudos) {
+  @each $module in hu-format-modules($hu-border-width-core-modules) {
+    @each $type, $value in $hu-border-width-types {
+      @each $side-type, $side-properties in $hu-border-color-sides {
+        $side-properties: if($side-properties, $side-properties, $side-type);
+        $class-name: hu-class-name(#{$side-type}-width-#{$type});
+        $value: if($value, $value, $type);
+
+        @include hu-pseudo($class-name, $hu-border-width-pseudos, $module) {
+          @each $property in $side-properties {
+            #{$property}-width: $value;
+          }
+        }
+      }
+    }
+  }
+
+  @if (index($hu-border-width-core-modules, responsive)) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @include hu-media-query($bp-value) {
+        @each $scale, $value in $hu-border-width-scale {
+          @each $type, $properties in $hu-border-width-types {
+            $class-name: hu-class-name(#{$side-type}-width-#{$type});
+
+            @include hu-pseudo-responsive($class-name, $hu-border-width-pseudos, $hu-border-width-core-modules, $bp-scale) {
+              @each $property in $properties {
+                #{$property}: $value #{hu-important()};
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-border-width-parents) {
+  @each $module in hu-format-modules($hu-border-width-core-modules) {
+    @each $type, $value in $hu-border-width-types {
+      @each $side-type, $side-properties in $hu-border-color-sides {
+        $side-properties: if($side-properties, $side-properties, $side-type);
+        $class-name: hu-class-name(#{$side-type}-width-#{$type});
+        $value: if($value, $value, $type);
+
+        @include hu-parent($class-name, $hu-border-width-parents, $module) {
+          @each $property in $side-properties {
+            #{$property}-width: $value;
+          }
+        }
+      }
+    }
+  }
+
+  @if (index($hu-border-width-core-modules, responsive)) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @include hu-media-query($bp-value) {
+        @each $scale, $value in $hu-border-width-scale {
+          @each $type, $properties in $hu-border-width-types {
+            $class-name: hu-class-name(#{$side-type}-width-#{$type});
+
+            @include hu-parent-responsive($class-name, $hu-border-width-parents, $hu-border-width-core-modules, $bp-scale) {
+              @each $property in $properties {
+                #{$property}: $value #{hu-important()};
+              }
             }
           }
         }

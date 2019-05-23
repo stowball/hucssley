@@ -1,5 +1,9 @@
 // svg-fill-color -> fill
-@each $module in hu-format-modules($hu-svg-fill-color-modules) {
+$hu-svg-fill-color-core-modules: hu-get-class-modules($hu-svg-fill-color-modules, core, $hu-svg-fill-color-modules);
+$hu-svg-fill-color-pseudos: hu-get-class-modules($hu-svg-fill-color-modules, pseudos, null);
+$hu-svg-fill-color-parents: hu-get-class-modules($hu-svg-fill-color-modules, parents, null);
+
+@each $module in hu-format-modules($hu-svg-fill-color-core-modules) {
   @each $hue, $colors in $hu-svg-fill-color-types {
     @each $scale, $value in $colors {
       $class-name: hu-class-name(svg-fill-color-#{$hue}-#{$scale});
@@ -12,7 +16,7 @@
   }
 }
 
-@if (index($hu-svg-fill-color-modules, responsive)) {
+@if (index($hu-svg-fill-color-core-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
     @include hu-media-query($bp-value) {
       @each $hue, $colors in $hu-svg-fill-color-types {
@@ -20,8 +24,72 @@
           $class-name: hu-class-name(svg-fill-color-#{$hue}-#{$scale});
           $property: fill;
 
-          @include hu-responsive($class-name, $hu-svg-fill-color-modules, $bp-scale) {
+          @include hu-responsive($class-name, $hu-svg-fill-color-core-modules, $bp-scale) {
             #{$property}: $value #{hu-important()};
+          }
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-svg-fill-color-pseudos) {
+  @each $module in hu-format-modules($hu-svg-fill-color-core-modules) {
+    @each $hue, $colors in $hu-svg-fill-color-types {
+      @each $scale, $value in $colors {
+        $class-name: hu-class-name(svg-fill-color-#{$hue}-#{$scale});
+        $property: fill;
+
+        @include hu-pseudo($class-name, $hu-svg-fill-color-pseudos, $module) {
+          #{$property}: $value #{hu-important()};
+        }
+      }
+    }
+  }
+
+  @if (index($hu-svg-fill-color-core-modules, responsive)) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @include hu-media-query($bp-value) {
+        @each $hue, $colors in $hu-svg-fill-color-types {
+          @each $scale, $value in $colors {
+            $class-name: hu-class-name(svg-fill-color-#{$hue}-#{$scale});
+            $property: fill;
+
+            @include hu-pseudo-responsive($class-name, $hu-svg-fill-color-pseudos, $hu-svg-fill-color-core-modules, $bp-scale) {
+              #{$property}: $value #{hu-important()};
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-svg-fill-color-parents) {
+  @each $module in hu-format-modules($hu-svg-fill-color-core-modules) {
+    @each $hue, $colors in $hu-svg-fill-color-types {
+      @each $scale, $value in $colors {
+        $class-name: hu-class-name(svg-fill-color-#{$hue}-#{$scale});
+        $property: fill;
+
+        @include hu-parent($class-name, $hu-svg-fill-color-parents, $module) {
+          #{$property}: $value #{hu-important()};
+        }
+      }
+    }
+  }
+
+  @if (index($hu-svg-fill-color-core-modules, responsive)) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @include hu-media-query($bp-value) {
+        @each $hue, $colors in $hu-svg-fill-color-types {
+          @each $scale, $value in $colors {
+            $class-name: hu-class-name(svg-fill-color-#{$hue}-#{$scale});
+            $property: fill;
+
+            @include hu-parent-responsive($class-name, $hu-svg-fill-color-parents, $hu-svg-fill-color-core-modules, $bp-scale) {
+              #{$property}: $value #{hu-important()};
+            }
           }
         }
       }

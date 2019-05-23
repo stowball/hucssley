@@ -1,5 +1,9 @@
 // bg-color -> background-color
-@each $module in hu-format-modules($hu-bg-color-modules) {
+$hu-bg-color-core-modules: hu-get-class-modules($hu-bg-color-modules, core, $hu-bg-color-modules);
+$hu-bg-color-pseudos: hu-get-class-modules($hu-bg-color-modules, pseudos, null);
+$hu-bg-color-parents: hu-get-class-modules($hu-bg-color-modules, parents, null);
+
+@each $module in hu-format-modules($hu-bg-color-core-modules) {
   @each $hue, $colors in $hu-bg-color-types {
     @each $scale, $value in $colors {
       $class-name: hu-class-name(bg-color-#{$hue}-#{$scale});
@@ -12,7 +16,7 @@
   }
 }
 
-@if (index($hu-bg-color-modules, responsive)) {
+@if (index($hu-bg-color-core-modules, responsive)) {
   @each $bp-scale, $bp-value in $hu-breakpoints {
     @include hu-media-query($bp-value) {
       @each $hue, $colors in $hu-bg-color-types {
@@ -20,8 +24,72 @@
           $class-name: hu-class-name(bg-color-#{$hue}-#{$scale});
           $property: background-color;
 
-          @include hu-responsive($class-name, $hu-bg-color-modules, $bp-scale) {
+          @include hu-responsive($class-name, $hu-bg-color-core-modules, $bp-scale) {
             #{$property}: $value #{hu-important()};
+          }
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-bg-color-pseudos) {
+  @each $module in hu-format-modules($hu-bg-color-core-modules) {
+    @each $hue, $colors in $hu-bg-color-types {
+      @each $scale, $value in $colors {
+        $class-name: hu-class-name(bg-color-#{$hue}-#{$scale});
+        $property: background-color;
+
+        @include hu-pseudo($class-name, $hu-bg-color-pseudos, $module) {
+          #{$property}: $value #{hu-important()};
+        }
+      }
+    }
+  }
+
+  @if (index($hu-bg-color-core-modules, responsive)) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @include hu-media-query($bp-value) {
+        @each $hue, $colors in $hu-bg-color-types {
+          @each $scale, $value in $colors {
+            $class-name: hu-class-name(bg-color-#{$hue}-#{$scale});
+            $property: background-color;
+
+            @include hu-pseudo-responsive($class-name, $hu-bg-color-pseudos, $hu-bg-color-core-modules, $bp-scale) {
+              #{$property}: $value #{hu-important()};
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-bg-color-parents) {
+  @each $module in hu-format-modules($hu-bg-color-core-modules) {
+    @each $hue, $colors in $hu-bg-color-types {
+      @each $scale, $value in $colors {
+        $class-name: hu-class-name(bg-color-#{$hue}-#{$scale});
+        $property: background-color;
+
+        @include hu-parent($class-name, $hu-bg-color-parents, $module) {
+          #{$property}: $value #{hu-important()};
+        }
+      }
+    }
+  }
+
+  @if (index($hu-bg-color-core-modules, responsive)) {
+    @each $bp-scale, $bp-value in $hu-breakpoints {
+      @include hu-media-query($bp-value) {
+        @each $hue, $colors in $hu-bg-color-types {
+          @each $scale, $value in $colors {
+            $class-name: hu-class-name(bg-color-#{$hue}-#{$scale});
+            $property: background-color;
+
+            @include hu-parent-responsive($class-name, $hu-bg-color-parents, $hu-bg-color-core-modules, $bp-scale) {
+              #{$property}: $value #{hu-important()};
+            }
           }
         }
       }
