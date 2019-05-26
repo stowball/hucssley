@@ -21,12 +21,13 @@ $hu-border-style-parents: hu-get-class-modules($hu-border-style-modules, parents
 @if (index($hu-border-style-core-modules, responsive)) {
   @each $mq-scale, $mq-value in $hu-media-queries {
     @include hu-media-query($mq-value) {
-      @each $scale, $value in $hu-border-style-scale {
-        @each $type, $properties in $hu-border-style-types {
+      @each $type, $value in $hu-border-style-types {
+        @each $side-type, $side-properties in $hu-border-color-sides {
+          $side-properties: if($side-properties, $side-properties, $side-type);
           $class-name: hu-class-name(#{$side-type}-style-#{$type});
 
           @include hu-responsive($class-name, $hu-border-style-core-modules, $mq-scale) {
-            @each $property in $properties {
+            @each $property in $side-properties {
               #{$property}: $value #{hu-important()};
             }
           }
@@ -56,12 +57,13 @@ $hu-border-style-parents: hu-get-class-modules($hu-border-style-modules, parents
   @if (index($hu-border-style-core-modules, responsive)) {
     @each $mq-scale, $mq-value in $hu-media-queries {
       @include hu-media-query($mq-value) {
-        @each $scale, $value in $hu-border-style-scale {
-          @each $type, $properties in $hu-border-style-types {
+        @each $type, $value in $hu-border-style-types {
+          @each $side-type, $side-properties in $hu-border-color-sides {
+            $side-properties: if($side-properties, $side-properties, $side-type);
             $class-name: hu-class-name(#{$side-type}-style-#{$type});
 
             @include hu-pseudo-responsive($class-name, $hu-border-style-pseudos, $hu-border-style-core-modules, $mq-scale) {
-              @each $property in $properties {
+              @each $property in $side-properties {
                 #{$property}: $value #{hu-important()};
               }
             }
@@ -97,7 +99,7 @@ $hu-border-style-parents: hu-get-class-modules($hu-border-style-modules, parents
             $class-name: hu-class-name(#{$side-type}-style-#{$type});
 
             @include hu-parent-responsive($class-name, $hu-border-style-parents, $hu-border-style-core-modules, $mq-scale) {
-              @each $property in $properties {
+              @each $property in $side-properties {
                 #{$property}: $value #{hu-important()};
               }
             }
