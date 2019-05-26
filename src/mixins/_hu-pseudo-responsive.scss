@@ -17,6 +17,12 @@
         }
       }
 
+      @if (index($modules, group-hover)) {
+        .group:hover .group__mq-#{$mq-scale}-hover-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+          @content;
+        }
+      }
+
       @if (index($modules, group-state)) {
         @each $state in $hu-states {
           .group.#{$state} .group__mq-#{$mq-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {

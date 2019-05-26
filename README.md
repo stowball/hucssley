@@ -24,14 +24,13 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
 - [A working example](#a-working-example)
 - [Why Hucssley?](#why-hucssley)
 - [Installation](#installation)
-- [Syntax](#syntax)
-  - [Modules](#modules)
-    - [Base: `base`](#base-base)
-    - [Non-parent modules: `focus, hocus, hover, print, reduced-motion, responsive`](#non-parent-modules-focus-hocus-hover-print-reduced-motion-responsive)
-    - [State modules: `state`](#state-modules-state)
-    - [Parent modules: `group-hover, group-state` and custom parent modules](#parent-modules-group-hover-group-state-and-custom-parent-modules)
-      - [Custom parent modules](#custom-parent-modules)
-    - [Combining modules: `responsive` and `group-state, state`](#combining-modules-responsive-and-group-state-state)
+- [Modules](#modules)
+  - [Base: `base`](#base-base)
+  - [Non-parent modules: `focus, hocus, hover, print, reduced-motion, responsive`](#non-parent-modules-focus-hocus-hover-print-reduced-motion-responsive)
+  - [State modules: `state`](#state-modules-state)
+  - [Parent modules: `group-hover, group-state` and custom parent modules](#parent-modules-group-hover-group-state-and-custom-parent-modules)
+    - [Custom parent modules](#custom-parent-modules)
+  - [Combining modules: `responsive` and `group-state, state`](#combining-modules-responsive-and-group-state-state)
 - [Scales](#scales)
 - [Configuration](#configuration)
   - [Configuration helpers](#configuration-helpers)
@@ -204,7 +203,7 @@ Firstly, most utility libraries are hard to read, and more importantly hard to l
 
 Also, by using Sass under the hood, it supports an extremely deep pool of developers who already know the language and its wealth of features, and has great documentation and resources to boot.
 
-With other libraries, while the initial implementation period is very promising, it’s when you hit the harder, more uncommon issues that you start to struggle. Out-of-the-box, Hucssley wants to provide you with all of the tools to build any UI regardless of the condition. This means we support every type of width media query, theming, pseudo selectors, user interaction states (`:hover`, `:focus-visible`), UI states (`is-expanded`, `is-loading`), and any kind of parent selector (for use with things like browser detection libraries, or element query polyfills).
+With other libraries, while the initial implementation period is very promising, it’s when you hit the harder, more uncommon issues that you start to struggle. Out-of-the-box, Hucssley wants to provide you with all of the tools to build any UI regardless of the condition. This means we support every type of media query, theming, pseudo selectors, user interaction states (`:hover`, `:focus-visible`), UI states (`is-expanded`, `is-loading`), and any kind of parent selector (for use with things like browser detection libraries, or element query polyfills).
 
 Lastly, Hucssley tries to be extremely flexible and easily configurable. While it provides many more classes and features than other libraries OOTB, if it doesn’t provide something you need, it’s hopefully very easy to build what you need in a consistent, Hucssley manner.
 
@@ -247,15 +246,13 @@ However, if you want to customize Hucssley, we recommend taking this approach:
 
 ---
 
-## Syntax
-
-### Modules
+## Modules
 
 The following core modules are available for all classes: `base`, `focus`, `hover`, `hocus`, `state`, `group-hover`, `group-state`, `reduced-motion`, and `print`.
 
 You can also use modules to generate pseudo and custom parent classes. Please read [Understanding class configuration: Modules](/hucssley-classes.md#modules) and [Generic classes: `hu-classes`](#generic-classes-hu-classes) for more information.
 
-#### Base: `base`
+### Base: `base`
 
 Base classes in Hucssley roughly equate to a kebab-cased version of a CSS property and value:
 
@@ -321,7 +318,7 @@ When you want to use class names scoped to “non-parent” modules, it follows 
 
 In the above example, `hocus` is shortcut module for `:hover, :focus`, and `mq-768` is for a `(min-width: 768px)` media query.
 
-#### State modules: `state`
+### State modules: `state`
 
 State modules allow you to change the UI based on a particular state, and follows the pattern `[state-name]--[base-class]`:
 
@@ -340,7 +337,7 @@ For state classes to become active, you need to apply the raw state name as an c
 "></div>
 ```
 
-#### Parent modules: `group-hover, group-state` and custom parent modules
+### Parent modules: `group-hover, group-state` and custom parent modules
 
 Children of groups can respond to user and UI interaction via groups. Their syntax is `[parent-name]__[parent-type]--[base-class]`:
 
@@ -370,7 +367,7 @@ For `group` classes to take effect, a parent has to be given the raw `.group` cl
 
 Be careful when using groups, because they will affect all `.group__` children. A child `.group` does not reset the actions of a parent `.group`, so you could end up with unexpected behaviour. It’s recommended to use groups on near ancestors to leaf nodes.
 
-##### Custom parent modules
+#### Custom parent modules
 
 In the above example, we used a `browser-mobile__font-size-700` class name, which, while not included in Hucssley by default, hopefully illustrates how it can be used to style elements by any library or approach that adds a generic class to a parent element.
 
@@ -378,14 +375,21 @@ Possible use cases are a browser detection library that may add `browser-mobile`
 
 For more information, please read [Parent classes](#parent-classes-hu-parent-classes).
 
-#### Combining modules: `responsive` and `group-state, state`
+### Combining modules: `responsive` and `group-hover, group-state, state`
 
-When a particular class is configured to use the `responsive` module, it will also output `state` and `group-state` classes should they have also been configured.
+When a particular class is configured to use the `responsive` module, it will also output `state`, `group-hover` and `group-state` classes should they have also been configured.
 
-Here the syntax is `mq-[responsive-scale]-[state-name]--[base-class]` for states, and `group__mq-[responsive-scale]-[state-name]--[base-class]`:
+Here the syntax is:
+
+* `mq-[responsive-scale]-[state-name]--[base-class]` for `state`s
+* `group__mq-[responsive-scale]-hover--[base-class]` for `group-hover`
+* `group__mq-[responsive-scale]-[state-name]--[base-class]` for `group-state`
+
+Which results in:
 
 ```css
 .mq-960-is-expanded--display-flex
+.group__mq-768-hover--display-block
 .group__mq-1200-is-collapsed--height-0
 ```
 
@@ -2039,7 +2043,7 @@ You could even use both methods together if you wanted to mega-raise your specif
 
 ## Controlling file size
 
-While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.3 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 96 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
+While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.3 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 97 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
 
 Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, media queries, and spacing scales will also help.
 

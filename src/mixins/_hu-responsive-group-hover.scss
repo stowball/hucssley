@@ -1,0 +1,5 @@
+@mixin hu-responsive-group-hover($class-name, $mq-scale) {
+  .group:hover .group__mq-#{$mq-scale}-hover--#{$class-name} {
+    @content;
+  }
+}
