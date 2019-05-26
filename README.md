@@ -248,7 +248,7 @@ However, if you want to customize Hucssley, we recommend taking this approach:
 
 ## Modules
 
-The following core modules are available for all classes: `base`, `focus`, `hover`, `hocus`, `state`, `group-hover`, `group-state`, `reduced-motion`, and `print`.
+The following core modules are available for all classes: `base`, `focus`, `hover`, `hocus`, `state`, `group-hover`, `group-state`, `reduced-motion`, `print` and `responsive`.
 
 You can also use modules to generate pseudo and custom parent classes. Please read [Understanding class configuration: Modules](/hucssley-classes.md#modules) and [Generic classes: `hu-classes`](#generic-classes-hu-classes) for more information.
 
