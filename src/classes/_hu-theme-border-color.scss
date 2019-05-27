@@ -4,7 +4,7 @@
     @each $key, $value in $keys {
       @each $side-type, $side-properties in $hu-theme-border-color-sides {
         $side-properties: if($side-properties, $side-properties, $side-type);
-        $class-name: hu-class-name(#{$side-type}-color-#{$key});
+        $class-name: hu-class-name("#{$side-type}-color-#{$key}");
 
         @include hu-theme($class-name, $theme, $module) {
           @each $property in $side-properties {
@@ -23,7 +23,7 @@
         @each $key, $value in $keys {
           @each $side-type, $side-properties in $hu-theme-border-color-sides {
             $side-properties: if($side-properties, $side-properties, $side-type);
-            $class-name: hu-class-name(#{$side-type}-color-#{$key});
+            $class-name: hu-class-name("#{$side-type}-color-#{$key}");
 
             @include hu-theme-responsive($class-name, $theme, $hu-theme-bg-color-modules, $mq-scale) {
               @each $property in $side-properties {

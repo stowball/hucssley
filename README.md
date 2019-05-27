@@ -1305,8 +1305,10 @@ This function formats a class name to append `$hu-namespace` (if applicable), co
 @function hu-class-name($class-name);
 
 hu-class-name("eqio-<520-flex-wrap-wrap");
-// -> hu-eqio-\00003c520-flex-wrap
+// -> hu-eqio-\<520-flex-wrap
 ```
+
+*Note: if your class name contains a special character, ensure you pass it as a quoted string.*
 
 ##### `hu-format-modules`
 

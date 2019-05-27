@@ -7,7 +7,7 @@
   @each $module in hu-format-modules($modules) {
     @if ($types) {
       @each $type, $value in $types {
-        $class-name: hu-class-name(#{$class-name-property}-#{$type});
+        $class-name: hu-class-name("#{$class-name-property}-#{$type}");
         $value: if($value, $value, $type);
 
         @include hu-pseudo($class-name, $pseudos, $module) {
