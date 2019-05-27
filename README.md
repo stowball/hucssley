@@ -383,7 +383,7 @@ Here the syntax is:
 
 * `mq-[responsive-scale]-focus--[base-class]:focus` for `focus`
 * `mq-[responsive-scale]-hover--[base-class]:hover` for `hover`
-* `mq-[responsive-scale]-focus--[base-class]:focus, mq-[responsive-scale]-hover--[base-class]:hover` for `hocus`
+* `mq-[responsive-scale]-hocus--[base-class]:focus, mq-[responsive-scale]-hocus--[base-class]:hover` for `hocus`
 * `mq-[responsive-scale]-[state-name]--[base-class]` for `state`s
 * `group__mq-[responsive-scale]-hover--[base-class]` for `group-hover`
 * `group__mq-[responsive-scale]-[state-name]--[base-class]` for `group-state`
