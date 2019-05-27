@@ -1,5 +1,0 @@
-@mixin hu-group-hover($class-name) {
-  .group:hover .group__hover--#{$class-name} {
-    @content;
-  }
-}

@@ -9,6 +9,25 @@
         }
       }
 
+      @if (index($modules, focus)) {
+        #{$hu-focus-parent} .mq-#{$mq-scale}-focus-#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo} {
+          @content;
+        }
+      }
+
+      @if (index($modules, hover)) {
+        .mq-#{$mq-scale}-hover-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
+          @content;
+        }
+      }
+
+      @if (index($modules, hocus)) {
+        #{$hu-focus-parent} .mq-#{$mq-scale}-hocus-#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo},
+        .mq-#{$mq-scale}-hocus-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
+          @content;
+        }
+      }
+
       @if (index($modules, state)) {
         @each $state in $hu-states {
           .#{$state}.mq-#{$mq-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {

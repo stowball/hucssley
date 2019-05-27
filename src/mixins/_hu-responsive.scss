@@ -1,25 +1,48 @@
 @mixin hu-responsive($class-name, $modules, $mq-scale) {
   @if (index($modules, base)) {
-    @include hu-responsive-base($class-name, $mq-scale) {
+    .mq-#{$mq-scale}--#{$class-name} {
+      @content;
+    }
+  }
+
+  @if (index($modules, focus)) {
+    #{$hu-focus-parent} .mq-#{$mq-scale}-focus--#{$class-name}#{$hu-focus-pseudo} {
+      @content;
+    }
+  }
+
+  @if (index($modules, hover)) {
+    .mq-#{$mq-scale}-hover--#{$class-name}:hover {
+      @content;
+    }
+  }
+
+  @if (index($modules, hocus)) {
+    #{$hu-focus-parent} .mq-#{$mq-scale}-hocus--#{$class-name}#{$hu-focus-pseudo},
+    .mq-#{$mq-scale}-hocus--#{$class-name}:hover {
       @content;
     }
   }
 
   @if (index($modules, state)) {
-    @include hu-responsive-state($class-name, $mq-scale) {
-      @content;
+    @each $state in $hu-states {
+      .#{$state}.mq-#{$mq-scale}-#{$state}--#{$class-name} {
+        @content;
+      }
     }
   }
 
   @if (index($modules, group-hover)) {
-    @include hu-responsive-group-hover($class-name, $mq-scale) {
+    .group:hover .group__mq-#{$mq-scale}-hover--#{$class-name} {
       @content;
     }
   }
 
   @if (index($modules, group-state)) {
-    @include hu-responsive-group-state($class-name, $mq-scale) {
-      @content;
+    @each $state in $hu-states {
+      .group.#{$state} .group__mq-#{$mq-scale}-#{$state}--#{$class-name} {
+        @content;
+      }
     }
   }
 }

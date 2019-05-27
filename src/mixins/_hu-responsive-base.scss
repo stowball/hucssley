@@ -1,5 +1,0 @@
-@mixin hu-responsive-base($class-name, $mq-scale) {
-  .mq-#{$mq-scale}--#{$class-name} {
-    @content;
-  }
-}

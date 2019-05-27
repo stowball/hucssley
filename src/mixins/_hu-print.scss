@@ -1,9 +1,0 @@
-@mixin hu-print($class-name) {
-  @media print {
-    .print--#{$class-name} {
-      @include hu-bump-specificity {
-        @content;
-      }
-    }
-  }
-}

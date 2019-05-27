@@ -10,6 +10,25 @@
         }
       }
 
+      @if (index($modules, focus)) {
+        #{$hu-focus-parent} .#{$escaped-parent} .#{$escaped-child}__mq-#{$mq-scale}-focus--#{$class-name}#{$hu-focus-pseudo} {
+          @content;
+        }
+      }
+
+      @if (index($modules, hover)) {
+        .#{$escaped-parent} .#{$escaped-child}__mq-#{$mq-scale}-hover--#{$class-name}:hover {
+          @content;
+        }
+      }
+
+      @if (index($modules, hocus)) {
+        #{$hu-focus-parent} .#{$escaped-parent} .#{$escaped-child}__mq-#{$mq-scale}-hocus--#{$class-name}#{$hu-focus-pseudo},
+        .#{$escaped-parent} .#{$escaped-child}__mq-#{$mq-scale}-hocus--#{$class-name}:hover {
+          @content;
+        }
+      }
+
       @if (index($modules, state)) {
         @each $state in $hu-states {
           .#{$escaped-parent} .#{$state}.#{$escaped-child}__mq-#{$mq-scale}-#{$state}--#{$class-name} {

@@ -3,44 +3,69 @@
 
   @each $module in $modules {
     @if ($module == base) {
-      @include hu-base($class-name) {
+      .#{$class-name} {
         @content;
       }
     }
 
-    @else if ($module == focus or $module == hocus or $module == hover) {
-      @include hu-hocus($class-name, $module) {
+    @else if ($module == focus) {
+      #{$hu-focus-parent} .focus--#{$class-name}#{$hu-focus-pseudo} {
+        @content;
+      }
+    }
+
+    @else if ($module == hover) {
+      .hover--#{$class-name}:hover {
+        @content;
+      }
+    }
+
+    @else if ($module == hocus) {
+      #{$hu-focus-parent} .hocus--#{$class-name}#{$hu-focus-pseudo},
+      .hocus--#{$class-name}:hover {
         @content;
       }
     }
 
     @else if ($module == state) {
-      @include hu-state($class-name) {
-        @content;
+      @each $state in $hu-states {
+        .#{$state}.#{$state}--#{$class-name} {
+          @content;
+        }
       }
     }
 
     @else if ($module == group-hover) {
-      @include hu-group-hover($class-name) {
+      .group:hover .group__hover--#{$class-name} {
         @content;
       }
     }
 
     @else if ($module == group-state) {
-      @include hu-group-state($class-name) {
-        @content;
+      @each $state in $hu-states {
+        .group.#{$state} .group__#{$state}--#{$class-name} {
+          @content;
+        }
       }
     }
 
     @else if ($module == reduced-motion) {
-      @include hu-reduced-motion($class-name) {
-        @content;
+      @media (prefers-reduced-motion: reduce) {
+        .reduced-motion--#{$class-name} {
+          @include hu-bump-specificity {
+            @content;
+          }
+        }
       }
     }
 
     @else if ($module == print) {
-      @include hu-print($class-name) {
-        @content;
+      @media print {
+        .print--#{$class-name} {
+          @include hu-bump-specificity {
+            @content;
+          }
+        }
       }
     }
   }

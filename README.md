@@ -375,12 +375,15 @@ Possible use cases are a browser detection library that may add `browser-mobile`
 
 For more information, please read [Parent classes](#parent-classes-hu-parent-classes).
 
-### Combining modules: `responsive` and `group-hover, group-state, state`
+### Combining modules: `responsive` and `focus, hover, hocus, state, group-hover, group-state`
 
-When a particular class is configured to use the `responsive` module, it will also output `state`, `group-hover` and `group-state` classes should they have also been configured.
+When a particular class is configured to use the `responsive` module, it will also output `focus`, `hover`, `hocus`, `state`, `group-hover` and `group-state` classes should they have also been configured.
 
 Here the syntax is:
 
+* `mq-[responsive-scale]-focus--[base-class]:focus` for `focus`
+* `mq-[responsive-scale]-hover--[base-class]:hover` for `hover`
+* `mq-[responsive-scale]-focus--[base-class]:focus, mq-[responsive-scale]-hover--[base-class]:hover` for `hocus`
 * `mq-[responsive-scale]-[state-name]--[base-class]` for `state`s
 * `group__mq-[responsive-scale]-hover--[base-class]` for `group-hover`
 * `group__mq-[responsive-scale]-[state-name]--[base-class]` for `group-state`
@@ -2045,7 +2048,7 @@ You could even use both methods together if you wanted to mega-raise your specif
 
 ## Controlling file size
 
-While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.3 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 97 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
+While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.3 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 98 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
 
 Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, media queries, and spacing scales will also help.
 

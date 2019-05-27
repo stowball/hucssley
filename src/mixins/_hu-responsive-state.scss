@@ -1,7 +1,0 @@
-@mixin hu-responsive-state($class-name, $mq-scale) {
-  @each $state in $hu-states {
-    .#{$state}.mq-#{$mq-scale}-#{$state}--#{$class-name} {
-      @content;
-    }
-  }
-}
