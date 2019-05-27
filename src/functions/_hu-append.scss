@@ -3,5 +3,5 @@
     @return map-merge($source, $target);
   }
 
-  @return append($source, $target);
+  @return join($source, $target);
 }
