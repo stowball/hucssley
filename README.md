@@ -285,9 +285,10 @@ bg-position-y -> background-position-y
 bg-repeat -> background-repeat
 bg-size -> background-size
 blend-mode -> mix-blend-mode
+border-radius-[side] -> border-[side]-radius
 momentum-scrolling -> -webkit-overflow-scrolling
 overscroll -> overscroll-behavior
-pos-[bottom,left,right,top] -> bottom, left, right, top
+pos-[bottom,left,right,top] -> bottom,left,right,top
 rotate -> transform: rotate
 scale -> transform: scale
 svg-fill-color -> fill
@@ -2048,7 +2049,7 @@ You could even use both methods together if you wanted to mega-raise your specif
 
 ## Controlling file size
 
-While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.3 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 99 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
+While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.35 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 99 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
 
 Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, media queries, and spacing scales will also help.
 

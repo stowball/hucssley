@@ -4,12 +4,12 @@ $hu-border-modules: (base) !default;
 
 $hu-border-sides: (
   border: border,
-  border-b: border-bottom,
-  border-l: border-left,
-  border-r: border-right,
-  border-t: border-top,
-  border-h: (border-left, border-right),
-  border-v: (border-bottom, border-top),
+  border-bottom: border-bottom,
+  border-left: border-left,
+  border-right: border-right,
+  border-top: border-top,
+  border-horizontal: (border-left, border-right),
+  border-vertical: (border-bottom, border-top),
 ) !default;
 
 $hu-border-types: $hu-colors !default;
