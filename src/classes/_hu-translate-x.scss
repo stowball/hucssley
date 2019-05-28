@@ -5,7 +5,7 @@ $hu-translate-x-parents: hu-get-class-modules($hu-translate-x-modules, parents, 
 
 @each $module in hu-format-modules($hu-translate-x-core-modules) {
   @each $type, $value in $hu-translate-x-types {
-    $class-name: hu-class-name(translate-x-#{$type});
+    $class-name: hu-class-name("translate-x-#{$type}");
     $property: transform;
     $value: if($value, $value, $type);
 
@@ -19,7 +19,7 @@ $hu-translate-x-parents: hu-get-class-modules($hu-translate-x-modules, parents, 
   @each $mq-scale, $mq-value in $hu-media-queries {
     @include hu-media-query($mq-value) {
       @each $type, $value in $hu-translate-x-types {
-        $class-name: hu-class-name(translate-x-#{$type});
+        $class-name: hu-class-name("translate-x-#{$type}");
         $property: translate-x;
         $value: if($value, $value, $type);
 
@@ -34,7 +34,7 @@ $hu-translate-x-parents: hu-get-class-modules($hu-translate-x-modules, parents, 
 @if ($hu-translate-x-pseudos) {
   @each $module in hu-format-modules($hu-translate-x-core-modules) {
     @each $type, $value in $hu-translate-x-types {
-      $class-name: hu-class-name(translate-x-#{$type});
+      $class-name: hu-class-name("translate-x-#{$type}");
       $property: transform;
       $value: if($value, $value, $type);
 
@@ -48,7 +48,7 @@ $hu-translate-x-parents: hu-get-class-modules($hu-translate-x-modules, parents, 
     @each $mq-scale, $mq-value in $hu-media-queries {
       @include hu-media-query($mq-value) {
         @each $type, $value in $hu-translate-x-types {
-          $class-name: hu-class-name(translate-x-#{$type});
+          $class-name: hu-class-name("translate-x-#{$type}");
           $property: translate-x;
           $value: if($value, $value, $type);
 
@@ -64,7 +64,7 @@ $hu-translate-x-parents: hu-get-class-modules($hu-translate-x-modules, parents, 
 @if ($hu-translate-x-parents) {
   @each $module in hu-format-modules($hu-translate-x-core-modules) {
     @each $type, $value in $hu-translate-x-types {
-      $class-name: hu-class-name(translate-x-#{$type});
+      $class-name: hu-class-name("translate-x-#{$type}");
       $property: transform;
       $value: if($value, $value, $type);
 
@@ -78,7 +78,7 @@ $hu-translate-x-parents: hu-get-class-modules($hu-translate-x-modules, parents, 
     @each $mq-scale, $mq-value in $hu-media-queries {
       @include hu-media-query($mq-value) {
         @each $type, $value in $hu-translate-x-types {
-          $class-name: hu-class-name(translate-x-#{$type});
+          $class-name: hu-class-name("translate-x-#{$type}");
           $property: translate-x;
           $value: if($value, $value, $type);
 

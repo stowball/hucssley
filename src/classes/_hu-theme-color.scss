@@ -2,7 +2,7 @@
 @each $module in hu-format-modules($hu-theme-color-modules) {
   @each $theme, $keys in $hu-themes {
     @each $key, $value in $keys {
-      $class-name: hu-class-name(color-#{$key});
+      $class-name: hu-class-name("color-#{$key}");
       $property: color;
 
       @include hu-theme($class-name, $theme, $module) {
@@ -17,7 +17,7 @@
     @include hu-media-query($mq-value) {
       @each $theme, $keys in $hu-themes {
         @each $key, $value in $keys {
-          $class-name: hu-class-name(color-#{$key});
+          $class-name: hu-class-name("color-#{$key}");
           $property: color;
 
           @include hu-theme-responsive($class-name, $theme, $hu-theme-bg-color-modules, $theme) {

@@ -5,7 +5,7 @@ $hu-rotate-parents: hu-get-class-modules($hu-rotate-modules, parents, null);
 
 @each $module in hu-format-modules($hu-rotate-core-modules) {
   @each $type, $value in $hu-rotate-types {
-    $class-name: hu-class-name(rotate-#{$type});
+    $class-name: hu-class-name("rotate-#{$type}");
     $property: transform;
     $value: if($value, $value, $type);
 
@@ -19,7 +19,7 @@ $hu-rotate-parents: hu-get-class-modules($hu-rotate-modules, parents, null);
   @each $mq-scale, $mq-value in $hu-media-queries {
     @include hu-media-query($mq-value) {
       @each $type, $value in $hu-rotate-types {
-        $class-name: hu-class-name(rotate-#{$type});
+        $class-name: hu-class-name("rotate-#{$type}");
         $property: rotate;
         $value: if($value, $value, $type);
 
@@ -34,7 +34,7 @@ $hu-rotate-parents: hu-get-class-modules($hu-rotate-modules, parents, null);
 @if ($hu-rotate-pseudos) {
   @each $module in hu-format-modules($hu-rotate-core-modules) {
     @each $type, $value in $hu-rotate-types {
-      $class-name: hu-class-name(rotate-#{$type});
+      $class-name: hu-class-name("rotate-#{$type}");
       $property: transform;
       $value: if($value, $value, $type);
 
@@ -48,7 +48,7 @@ $hu-rotate-parents: hu-get-class-modules($hu-rotate-modules, parents, null);
     @each $mq-scale, $mq-value in $hu-media-queries {
       @include hu-media-query($mq-value) {
         @each $type, $value in $hu-rotate-types {
-          $class-name: hu-class-name(rotate-#{$type});
+          $class-name: hu-class-name("rotate-#{$type}");
           $property: rotate;
           $value: if($value, $value, $type);
 
@@ -64,7 +64,7 @@ $hu-rotate-parents: hu-get-class-modules($hu-rotate-modules, parents, null);
 @if ($hu-rotate-parents) {
   @each $module in hu-format-modules($hu-rotate-core-modules) {
     @each $type, $value in $hu-rotate-types {
-      $class-name: hu-class-name(rotate-#{$type});
+      $class-name: hu-class-name("rotate-#{$type}");
       $property: transform;
       $value: if($value, $value, $type);
 
@@ -78,7 +78,7 @@ $hu-rotate-parents: hu-get-class-modules($hu-rotate-modules, parents, null);
     @each $mq-scale, $mq-value in $hu-media-queries {
       @include hu-media-query($mq-value) {
         @each $type, $value in $hu-rotate-types {
-          $class-name: hu-class-name(rotate-#{$type});
+          $class-name: hu-class-name("rotate-#{$type}");
           $property: rotate;
           $value: if($value, $value, $type);
 
