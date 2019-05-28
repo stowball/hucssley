@@ -1183,12 +1183,12 @@ $hu-margin-scale: $hu-spacing-scale;
 
 $hu-margin-types: (
   margin: margin,
-  margin-b: margin-bottom,
-  margin-l: margin-left,
-  margin-r: margin-right,
-  margin-t: margin-top,
-  margin-h: (margin-left, margin-right),
-  margin-v: (margin-bottom, margin-top),
+  margin-bottom: margin-bottom,
+  margin-left: margin-left,
+  margin-right: margin-right,
+  margin-top: margin-top,
+  margin-horizontal: (margin-left, margin-right),
+  margin-vertical: (margin-bottom, margin-top),
 );
 ```
 
@@ -1348,12 +1348,12 @@ $hu-padding-scale: $hu-spacing-scale;
 
 $hu-padding-types: (
   padding: padding,
-  padding-b: padding-bottom,
-  padding-l: padding-left,
-  padding-r: padding-right,
-  padding-t: padding-top,
-  padding-h: (padding-left, padding-right),
-  padding-v: (padding-bottom, padding-top),
+  padding-bottom: padding-bottom,
+  padding-left: padding-left,
+  padding-right: padding-right,
+  padding-top: padding-top,
+  padding-horizontal: (padding-left, padding-right),
+  padding-vertical: (padding-bottom, padding-top),
 );
 ```
 
@@ -1385,15 +1385,15 @@ $hu-pos-scale: (
 );
 
 $hu-pos-types: (
-  pos-b: bottom,
-  pos-bl: (bottom, left),
-  pos-br: (bottom, right),
-  pos-l: left,
-  pos-r: right,
-  pos-t: top,
-  pos-tl: (left, top),
-  pos-tlbr: (bottom, left, right, top),
-  pos-tr: (right, top),
+  pos-bottom: bottom,
+  pos-bottom-left: (bottom, left),
+  pos-bottom-right: (bottom, right),
+  pos-left: left,
+  pos-right: right,
+  pos-top: top,
+  pos-top-left: (left, top),
+  pos-top-left-bottom-right: (bottom, left, right, top),
+  pos-top-right: (right, top),
 );
 ```
 

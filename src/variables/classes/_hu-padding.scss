@@ -4,10 +4,10 @@ $hu-padding-scale: $hu-spacing-scale !default;
 
 $hu-padding-types: (
   padding: padding,
-  padding-b: padding-bottom,
-  padding-l: padding-left,
-  padding-r: padding-right,
-  padding-t: padding-top,
-  padding-h: (padding-left, padding-right),
-  padding-v: (padding-bottom, padding-top),
+  padding-bottom: padding-bottom,
+  padding-left: padding-left,
+  padding-right: padding-right,
+  padding-top: padding-top,
+  padding-horizontal: (padding-left, padding-right),
+  padding-vertical: (padding-bottom, padding-top),
 ) !default;

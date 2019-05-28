@@ -144,11 +144,11 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
         border-radius-1000
         border-style-solid
         border-width-200
-        margin-b-400
+        margin-bottom-400
         width-50
         mq-600--width-30
-        mq-768--margin-b-0
-        mq-768--margin-r-500
+        mq-768--margin-bottom-0
+        mq-768--margin-right-500
         mq-768--width-20
       "
       src="https://hireup.cdn.prismic.io/hireup/89e15301c28e6396927d85e38e9c5d5833ebab09_kyle_357-bonnie.png"
@@ -158,7 +158,7 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
         font-size-600
         font-weight-700
         line-height-200
-        margin-b-400
+        margin-bottom-400
         mq-768--font-size-800
       ">
         Disability support workers who love what you love
@@ -169,14 +169,14 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
           border-color-neutral-700
           color-neutral-0
           display-inline-block
-          padding-h-400
-          padding-v-300
+          padding-horizontal-400
+          padding-vertical-300
           transition-duration-200
           transition-easing-ease
           transition-property-all
           mq-768--font-size-600
-          mq-768--padding-h-500
-          mq-768--padding-v-400
+          mq-768--padding-horizontal-500
+          mq-768--padding-vertical-400
           hocus--bg-color-blue-600
           hocus--scale-105
         "
@@ -287,7 +287,7 @@ bg-size -> background-size
 blend-mode -> mix-blend-mode
 momentum-scrolling -> -webkit-overflow-scrolling
 overscroll -> overscroll-behavior
-pos-[b,l,r,t] -> bottom, left, right, top
+pos-[bottom,left,right,top] -> bottom, left, right, top
 rotate -> transform: rotate
 scale -> transform: scale
 svg-fill-color -> fill
@@ -300,7 +300,7 @@ translate-x -> transform: translateX
 translate-y -> transform: translateY
 ```
 
-If a value is a negative number, its class name output will use `-n[value]`, such as `margin-l-n100` instead of `margin-l--100`, to make it obvious that it’s “negative” and to not be confused with the “modifying” syntax described below.
+If a value is a negative number, its class name output will use `-n[value]`, such as `margin-left-n100` instead of `margin-left--100`, to make it obvious that it’s “negative” and to not be confused with the “modifying” syntax described below.
 
 If the last two words separated by a hyphen are identical, then the last word will automatically be omitted. For instance `.flex-wrap` is used instead of `flex-wrap-wrap`, but `flex-wrap-no-wrap` would be the equivalent `nowrap` version.
 
@@ -1860,13 +1860,13 @@ export default {
       },
       size: {
         medium: `
-          padding-h-400
-          padding-v-300
+          padding-horizontal-400
+          padding-vertical-300
         `,
         large: `
           font-size-600
-          padding-h-500
-          padding-v-400
+          padding-horizontal-500
+          padding-vertical-400
         `,
       },
     };
@@ -2048,7 +2048,7 @@ You could even use both methods together if you wanted to mega-raise your specif
 
 ## Controlling file size
 
-While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.3 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 98 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
+While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.3 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 99 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
 
 Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, media queries, and spacing scales will also help.
 
