@@ -1135,8 +1135,8 @@ $hu-justify-items-types: (
 $hu-letter-spacing-modules: (base);
 
 $hu-letter-spacing-types: (
-  n200: -0.2em,
-  n100: -0.1em,
+  -200: -0.2em,
+  -100: -0.1em,
   0: 0,
   100: 0.1em,
   200: 0.2em,
@@ -1430,11 +1430,11 @@ rotate -> transform: rotate
 $hu-rotate-modules: ();
 
 $hu-rotate-types: (
-  n360: -360deg,
-  n270: -270deg,
-  n180: -180deg,
-  n90: -90deg,
-  n45: -45deg,
+  -360: -360deg,
+  -270: -270deg,
+  -180: -180deg,
+  -90: -90deg,
+  -45: -45deg,
   0: 0,
   45: 45deg,
   90: 90deg,
@@ -1720,8 +1720,8 @@ translate-x -> transform: translateX
 $hu-translate-x-modules: (base);
 
 $hu-translate-x-types: (
-  n100: -100%,
-  n50: -50%,
+  -100: -100%,
+  -50: -50%,
   0: 0,
   50: 50%,
   100: 100%,
@@ -1849,7 +1849,7 @@ $hu-z-index-modules: (base, hocus, group-hover, group-state, state);
 $hu-z-index-types: (
   auto: auto,
   inherit: inherit,
-  n1: -1,
+  -1: -1,
   0: 0,
   100: 100,
   200: 200,

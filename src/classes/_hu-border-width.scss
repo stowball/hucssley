@@ -6,7 +6,7 @@ $hu-border-width-parents: hu-get-class-modules($hu-border-width-modules, parents
   @each $type, $value in $hu-border-width-types {
     @each $side-type, $side-properties in $hu-border-color-sides {
       $side-properties: if($side-properties, $side-properties, $side-type);
-      $class-name: hu-class-name("#{$side-type}-width-#{$type}");
+      $class-name: hu-class-name("#{$side-type}-width:#{$type}");
       $value: if($value, $value, $type);
 
       @include hu-generic($class-name, $module) {
@@ -24,7 +24,7 @@ $hu-border-width-parents: hu-get-class-modules($hu-border-width-modules, parents
       @each $type, $value in $hu-border-width-types {
         @each $side-type, $side-properties in $hu-border-color-sides {
           $side-properties: if($side-properties, $side-properties, $side-type);
-          $class-name: hu-class-name("#{$side-type}-width-#{$type}");
+          $class-name: hu-class-name("#{$side-type}-width:#{$type}");
 
           @include hu-responsive($class-name, $hu-border-width-core-modules, $mq-scale) {
             @each $property in $side-properties {
@@ -42,7 +42,7 @@ $hu-border-width-parents: hu-get-class-modules($hu-border-width-modules, parents
     @each $type, $value in $hu-border-width-types {
       @each $side-type, $side-properties in $hu-border-color-sides {
         $side-properties: if($side-properties, $side-properties, $side-type);
-        $class-name: hu-class-name("#{$side-type}-width-#{$type}");
+        $class-name: hu-class-name("#{$side-type}-width:#{$type}");
         $value: if($value, $value, $type);
 
         @include hu-pseudo($class-name, $hu-border-width-pseudos, $module) {
@@ -60,7 +60,7 @@ $hu-border-width-parents: hu-get-class-modules($hu-border-width-modules, parents
         @each $type, $value in $hu-border-width-types {
           @each $side-type, $side-properties in $hu-border-color-sides {
             $side-properties: if($side-properties, $side-properties, $side-type);
-            $class-name: hu-class-name("#{$side-type}-width-#{$type}");
+            $class-name: hu-class-name("#{$side-type}-width:#{$type}");
 
             @include hu-pseudo-responsive($class-name, $hu-border-width-pseudos, $hu-border-width-core-modules, $mq-scale) {
               @each $property in $side-properties {
@@ -79,7 +79,7 @@ $hu-border-width-parents: hu-get-class-modules($hu-border-width-modules, parents
     @each $type, $value in $hu-border-width-types {
       @each $side-type, $side-properties in $hu-border-color-sides {
         $side-properties: if($side-properties, $side-properties, $side-type);
-        $class-name: hu-class-name("#{$side-type}-width-#{$type}");
+        $class-name: hu-class-name("#{$side-type}-width:#{$type}");
         $value: if($value, $value, $type);
 
         @include hu-parent($class-name, $hu-border-width-parents, $module) {
@@ -96,7 +96,7 @@ $hu-border-width-parents: hu-get-class-modules($hu-border-width-modules, parents
       @include hu-media-query($mq-value) {
         @each $scale, $value in $hu-border-width-scale {
           @each $type, $properties in $hu-border-width-types {
-            $class-name: hu-class-name("#{$side-type}-width-#{$type}");
+            $class-name: hu-class-name("#{$side-type}-width:#{$type}");
 
             @include hu-parent-responsive($class-name, $hu-border-width-parents, $hu-border-width-core-modules, $mq-scale) {
               @each $property in $side-properties {

@@ -3,7 +3,7 @@ $hu-z-index-modules: (base, hocus, group-hover, group-state, state) !default;
 $hu-z-index-types: (
   auto: auto,
   inherit: inherit,
-  n1: -1,
+  -1: -1,
   0: 0,
   100: 100,
   200: 200,

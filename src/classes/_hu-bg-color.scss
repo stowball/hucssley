@@ -6,7 +6,7 @@ $hu-bg-color-parents: hu-get-class-modules($hu-bg-color-modules, parents, null);
 @each $module in hu-format-modules($hu-bg-color-core-modules) {
   @each $hue, $colors in $hu-bg-color-types {
     @each $scale, $value in $colors {
-      $class-name: hu-class-name("bg-color-#{$hue}-#{$scale}");
+      $class-name: hu-class-name("bg-color:#{$hue}-#{$scale}");
       $property: background-color;
 
       @include hu-generic($class-name, $module) {
@@ -21,7 +21,7 @@ $hu-bg-color-parents: hu-get-class-modules($hu-bg-color-modules, parents, null);
     @include hu-media-query($mq-value) {
       @each $hue, $colors in $hu-bg-color-types {
         @each $scale, $value in $colors {
-          $class-name: hu-class-name("bg-color-#{$hue}-#{$scale}");
+          $class-name: hu-class-name("bg-color:#{$hue}-#{$scale}");
           $property: background-color;
 
           @include hu-responsive($class-name, $hu-bg-color-core-modules, $mq-scale) {
@@ -37,7 +37,7 @@ $hu-bg-color-parents: hu-get-class-modules($hu-bg-color-modules, parents, null);
   @each $module in hu-format-modules($hu-bg-color-core-modules) {
     @each $hue, $colors in $hu-bg-color-types {
       @each $scale, $value in $colors {
-        $class-name: hu-class-name("bg-color-#{$hue}-#{$scale}");
+        $class-name: hu-class-name("bg-color:#{$hue}-#{$scale}");
         $property: background-color;
 
         @include hu-pseudo($class-name, $hu-bg-color-pseudos, $module) {
@@ -52,7 +52,7 @@ $hu-bg-color-parents: hu-get-class-modules($hu-bg-color-modules, parents, null);
       @include hu-media-query($mq-value) {
         @each $hue, $colors in $hu-bg-color-types {
           @each $scale, $value in $colors {
-            $class-name: hu-class-name("bg-color-#{$hue}-#{$scale}");
+            $class-name: hu-class-name("bg-color:#{$hue}-#{$scale}");
             $property: background-color;
 
             @include hu-pseudo-responsive($class-name, $hu-bg-color-pseudos, $hu-bg-color-core-modules, $mq-scale) {
@@ -69,7 +69,7 @@ $hu-bg-color-parents: hu-get-class-modules($hu-bg-color-modules, parents, null);
   @each $module in hu-format-modules($hu-bg-color-core-modules) {
     @each $hue, $colors in $hu-bg-color-types {
       @each $scale, $value in $colors {
-        $class-name: hu-class-name("bg-color-#{$hue}-#{$scale}");
+        $class-name: hu-class-name("bg-color:#{$hue}-#{$scale}");
         $property: background-color;
 
         @include hu-parent($class-name, $hu-bg-color-parents, $module) {
@@ -84,7 +84,7 @@ $hu-bg-color-parents: hu-get-class-modules($hu-bg-color-modules, parents, null);
       @include hu-media-query($mq-value) {
         @each $hue, $colors in $hu-bg-color-types {
           @each $scale, $value in $colors {
-            $class-name: hu-class-name("bg-color-#{$hue}-#{$scale}");
+            $class-name: hu-class-name("bg-color:#{$hue}-#{$scale}");
             $property: background-color;
 
             @include hu-parent-responsive($class-name, $hu-bg-color-parents, $hu-bg-color-core-modules, $mq-scale) {
