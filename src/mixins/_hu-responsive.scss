@@ -1,46 +1,46 @@
 @mixin hu-responsive($class-name, $modules, $mq-scale) {
   @if (index($modules, base)) {
-    .mq-#{$mq-scale}--#{$class-name} {
+    .#{hu-escape-class-name("@mq-#{$mq-scale}")}--#{$class-name} {
       @content;
     }
   }
 
   @if (index($modules, focus)) {
-    #{$hu-focus-parent} .mq-#{$mq-scale}-focus--#{$class-name}#{$hu-focus-pseudo} {
+    #{$hu-focus-parent} .#{hu-escape-class-name("@mq-#{$mq-scale}")}-focus--#{$class-name}#{$hu-focus-pseudo} {
       @content;
     }
   }
 
   @if (index($modules, hover)) {
-    .mq-#{$mq-scale}-hover--#{$class-name}:hover {
+    .#{hu-escape-class-name("@mq-#{$mq-scale}")}-hover--#{$class-name}:hover {
       @content;
     }
   }
 
   @if (index($modules, hocus)) {
-    #{$hu-focus-parent} .mq-#{$mq-scale}-hocus--#{$class-name}#{$hu-focus-pseudo},
-    .mq-#{$mq-scale}-hocus--#{$class-name}:hover {
+    #{$hu-focus-parent} .#{hu-escape-class-name("@mq-#{$mq-scale}")}-hocus--#{$class-name}#{$hu-focus-pseudo},
+    .#{hu-escape-class-name("@mq-#{$mq-scale}")}-hocus--#{$class-name}:hover {
       @content;
     }
   }
 
   @if (index($modules, state)) {
     @each $state in $hu-states {
-      .#{$state}.mq-#{$mq-scale}-#{$state}--#{$class-name} {
+      .#{$state}.#{hu-escape-class-name("@mq-#{$mq-scale}")}-#{$state}--#{$class-name} {
         @content;
       }
     }
   }
 
   @if (index($modules, group-hover)) {
-    .group:hover .group__mq-#{$mq-scale}-hover--#{$class-name} {
+    .group:hover .group__#{hu-escape-class-name("@mq-#{$mq-scale}")}-hover--#{$class-name} {
       @content;
     }
   }
 
   @if (index($modules, group-state)) {
     @each $state in $hu-states {
-      .group.#{$state} .group__mq-#{$mq-scale}-#{$state}--#{$class-name} {
+      .group.#{$state} .group__#{hu-escape-class-name("@mq-#{$mq-scale}")}-#{$state}--#{$class-name} {
         @content;
       }
     }

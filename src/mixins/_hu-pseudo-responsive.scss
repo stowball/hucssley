@@ -4,47 +4,47 @@
       $pseudo-class-name: #{pseudo}-#{hu-string-replace($pseudo, ":", "")};
 
       @if (index($modules, base)) {
-        .mq-#{$mq-scale}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+        .#{hu-escape-class-name("@mq-#{$mq-scale}")}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
           @content;
         }
       }
 
       @if (index($modules, focus)) {
-        #{$hu-focus-parent} .mq-#{$mq-scale}-focus-#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo} {
+        #{$hu-focus-parent} .#{hu-escape-class-name("@mq-#{$mq-scale}")}-focus--#{$class-name}#{$hu-focus-pseudo}#{$pseudo} {
           @content;
         }
       }
 
       @if (index($modules, hover)) {
-        .mq-#{$mq-scale}-hover-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
+        .#{hu-escape-class-name("@mq-#{$mq-scale}")}-hover--#{$class-name}:hover#{$pseudo} {
           @content;
         }
       }
 
       @if (index($modules, hocus)) {
-        #{$hu-focus-parent} .mq-#{$mq-scale}-hocus-#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo},
-        .mq-#{$mq-scale}-hocus-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
+        #{$hu-focus-parent} .#{hu-escape-class-name("@mq-#{$mq-scale}")}-hocus--#{$class-name}#{$hu-focus-pseudo}#{$pseudo},
+        .#{hu-escape-class-name("@mq-#{$mq-scale}")}-hocus--#{$class-name}:hover#{$pseudo} {
           @content;
         }
       }
 
       @if (index($modules, state)) {
         @each $state in $hu-states {
-          .#{$state}.mq-#{$mq-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+          .#{$state}.#{hu-escape-class-name("@mq-#{$mq-scale}")}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @content;
           }
         }
       }
 
       @if (index($modules, group-hover)) {
-        .group:hover .group__mq-#{$mq-scale}-hover-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+        .group:hover .group__#{hu-escape-class-name("@mq-#{$mq-scale}")}-hover--#{$class-name}#{$pseudo} {
           @content;
         }
       }
 
       @if (index($modules, group-state)) {
         @each $state in $hu-states {
-          .group.#{$state} .group__mq-#{$mq-scale}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+          .group.#{$state} .group__#{hu-escape-class-name("@mq-#{$mq-scale}")}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @content;
           }
         }
