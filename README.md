@@ -313,7 +313,7 @@ When you want to use class names scoped to “non-parent” modules, it follows 
 
 ```css
 .@mq-768--align-items-center
-.hocus--color-neutral-1000
+.:hocus--color-neutral-1000
 .@print--flex-direction-column
 ```
 
@@ -343,7 +343,7 @@ For state classes to become active, you need to apply the raw state name as an c
 Children of groups can respond to user and UI interaction via groups. Their syntax is `[parent-name]__[parent-type]--[base-class]`:
 
 ```
-.group__hover--scale-110
+.group__:hover--scale-110
 .group__is-selected--bg-color-blue-300
 .browser-mobile__font-size-700
 ```
@@ -359,7 +359,7 @@ For `group` classes to take effect, a parent has to be given the raw `.group` cl
   ">
     <ul class="
       browser-mobile__font-size-700
-      group__hover--scale-110
+      group__:hover--scale-110
       group__is-selected--bg-color-blue-300
     "></ul>
   </div>
@@ -382,11 +382,11 @@ When a particular class is configured to use the `responsive` module, it will al
 
 Here the syntax is:
 
-* `@mq-[responsive-scale]-focus--[base-class]:focus` for `focus`
-* `@mq-[responsive-scale]-hover--[base-class]:hover` for `hover`
-* `@mq-[responsive-scale]-hocus--[base-class]:focus, @mq-[responsive-scale]-hocus--[base-class]:hover` for `hocus`
+* `@mq-[responsive-scale]:focus--[base-class]` for `focus`
+* `@mq-[responsive-scale]:hover--[base-class]` for `hover`
+* `@mq-[responsive-scale]:hocus--[base-class]` for `hocus`
 * `@mq-[responsive-scale]-[state-name]--[base-class]` for `state`s
-* `group__@mq-[responsive-scale]-hover--[base-class]` for `group-hover`
+* `group__@mq-[responsive-scale]:hover--[base-class]` for `group:hover`
 * `group__@mq-[responsive-scale]-[state-name]--[base-class]` for `group-state`
 
 Which results in:
@@ -812,8 +812,8 @@ By default, the `focus` and `hocus` modules generate classes which use a `:focus
 $hu-focus-pseudo: ":focus-visible";
 
 /* ->
-.focus--[class-name]:focus-visible,
-.hocus--[class-name]:focus-visible {
+.:focus--[class-name]:focus-visible,
+.:hocus--[class-name]:focus-visible {
   // declarations
 }
 */
@@ -826,8 +826,8 @@ $hu-focus-parent: ".js-focus-visible";
 $hu-focus-pseudo: ":focus:not(.focus-visible)";
 
 /* ->
-.js-focus-visible .focus--[class-name]:focus:not(.focus-visible),
-.js-focus-visible .hocus--[class-name]:focus:not(.focus-visible) {
+.js-focus-visible .:focus--[class-name]:focus:not(.focus-visible),
+.js-focus-visible .:hocus--[class-name]:focus:not(.focus-visible) {
   // declarations
 }
 */
@@ -1273,7 +1273,7 @@ This mixin is a wrapper around two other mixins, `hu-parent-generic-classes()` a
   display: block;
 }
 
-.has-js .has-js__focus--display:block:focus {
+.has-js .has-js__:focus--display:block:focus {
   display: flex;
 }
 
@@ -1356,7 +1356,7 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `group-hover`, `group-
   display: block;
 }
 
-.group:hover .group__hover--hu-display:block {
+.group:hover .group__:hover--hu-display:block {
   display: block;
 }
 

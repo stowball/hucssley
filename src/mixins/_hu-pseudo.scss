@@ -10,20 +10,20 @@
       }
 
       @else if ($module == focus) {
-        #{$hu-focus-parent} .focus-#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo} {
+        #{$hu-focus-parent} .#{hu-escape-class-name(":focus")}-#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo} {
           @content;
         }
       }
 
       @else if ($module == hover) {
-        .hover-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
+        .#{hu-escape-class-name(":hover")}-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
           @content;
         }
       }
 
       @else if ($module == hocus) {
-        #{$hu-focus-parent} .hocus-#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo},
-        .hocus-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
+        #{$hu-focus-parent} .#{hu-escape-class-name(":hocus")}-#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo},
+        .#{hu-escape-class-name(":hocus")}#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
           @content;
         }
       }
@@ -37,7 +37,7 @@
       }
 
       @else if ($module == group-hover) {
-        .group:hover .group__hover-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+        .group:hover .group__#{hu-escape-class-name(":hover")}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
           @content;
         }
       }

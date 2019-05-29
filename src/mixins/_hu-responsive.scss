@@ -6,20 +6,20 @@
   }
 
   @if (index($modules, focus)) {
-    #{$hu-focus-parent} .#{hu-escape-class-name("@mq-#{$mq-scale}")}-focus--#{$class-name}#{$hu-focus-pseudo} {
+    #{$hu-focus-parent} .#{hu-escape-class-name("@mq-#{$mq-scale}:focus")}--#{$class-name}#{$hu-focus-pseudo} {
       @content;
     }
   }
 
   @if (index($modules, hover)) {
-    .#{hu-escape-class-name("@mq-#{$mq-scale}")}-hover--#{$class-name}:hover {
+    .#{hu-escape-class-name("@mq-#{$mq-scale}:hover")}--#{$class-name}:hover {
       @content;
     }
   }
 
   @if (index($modules, hocus)) {
-    #{$hu-focus-parent} .#{hu-escape-class-name("@mq-#{$mq-scale}")}-hocus--#{$class-name}#{$hu-focus-pseudo},
-    .#{hu-escape-class-name("@mq-#{$mq-scale}")}-hocus--#{$class-name}:hover {
+    #{$hu-focus-parent} .#{hu-escape-class-name("@mq-#{$mq-scale}:hocus")}--#{$class-name}#{$hu-focus-pseudo},
+    .#{hu-escape-class-name("@mq-#{$mq-scale}:hocus")}--#{$class-name}:hover {
       @content;
     }
   }
@@ -33,7 +33,7 @@
   }
 
   @if (index($modules, group-hover)) {
-    .group:hover .group__#{hu-escape-class-name("@mq-#{$mq-scale}")}-hover--#{$class-name} {
+    .group:hover .group__#{hu-escape-class-name("@mq-#{$mq-scale}:hover")}--#{$class-name} {
       @content;
     }
   }
