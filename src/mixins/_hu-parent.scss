@@ -2,7 +2,7 @@
   @each $module in hu-format-modules($modules) {
     @each $parent in $parents {
       $escaped-parent: hu-escape-class-name($parent);
-      $escaped-child: if($child-string-to-strip, hu-string-replace($escaped-parent, $child-string-to-strip, ""), $escaped-parent);
+      $escaped-child: if($child-string-to-strip, hu-escape-class-name(hu-string-replace($parent, $child-string-to-strip, "")), $escaped-parent);
 
       @if ($module == base) {
         .#{$escaped-parent} .#{$escaped-child}__#{$class-name} {

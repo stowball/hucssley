@@ -857,18 +857,18 @@ $hu-themes: (
 );
 ```
 
-This would allow you to theme your entire application simply by changing a single, parent level `theme-[theme-name]` class by utilizing all the generated classes, like:
+This would allow you to theme your entire application simply by changing a single, parent level `theme:[theme-name]` class by utilizing all the generated classes, like:
 
 ```css
-.theme-broncos .theme__bg-color:primary {
+.theme:broncos .theme__bg-color:primary {
   background-color: #6c1d45;
 }
 
-.theme-knights .theme__color:highlight {
+.theme:knights .theme__color:highlight {
   color: #e82c2a;
 }
 
-.theme-sharks .theme__border-color:secondary {
+.theme:sharks .theme__border-color:secondary {
   border-color: #27a3e6;
 }
 ```
