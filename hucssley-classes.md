@@ -47,6 +47,7 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-cursor](#hu-cursor)
   - [hu-display](#hu-display)
   - [hu-flex](#hu-flex)
+  - [hu-flex-basis](#hu-flex-basis)
   - [hu-flex-direction](#hu-flex-direction)
   - [hu-flex-flow](#hu-flex-flow)
   - [hu-flex-grow](#hu-flex-grow)
@@ -793,6 +794,14 @@ $hu-display-types: (
 $hu-flex-modules: ();
 
 $hu-flex-types: ();
+```
+
+### hu-flex-basis
+
+```scss
+$hu-flex-basis-modules: ();
+
+$hu-flex-basis-types: ();
 ```
 
 ### hu-flex-direction
