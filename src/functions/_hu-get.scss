@@ -7,7 +7,7 @@
     }
   }
 
-  @if ($map == null and $ignore-null == false) {
+  @if ($map == null) {
     $error: hu-log-error("No map found for #{unquote($stack-trace-name)}(#{$keys}). Map contains #{$original-map}");
   }
 
