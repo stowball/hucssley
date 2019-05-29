@@ -314,7 +314,7 @@ When you want to use class names scoped to “non-parent” modules, it follows 
 ```css
 .@mq-768--align-items-center
 .hocus--color-neutral-1000
-.print--flex-direction-column
+.@print--flex-direction-column
 ```
 
 In the above example, `hocus` is shortcut module for `:hover, :focus`, and `@mq-768` is for a `(min-width: 768px)` media query.
@@ -1361,7 +1361,7 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `group-hover`, `group-
 }
 
 @media print {
-  .print--hu-display-block.print--hu-display:block.print--hu-display:block {
+  .@print--hu-display-block.print--hu-display:block.print--hu-display:block {
     display: block;
   }
 }

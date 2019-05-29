@@ -61,7 +61,7 @@
 
     @else if ($module == print) {
       @media print {
-        .print--#{$class-name} {
+        .#{hu-escape-class-name("@print")}--#{$class-name} {
           @include hu-bump-specificity {
             @content;
           }

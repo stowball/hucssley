@@ -49,7 +49,7 @@
 
       @else if ($module == print) {
         @media print {
-          .#{$escaped-parent} .#{$escaped-child}__print--#{$class-name} {
+          .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name("@print")}--#{$class-name} {
             @include hu-bump-specificity {
               @content;
             }
