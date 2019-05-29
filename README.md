@@ -119,66 +119,66 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
 
 ```html
 <div class="
-  bg-color-blue-100
-  padding-500
+  bg-color:blue-100
+  padding:500
 ">
   <div class="
-    align-items-center
-    bg-color-neutral-0
-    border-color-neutral-200
-    border-radius-500
-    border-style-solid
-    border-width-100
-    display-flex
-    flex-direction-column
-    padding-500
-    text-align-center
-    @mq-768--flex-direction-row
-    @mq-768--text-align-left
+    align-items:center
+    bg-color:neutral-0
+    border-color:neutral-200
+    border-radius:500
+    border-style:solid
+    border-width:100
+    display:flex
+    flex-direction:column
+    padding:500
+    text-align:center
+    @mq-768--flex-direction:row
+    @mq-768--text-align:left
   ">
    <img
       alt=""
       class="
-        bg-color-blue-600
-        border-color-neutral-100
-        border-radius-1000
-        border-style-solid
-        border-width-200
-        margin-bottom-400
-        width-50
-        @mq-600--width-30
-        @mq-768--margin-bottom-0
-        @mq-768--margin-right-500
-        @mq-768--width-20
+        bg-color:blue-600
+        border-color-neutral:100
+        border-radius:1000
+        border-style:solid
+        border-width:200
+        margin-bottom:400
+        width:50
+        @mq-600--width:30
+        @mq-768--margin-bottom:0
+        @mq-768--margin-right:500
+        @mq-768--width:20
       "
       src="https://hireup.cdn.prismic.io/hireup/89e15301c28e6396927d85e38e9c5d5833ebab09_kyle_357-bonnie.png"
     />
     <div>
       <p class="
-        font-size-600
-        font-weight-700
-        line-height-200
-        margin-bottom-400
-        @mq-768--font-size-800
+        font-size:600
+        font-weight:700
+        line-height:200
+        margin-bottom:400
+        @mq-768--font-size:800
       ">
         Disability support workers who love what you love
       </p>
       <a
         class="
-          bg-color-blue-1000
-          border-color-neutral-700
-          color-neutral-0
-          display-inline-block
-          padding-horizontal-400
-          padding-vertical-300
-          transition-duration-200
-          transition-easing-ease
-          transition-property-all
-          @mq-768--font-size-600
-          @mq-768--padding-horizontal-500
-          @mq-768--padding-vertical-400
-          hocus--bg-color-blue-600
-          hocus--scale-105
+          bg-color:blue-1000
+          border-color:neutral-700
+          color:neutral-0
+          display:inline-block
+          padding-horizontal:400
+          padding-vertical:300
+          transition-duration:200
+          transition-easing:ease
+          transition-property:all
+          :hocus--bg-color-blue:600
+          :hocus--scale:105
+          @mq-768--font-size:600
+          @mq-768--padding-horizontal:500
+          @mq-768--padding-vertical:400
         "
         href="#"
       >
@@ -303,8 +303,6 @@ translate-x -> transform: translateX
 translate-y -> transform: translateY
 ```
 
-If the last two words separated by a hyphen are identical, then the last word will automatically be omitted. For instance `.flex-wrap` is used instead of `flex-wrap-wrap`, but `flex-wrap-no-wrap` would be the equivalent `nowrap` version.
-
 *Note: If a global namespace has been configured, it will always precede the base class name.*
 
 #### Non-parent modules: `focus, hocus, hover, print, reduced-motion, responsive`
@@ -312,9 +310,9 @@ If the last two words separated by a hyphen are identical, then the last word wi
 When you want to use class names scoped to “non-parent” modules, it follows a pattern of `[module-name][-module-variant])?--[base-class]`, for instance:
 
 ```css
-.@mq-768--align-items-center
-.:hocus--color-neutral-1000
-.@print--flex-direction-column
+.@mq-768--align-items:center
+.:hocus--color:neutral-1000
+.@print--flex-direction:column
 ```
 
 In the above example, `hocus` is shortcut module for `:hover, :focus`, and `@mq-768` is for a `(min-width: 768px)` media query.
@@ -324,16 +322,16 @@ In the above example, `hocus` is shortcut module for `:hover, :focus`, and `@mq-
 State modules allow you to change the UI based on a particular state, and follows the pattern `[state-name]--[base-class]`:
 
 ```css
-.is-expanded--visibility-visible
-.is-disabled--opacity-30
+.is-expanded--visibility:visible
+.is-disabled--opacity:30
 ```
 
 For state classes to become active, you need to apply the raw state name as an class additional class on the element (often via JavaScript):
 
 ```html
 <div class="
-  display-none
-  is-open--display-block
+  display:none
+  is-open--display:block
 + is-open
 "></div>
 ```
@@ -343,9 +341,9 @@ For state classes to become active, you need to apply the raw state name as an c
 Children of groups can respond to user and UI interaction via groups. Their syntax is `[parent-name]__[parent-type]--[base-class]`:
 
 ```
-.group__:hover--scale-110
-.group__is-selected--bg-color-blue-300
-.browser-mobile__font-size-700
+.group__:hover--scale:110
+.group__is-selected--bg-color-blue:300
+.browser-mobile__font-size:700
 ```
 
 For `group` classes to take effect, a parent has to be given the raw `.group` class, and raw state class if applicable:
@@ -358,9 +356,9 @@ For `group` classes to take effect, a parent has to be given the raw `.group` cl
 +   is-selected
   ">
     <ul class="
-      browser-mobile__font-size-700
-      group__:hover--scale-110
-      group__is-selected--bg-color-blue-300
+      browser-mobile__font-size:700
+      group__:hover--scale:110
+      group__is-selected--bg-color:blue-300
     "></ul>
   </div>
 </html>
@@ -392,9 +390,9 @@ Here the syntax is:
 Which results in:
 
 ```css
-.@mq-960-is-expanded--display-flex
-.group__@mq-768-hover--display-block
-.group__@mq-1200-is-collapsed--height-0
+.@mq-960-is-expanded--display:flex
+.group__@mq-768-hover--display:block
+.group__@mq-1200-is-collapsed--height:0
 ```
 
 ## Scales
@@ -798,10 +796,10 @@ $hu-border-types: $hu-colors;
 In conjunction with variables specific to each class name, classes like the following are generated:
 
 ```css
-.border-color-neutral-0
-.border-v-color-blue-600
-.border-b-style-none
-.border-h-width-200
+.border-color:neutral-0
+.border-vertical-color:blue-600
+.border-bottom-style:none
+.border-horizontal-width:200
 ```
 
 #### Controlling focus: `$hu-hocus-focus-parent` and `$hu-hocus-focus-pseudo`
@@ -1308,8 +1306,8 @@ This function formats a class name to append `$hu-namespace` (if applicable), co
 ```scss
 @function hu-class-name($class-name);
 
-hu-class-name("eqio-<520-flex-wrap-wrap");
-// -> hu-eqio-\<520-flex-wrap
+hu-class-name("eqio-<520-color:transparent-transparent");
+// -> hu-eqio-\<520-color\:transparent
 ```
 
 *Note: if your class name contains a special character, ensure you pass it as a quoted string.*
@@ -1835,39 +1833,39 @@ export default {
   created() {
     this.styles = {
       base: `
-        font-weight-700
-        min-width-0 // fixes IE
-        transition-duration-100
-        transition-easing-ease
-        transition-property-all
-        hocus--scale-105
-        is-selected--bg-color-neutral-700
-        is-selected--color-neutral-0
+        font-weight:700
+        min-width:0 // fixes IE
+        transition-duration:100
+        transition-easing:ease
+        transition-property:all
+        :hocus--scale:105
+        is-selected--bg-color:neutral-700
+        is-selected--color:neutral-0
       `,
       type: {
         primary: `
-          bg-color-blue-1000
-          color-neutral-0
-          hocus--bg-color-blue-600
+          bg-color:blue-1000
+          color:neutral-0
+          hocus--bg-color:blue-600
         `,
         secondary: `
-          bg-color-blue-300
-          hocus--bg-color-blue-400
+          bg-color:blue-300
+          hocus--bg-color:blue-400
         `,
       },
       shape: {
-        rounded: 'border-radius-1000',
-        square: 'border-radius-300',
+        rounded: 'border-radius:1000',
+        square: 'border-radius:300',
       },
       size: {
         medium: `
-          padding-horizontal-400
-          padding-vertical-300
+          padding-horizontal:400
+          padding-vertical:300
         `,
         large: `
-          font-size-600
-          padding-horizontal-500
-          padding-vertical-400
+          font-size:600
+          padding-horizontal:500
+          padding-vertical:400
         `,
       },
     };
@@ -1906,27 +1904,27 @@ The following shows how we can quickly use and customize a component’s appeara
 
 ```html
 <button-hu
-  class="margin-400"
+  class="margin:400"
 >
   Primary
 </button-hu>
 
 <button-hu
-  class="margin-400"
+  class="margin:400"
   type="secondary"
 >
   Secondary
 </button-hu>
 
 <button-hu
-  class="margin-400"
+  class="margin:400"
   shape="rounded"
 >
   Primary Rounded
 </button-hu>
 
 <button-hu
-  class="margin-400"
+  class="margin:400"
   shape="rounded"
   type="secondary"
 >
@@ -1934,7 +1932,7 @@ The following shows how we can quickly use and customize a component’s appeara
 </button-hu>
 
 <button-hu
-  class="margin-400"
+  class="margin:400"
   size="large"
   type="primary"
 >
@@ -1942,7 +1940,7 @@ The following shows how we can quickly use and customize a component’s appeara
 </button-hu>
 
 <button-hu
-  class="margin-400"
+  class="margin:400"
   size="large"
   type="secondary"
 >
@@ -1950,7 +1948,7 @@ The following shows how we can quickly use and customize a component’s appeara
 </button-hu>
 
 <button-hu
-  class="margin-400"
+  class="margin:400"
   shape="rounded"
   size="large"
   type="primary"
@@ -1959,7 +1957,7 @@ The following shows how we can quickly use and customize a component’s appeara
 </button-hu>
 
 <button-hu
-  class="margin-400"
+  class="margin:400"
   shape="rounded"
   size="large"
   type="secondary"
