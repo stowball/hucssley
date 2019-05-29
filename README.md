@@ -1136,22 +1136,22 @@ $hu-display-modules: (
 /* ->
 …
 
-.pseudo-before--display:block::before {
+.:before--display:block::before {
   display: block;
 }
 
-.pseudo-first-child--display:block:first-child {
+.:first-child--display:block:first-child {
   display: block;
 }
 
 …
 
 @media (min-width: 22.5em) {
-  .@mq-360-pseudo-before--display:block::before {
+  .@mq-360:before--display:block::before {
     display: block;
   }
 
-  .@mq-360-pseudo-first-child--display:block:first-child {
+  .@mq-360:first-child--display:block:first-child {
     display: block;
   }
 }
@@ -1211,38 +1211,38 @@ This mixin is a wrapper around two other mixins, `hu-pseudo-generic-classes()` a
 @include hu-pseudo-classes(display, ("::before", ":first-child"), $hu-display-modules, $hu-display-types);
 
 /* ->
-.pseudo-before--display:block::before {
+.:before--display:block::before {
   display: block;
 }
 
-.pseudo-first-child--display:block:first-child {
+.:first-child--display:block:first-child {
   display: block;
 }
 
-.pseudo-before--display:flex::before {
+.:before--display:flex::before {
   display: flex;
 }
 
-.pseudo-first-child--display:flex:first-child {
+.:first-child--display:flex:first-child {
   display: flex;
 }
 
 …
 
 @media (min-width: 22.5em) {
-  .@mq-360-pseudo-before--display:block::before {
+  .@mq-360:before--display:block::before {
     display: block;
   }
 
-  .@mq-360-pseudo-first-child--display:block:first-child {
+  .@mq-360:first-child--display:block:first-child {
     display: block;
   }
 
-  .@mq-360-pseudo-before--display:flex::before {
+  .@mq-360:before--display:flex::before {
     display: flex;
   }
 
-  .@mq-360-pseudo-first-child--display:flex:first-child {
+  .@mq-360:first-child--display:flex:first-child {
     display: flex;
   }
 }
@@ -1460,22 +1460,22 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `reduced-motion` and `
 }
 
 /* ->
-.pseudo-before--hu-display:block::before {
+.:before--hu-display:block::before {
   display: block;
 }
 
-.pseudo-first-child--hu-display:block:first-child {
+.:first-child--hu-display:block:first-child {
   display: block;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .@reduced-motion-pseudo-before--hu-display:block::before.@reduced-motion-pseudo-before--hu-display:block::before.@reduced-motion-pseudo-before--hu-display:block::before {
+  .@reduced-motion:before--hu-display:block::before.@reduced-motion:before--hu-display:block::before.@reduced-motion:before--hu-display:block::before {
     display: block;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reduced-motion-pseudo-first-child--hu-display:block:first-child.reduced-motion-pseudo-first-child--hu-display:block:first-child.reduced-motion-pseudo-first-child--hu-display:block:first-child {
+  .reduced-motion:first-child--hu-display:block:first-child.reduced-motion:first-child--hu-display:block:first-child.reduced-motion:first-child--hu-display:block:first-child {
     display: block;
   }
 }
@@ -1496,11 +1496,11 @@ Generates the responsive `base` and `state` module styles for a pseudo selector 
 }
 
 /* ->
-.@mq-medium-pseudo-before--display:block::before {
+.@mq-medium:before--display:block::before {
   display: block;
 }
 
-.@mq-medium-pseudo-first-child--display:block:first-child {
+.@mq-medium:first-child--display:block:first-child {
   display: block;
 }
 */
@@ -1668,35 +1668,35 @@ One benefit Hucssley has over other, similar libraries is that there is a define
 Generates the following:
 
 ```css
-.pseudo-before--icon-size:100::before {
+.:before--icon-size:100::before {
   height: 1rem;
   width: 1rem;
 }
 
-.pseudo-before--icon-size:200::before {
+.:before--icon-size:200::before {
   height: 1.5rem;
   width: 1.5rem;
 }
 
 @media (min-width: 22.5em) {
-  .@mq-360-pseudo-before--icon-size:100::before {
+  .@mq-360:before--icon-size:100::before {
     height: 1rem;
     width: 1rem;
   }
 
-  .@mq-360-pseudo-before--icon-size:200::before {
+  .@mq-360:before--icon-size:200::before {
     height: 1.5rem;
     width: 1.5rem;
   }
 }
 
 @media (min-width: 30em) {
-  .@mq-480-pseudo-before--icon-size:100::before {
+  .@mq-480:before--icon-size:100::before {
     height: 1rem;
     width: 1rem;
   }
 
-  .@mq-480-pseudo-before--icon-size:200::before {
+  .@mq-480:before--icon-size:200::before {
     height: 1.5rem;
     width: 1.5rem;
   }

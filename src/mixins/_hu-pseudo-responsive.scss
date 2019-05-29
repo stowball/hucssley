@@ -1,10 +1,10 @@
 @mixin hu-pseudo-responsive($class-name, $pseudos, $modules, $mq-scale) {
   @if (index($modules, responsive)) {
     @each $pseudo in $pseudos {
-      $pseudo-class-name: #{pseudo}-#{hu-string-replace($pseudo, ":", "")};
+      $pseudo-class-name: "#{hu-escape-class-name(":")}#{hu-string-replace($pseudo, ":", "")}";
 
       @if (index($modules, base)) {
-        .#{hu-escape-class-name("@mq-#{$mq-scale}")}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+        .#{hu-escape-class-name("@mq-#{$mq-scale}")}:#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
           @content;
         }
       }
@@ -30,7 +30,7 @@
 
       @if (index($modules, state)) {
         @each $state in $hu-states {
-          .#{$state}.#{hu-escape-class-name("@mq-#{$mq-scale}")}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+          .#{$state}.#{hu-escape-class-name("@mq-#{$mq-scale}")}-#{$state}:#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @content;
           }
         }
@@ -44,7 +44,7 @@
 
       @if (index($modules, group-state)) {
         @each $state in $hu-states {
-          .group.#{$state} .group__#{hu-escape-class-name("@mq-#{$mq-scale}")}-#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+          .group.#{$state} .group__#{hu-escape-class-name("@mq-#{$mq-scale}")}-#{$state}:#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @content;
           }
         }

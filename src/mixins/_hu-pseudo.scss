@@ -1,7 +1,7 @@
 @mixin hu-pseudo($class-name, $pseudos, $modules) {
   @each $module in hu-format-modules($modules) {
     @each $pseudo in $pseudos {
-      $pseudo-class-name: #{pseudo}-#{hu-string-replace($pseudo, ":", "")};
+      $pseudo-class-name: "#{hu-escape-class-name(":")}#{hu-string-replace($pseudo, ":", "")}";
 
       @if ($module == base) {
         .#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
@@ -10,19 +10,19 @@
       }
 
       @else if ($module == focus) {
-        #{$hu-focus-parent} .#{hu-escape-class-name(":focus")}-#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo} {
+        #{$hu-focus-parent} .#{hu-escape-class-name(":focus")}#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo} {
           @content;
         }
       }
 
       @else if ($module == hover) {
-        .#{hu-escape-class-name(":hover")}-#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
+        .#{hu-escape-class-name(":hover")}#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
           @content;
         }
       }
 
       @else if ($module == hocus) {
-        #{$hu-focus-parent} .#{hu-escape-class-name(":hocus")}-#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo},
+        #{$hu-focus-parent} .#{hu-escape-class-name(":hocus")}#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo},
         .#{hu-escape-class-name(":hocus")}#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
           @content;
         }
@@ -30,21 +30,21 @@
 
       @else if ($module == state) {
         @each $state in $hu-states {
-          .#{$state}.#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+          .#{$state}.#{$state}#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @content;
           }
         }
       }
 
       @else if ($module == group-hover) {
-        .group:hover .group__#{hu-escape-class-name(":hover")}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+        .group:hover .group__#{hu-escape-class-name(":hover")}#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
           @content;
         }
       }
 
       @else if ($module == group-state) {
         @each $state in $hu-states {
-          .group.#{$state} .group__#{$state}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+          .group.#{$state} .group__#{$state}#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @content;
           }
         }
@@ -52,7 +52,7 @@
 
       @else if ($module == reduced-motion) {
         @media (prefers-reduced-motion: reduce) {
-          .#{hu-escape-class-name("@reduced-motion")}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+          .#{hu-escape-class-name("@reduced-motion")}#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @include hu-bump-specificity {
               @content;
             }
@@ -62,7 +62,7 @@
 
       @else if ($module == print) {
         @media print {
-          .#{hu-escape-class-name("@print")}-#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+          .#{hu-escape-class-name("@print")}#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @include hu-bump-specificity {
               @content;
             }
