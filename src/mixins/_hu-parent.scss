@@ -39,7 +39,7 @@
 
       @else if ($module == reduced-motion) {
         @media (prefers-reduced-motion: reduce) {
-          .#{$escaped-parent} .#{$escaped-child}__reduced-motion--#{$class-name} {
+          .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name("@reduced-motion")}--#{$class-name} {
             @include hu-bump-specificity {
               @content;
             }

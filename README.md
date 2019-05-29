@@ -1469,7 +1469,7 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `reduced-motion` and `
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reduced-motion-pseudo-before--hu-display:block::before.reduced-motion-pseudo-before--hu-display:block::before.reduced-motion-pseudo-before--hu-display:block::before {
+  .@reduced-motion-pseudo-before--hu-display:block::before.@reduced-motion-pseudo-before--hu-display:block::before.@reduced-motion-pseudo-before--hu-display:block::before {
     display: block;
   }
 }
