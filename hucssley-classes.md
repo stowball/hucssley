@@ -1221,7 +1221,7 @@ $hu-margin-types: (
 );
 ```
 
-For every numeric `$hu-margin-scale` value, negative `-n[value]` classes are also created.
+For every numeric `$hu-margin-scale` value, negative `-[value]` classes are also created.
 
 ### hu-max-height
 
@@ -1867,20 +1867,20 @@ $hu-width-types: (
 $hu-z-index-modules: (base, hocus, group-hover, group-state, state);
 
 $hu-z-index-types: (
-  auto: auto,
-  inherit: inherit,
-  -1: -1,
-  0: 0,
-  100: 100,
-  200: 200,
-  300: 300,
-  400: 400,
-  500: 500,
-  600: 600,
-  700: 700,
-  800: 800,
-  900: 900,
-  1000: 1000,
-  9999: 9999,
+  auto,
+  inherit,
+  -1,
+  0,
+  100,
+  200,
+  300,
+  400,
+  500,
+  600,
+  700,
+  800,
+  900,
+  1000,
+  9999,
 );
 ```
