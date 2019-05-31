@@ -100,7 +100,7 @@ By default, Hucssley does not output classes for things that don’t map explici
 
 Hucssley also provides utility classes for truncating text and making elements “visually hidden” for accessibility purposes.
 
-For a complete list of the class names provided, read [Hucssley classes](/hucssley-classes.md).
+For a complete list of the class names provided and how they can be customized, read [Hucssley classes](/hucssley-classes.md).
 
 Hucssley also comes with:
 
@@ -174,8 +174,8 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
           transition-duration:200
           transition-easing:ease
           transition-property:all
-          :hocus--bg-color-blue:600
-          :hocus--scale:105
+          &:hocus--bg-color-blue:600
+          &:hocus--scale:105
           @mq-768--font-size:600
           @mq-768--padding-horizontal:500
           @mq-768--padding-vertical:400
@@ -197,7 +197,7 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
 
 With [so many CSS utility libraries](https://css-tricks.com/need-css-utility-library/) already in existence, and with Tailwind being an extremely popular, close alternative, why does Hucssley exist and why might you want to use it?
 
-We wanted to [solve a lot of the problems](/rethinking-css.md) developers have with “normal” CSS and the ones Adam Silver poses in [The problem with atomic CSS](https://adamsilver.io/articles/the-problem-with-atomic-css/).
+Well, we wanted to [solve a lot of the problems](/rethinking-css.md) developers have with “normal” CSS and the ones Adam Silver poses in [The problem with atomic CSS](https://adamsilver.io/articles/the-problem-with-atomic-css/).
 
 Firstly, most utility libraries are hard to read, and more importantly hard to learn. They often use an obtuse, inconsistent syntax which has you reaching for the docs more often than you should. With Hucssley, the focus has been: “if you know CSS properties, you know Hucssley”.
 
@@ -288,6 +288,7 @@ bg-repeat -> background-repeat
 bg-size -> background-size
 blend-mode -> mix-blend-mode
 border-radius-[side] -> border-[side]-radius
+content -> :[pseudo]-content
 momentum-scrolling -> -webkit-overflow-scrolling
 overscroll -> overscroll-behavior
 pos-[bottom,left,right,top] -> bottom,left,right,top
@@ -311,11 +312,13 @@ When you want to use class names scoped to “non-parent” modules, it follows 
 
 ```css
 .@mq-768--align-items:center
-.:hocus--color:neutral-1000
+.&:hocus--color:neutral-1000
 .@print--flex-direction:column
 ```
 
-In the above example, `hocus` is shortcut module for `:hover, :focus`, and `@mq-768` is for a `(min-width: 768px)` media query.
+In the above example, `&:hocus` is a shortcut module for `:hover, :focus`, and `@mq-768` is for a `(min-width: 768px)` media query.
+
+*Note: top-level pseudo classes are prefixed with `&`.*
 
 ### State modules: `state`
 
@@ -364,7 +367,7 @@ For `group` classes to take effect, a parent has to be given the raw `.group` cl
 </html>
 ```
 
-Be careful when using groups, because they will affect all `.group__` children. A child `.group` does not reset the actions of a parent `.group`, so you could end up with unexpected behaviour. It’s recommended to use groups on near ancestors to leaf nodes.
+Be careful when using groups, because they will affect all `.group__` children. A child `.group` does not reset the actions of a parent `.group`, so you could end up with unexpected behaviour. It’s recommended to use groups on ancestors that are near to leaf nodes.
 
 #### Custom parent modules
 
@@ -391,7 +394,7 @@ Which results in:
 
 ```css
 .@mq-960-is-expanded--display:flex
-.group__@mq-768-hover--display:block
+.group__@mq-768:hover--display:block
 .group__@mq-1200-is-collapsed--height:0
 ```
 
@@ -424,7 +427,7 @@ Hucssley’s configuration is split in to 3 sections: `reset`, `global` and `cla
 
 * **Reset** configuration uses plain variables to customize “generic” styles like whether `box-sizing: border-box` should be used by default.
 * **Global** configuration mostly uses maps to handle things like the default media queries, colors, spacings, UI states and themes.
-* **Classes** provides list and map variables to adjust the modules, and values for each class individually. Some classes (like those which deal with color) inherit from the same base variable by default, so only 1 change is required to affect all `border-color`, `background-color` and `color` classes. All classes can be generated at individual modules described above.
+* **Classes** provides list and map variables to adjust the modules, and values for each class individually. Some classes (like those which deal with color) inherit from the same base variable by default, so only 1 change is required to affect all `border-color`, `background-color` and `color` classes. All classes can be generated at the individual modules described above.
 
 As detailed in the [Installation](#installation) section, there is a preferred way of organizing any configuration overrides.
 
@@ -810,8 +813,8 @@ By default, the `focus` and `hocus` modules generate classes which use a `:focus
 $hu-focus-pseudo: ":focus-visible";
 
 /* ->
-.:focus--[class-name]:focus-visible,
-.:hocus--[class-name]:focus-visible {
+.&:focus--[class-name]:focus-visible,
+.&:hocus--[class-name]:focus-visible {
   // declarations
 }
 */
@@ -824,8 +827,8 @@ $hu-focus-parent: ".js-focus-visible";
 $hu-focus-pseudo: ":focus:not(.focus-visible)";
 
 /* ->
-.js-focus-visible .:focus--[class-name]:focus:not(.focus-visible),
-.js-focus-visible .:hocus--[class-name]:focus:not(.focus-visible) {
+.js-focus-visible .&:focus--[class-name]:focus:not(.focus-visible),
+.js-focus-visible .&:hocus--[class-name]:focus:not(.focus-visible) {
   // declarations
 }
 */
@@ -1134,11 +1137,11 @@ $hu-display-modules: (
 /* ->
 …
 
-.:before--display:block::before {
+.&:before--display:block::before {
   display: block;
 }
 
-.:first-child--display:block:first-child {
+.&:first-child--display:block:first-child {
   display: block;
 }
 
@@ -1197,7 +1200,7 @@ $hu-display-modules: (
 
 #### Pseudo classes: `hu-pseudo-classes`
 
-While `hu-classes` will be suitable for most use cases, should you need, you can also explicitly create pseudo classes with the `hu-pseudo-classes()` mixin. It behaves similarly to `hu-classes()`, but it does not accept a map of modules, with you instead passing in a list of one or more pseudo selectors you want to generate classes for.
+While `hu-classes` will be suitable for most use cases, should you need, you can also explicitly create pseudo classes with the `hu-pseudo-classes()` mixin. It behaves similarly to `hu-classes()`, but you also need to pass in a list of one or more pseudo selectors you want to generate classes for.
 
 ```
 @mixin hu-pseudo-classes($property, $pseudos, $modules, $types?);
@@ -1209,19 +1212,19 @@ This mixin is a wrapper around two other mixins, `hu-pseudo-generic-classes()` a
 @include hu-pseudo-classes(display, ("::before", ":first-child"), $hu-display-modules, $hu-display-types);
 
 /* ->
-.:before--display:block::before {
+.&:before--display:block::before {
   display: block;
 }
 
-.:first-child--display:block:first-child {
+.&:first-child--display:block:first-child {
   display: block;
 }
 
-.:before--display:flex::before {
+.&:before--display:flex::before {
   display: flex;
 }
 
-.:first-child--display:flex:first-child {
+.&:first-child--display:flex:first-child {
   display: flex;
 }
 
@@ -1458,11 +1461,11 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `reduced-motion` and `
 }
 
 /* ->
-.:before--hu-display:block::before {
+.&:before--hu-display:block::before {
   display: block;
 }
 
-.:first-child--hu-display:block:first-child {
+.&:first-child--hu-display:block:first-child {
   display: block;
 }
 
@@ -1666,12 +1669,12 @@ One benefit Hucssley has over other, similar libraries is that there is a define
 Generates the following:
 
 ```css
-.:before--icon-size:100::before {
+.&:before--icon-size:100::before {
   height: 1rem;
   width: 1rem;
 }
 
-.:before--icon-size:200::before {
+.&:before--icon-size:200::before {
   height: 1.5rem;
   width: 1.5rem;
 }
@@ -1838,7 +1841,7 @@ export default {
         transition-duration:100
         transition-easing:ease
         transition-property:all
-        :hocus--scale:105
+        &:hocus--scale:105
         is-selected--bg-color:neutral-700
         is-selected--color:neutral-0
       `,
@@ -2049,14 +2052,14 @@ You could even use both methods together if you wanted to mega-raise your specif
 
 While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.4 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 100 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
 
-Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, media queries, and spacing scales will also help.
+But, Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, media queries, and spacing scales will also help.
 
 However, we can do better… and we can do it automatically. By utilizing [Purgecss](https://purgecss.com) and the following `extractor`, you’ll be able to reduce your CSS output to only the classes that are used in your views:
 
 ```js
 extractor: class {
   static extract(content) {
-    return content.match(/(?:[A-Za-z0-9]|-|_|:|<|>|@)+/g) || [];
+    return content.match(/[A-Za-z0-9-_&:@<>]+/g) || [];
   }
 }
 ```

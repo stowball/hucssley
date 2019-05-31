@@ -4,26 +4,26 @@
       $pseudo-class-name: "#{hu-escape-class-name(":")}#{hu-string-replace($pseudo, ":", "")}";
 
       @if ($module == base) {
-        .#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+        .#{hu-escape-class-name("&")}#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
           @content;
         }
       }
 
       @else if ($module == focus) {
-        #{$hu-focus-parent} .#{hu-escape-class-name(":focus")}#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo} {
+        #{$hu-focus-parent} .#{hu-escape-class-name("&:focus")}#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo} {
           @content;
         }
       }
 
       @else if ($module == hover) {
-        .#{hu-escape-class-name(":hover")}#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
+        .#{hu-escape-class-name("&:hover")}#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
           @content;
         }
       }
 
       @else if ($module == hocus) {
-        #{$hu-focus-parent} .#{hu-escape-class-name(":hocus")}#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo},
-        .#{hu-escape-class-name(":hocus")}#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
+        #{$hu-focus-parent} .#{hu-escape-class-name("&:hocus")}#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo},
+        .#{hu-escape-class-name("&:hocus")}#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
           @content;
         }
       }

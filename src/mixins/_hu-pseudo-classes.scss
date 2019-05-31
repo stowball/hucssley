@@ -1,9 +1,11 @@
 @mixin hu-pseudo-classes($property, $pseudos, $modules, $types: null) {
-  @include hu-pseudo-generic-classes($property, $pseudos, $modules, $types) {
+  $core-modules: hu-get-class-modules($modules, core, $modules);
+  
+  @include hu-pseudo-generic-classes($property, $pseudos, $core-modules, $types) {
     @content;
   }
 
-  @include hu-pseudo-responsive-classes($property, $pseudos, $modules, $types) {
+  @include hu-pseudo-responsive-classes($property, $pseudos, $core-modules, $types) {
     @content;
   }
 }

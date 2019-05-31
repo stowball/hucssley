@@ -44,6 +44,7 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-box-sizing](#hu-box-sizing)
   - [hu-color](#hu-color)
   - [hu-columns](#hu-columns)
+  - [hu-content](#hu-content)
   - [hu-cursor](#hu-cursor)
   - [hu-display](#hu-display)
   - [hu-flex](#hu-flex)
@@ -750,6 +751,25 @@ $hu-color-types: $hu-colors;
 $hu-columns-modules: ();
 
 $hu-columns-types: ();
+```
+
+### hu-content
+
+```
+content -> :[pseudo]-content
+```
+
+```scss
+$hu-content-modules: (base);
+
+$hu-content-types: (
+  "",
+);
+
+$hu-content-pseudos: (
+  "::after", 
+  "::before"
+);
 ```
 
 ### hu-cursor
