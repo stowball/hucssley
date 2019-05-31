@@ -174,7 +174,7 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
           transition-duration:200
           transition-easing:ease
           transition-property:all
-          &:hocus--bg-color-blue:600
+          &:hocus--bg-color:blue-600
           &:hocus--scale:105
           @mq-768--font-size:600
           @mq-768--padding-horizontal:500
@@ -345,7 +345,7 @@ Children of groups can respond to user and UI interaction via groups. Their synt
 
 ```
 .group__:hover--scale:110
-.group__is-selected--bg-color-blue:300
+.group__is-selected--bg-color:blue-300
 .browser-mobile__font-size:700
 ```
 
