@@ -2,7 +2,7 @@
   @each $module in hu-format-modules($modules) {
     @each $parent in $parents {
       $escaped-parent: hu-escape-class-name($parent);
-      $escaped-child: if($child-string-to-strip, hu-string-replace($escaped-parent, $child-string-to-strip, ""), $escaped-parent);
+      $escaped-child: if($child-string-to-strip, hu-escape-class-name(hu-string-replace($parent, $child-string-to-strip, "")), $escaped-parent);
 
       @if ($module == base) {
         .#{$escaped-parent} .#{$escaped-child}__#{$class-name} {
@@ -11,20 +11,20 @@
       }
 
       @else if ($module == focus) {
-        #{$hu-focus-parent} .#{$escaped-parent} .#{$escaped-child}__focus--#{$class-name}#{$hu-focus-pseudo} {
+        #{$hu-focus-parent} .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name(":focus")}--#{$class-name}#{$hu-focus-pseudo} {
           @content;
         }
       }
 
       @else if ($module == hover) {
-        .#{$escaped-parent} .#{$escaped-child}__hover--#{$class-name}:hover {
+        .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name(":hover")}--#{$class-name}:hover {
           @content;
         }
       }
 
       @else if ($module == hocus) {
-        #{$hu-focus-parent} .#{$escaped-parent} .#{$escaped-child}__hocus--#{$class-name}#{$hu-focus-pseudo},
-        .#{$escaped-parent} .#{$escaped-child}__hocus--#{$class-name}:hover {
+        #{$hu-focus-parent} .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name(":hocus")}--#{$class-name}#{$hu-focus-pseudo},
+        .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name(":hocus")}--#{$class-name}:hover {
           @content;
         }
       }
@@ -39,7 +39,7 @@
 
       @else if ($module == reduced-motion) {
         @media (prefers-reduced-motion: reduce) {
-          .#{$escaped-parent} .#{$escaped-child}__reduced-motion--#{$class-name} {
+          .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name("@reduced-motion")}--#{$class-name} {
             @include hu-bump-specificity {
               @content;
             }
@@ -49,7 +49,7 @@
 
       @else if ($module == print) {
         @media print {
-          .#{$escaped-parent} .#{$escaped-child}__print--#{$class-name} {
+          .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name("@print")}--#{$class-name} {
             @include hu-bump-specificity {
               @content;
             }

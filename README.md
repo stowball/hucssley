@@ -100,7 +100,7 @@ By default, Hucssley does not output classes for things that don’t map explici
 
 Hucssley also provides utility classes for truncating text and making elements “visually hidden” for accessibility purposes.
 
-For a complete list of the class names provided, read [Hucssley classes](/hucssley-classes.md).
+For a complete list of the class names provided and how they can be customized, read [Hucssley classes](/hucssley-classes.md).
 
 Hucssley also comes with:
 
@@ -119,66 +119,66 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
 
 ```html
 <div class="
-  bg-color-blue-100
-  padding-500
+  bg-color:blue-100
+  padding:500
 ">
   <div class="
-    align-items-center
-    bg-color-neutral-0
-    border-color-neutral-200
-    border-radius-500
-    border-style-solid
-    border-width-100
-    display-flex
-    flex-direction-column
-    padding-500
-    text-align-center
-    mq-768--flex-direction-row
-    mq-768--text-align-left
+    align-items:center
+    bg-color:neutral-0
+    border-color:neutral-200
+    border-radius:500
+    border-style:solid
+    border-width:100
+    display:flex
+    flex-direction:column
+    padding:500
+    text-align:center
+    @mq-768--flex-direction:row
+    @mq-768--text-align:left
   ">
    <img
       alt=""
       class="
-        bg-color-blue-600
-        border-color-neutral-100
-        border-radius-1000
-        border-style-solid
-        border-width-200
-        margin-bottom-400
-        width-50
-        mq-600--width-30
-        mq-768--margin-bottom-0
-        mq-768--margin-right-500
-        mq-768--width-20
+        bg-color:blue-600
+        border-color-neutral:100
+        border-radius:1000
+        border-style:solid
+        border-width:200
+        margin-bottom:400
+        width:50
+        @mq-600--width:30
+        @mq-768--margin-bottom:0
+        @mq-768--margin-right:500
+        @mq-768--width:20
       "
       src="https://hireup.cdn.prismic.io/hireup/89e15301c28e6396927d85e38e9c5d5833ebab09_kyle_357-bonnie.png"
     />
     <div>
       <p class="
-        font-size-600
-        font-weight-700
-        line-height-200
-        margin-bottom-400
-        mq-768--font-size-800
+        font-size:600
+        font-weight:700
+        line-height:200
+        margin-bottom:400
+        @mq-768--font-size:800
       ">
         Disability support workers who love what you love
       </p>
       <a
         class="
-          bg-color-blue-1000
-          border-color-neutral-700
-          color-neutral-0
-          display-inline-block
-          padding-horizontal-400
-          padding-vertical-300
-          transition-duration-200
-          transition-easing-ease
-          transition-property-all
-          mq-768--font-size-600
-          mq-768--padding-horizontal-500
-          mq-768--padding-vertical-400
-          hocus--bg-color-blue-600
-          hocus--scale-105
+          bg-color:blue-1000
+          border-color:neutral-700
+          color:neutral-0
+          display:inline-block
+          padding-horizontal:400
+          padding-vertical:300
+          transition-duration:200
+          transition-easing:ease
+          transition-property:all
+          &:hocus--bg-color:blue-600
+          &:hocus--scale:105
+          @mq-768--font-size:600
+          @mq-768--padding-horizontal:500
+          @mq-768--padding-vertical:400
         "
         href="#"
       >
@@ -197,7 +197,7 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
 
 With [so many CSS utility libraries](https://css-tricks.com/need-css-utility-library/) already in existence, and with Tailwind being an extremely popular, close alternative, why does Hucssley exist and why might you want to use it?
 
-We wanted to [solve a lot of the problems](/rethinking-css.md) developers have with “normal” CSS and the ones Adam Silver poses in [The problem with atomic CSS](https://adamsilver.io/articles/the-problem-with-atomic-css/).
+Well, we wanted to [solve a lot of the problems](/rethinking-css.md) developers have with “normal” CSS and the ones Adam Silver poses in [The problem with atomic CSS](https://adamsilver.io/articles/the-problem-with-atomic-css/).
 
 Firstly, most utility libraries are hard to read, and more importantly hard to learn. They often use an obtuse, inconsistent syntax which has you reaching for the docs more often than you should. With Hucssley, the focus has been: “if you know CSS properties, you know Hucssley”.
 
@@ -254,7 +254,7 @@ You can also use modules to generate pseudo and custom parent classes. Please re
 
 ### Base: `base`
 
-Base classes in Hucssley roughly equate to a kebab-cased version of a CSS property and value:
+Base classes in Hucssley roughly equate to a standard version of a CSS property and value:
 
 This property:
 
@@ -267,8 +267,10 @@ This property:
 would be available as the following base class:
 
 ```css
-.align-items-flex-end
+.align-items:flex-end
 ```
+
+The property becomes the class name preceding the `:` and the value follows it.
 
 Some classes deviate by default though:
 
@@ -286,6 +288,7 @@ bg-repeat -> background-repeat
 bg-size -> background-size
 blend-mode -> mix-blend-mode
 border-radius-[side] -> border-[side]-radius
+content -> :[pseudo]-content
 momentum-scrolling -> -webkit-overflow-scrolling
 overscroll -> overscroll-behavior
 pos-[bottom,left,right,top] -> bottom,left,right,top
@@ -301,10 +304,6 @@ translate-x -> transform: translateX
 translate-y -> transform: translateY
 ```
 
-If a value is a negative number, its class name output will use `-n[value]`, such as `margin-left-n100` instead of `margin-left--100`, to make it obvious that it’s “negative” and to not be confused with the “modifying” syntax described below.
-
-If the last two words separated by a hyphen are identical, then the last word will automatically be omitted. For instance `.flex-wrap` is used instead of `flex-wrap-wrap`, but `flex-wrap-no-wrap` would be the equivalent `nowrap` version.
-
 *Note: If a global namespace has been configured, it will always precede the base class name.*
 
 #### Non-parent modules: `focus, hocus, hover, print, reduced-motion, responsive`
@@ -312,28 +311,30 @@ If the last two words separated by a hyphen are identical, then the last word wi
 When you want to use class names scoped to “non-parent” modules, it follows a pattern of `[module-name][-module-variant])?--[base-class]`, for instance:
 
 ```css
-.mq-768--align-items-center
-.hocus--color-neutral-1000
-.print--flex-direction-column
+.@mq-768--align-items:center
+.&:hocus--color:neutral-1000
+.@print--flex-direction:column
 ```
 
-In the above example, `hocus` is shortcut module for `:hover, :focus`, and `mq-768` is for a `(min-width: 768px)` media query.
+In the above example, `&:hocus` is a shortcut module for `:hover, :focus`, and `@mq-768` is for a `(min-width: 768px)` media query.
+
+*Note: top-level pseudo classes are prefixed with `&`.*
 
 ### State modules: `state`
 
 State modules allow you to change the UI based on a particular state, and follows the pattern `[state-name]--[base-class]`:
 
 ```css
-.is-expanded--visibility-visible
-.is-disabled--opacity-30
+.is-expanded--visibility:visible
+.is-disabled--opacity:30
 ```
 
 For state classes to become active, you need to apply the raw state name as an class additional class on the element (often via JavaScript):
 
 ```html
 <div class="
-  display-none
-  is-open--display-block
+  display:none
+  is-open--display:block
 + is-open
 "></div>
 ```
@@ -343,9 +344,9 @@ For state classes to become active, you need to apply the raw state name as an c
 Children of groups can respond to user and UI interaction via groups. Their syntax is `[parent-name]__[parent-type]--[base-class]`:
 
 ```
-.group__hover--scale-110
-.group__is-selected--bg-color-blue-300
-.browser-mobile__font-size-700
+.group__:hover--scale:110
+.group__is-selected--bg-color:blue-300
+.browser-mobile__font-size:700
 ```
 
 For `group` classes to take effect, a parent has to be given the raw `.group` class, and raw state class if applicable:
@@ -358,15 +359,15 @@ For `group` classes to take effect, a parent has to be given the raw `.group` cl
 +   is-selected
   ">
     <ul class="
-      browser-mobile__font-size-700
-      group__hover--scale-110
-      group__is-selected--bg-color-blue-300
+      browser-mobile__font-size:700
+      group__:hover--scale:110
+      group__is-selected--bg-color:blue-300
     "></ul>
   </div>
 </html>
 ```
 
-Be careful when using groups, because they will affect all `.group__` children. A child `.group` does not reset the actions of a parent `.group`, so you could end up with unexpected behaviour. It’s recommended to use groups on near ancestors to leaf nodes.
+Be careful when using groups, because they will affect all `.group__` children. A child `.group` does not reset the actions of a parent `.group`, so you could end up with unexpected behaviour. It’s recommended to use groups on ancestors that are near to leaf nodes.
 
 #### Custom parent modules
 
@@ -382,19 +383,19 @@ When a particular class is configured to use the `responsive` module, it will al
 
 Here the syntax is:
 
-* `mq-[responsive-scale]-focus--[base-class]:focus` for `focus`
-* `mq-[responsive-scale]-hover--[base-class]:hover` for `hover`
-* `mq-[responsive-scale]-hocus--[base-class]:focus, mq-[responsive-scale]-hocus--[base-class]:hover` for `hocus`
-* `mq-[responsive-scale]-[state-name]--[base-class]` for `state`s
-* `group__mq-[responsive-scale]-hover--[base-class]` for `group-hover`
-* `group__mq-[responsive-scale]-[state-name]--[base-class]` for `group-state`
+* `@mq-[responsive-scale]:focus--[base-class]` for `focus`
+* `@mq-[responsive-scale]:hover--[base-class]` for `hover`
+* `@mq-[responsive-scale]:hocus--[base-class]` for `hocus`
+* `@mq-[responsive-scale]-[state-name]--[base-class]` for `state`s
+* `group__@mq-[responsive-scale]:hover--[base-class]` for `group:hover`
+* `group__@mq-[responsive-scale]-[state-name]--[base-class]` for `group-state`
 
 Which results in:
 
 ```css
-.mq-960-is-expanded--display-flex
-.group__mq-768-hover--display-block
-.group__mq-1200-is-collapsed--height-0
+.@mq-960-is-expanded--display:flex
+.group__@mq-768:hover--display:block
+.group__@mq-1200-is-collapsed--height:0
 ```
 
 ## Scales
@@ -426,7 +427,7 @@ Hucssley’s configuration is split in to 3 sections: `reset`, `global` and `cla
 
 * **Reset** configuration uses plain variables to customize “generic” styles like whether `box-sizing: border-box` should be used by default.
 * **Global** configuration mostly uses maps to handle things like the default media queries, colors, spacings, UI states and themes.
-* **Classes** provides list and map variables to adjust the modules, and values for each class individually. Some classes (like those which deal with color) inherit from the same base variable by default, so only 1 change is required to affect all `border-color`, `background-color` and `color` classes. All classes can be generated at individual modules described above.
+* **Classes** provides list and map variables to adjust the modules, and values for each class individually. Some classes (like those which deal with color) inherit from the same base variable by default, so only 1 change is required to affect all `border-color`, `background-color` and `color` classes. All classes can be generated at the individual modules described above.
 
 As detailed in the [Installation](#installation) section, there is a preferred way of organizing any configuration overrides.
 
@@ -687,51 +688,51 @@ $hu-media-queries: (
 );
 ```
 
-would generate the following `mq-` classes:
+would generate the following `@mq-` classes:
 
 ```css
 @media (min-width: 37.5em) {
-  .mq-600--… { … }
+  .@mq-600--… { … }
 }
 
 @media (min-height: 12.5em) {
-  .mq-min-h-200--… { … }
+  .@mq-min-h-200--… { … }
 }
 
 @media (max-height: 25em) {
-  .mq-max-h-400--… { … }
+  .@mq-max-h-400--… { … }
 }
 
 @media (min-width: 18.75em) {
-  .mq-min-w-300--… { … }
+  .@mq-min-w-300--… { … }
 }
 
 @media (max-width: 31.25em) {
-  .mq-max-w-500--… { … }
+  .@mq-max-w-500--… { … }
 }
 
 @media (min-width: 18.75em) and (max-width: 31.25em) {
-  .mq-min-w-300-max-w-500--… { … }
+  .@mq-min-w-300-max-w-500--… { … }
 }
 
 @media (orientation: landscape) {
-  .mq-landscape--… { … }
+  .@mq-landscape--… { … }
 }
 
 @media (pointer: coarse) {
-  .mq-coarse--… { … }
+  .@mq-coarse--… { … }
 }
 
 @media (min-resolution: 200dpi) {
-  .mq-min-res-200--… { … }
+  .@mq-min-res-200--… { … }
 }
 
 @media (min-height: 12.5em) and (max-height: 25em) and (min-width: 18.75em) and (max-width: 31.25em) and (orientation: landscape) and (pointer: coarse) and (min-resolution: 200dpi) {
-  .mq-all--… { … }
+  .@mq-all--… { … }
 }
 ```
 
-Notice how, apart from the `mq-` prefix, Hucssley does not dictate the media query class name format, so, should you wish to use ranges like `small` or `medium`, or device types like `tablet`, or `desktop`, it’s entirely up to you.
+Notice how, apart from the `@mq-` prefix, Hucssley does not dictate the media query class name format, so, should you wish to use ranges like `small` or `medium`, or device types like `tablet`, or `desktop`, it’s entirely up to you.
 
 #### UI states: `$hu-states`
 
@@ -798,10 +799,10 @@ $hu-border-types: $hu-colors;
 In conjunction with variables specific to each class name, classes like the following are generated:
 
 ```css
-.border-color-neutral-0
-.border-v-color-blue-600
-.border-b-style-none
-.border-h-width-200
+.border-color:neutral-0
+.border-vertical-color:blue-600
+.border-bottom-style:none
+.border-horizontal-width:200
 ```
 
 #### Controlling focus: `$hu-hocus-focus-parent` and `$hu-hocus-focus-pseudo`
@@ -812,8 +813,8 @@ By default, the `focus` and `hocus` modules generate classes which use a `:focus
 $hu-focus-pseudo: ":focus-visible";
 
 /* ->
-.focus--[class-name]:focus-visible,
-.hocus--[class-name]:focus-visible {
+.&:focus--[class-name]:focus-visible,
+.&:hocus--[class-name]:focus-visible {
   // declarations
 }
 */
@@ -826,8 +827,8 @@ $hu-focus-parent: ".js-focus-visible";
 $hu-focus-pseudo: ":focus:not(.focus-visible)";
 
 /* ->
-.js-focus-visible .focus--[class-name]:focus:not(.focus-visible),
-.js-focus-visible .hocus--[class-name]:focus:not(.focus-visible) {
+.js-focus-visible .&:focus--[class-name]:focus:not(.focus-visible),
+.js-focus-visible .&:hocus--[class-name]:focus:not(.focus-visible) {
   // declarations
 }
 */
@@ -859,18 +860,18 @@ $hu-themes: (
 );
 ```
 
-This would allow you to theme your entire application simply by changing a single, parent level `theme-[theme-name]` class by utilizing all the generated classes, like:
+This would allow you to theme your entire application simply by changing a single, parent level `theme:[theme-name]` class by utilizing all the generated classes, like:
 
 ```css
-.theme-broncos .theme__bg-color-primary {
+.theme:broncos .theme__bg-color:primary {
   background-color: #6c1d45;
 }
 
-.theme-knights .theme__color-highlight {
+.theme:knights .theme__color:highlight {
   color: #e82c2a;
 }
 
-.theme-sharks .theme__border-color-secondary {
+.theme:sharks .theme__border-color:secondary {
   border-color: #27a3e6;
 }
 ```
@@ -883,11 +884,11 @@ As mentioned earlier, Hucssley provides you the opportunity to namespace the cla
 $hu-namespace: `hu-`;
 
 /* ->
-.hu-align-content-center {}
+.hu-align-content:center {}
 …
-.mq-480--hu-flex-direction-column {}
+.@mq-480--hu-flex-direction:column {}
 …
-.group__is-open--hu--display-flex {}
+.group__is-open--hu--display:flex {}
 ```
 
 #### Use important: `$hu-use-important`
@@ -898,13 +899,13 @@ Determines whether all CSS declarations (including those in the [CSS reset](#res
 $hu-use-important: true;
 
 /* ->
-.align-content-baseline {
+.align-content:baseline {
   align-content: baseline !important;
 }
 
 …
 
-.align-items-auto {
+.align-items:auto {
   align-items: auto !important;
 }
 
@@ -950,11 +951,11 @@ $hu-box-shadow-types: (
 will generate:
 
 ```css
-.box-shadow-100 {
+.box-shadow:100 {
   box-shadow: 0 0.125rem 0.625rem rgba(26, 26, 26, 0.1);
 }
 
-.box-shadow-200 {
+.box-shadow:200 {
   box-shadow: 0 0.25rem 0.75rem rgba(26, 26, 26, 0.2);
 }
 ```
@@ -984,22 +985,22 @@ It takes a `$property`, which can be either a CSS property or a map, a list or m
 @include hu-classes(align-content, $hu-align-content-modules, $hu-align-content-types);
 
 /* ->
-.align-content-baseline {
+.align-content:baseline {
   align-content: baseline;
 }
 
-.align-content-center {
+.align-content:center {
   align-content: center;
 }
 
 …
 
 @media (min-width: 22.5em) {
-  .mq-360--align-content-baseline {
+  .@mq-360--align-content:baseline {
     align-content: baseline;
   }
 
-  .mq-360--align-content-center {
+  .@mq-360--align-content:center {
     align-content: center;
   }
 }
@@ -1016,22 +1017,22 @@ By passing a map to `$property`, the map’s key becomes the core class name, an
 @include hu-classes((transition-easing: transition-timing-function), $hu-transition-easing-modules, $hu-transition-easing-types);
 
 /* ->
-.transition-easing-ease {
+.transition-easing:ease {
   transition-timing-function: ease;
 }
 
-.transition-easing-ease-in {
+.transition-easing:ease-in {
   transition-timing-function: ease-in;
 }
 
 …
 
 @media (min-width: 22.5em) {
-  .is-active.is-active--transition-easing-ease {
+  .is-active.is-active--transition-easing:ease {
     transition-timing-function: ease;
   }
 
-  .is-active.is-active--transition-easing-ease-in {
+  .is-active.is-active--transition-easing:ease-in {
     transition-timing-function: ease-in;
   }
 }
@@ -1057,7 +1058,7 @@ By not proving a `$type` and passing in a `@content` block, you can create “on
 }
 
 @media (min-width: 22.5em) {
-  .mq-360--font-smoothing {
+  .@mq-360--font-smoothing {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
   }
@@ -1070,7 +1071,7 @@ By not proving a `$type` and passing in a `@content` block, you can create “on
 You could also use this technique to add complex `@supports` feature queries:
 
 ```scss
-@include hu-classes(supports-blend-mode-multiply, (base)) {
+@include hu-classes("@supports-blend-mode:multiply", (base)) {
   @supports (mix-blend-mode: multiply) {
     mix-blend-mode: multiply;
     opacity: 1;
@@ -1079,7 +1080,7 @@ You could also use this technique to add complex `@supports` feature queries:
 
 /* ->
 @supports (mix-blend-mode: multiply) {
-  .supports-blend-mode-multiply {
+  .@supports-blend-mode:multiply {
     mix-blend-mode: multiply;
     opacity: 1;
   }
@@ -1092,7 +1093,7 @@ Of course, just because you can’t provide a `$type` argument to the mixin, it 
 ```scss
 // if $types was map, also extract the $value variable and use that in the mixin's @content
 @each $type in $hu-blend-mode-types {
-  @include hu-classes(supports-blend-mode-#{$type}, $hu-blend-mode-modules) {
+  @include hu-classes("@supports-blend-mode:#{$type}", $hu-blend-mode-modules) {
     @supports (mix-blend-mode: #{$type}) {
       mix-blend-mode: $type;
     }
@@ -1101,13 +1102,13 @@ Of course, just because you can’t provide a `$type` argument to the mixin, it 
 
 /* ->
 @supports (mix-blend-mode: color) {
-  .supports-blend-mode-color {
+  .@supports-blend-mode:color {
     mix-blend-mode: color;
   }
 }
 
 @supports (mix-blend-mode: color-burn) {
-  .supports-blend-mode-color-burn {
+  .@supports-blend-mode:color-burn {
     mix-blend-mode: color-burn;
   }
 }
@@ -1136,22 +1137,22 @@ $hu-display-modules: (
 /* ->
 …
 
-.pseudo-before--display-block::before {
+.&:before--display:block::before {
   display: block;
 }
 
-.pseudo-first-child--display-block:first-child {
+.&:first-child--display:block:first-child {
   display: block;
 }
 
 …
 
 @media (min-width: 22.5em) {
-  .mq-360-pseudo-before--display-block::before {
+  .@mq-360:before--display:block::before {
     display: block;
   }
 
-  .mq-360-pseudo-first-child--display-block:first-child {
+  .@mq-360:first-child--display:block:first-child {
     display: block;
   }
 }
@@ -1175,21 +1176,21 @@ $hu-display-modules: (
 /* ->
 …
 
-.has-js .has-js__display-block {
+.has-js .has-js__display:block {
   display: block;
 }
 
-.has-js .has-js__display-flex {
+.has-js .has-js__display:flex {
   display: flex;
 }
 
 …
 
-.has-js .is-expanded.has-js__is-expanded--display-block {
+.has-js .is-expanded.has-js__is-expanded--display:block {
   display: block;
 }
 
-.has-js .is-expanded.has-js__is-expanded--display-flex {
+.has-js .is-expanded.has-js__is-expanded--display:flex {
   display: flex;
 }
 
@@ -1199,7 +1200,7 @@ $hu-display-modules: (
 
 #### Pseudo classes: `hu-pseudo-classes`
 
-While `hu-classes` will be suitable for most use cases, should you need, you can also explicitly create pseudo classes with the `hu-pseudo-classes()` mixin. It behaves similarly to `hu-classes()`, but it does not accept a map of modules, with you instead passing in a list of one or more pseudo selectors you want to generate classes for.
+While `hu-classes` will be suitable for most use cases, should you need, you can also explicitly create pseudo classes with the `hu-pseudo-classes()` mixin. It behaves similarly to `hu-classes()`, but you also need to pass in a list of one or more pseudo selectors you want to generate classes for.
 
 ```
 @mixin hu-pseudo-classes($property, $pseudos, $modules, $types?);
@@ -1211,38 +1212,38 @@ This mixin is a wrapper around two other mixins, `hu-pseudo-generic-classes()` a
 @include hu-pseudo-classes(display, ("::before", ":first-child"), $hu-display-modules, $hu-display-types);
 
 /* ->
-.pseudo-before--display-block::before {
+.&:before--display:block::before {
   display: block;
 }
 
-.pseudo-first-child--display-block:first-child {
+.&:first-child--display:block:first-child {
   display: block;
 }
 
-.pseudo-before--display-flex::before {
+.&:before--display:flex::before {
   display: flex;
 }
 
-.pseudo-first-child--display-flex:first-child {
+.&:first-child--display:flex:first-child {
   display: flex;
 }
 
 …
 
 @media (min-width: 22.5em) {
-  .mq-360-pseudo-before--display-block::before {
+  .@mq-360:before--display:block::before {
     display: block;
   }
 
-  .mq-360-pseudo-first-child--display-block:first-child {
+  .@mq-360:first-child--display:block:first-child {
     display: block;
   }
 
-  .mq-360-pseudo-before--display-flex::before {
+  .@mq-360:before--display:flex::before {
     display: flex;
   }
 
-  .mq-360-pseudo-first-child--display-flex:first-child {
+  .@mq-360:first-child--display:flex:first-child {
     display: flex;
   }
 }
@@ -1269,22 +1270,22 @@ This mixin is a wrapper around two other mixins, `hu-parent-generic-classes()` a
 @include hu-parent-classes(display, (has-js), $hu-display-modules, $hu-display-types);
 
 /* ->
-.has-js .has-js__display-block {
+.has-js .has-js__display:block {
   display: block;
 }
 
-.has-js .has-js__focus--display-block:focus {
+.has-js .has-js__:focus--display:block:focus {
   display: flex;
 }
 
 …
 
 @media (min-width: 22.5em) {
-  .has-js .has-js__mq-360--display-block {
+  .has-js .has-js__@mq-360--display:block {
     display: block;
   }
 
-  .has-js .is-active.has-js__mq-360-is-active--display-block {
+  .has-js .is-active.has-js__@mq-360-is-active--display:block {
     display: block;
   }
 }
@@ -1308,8 +1309,8 @@ This function formats a class name to append `$hu-namespace` (if applicable), co
 ```scss
 @function hu-class-name($class-name);
 
-hu-class-name("eqio-<520-flex-wrap-wrap");
-// -> hu-eqio-\<520-flex-wrap
+hu-class-name("eqio-<520-color:transparent-transparent");
+// -> hu-eqio-\<520-color\:transparent
 ```
 
 *Note: if your class name contains a special character, ensure you pass it as a quoted string.*
@@ -1347,21 +1348,21 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `group-hover`, `group-
 ```scss
 @mixin hu-generic($class-name, $one-or-multiple-modules);
 
-@include hu-generic(hu-class-name(display-block), (base, group-hover, print)) {
+@include hu-generic(hu-class-name("display:block"), (base, group-hover, print)) {
   display: block #{hu-important()};
 }
 
 /* ->
-.hu-display-block {
+.hu-display:block {
   display: block;
 }
 
-.group:hover .group__hover--hu-display-block {
+.group:hover .group__:hover--hu-display:block {
   display: block;
 }
 
 @media print {
-  .print--hu-display-block.print--hu-display-block.print--hu-display-block {
+  .@print--hu-display-block.print--hu-display:block.print--hu-display:block {
     display: block;
   }
 }
@@ -1377,16 +1378,16 @@ Generates the responsive `base`, `state` and `group-state` module styles for a c
 ```scss
 @mixin hu-responsive($class-name, $one-or-multiple-modules, $media-query-scale);
 
-@include hu-responsive(hu-class-name(display-block), (base, responsive, state), medium) {
+@include hu-responsive(hu-class-name("display:block"), (base, responsive, state), medium) {
   display: block #{hu-important()};
 }
 
 /* ->
-.mq-medium--hu-display-block {
+.@mq-medium--hu-display:block {
   display: block;
 }
 
-.is-active.mq-medium-is-active--hu-display-block {
+.is-active.@mq-medium-is-active--hu-display:block {
   display: block;
 }
 */
@@ -1399,24 +1400,24 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `reduced-motion` and `
 ```scss
 @mixin hu-parent($class-name, $parent-selectors, $one-or-multiple-modules, $child-string-to-strip?);
 
-@include hu-parent(hu-class-name(display-block), (browser-edge, browser-ie), (base, hover)) {
+@include hu-parent(hu-class-name("display:block"), (browser-edge, browser-ie), (base, hover)) {
   display: block #{hu-important()};
 }
 
 /* ->
-.browser-edge .browser-edge__hu-display-block {
+.browser-edge .browser-edge__hu-display:block {
   display: block;
 }
 
-.browser-ie .browser-ie__hu-display-block {
+.browser-ie .browser-ie__hu-display:block {
   display: block;
 }
 
-.browser-edge:hover .browser-edge__hover--hu-display-block {
+.browser-edge:hover .browser-edge__hover--hu-display:block {
   display: block;
 }
 
-.browser-ie:hover .browser-ie__hover--hu-display-block {
+.browser-ie:hover .browser-ie__hover--hu-display:block {
   display: block;
 }
 */
@@ -1433,16 +1434,16 @@ Generates the responsive `base` and `state` module styles for a parent selector 
 ```scss
 @mixin hu-parent-responsive($class-name, $parent-selectors, $one-or-multiple-modules, $media-query-scale, $child-string-to-strip?);
 
-@include hu-parent-responsive(hu-class-name(display-block), (browser-edge, browser-ie), (base, responsive), medium) {
+@include hu-parent-responsive(hu-class-name("display:block"), (browser-edge, browser-ie), (base, responsive), medium) {
   display: block #{hu-important()};
 }
 
 /* ->
-.browser-edge .browser-edge__mq-medium--hu-display-block {
+.browser-edge .browser-edge__@mq-medium--hu-display:block {
   display: block;
 }
 
-.browser-ie .browser-ie__mq-medium--hu-display-block {
+.browser-ie .browser-ie__@mq-medium--hu-display:block {
   display: block;
 }
 */
@@ -1455,27 +1456,27 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `reduced-motion` and `
 ```scss
 @mixin hu-pseudo($class-name, $pseudo-selectors, $one-or-multiple-modules);
 
-@include hu-pseudo(hu-class-name(display-block), ("::before", ":first-child"), (base, reduced-motion)) {
+@include hu-pseudo(hu-class-name("display:block"), ("::before", ":first-child"), (base, reduced-motion)) {
   display: block #{hu-important()};
 }
 
 /* ->
-.pseudo-before--hu-display-block::before {
+.&:before--hu-display:block::before {
   display: block;
 }
 
-.pseudo-first-child--hu-display-block:first-child {
+.&:first-child--hu-display:block:first-child {
   display: block;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reduced-motion-pseudo-before--hu-display-block::before.reduced-motion-pseudo-before--hu-display-block::before.reduced-motion-pseudo-before--hu-display-block::before {
+  .@reduced-motion:before--hu-display:block::before.@reduced-motion:before--hu-display:block::before.@reduced-motion:before--hu-display:block::before {
     display: block;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reduced-motion-pseudo-first-child--hu-display-block:first-child.reduced-motion-pseudo-first-child--hu-display-block:first-child.reduced-motion-pseudo-first-child--hu-display-block:first-child {
+  .reduced-motion:first-child--hu-display:block:first-child.reduced-motion:first-child--hu-display:block:first-child.reduced-motion:first-child--hu-display:block:first-child {
     display: block;
   }
 }
@@ -1491,16 +1492,16 @@ Generates the responsive `base` and `state` module styles for a pseudo selector 
 ```scss
 @mixin hu-pseudo-responsive($class-name, $pseudo-selectors, $one-or-multiple-modules, $media-query-scale);
 
-@include hu-pseudo-responsive(hu-class-name(display-block), ("::before", ":first-child"), (base, responsive), medium) {
+@include hu-pseudo-responsive(hu-class-name("display:block"), ("::before", ":first-child"), (base, responsive), medium) {
   display: block #{hu-important()};
 }
 
 /* ->
-.mq-medium-pseudo-before--display-block::before {
+.@mq-medium:before--display:block::before {
   display: block;
 }
 
-.mq-medium-pseudo-first-child--display-block:first-child {
+.@mq-medium:first-child--display:block:first-child {
   display: block;
 }
 */
@@ -1535,7 +1536,7 @@ Although the mixins described above can take a list of modules, to ensure the co
   // loop through and extract $type & $value variables from each item in $types
   @each $type, $value in $icon-size-types {
     // define the class name you want, including the $type
-    $class-name: hu-class-name(icon-size-#{$type});
+    $class-name: hu-class-name("icon-size:#{$type}");
     // ensure $value supports $types that are both lists and maps
     $value: if($value, $value, $type);
 
@@ -1561,7 +1562,7 @@ The above loop doesn’t generate the responsive classes. If we generated them w
       // loop through and extract $type & $value variables from each item in $types
       @each $type, $value in $icon-size-types {
         // define the class name you want, including the $type
-        $class-name: hu-class-name(icon-size-#{$type});
+        $class-name: hu-class-name("icon-size:#{$type}");
         // ensure $value supports $types that are both lists and maps
         $value: if($value, $value, $type);
 
@@ -1580,35 +1581,35 @@ The above loop doesn’t generate the responsive classes. If we generated them w
 The output from these 2 blocks is:
 
 ```css
-.icon-size-100 {
+.icon-size:100 {
   height: 1rem;
   width: 1rem;
 }
 
-.icon-size-200 {
+.icon-size:200 {
   height: 1.5rem;
   width: 1.5rem;
 }
 
 @media (min-width: 22.5em) {
-  .mq-360--icon-size-100 {
+  .@mq-360--icon-size:100 {
     height: 1rem;
     width: 1rem;
   }
 
-  .mq-360--icon-size-200 {
+  .@mq-360--icon-size:200 {
     height: 1.5rem;
     width: 1.5rem;
   }
 }
 
 @media (min-width: 30em) {
-  .mq-480--icon-size-100 {
+  .@mq-480--icon-size:100 {
     height: 1rem;
     width: 1rem;
   }
 
-  .mq-480--icon-size-200 {
+  .@mq-480--icon-size:200 {
     height: 1.5rem;
     width: 1.5rem;
   }
@@ -1627,7 +1628,7 @@ One benefit Hucssley has over other, similar libraries is that there is a define
   // loop through and extract $type & $value variables from each item in $types
   @each $type, $value in $icon-size-types {
     // define the class name you want, including the $type
-    $class-name: hu-class-name(icon-size-#{$type});
+    $class-name: hu-class-name("icon-size:#{$type}");
     // ensure $value supports $types that are both lists and maps
     $value: if($value, $value, $type);
 
@@ -1649,7 +1650,7 @@ One benefit Hucssley has over other, similar libraries is that there is a define
       // loop through and extract $type & $value variables from each item in $types
       @each $type, $value in $icon-size-types {
         // define the class name you want, including the $type
-        $class-name: hu-class-name(icon-size-#{$type});
+        $class-name: hu-class-name("icon-size:#{$type}");
         // ensure $value supports $types that are both lists and maps
         $value: if($value, $value, $type);
 
@@ -1668,35 +1669,35 @@ One benefit Hucssley has over other, similar libraries is that there is a define
 Generates the following:
 
 ```css
-.pseudo-before--icon-size-100::before {
+.&:before--icon-size:100::before {
   height: 1rem;
   width: 1rem;
 }
 
-.pseudo-before--icon-size-200::before {
+.&:before--icon-size:200::before {
   height: 1.5rem;
   width: 1.5rem;
 }
 
 @media (min-width: 22.5em) {
-  .mq-360-pseudo-before--icon-size-100::before {
+  .@mq-360:before--icon-size:100::before {
     height: 1rem;
     width: 1rem;
   }
 
-  .mq-360-pseudo-before--icon-size-200::before {
+  .@mq-360:before--icon-size:200::before {
     height: 1.5rem;
     width: 1.5rem;
   }
 }
 
 @media (min-width: 30em) {
-  .mq-480-pseudo-before--icon-size-100::before {
+  .@mq-480:before--icon-size:100::before {
     height: 1rem;
     width: 1rem;
   }
 
-  .mq-480-pseudo-before--icon-size-200::before {
+  .@mq-480:before--icon-size:200::before {
     height: 1.5rem;
     width: 1.5rem;
   }
@@ -1715,7 +1716,7 @@ Similarly, custom parent classes can also easily be generated with the `hu-paren
   // loop through and extract $type & $value variables from each item in $types
   @each $type, $value in $icon-size-types {
     // define the class name you want, including the $type
-    $class-name: hu-class-name(icon-size-#{$type});
+    $class-name: hu-class-name("icon-size:#{$type}");
     // ensure $value supports $types that are both lists and maps
     $value: if($value, $value, $type);
 
@@ -1737,7 +1738,7 @@ Similarly, custom parent classes can also easily be generated with the `hu-paren
       // loop through and extract $type & $value variables from each item in $types
       @each $type, $value in $icon-size-types {
         // define the class name you want, including the $type
-        $class-name: hu-class-name(icon-size-#{$type});
+        $class-name: hu-class-name("icon-size:#{$type}");
         // ensure $value supports $types that are both lists and maps
         $value: if($value, $value, $type);
 
@@ -1756,33 +1757,33 @@ Similarly, custom parent classes can also easily be generated with the `hu-paren
 will generate the following:
 
 ```css
-.browser-mobile .browser-mobile__icon-size-100 {
+.browser-mobile .browser-mobile__icon-size:100 {
   height: 1rem;
   width: 1rem;
 }
 
-.browser-mobile .browser-mobile__icon-size-200 {
+.browser-mobile .browser-mobile__icon-size:200 {
   height: 1.5rem;
   width: 1.5rem;
 }
 
 @media (min-width: 22.5em) {
-  .browser-mobile .browser-mobile__mq-360--icon-size-100 {
+  .browser-mobile .browser-mobile__@mq-360--icon-size:100 {
     height: 1rem;
     width: 1rem;
   }
-  .browser-mobile .browser-mobile__mq-360--icon-size-200 {
+  .browser-mobile .browser-mobile__@mq-360--icon-size:200 {
     height: 1.5rem;
     width: 1.5rem;
   }
 }
 
 @media (min-width: 30em) {
-  .browser-mobile .browser-mobile__mq-480--icon-size-100 {
+  .browser-mobile .browser-mobile__@mq-480--icon-size:100 {
     height: 1rem;
     width: 1rem;
   }
-  .browser-mobile .browser-mobile__mq-480--icon-size-200 {
+  .browser-mobile .browser-mobile__@mq-480--icon-size:200 {
     height: 1.5rem;
     width: 1.5rem;
   }
@@ -1835,39 +1836,39 @@ export default {
   created() {
     this.styles = {
       base: `
-        font-weight-700
-        min-width-0 // fixes IE
-        transition-duration-100
-        transition-easing-ease
-        transition-property-all
-        hocus--scale-105
-        is-selected--bg-color-neutral-700
-        is-selected--color-neutral-0
+        font-weight:700
+        min-width:0 // fixes IE
+        transition-duration:100
+        transition-easing:ease
+        transition-property:all
+        &:hocus--scale:105
+        is-selected--bg-color:neutral-700
+        is-selected--color:neutral-0
       `,
       type: {
         primary: `
-          bg-color-blue-1000
-          color-neutral-0
-          hocus--bg-color-blue-600
+          bg-color:blue-1000
+          color:neutral-0
+          hocus--bg-color:blue-600
         `,
         secondary: `
-          bg-color-blue-300
-          hocus--bg-color-blue-400
+          bg-color:blue-300
+          hocus--bg-color:blue-400
         `,
       },
       shape: {
-        rounded: 'border-radius-1000',
-        square: 'border-radius-300',
+        rounded: 'border-radius:1000',
+        square: 'border-radius:300',
       },
       size: {
         medium: `
-          padding-horizontal-400
-          padding-vertical-300
+          padding-horizontal:400
+          padding-vertical:300
         `,
         large: `
-          font-size-600
-          padding-horizontal-500
-          padding-vertical-400
+          font-size:600
+          padding-horizontal:500
+          padding-vertical:400
         `,
       },
     };
@@ -1906,27 +1907,27 @@ The following shows how we can quickly use and customize a component’s appeara
 
 ```html
 <button-hu
-  class="margin-400"
+  class="margin:400"
 >
   Primary
 </button-hu>
 
 <button-hu
-  class="margin-400"
+  class="margin:400"
   type="secondary"
 >
   Secondary
 </button-hu>
 
 <button-hu
-  class="margin-400"
+  class="margin:400"
   shape="rounded"
 >
   Primary Rounded
 </button-hu>
 
 <button-hu
-  class="margin-400"
+  class="margin:400"
   shape="rounded"
   type="secondary"
 >
@@ -1934,7 +1935,7 @@ The following shows how we can quickly use and customize a component’s appeara
 </button-hu>
 
 <button-hu
-  class="margin-400"
+  class="margin:400"
   size="large"
   type="primary"
 >
@@ -1942,7 +1943,7 @@ The following shows how we can quickly use and customize a component’s appeara
 </button-hu>
 
 <button-hu
-  class="margin-400"
+  class="margin:400"
   size="large"
   type="secondary"
 >
@@ -1950,7 +1951,7 @@ The following shows how we can quickly use and customize a component’s appeara
 </button-hu>
 
 <button-hu
-  class="margin-400"
+  class="margin:400"
   shape="rounded"
   size="large"
   type="primary"
@@ -1959,7 +1960,7 @@ The following shows how we can quickly use and customize a component’s appeara
 </button-hu>
 
 <button-hu
-  class="margin-400"
+  class="margin:400"
   shape="rounded"
   size="large"
   type="secondary"
@@ -2005,11 +2006,11 @@ Since Hucssley is written in Sass, you can easily wrap your imports in a new sel
 which will produce:
 
 ```css
-.hucssley .align-content-baseline {
+.hucssley .align-content:baseline {
   align-content: baseline;
 }
 
-.hucssley .align-content-center {
+.hucssley .align-content:center {
   align-content: center;
 }
 
@@ -2032,11 +2033,11 @@ If this still doesn’t produce a high enough specificity bump, you can also use
 which produces:
 
 ```css
-.hucssley.hucssley .align-content-baseline {
+.hucssley.hucssley .align-content:baseline {
   align-content: baseline;
 }
 
-.hucssley.hucssley .align-content-center {
+.hucssley.hucssley .align-content:center {
   align-content: center;
 }
 
@@ -2049,16 +2050,16 @@ You could even use both methods together if you wanted to mega-raise your specif
 
 ## Controlling file size
 
-While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.35 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 99 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
+While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.4 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 100 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
 
-Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, media queries, and spacing scales will also help.
+But, Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, media queries, and spacing scales will also help.
 
 However, we can do better… and we can do it automatically. By utilizing [Purgecss](https://purgecss.com) and the following `extractor`, you’ll be able to reduce your CSS output to only the classes that are used in your views:
 
 ```js
 extractor: class {
   static extract(content) {
-    return content.match(/(?:[A-Za-z0-9]|-|_|:|<|>|@)+/g) || [];
+    return content.match(/[A-Za-z0-9-_&:@<>]+/g) || [];
   }
 }
 ```

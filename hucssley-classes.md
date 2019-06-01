@@ -44,6 +44,7 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-box-sizing](#hu-box-sizing)
   - [hu-color](#hu-color)
   - [hu-columns](#hu-columns)
+  - [hu-content](#hu-content)
   - [hu-cursor](#hu-cursor)
   - [hu-display](#hu-display)
   - [hu-flex](#hu-flex)
@@ -752,6 +753,25 @@ $hu-columns-modules: ();
 $hu-columns-types: ();
 ```
 
+### hu-content
+
+```
+content -> :[pseudo]-content
+```
+
+```scss
+$hu-content-modules: (base);
+
+$hu-content-types: (
+  "",
+);
+
+$hu-content-pseudos: (
+  "::after", 
+  "::before"
+);
+```
+
 ### hu-cursor
 
 ```scss
@@ -1135,8 +1155,8 @@ $hu-justify-items-types: (
 $hu-letter-spacing-modules: (base);
 
 $hu-letter-spacing-types: (
-  n200: -0.2em,
-  n100: -0.1em,
+  -200: -0.2em,
+  -100: -0.1em,
   0: 0,
   100: 0.1em,
   200: 0.2em,
@@ -1201,7 +1221,7 @@ $hu-margin-types: (
 );
 ```
 
-For every numeric `$hu-margin-scale` value, negative `-n[value]` classes are also created.
+For every numeric `$hu-margin-scale` value, negative `-[value]` classes are also created.
 
 ### hu-max-height
 
@@ -1430,11 +1450,11 @@ rotate -> transform: rotate
 $hu-rotate-modules: ();
 
 $hu-rotate-types: (
-  n360: -360deg,
-  n270: -270deg,
-  n180: -180deg,
-  n90: -90deg,
-  n45: -45deg,
+  -360: -360deg,
+  -270: -270deg,
+  -180: -180deg,
+  -90: -90deg,
+  -45: -45deg,
   0: 0,
   45: 45deg,
   90: 90deg,
@@ -1720,8 +1740,8 @@ translate-x -> transform: translateX
 $hu-translate-x-modules: (base);
 
 $hu-translate-x-types: (
-  n100: -100%,
-  n50: -50%,
+  -100: -100%,
+  -50: -50%,
   0: 0,
   50: 50%,
   100: 100%,
@@ -1847,20 +1867,20 @@ $hu-width-types: (
 $hu-z-index-modules: (base, hocus, group-hover, group-state, state);
 
 $hu-z-index-types: (
-  auto: auto,
-  inherit: inherit,
-  n1: -1,
-  0: 0,
-  100: 100,
-  200: 200,
-  300: 300,
-  400: 400,
-  500: 500,
-  600: 600,
-  700: 700,
-  800: 800,
-  900: 900,
-  1000: 1000,
-  9999: 9999,
+  auto,
+  inherit,
+  -1,
+  0,
+  100,
+  200,
+  300,
+  400,
+  500,
+  600,
+  700,
+  800,
+  900,
+  1000,
+  9999,
 );
 ```

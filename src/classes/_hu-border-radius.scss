@@ -5,7 +5,7 @@ $hu-border-radius-parents: hu-get-class-modules($hu-border-radius-modules, paren
 @each $module in hu-format-modules($hu-border-radius-core-modules) {
   @each $scale, $value in $hu-border-radius-scale {
     @each $type, $properties in $hu-border-radius-types {
-      $class-name: hu-class-name("#{$type}-#{$scale}");
+      $class-name: hu-class-name("#{$type}:#{$scale}");
 
       @include hu-generic($class-name, $module) {
         @each $property in $properties {
@@ -21,7 +21,7 @@ $hu-border-radius-parents: hu-get-class-modules($hu-border-radius-modules, paren
     @include hu-media-query($mq-value) {
       @each $scale, $value in $hu-border-radius-scale {
         @each $type, $properties in $hu-border-radius-types {
-          $class-name: hu-class-name("#{$type}-#{$scale}");
+          $class-name: hu-class-name("#{$type}:#{$scale}");
 
           @include hu-responsive($class-name, $hu-border-radius-core-modules, $mq-scale) {
             @each $property in $properties {
@@ -38,7 +38,7 @@ $hu-border-radius-parents: hu-get-class-modules($hu-border-radius-modules, paren
   @each $module in hu-format-modules($hu-border-radius-core-modules) {
     @each $scale, $value in $hu-border-radius-scale {
       @each $type, $properties in $hu-border-radius-types {
-        $class-name: hu-class-name("#{$type}-#{$scale}");
+        $class-name: hu-class-name("#{$type}:#{$scale}");
 
         @include hu-pseudo($class-name, $hu-border-radius-pseudos, $module) {
           @each $property in $properties {
@@ -54,7 +54,7 @@ $hu-border-radius-parents: hu-get-class-modules($hu-border-radius-modules, paren
       @include hu-media-query($mq-value) {
         @each $scale, $value in $hu-border-radius-scale {
           @each $type, $properties in $hu-border-radius-types {
-            $class-name: hu-class-name("#{$type}-#{$scale}");
+            $class-name: hu-class-name("#{$type}:#{$scale}");
 
             @include hu-pseudo-responsive($class-name, $hu-border-radius-pseudos, $hu-border-radius-core-modules, $mq-scale) {
               @each $property in $properties {
@@ -72,7 +72,7 @@ $hu-border-radius-parents: hu-get-class-modules($hu-border-radius-modules, paren
   @each $module in hu-format-modules($hu-border-radius-core-modules) {
     @each $scale, $value in $hu-border-radius-scale {
       @each $type, $properties in $hu-border-radius-types {
-        $class-name: hu-class-name("#{$type}-#{$scale}");
+        $class-name: hu-class-name("#{$type}:#{$scale}");
 
         @include hu-parent($class-name, $hu-border-radius-parents, $module) {
           @each $property in $properties {
@@ -88,7 +88,7 @@ $hu-border-radius-parents: hu-get-class-modules($hu-border-radius-modules, paren
       @include hu-media-query($mq-value) {
         @each $scale, $value in $hu-border-radius-scale {
           @each $type, $properties in $hu-border-radius-types {
-            $class-name: hu-class-name("#{$type}-#{$scale}");
+            $class-name: hu-class-name("#{$type}:#{$scale}");
 
             @include hu-parent-responsive($class-name, $hu-border-radius-parents, $hu-border-radius-core-modules, $mq-scale) {
               @each $property in $properties {

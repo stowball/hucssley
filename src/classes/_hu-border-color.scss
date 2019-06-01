@@ -7,7 +7,7 @@ $hu-border-color-parents: hu-get-class-modules($hu-border-color-modules, parents
     @each $color-scale, $color-value in $colors {
       @each $side-type, $side-properties in $hu-border-color-sides {
         $side-properties: if($side-properties, $side-properties, $side-type);
-        $class-name: hu-class-name("#{$side-type}-color-#{$hue}-#{$color-scale}");
+        $class-name: hu-class-name("#{$side-type}-color:#{$hue}-#{$color-scale}");
 
         @include hu-generic($class-name, $module) {
           @each $property in $side-properties {
@@ -26,7 +26,7 @@ $hu-border-color-parents: hu-get-class-modules($hu-border-color-modules, parents
         @each $color-scale, $color-value in $colors {
           @each $side-type, $side-properties in $hu-border-color-sides {
             $side-properties: if($side-properties, $side-properties, $side-type);
-            $class-name: hu-class-name("#{$side-type}-color-#{$hue}-#{$color-scale}");
+            $class-name: hu-class-name("#{$side-type}-color:#{$hue}-#{$color-scale}");
 
             @include hu-responsive($class-name, $hu-border-color-core-modules, $mq-scale) {
               @each $property in $side-properties {
@@ -46,7 +46,7 @@ $hu-border-color-parents: hu-get-class-modules($hu-border-color-modules, parents
       @each $color-scale, $color-value in $colors {
         @each $side-type, $side-properties in $hu-border-color-sides {
           $side-properties: if($side-properties, $side-properties, $side-type);
-          $class-name: hu-class-name("#{$side-type}-color-#{$hue}-#{$color-scale}");
+          $class-name: hu-class-name("#{$side-type}-color:#{$hue}-#{$color-scale}");
 
           @include hu-pseudo($class-name, $hu-border-color-pseudos, $module) {
             @each $property in $side-properties {
@@ -65,7 +65,7 @@ $hu-border-color-parents: hu-get-class-modules($hu-border-color-modules, parents
           @each $color-scale, $color-value in $colors {
             @each $side-type, $side-properties in $hu-border-color-sides {
               $side-properties: if($side-properties, $side-properties, $side-type);
-              $class-name: hu-class-name("#{$side-type}-color-#{$hue}-#{$color-scale}");
+              $class-name: hu-class-name("#{$side-type}-color:#{$hue}-#{$color-scale}");
 
               @include hu-pseudo-responsive($class-name, $hu-border-color-pseudos, $hu-border-color-core-modules, $mq-scale) {
                 @each $property in $side-properties {
@@ -86,7 +86,7 @@ $hu-border-color-parents: hu-get-class-modules($hu-border-color-modules, parents
       @each $color-scale, $color-value in $colors {
         @each $side-type, $side-properties in $hu-border-color-sides {
           $side-properties: if($side-properties, $side-properties, $side-type);
-          $class-name: hu-class-name("#{$side-type}-color-#{$hue}-#{$color-scale}");
+          $class-name: hu-class-name("#{$side-type}-color:#{$hue}-#{$color-scale}");
 
           @include hu-parent($class-name, $hu-border-color-parents, $module) {
             @each $property in $side-properties {
@@ -105,7 +105,7 @@ $hu-border-color-parents: hu-get-class-modules($hu-border-color-modules, parents
           @each $color-scale, $color-value in $colors {
             @each $side-type, $side-properties in $hu-border-color-sides {
               $side-properties: if($side-properties, $side-properties, $side-type);
-              $class-name: hu-class-name("#{$side-type}-color-#{$hue}-#{$color-scale}");
+              $class-name: hu-class-name("#{$side-type}-color:#{$hue}-#{$color-scale}");
 
               @include hu-parent-responsive($class-name, $hu-border-color-parents, $hu-border-color-core-modules, $mq-scale) {
                 @each $property in $side-properties {

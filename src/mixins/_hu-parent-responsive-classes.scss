@@ -9,7 +9,7 @@
       @include hu-media-query($mq-value) {
         @if ($types) {
           @each $type, $value in $types {
-            $class-name: hu-class-name("#{$class-name-property}-#{$type}");
+            $class-name: hu-class-name("#{$class-name-property}:#{$type}");
             $value: if($value, $value, $type);
 
             @include hu-parent-responsive($class-name, $parents, $modules, $mq-scale, $child-string-to-strip) {

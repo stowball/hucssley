@@ -2,36 +2,36 @@
   @if index($modules, responsive) {
     @each $parent in $parents {
       $escaped-parent: hu-escape-class-name($parent);
-      $escaped-child: if($child-string-to-strip, hu-string-replace($escaped-parent, $child-string-to-strip, ""), $escaped-parent);
+      $escaped-child: if($child-string-to-strip, hu-escape-class-name(hu-string-replace($parent, $child-string-to-strip, "")), $escaped-parent);
 
       @if (index($modules, base)) {
-        .#{$escaped-parent} .#{$escaped-child}__mq-#{$mq-scale}--#{$class-name} {
+        .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name("@mq-#{$mq-scale}")}--#{$class-name} {
           @content;
         }
       }
 
       @if (index($modules, focus)) {
-        #{$hu-focus-parent} .#{$escaped-parent} .#{$escaped-child}__mq-#{$mq-scale}-focus--#{$class-name}#{$hu-focus-pseudo} {
+        #{$hu-focus-parent} .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name("@mq-#{$mq-scale}:focus")}--#{$class-name}#{$hu-focus-pseudo} {
           @content;
         }
       }
 
       @if (index($modules, hover)) {
-        .#{$escaped-parent} .#{$escaped-child}__mq-#{$mq-scale}-hover--#{$class-name}:hover {
+        .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name("@mq-#{$mq-scale}:hover")}--#{$class-name}:hover {
           @content;
         }
       }
 
       @if (index($modules, hocus)) {
-        #{$hu-focus-parent} .#{$escaped-parent} .#{$escaped-child}__mq-#{$mq-scale}-hocus--#{$class-name}#{$hu-focus-pseudo},
-        .#{$escaped-parent} .#{$escaped-child}__mq-#{$mq-scale}-hocus--#{$class-name}:hover {
+        #{$hu-focus-parent} .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name("@mq-#{$mq-scale}:hocus")}--#{$class-name}#{$hu-focus-pseudo},
+        .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name("@mq-#{$mq-scale}:hocus")}--#{$class-name}:hover {
           @content;
         }
       }
 
       @if (index($modules, state)) {
         @each $state in $hu-states {
-          .#{$escaped-parent} .#{$state}.#{$escaped-child}__mq-#{$mq-scale}-#{$state}--#{$class-name} {
+          .#{$escaped-parent} .#{$state}.#{$escaped-child}__#{hu-escape-class-name("@mq-#{$mq-scale}")}-#{$state}--#{$class-name} {
             @content;
           }
         }

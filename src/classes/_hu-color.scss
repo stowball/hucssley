@@ -5,7 +5,7 @@ $hu-color-parents: hu-get-class-modules($hu-color-modules, parents, null);
 @each $module in hu-format-modules($hu-color-core-modules) {
   @each $hue, $colors in $hu-color-types {
     @each $scale, $value in $colors {
-      $class-name: hu-class-name("color-#{$hue}-#{$scale}");
+      $class-name: hu-class-name("color:#{$hue}-#{$scale}");
       $property: color;
 
       @include hu-generic($class-name, $module) {
@@ -20,7 +20,7 @@ $hu-color-parents: hu-get-class-modules($hu-color-modules, parents, null);
     @include hu-media-query($mq-value) {
       @each $hue, $colors in $hu-color-types {
         @each $scale, $value in $colors {
-          $class-name: hu-class-name("color-#{$hue}-#{$scale}");
+          $class-name: hu-class-name("color:#{$hue}-#{$scale}");
           $property: color;
 
           @include hu-responsive($class-name, $hu-color-core-modules, $mq-scale) {
@@ -36,7 +36,7 @@ $hu-color-parents: hu-get-class-modules($hu-color-modules, parents, null);
   @each $module in hu-format-modules($hu-color-core-modules) {
     @each $hue, $colors in $hu-color-types {
       @each $scale, $value in $colors {
-        $class-name: hu-class-name("color-#{$hue}-#{$scale}");
+        $class-name: hu-class-name("color:#{$hue}-#{$scale}");
         $property: color;
 
         @include hu-pseudo($class-name, $hu-color-pseudos, $module) {
@@ -51,7 +51,7 @@ $hu-color-parents: hu-get-class-modules($hu-color-modules, parents, null);
       @include hu-media-query($mq-value) {
         @each $hue, $colors in $hu-color-types {
           @each $scale, $value in $colors {
-            $class-name: hu-class-name("color-#{$hue}-#{$scale}");
+            $class-name: hu-class-name("color:#{$hue}-#{$scale}");
             $property: color;
 
             @include hu-pseudo-responsive($class-name, $hu-color-pseudos, $hu-color-core-modules, $mq-scale) {
@@ -68,7 +68,7 @@ $hu-color-parents: hu-get-class-modules($hu-color-modules, parents, null);
   @each $module in hu-format-modules($hu-color-core-modules) {
     @each $hue, $colors in $hu-color-types {
       @each $scale, $value in $colors {
-        $class-name: hu-class-name("color-#{$hue}-#{$scale}");
+        $class-name: hu-class-name("color:#{$hue}-#{$scale}");
         $property: color;
 
         @include hu-parent($class-name, $hu-color-parents, $module) {
@@ -83,7 +83,7 @@ $hu-color-parents: hu-get-class-modules($hu-color-modules, parents, null);
       @include hu-media-query($mq-value) {
         @each $hue, $colors in $hu-color-types {
           @each $scale, $value in $colors {
-            $class-name: hu-class-name("color-#{$hue}-#{$scale}");
+            $class-name: hu-class-name("color:#{$hue}-#{$scale}");
             $property: color;
 
             @include hu-parent-responsive($class-name, $hu-color-parents, $hu-color-core-modules, $mq-scale) {

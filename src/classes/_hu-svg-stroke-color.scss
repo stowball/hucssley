@@ -6,7 +6,7 @@ $hu-svg-stroke-color-parents: hu-get-class-modules($hu-svg-stroke-color-modules,
 @each $module in hu-format-modules($hu-svg-stroke-color-core-modules) {
   @each $hue, $colors in $hu-svg-stroke-color-types {
     @each $scale, $value in $colors {
-      $class-name: hu-class-name("svg-stroke-color-#{$hue}-#{$scale}");
+      $class-name: hu-class-name("svg-stroke-color:#{$hue}-#{$scale}");
       $property: stroke;
 
       @include hu-generic($class-name, $module) {
@@ -21,7 +21,7 @@ $hu-svg-stroke-color-parents: hu-get-class-modules($hu-svg-stroke-color-modules,
     @include hu-media-query($mq-value) {
       @each $hue, $colors in $hu-svg-stroke-color-types {
         @each $scale, $value in $colors {
-          $class-name: hu-class-name("svg-stroke-color-#{$hue}-#{$scale}");
+          $class-name: hu-class-name("svg-stroke-color:#{$hue}-#{$scale}");
           $property: stroke;
 
           @include hu-responsive($class-name, $hu-svg-stroke-color-core-modules, $mq-scale) {
@@ -37,7 +37,7 @@ $hu-svg-stroke-color-parents: hu-get-class-modules($hu-svg-stroke-color-modules,
   @each $module in hu-format-modules($hu-svg-stroke-color-core-modules) {
     @each $hue, $colors in $hu-svg-stroke-color-types {
       @each $scale, $value in $colors {
-        $class-name: hu-class-name("svg-stroke-color-#{$hue}-#{$scale}");
+        $class-name: hu-class-name("svg-stroke-color:#{$hue}-#{$scale}");
         $property: stroke;
 
         @include hu-pseudo($class-name, $hu-svg-stroke-color-pseudos, $module) {
@@ -52,7 +52,7 @@ $hu-svg-stroke-color-parents: hu-get-class-modules($hu-svg-stroke-color-modules,
       @include hu-media-query($mq-value) {
         @each $hue, $colors in $hu-svg-stroke-color-types {
           @each $scale, $value in $colors {
-            $class-name: hu-class-name("svg-stroke-color-#{$hue}-#{$scale}");
+            $class-name: hu-class-name("svg-stroke-color:#{$hue}-#{$scale}");
             $property: stroke;
 
             @include hu-pseudo-responsive($class-name, $hu-svg-stroke-color-pseudos, $hu-svg-stroke-color-core-modules, $mq-scale) {
@@ -69,7 +69,7 @@ $hu-svg-stroke-color-parents: hu-get-class-modules($hu-svg-stroke-color-modules,
   @each $module in hu-format-modules($hu-svg-stroke-color-core-modules) {
     @each $hue, $colors in $hu-svg-stroke-color-types {
       @each $scale, $value in $colors {
-        $class-name: hu-class-name("svg-stroke-color-#{$hue}-#{$scale}");
+        $class-name: hu-class-name("svg-stroke-color:#{$hue}-#{$scale}");
         $property: stroke;
 
         @include hu-parent($class-name, $hu-svg-stroke-color-parents, $module) {
@@ -84,7 +84,7 @@ $hu-svg-stroke-color-parents: hu-get-class-modules($hu-svg-stroke-color-modules,
       @include hu-media-query($mq-value) {
         @each $hue, $colors in $hu-svg-stroke-color-types {
           @each $scale, $value in $colors {
-            $class-name: hu-class-name("svg-stroke-color-#{$hue}-#{$scale}");
+            $class-name: hu-class-name("svg-stroke-color:#{$hue}-#{$scale}");
             $property: stroke;
 
             @include hu-parent-responsive($class-name, $hu-svg-stroke-color-parents, $hu-svg-stroke-color-core-modules, $mq-scale) {
