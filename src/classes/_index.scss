@@ -40,7 +40,6 @@
 @import "hu-float";
 @import "hu-font-family";
 @import "hu-font-size";
-@import "hu-font-smoothing";
 @import "hu-font-style";
 @import "hu-font-weight";
 @import "hu-grid";
@@ -72,7 +71,6 @@
 @import "hu-max-width";
 @import "hu-min-height";
 @import "hu-min-width";
-@import "hu-momentum-scrolling";
 @import "hu-opacity";
 @import "hu-order";
 @import "hu-outline";
@@ -107,10 +105,13 @@
 @import "hu-transition-easing";
 @import "hu-translate-x";
 @import "hu-translate-y";
-@import "hu-truncate-text";
 @import "hu-vertical-align";
 @import "hu-visibility";
-@import "hu-visually-hidden";
 @import "hu-white-space";
 @import "hu-width";
 @import "hu-z-index";
+
+@import "hu-font-smoothing";
+@import "hu-momentum-scrolling";
+@import "hu-truncate-text";
+@import "hu-visually-hidden";
