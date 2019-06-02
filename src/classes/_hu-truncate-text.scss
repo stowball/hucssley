@@ -1,5 +1,5 @@
 @include hu-classes(truncate-text, $hu-truncate-text-modules) {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow: hidden #{hu-important()};
+  text-overflow: ellipsis #{hu-important()};
+  white-space: nowrap #{hu-important()};
 }

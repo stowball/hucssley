@@ -1,4 +1,4 @@
 // momentum-scrolling -> -webkit-overflow-scrolling
 @include hu-classes((momentum-scrolling: -webkit-overflow-scrolling), $hu-momentum-scrolling-modules) {
-  -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch #{hu-important()};
 };

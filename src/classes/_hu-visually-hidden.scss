@@ -1,11 +1,11 @@
 @include hu-classes(visually-hidden, $hu-visually-hidden-modules) {
-  border: none;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+  border: none #{hu-important()};
+  clip: rect(0 0 0 0) #{hu-important()};
+  height: 1px #{hu-important()};
+  margin: -1px #{hu-important()};
+  overflow: hidden #{hu-important()};
+  padding: 0 #{hu-important()};
+  position: absolute #{hu-important()};
+  white-space: nowrap #{hu-important()};
+  width: 1px #{hu-important()};
 }
