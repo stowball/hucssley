@@ -9,6 +9,7 @@
       @include hu-media-query($mq-value) {
         @if ($types) {
           @each $type, $value in $types {
+            $type: "#{$type}";
             $class-name: hu-class-name("#{$class-name-property}#{if(str-length($type) > 0, ":#{$type}", "")}");
             $value: if($value, $value, $type);
 
