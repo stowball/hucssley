@@ -1,1 +1,1 @@
-@include hu-classes(text-align, $hu-text-align-modules, $hu-text-align-types);
+@include hu-classes(($hu-text-align-alias: text-align), $hu-text-align-modules, $hu-text-align-types);

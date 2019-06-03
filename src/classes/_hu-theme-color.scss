@@ -1,12 +1,13 @@
-// theme__color -> color
+$hu-theme-color-property-name: color;
+$hu-theme-color-class-name: hu-get-class-name(($hu-theme-color-alias: $hu-theme-color-property-name));
+
 @each $module in hu-format-modules($hu-theme-color-modules) {
   @each $theme, $keys in $hu-themes {
     @each $key, $value in $keys {
-      $class-name: hu-class-name("color:#{$key}");
-      $property: color;
+      $class-name: hu-class-name("#{$hu-theme-color-class-name}:#{$key}");
 
       @include hu-theme($class-name, $theme, $module) {
-        #{$property}: $value #{hu-important()};
+        #{$hu-theme-color-property-name}: $value #{hu-important()};
       }
     }
   }
@@ -17,11 +18,10 @@
     @include hu-media-query($mq-value) {
       @each $theme, $keys in $hu-themes {
         @each $key, $value in $keys {
-          $class-name: hu-class-name("color:#{$key}");
-          $property: color;
+          $class-name: hu-class-name("#{$hu-theme-color-class-name}:#{$key}");
 
-          @include hu-theme-responsive($class-name, $theme, $hu-theme-bg-color-modules, $mq-scale) {
-            #{$property}: $value #{hu-important()};
+          @include hu-theme-responsive($class-name, $theme, $hu-theme-color-modules, $mq-scale) {
+            #{$hu-theme-color-property-name}: $value #{hu-important()};
           }
         }
       }

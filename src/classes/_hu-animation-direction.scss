@@ -1,1 +1,1 @@
-@include hu-classes(animation-direction, $hu-animation-direction-modules, $hu-animation-direction-types);
+@include hu-classes(($hu-animation-direction-alias: animation-direction), $hu-animation-direction-modules, $hu-animation-direction-types);

@@ -1,1 +1,1 @@
-@include hu-classes(grid-column-end, $hu-grid-column-end-modules, $hu-grid-column-end-types);
+@include hu-classes(($hu-grid-column-end-alias: grid-column-end), $hu-grid-column-end-modules, $hu-grid-column-end-types);

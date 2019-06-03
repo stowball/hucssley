@@ -1,15 +1,16 @@
 $hu-color-core-modules: hu-get-class-modules($hu-color-modules, core, $hu-color-modules);
 $hu-color-pseudos: hu-get-class-modules($hu-color-modules, pseudos, null);
 $hu-color-parents: hu-get-class-modules($hu-color-modules, parents, null);
+$hu-color-property-name: color;
+$hu-color-class-name: hu-get-class-name(($hu-color-alias: $hu-color-property-name));
 
 @each $module in hu-format-modules($hu-color-core-modules) {
   @each $hue, $colors in $hu-color-types {
     @each $scale, $value in $colors {
-      $class-name: hu-class-name("color:#{$hue}-#{$scale}");
-      $property: color;
+      $class-name: hu-class-name("#{$hu-color-class-name}:#{$hue}-#{$scale}");
 
       @include hu-generic($class-name, $module) {
-        #{$property}: $value #{hu-important()};
+        #{$hu-color-property-name}: $value #{hu-important()};
       }
     }
   }
@@ -20,11 +21,10 @@ $hu-color-parents: hu-get-class-modules($hu-color-modules, parents, null);
     @include hu-media-query($mq-value) {
       @each $hue, $colors in $hu-color-types {
         @each $scale, $value in $colors {
-          $class-name: hu-class-name("color:#{$hue}-#{$scale}");
-          $property: color;
+          $class-name: hu-class-name("#{$hu-color-class-name}:#{$hue}-#{$scale}");
 
           @include hu-responsive($class-name, $hu-color-core-modules, $mq-scale) {
-            #{$property}: $value #{hu-important()};
+            #{$hu-color-property-name}: $value #{hu-important()};
           }
         }
       }
@@ -36,11 +36,10 @@ $hu-color-parents: hu-get-class-modules($hu-color-modules, parents, null);
   @each $module in hu-format-modules($hu-color-core-modules) {
     @each $hue, $colors in $hu-color-types {
       @each $scale, $value in $colors {
-        $class-name: hu-class-name("color:#{$hue}-#{$scale}");
-        $property: color;
+        $class-name: hu-class-name("#{$hu-color-class-name}:#{$hue}-#{$scale}");
 
         @include hu-pseudo($class-name, $hu-color-pseudos, $module) {
-          #{$property}: $value #{hu-important()};
+          #{$hu-color-property-name}: $value #{hu-important()};
         }
       }
     }
@@ -51,11 +50,10 @@ $hu-color-parents: hu-get-class-modules($hu-color-modules, parents, null);
       @include hu-media-query($mq-value) {
         @each $hue, $colors in $hu-color-types {
           @each $scale, $value in $colors {
-            $class-name: hu-class-name("color:#{$hue}-#{$scale}");
-            $property: color;
+            $class-name: hu-class-name("#{$hu-color-class-name}:#{$hue}-#{$scale}");
 
             @include hu-pseudo-responsive($class-name, $hu-color-pseudos, $hu-color-core-modules, $mq-scale) {
-              #{$property}: $value #{hu-important()};
+              #{$hu-color-property-name}: $value #{hu-important()};
             }
           }
         }
@@ -68,11 +66,10 @@ $hu-color-parents: hu-get-class-modules($hu-color-modules, parents, null);
   @each $module in hu-format-modules($hu-color-core-modules) {
     @each $hue, $colors in $hu-color-types {
       @each $scale, $value in $colors {
-        $class-name: hu-class-name("color:#{$hue}-#{$scale}");
-        $property: color;
+        $class-name: hu-class-name("#{$hu-color-class-name}:#{$hue}-#{$scale}");
 
         @include hu-parent($class-name, $hu-color-parents, $module) {
-          #{$property}: $value #{hu-important()};
+          #{$hu-color-property-name}: $value #{hu-important()};
         }
       }
     }
@@ -83,11 +80,10 @@ $hu-color-parents: hu-get-class-modules($hu-color-modules, parents, null);
       @include hu-media-query($mq-value) {
         @each $hue, $colors in $hu-color-types {
           @each $scale, $value in $colors {
-            $class-name: hu-class-name("color:#{$hue}-#{$scale}");
-            $property: color;
+            $class-name: hu-class-name("#{$hu-color-class-name}:#{$hue}-#{$scale}");
 
             @include hu-parent-responsive($class-name, $hu-color-parents, $hu-color-core-modules, $mq-scale) {
-              #{$property}: $value #{hu-important()};
+              #{$hu-color-property-name}: $value #{hu-important()};
             }
           }
         }

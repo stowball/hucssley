@@ -1,1 +1,1 @@
-@include hu-classes(transition-duration, $hu-transition-duration-modules, $hu-transition-duration-types);
+@include hu-classes(($hu-transition-duration-alias: transition-duration), $hu-transition-duration-modules, $hu-transition-duration-types);

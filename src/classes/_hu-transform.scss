@@ -1,1 +1,1 @@
-@include hu-classes(transform, $hu-transform-modules, $hu-transform-types);
+@include hu-classes(($hu-transform-alias: transform), $hu-transform-modules, $hu-transform-types);

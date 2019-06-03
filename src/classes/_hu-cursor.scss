@@ -1,1 +1,1 @@
-@include hu-classes(cursor, $hu-cursor-modules, $hu-cursor-types);
+@include hu-classes(($hu-cursor-alias: cursor), $hu-cursor-modules, $hu-cursor-types);

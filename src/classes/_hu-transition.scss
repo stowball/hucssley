@@ -1,1 +1,1 @@
-@include hu-classes(transition, $hu-transition-modules, $hu-transition-types);
+@include hu-classes(($hu-transition-alias: transition), $hu-transition-modules, $hu-transition-types);

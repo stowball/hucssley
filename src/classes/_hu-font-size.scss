@@ -1,1 +1,1 @@
-@include hu-classes(font-size, $hu-font-size-modules, $hu-font-size-types);
+@include hu-classes(($hu-font-size-alias: font-size), $hu-font-size-modules, $hu-font-size-types);

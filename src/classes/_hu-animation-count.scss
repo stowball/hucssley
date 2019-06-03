@@ -1,2 +1,1 @@
-// animation-count -> animation-iteration-count
-@include hu-classes((animation-count: animation-iteration-count), $hu-animation-count-modules, $hu-animation-count-types);
+  @include hu-classes(($hu-animation-count-alias, animation-iteration-count), $hu-animation-count-modules, $hu-animation-count-types);

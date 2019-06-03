@@ -1,6 +1,8 @@
-$hu-bg-repeat-modules: (base) !default;
+$hu-background-repeat-alias: "" !default;
 
-$hu-bg-repeat-types: (
+$hu-background-repeat-modules: (base) !default;
+
+$hu-background-repeat-types: (
   repeat: repeat,
   repeat-no: no-repeat,
   repeat-space: space,

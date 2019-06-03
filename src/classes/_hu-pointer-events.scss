@@ -1,1 +1,1 @@
-@include hu-classes(pointer-events, $hu-pointer-events-modules, $hu-pointer-events-types);
+@include hu-classes(($hu-pointer-events-alias: pointer-events), $hu-pointer-events-modules, $hu-pointer-events-types);

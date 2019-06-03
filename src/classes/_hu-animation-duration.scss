@@ -1,1 +1,1 @@
-@include hu-classes(animation-duration, $hu-animation-duration-modules, $hu-animation-duration-types);
+@include hu-classes(($hu-animation-duration-alias: animation-duration), $hu-animation-duration-modules, $hu-animation-duration-types);

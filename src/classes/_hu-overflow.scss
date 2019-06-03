@@ -1,1 +1,1 @@
-@include hu-classes(overflow, $hu-overflow-modules, $hu-overflow-types);
+@include hu-classes(($hu-overflow-alias: overflow), $hu-overflow-modules, $hu-overflow-types);

@@ -1,1 +1,1 @@
-@include hu-classes(order, $hu-order-modules, $hu-order-types);
+@include hu-classes(($hu-order-alias: order), $hu-order-modules, $hu-order-types);

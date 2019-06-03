@@ -1,1 +1,1 @@
-@include hu-classes(transition-delay, $hu-transition-delay-modules, $hu-transition-delay-types);
+@include hu-classes(($hu-transition-delay-alias: transition-delay), $hu-transition-delay-modules, $hu-transition-delay-types);

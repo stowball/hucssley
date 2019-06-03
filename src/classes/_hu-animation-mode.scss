@@ -1,2 +1,1 @@
-// animation-mode -> animation-fill-mode
-@include hu-classes((animation-mode: animation-fill-mode), $hu-animation-mode-modules, $hu-animation-mode-types);
+@include hu-classes(($hu-animation-mode-alias: animation-fill-mode), $hu-animation-mode-modules, $hu-animation-mode-types);

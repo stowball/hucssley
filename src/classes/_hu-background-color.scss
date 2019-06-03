@@ -1,0 +1,93 @@
+$hu-background-color-core-modules: hu-get-class-modules($hu-background-color-modules, core, $hu-background-color-modules);
+$hu-background-color-pseudos: hu-get-class-modules($hu-background-color-modules, pseudos, null);
+$hu-background-color-parents: hu-get-class-modules($hu-background-color-modules, parents, null);
+$hu-background-color-property-name: background-color;
+$hu-background-color-class-name: hu-get-class-name(($hu-background-color-alias: $hu-background-color-property-name));
+
+@each $module in hu-format-modules($hu-background-color-core-modules) {
+  @each $hue, $colors in $hu-background-color-types {
+    @each $scale, $value in $colors {
+      $class-name: hu-class-name("#{$hu-background-color-class-name}:#{$hue}-#{$scale}");
+
+      @include hu-generic($class-name, $module) {
+        #{$hu-background-color-property-name}: $value #{hu-important()};
+      }
+    }
+  }
+}
+
+@if (index($hu-background-color-core-modules, responsive)) {
+  @each $mq-scale, $mq-value in $hu-media-queries {
+    @include hu-media-query($mq-value) {
+      @each $hue, $colors in $hu-background-color-types {
+        @each $scale, $value in $colors {
+          $class-name: hu-class-name("#{$hu-background-color-class-name}:#{$hue}-#{$scale}");
+
+          @include hu-responsive($class-name, $hu-background-color-core-modules, $mq-scale) {
+            #{$hu-background-color-property-name}: $value #{hu-important()};
+          }
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-background-color-pseudos) {
+  @each $module in hu-format-modules($hu-background-color-core-modules) {
+    @each $hue, $colors in $hu-background-color-types {
+      @each $scale, $value in $colors {
+        $class-name: hu-class-name("#{$hu-background-color-class-name}:#{$hue}-#{$scale}");
+
+        @include hu-pseudo($class-name, $hu-background-color-pseudos, $module) {
+          #{$hu-background-color-property-name}: $value #{hu-important()};
+        }
+      }
+    }
+  }
+
+  @if (index($hu-background-color-core-modules, responsive)) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
+        @each $hue, $colors in $hu-background-color-types {
+          @each $scale, $value in $colors {
+            $class-name: hu-class-name("#{$hu-background-color-class-name}:#{$hue}-#{$scale}");
+
+            @include hu-pseudo-responsive($class-name, $hu-background-color-pseudos, $hu-background-color-core-modules, $mq-scale) {
+              #{$hu-background-color-property-name}: $value #{hu-important()};
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-background-color-parents) {
+  @each $module in hu-format-modules($hu-background-color-core-modules) {
+    @each $hue, $colors in $hu-background-color-types {
+      @each $scale, $value in $colors {
+        $class-name: hu-class-name("#{$hu-background-color-class-name}:#{$hue}-#{$scale}");
+
+        @include hu-parent($class-name, $hu-background-color-parents, $module) {
+          #{$hu-background-color-property-name}: $value #{hu-important()};
+        }
+      }
+    }
+  }
+
+  @if (index($hu-background-color-core-modules, responsive)) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
+        @each $hue, $colors in $hu-background-color-types {
+          @each $scale, $value in $colors {
+            $class-name: hu-class-name("#{$hu-background-color-class-name}:#{$hue}-#{$scale}");
+
+            @include hu-parent-responsive($class-name, $hu-background-color-parents, $hu-background-color-core-modules, $mq-scale) {
+              #{$hu-background-color-property-name}: $value #{hu-important()};
+            }
+          }
+        }
+      }
+    }
+  }
+}

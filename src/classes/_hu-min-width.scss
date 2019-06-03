@@ -1,1 +1,1 @@
-@include hu-classes(min-width, $hu-min-width-modules, $hu-min-width-types);
+@include hu-classes(($hu-min-width-alias: min-width), $hu-min-width-modules, $hu-min-width-types);

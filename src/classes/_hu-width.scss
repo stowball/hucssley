@@ -1,1 +1,1 @@
-@include hu-classes(width, $hu-width-modules, $hu-width-types);
+@include hu-classes(($hu-width-alias: width), $hu-width-modules, $hu-width-types);

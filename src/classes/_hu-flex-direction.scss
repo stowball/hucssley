@@ -1,1 +1,1 @@
-@include hu-classes(flex-direction, $hu-flex-direction-modules, $hu-flex-direction-types);
+@include hu-classes(($hu-flex-direction-alias: flex-direction), $hu-flex-direction-modules, $hu-flex-direction-types);

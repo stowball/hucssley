@@ -1,1 +1,1 @@
-@include hu-classes(line-height, $hu-line-height-modules, $hu-line-height-types);
+@include hu-classes(($hu-line-height-alias: line-height), $hu-line-height-modules, $hu-line-height-types);

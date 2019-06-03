@@ -1,2 +1,1 @@
-// svg-fill-rule -> fill-rule
-@include hu-classes((svg-fill-rule: fill-rule), $hu-svg-fill-rule-modules, $hu-svg-fill-rule-types);
+@include hu-classes(($hu-svg-fill-rule-alias: fill-rule), $hu-svg-fill-rule-modules, $hu-svg-fill-rule-types);

@@ -1,1 +1,1 @@
-@include hu-classes(position, $hu-position-modules, $hu-position-types);
+@include hu-classes(($hu-position-alias: position), $hu-position-modules, $hu-position-types);

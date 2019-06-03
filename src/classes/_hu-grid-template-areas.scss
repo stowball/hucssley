@@ -1,1 +1,1 @@
-@include hu-classes(grid-template-areas, $hu-grid-template-areas-modules, $hu-grid-template-areas-types);
+@include hu-classes(($hu-grid-template-areas-alias: grid-template-areas), $hu-grid-template-areas-modules, $hu-grid-template-areas-types);

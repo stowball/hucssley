@@ -1,4 +1,4 @@
-@include hu-classes(visually-hidden, $hu-visually-hidden-modules) {
+@include hu-classes($hu-visually-hidden-alias, $hu-visually-hidden-modules) {
   border: none #{hu-important()};
   clip: rect(0 0 0 0) #{hu-important()};
   height: 1px #{hu-important()};

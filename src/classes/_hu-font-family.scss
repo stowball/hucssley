@@ -1,1 +1,1 @@
-@include hu-classes(font-family, $hu-font-family-modules, $hu-font-family-types);
+@include hu-classes(($hu-font-family-alias: font-family), $hu-font-family-modules, $hu-font-family-types);

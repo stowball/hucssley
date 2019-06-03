@@ -1,4 +1,3 @@
-// pos-[b,l,r,t] -> bottom, left, right, top
 $hu-pos-core-modules: hu-get-class-modules($hu-pos-modules, core, $hu-pos-modules);
 $hu-pos-pseudos: hu-get-class-modules($hu-pos-modules, pseudos, null);
 $hu-pos-parents: hu-get-class-modules($hu-pos-modules, parents, null);

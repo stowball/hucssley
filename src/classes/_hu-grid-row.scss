@@ -1,1 +1,1 @@
-@include hu-classes(grid-row, $hu-grid-row-modules, $hu-grid-row-types);
+@include hu-classes(($hu-grid-row-alias: grid-row), $hu-grid-row-modules, $hu-grid-row-types);

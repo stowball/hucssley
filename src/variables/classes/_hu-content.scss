@@ -1,10 +1,12 @@
-$hu-content-modules: (base) !default;
+$hu-content-alias: "" !default;
 
-$hu-content-types: (
-  "",
-) !default;
+$hu-content-modules: (base) !default;
 
 $hu-content-pseudos: (
   "::after", 
   "::before"
+) !default;
+
+$hu-content-types: (
+  "",
 ) !default;

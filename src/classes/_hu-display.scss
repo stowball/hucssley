@@ -1,1 +1,1 @@
-@include hu-classes(display, $hu-display-modules, $hu-display-types);
+@include hu-classes(($hu-display-alias: display), $hu-display-modules, $hu-display-types);

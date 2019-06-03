@@ -1,1 +1,1 @@
-@include hu-classes(grid, $hu-grid-modules, $hu-grid-types);
+@include hu-classes(($hu-grid-alias: grid), $hu-grid-modules, $hu-grid-types);

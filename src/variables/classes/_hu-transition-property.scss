@@ -1,13 +1,15 @@
+$hu-transition-property-alias: "" !default;
+
 $hu-transition-property-modules: (base, group-hover, group-state, reduced-motion, state) !default;
 
 $hu-transition-property-types: (
-  all: all,
-  bg-color: background-color,
-  color: color,
-  height: height,
-  opacity: opacity,
-  transform: transform,
-  visibility: visibility,
-  width: width,
-  none: none,
+  all,
+  background-color,
+  color,
+  height,
+  opacity,
+  transform,
+  visibility,
+  width,
+  none,
 ) !default;

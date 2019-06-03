@@ -1,16 +1,16 @@
-// scale -> transform: scale
 $hu-scale-core-modules: hu-get-class-modules($hu-scale-modules, core, $hu-scale-modules);
 $hu-scale-pseudos: hu-get-class-modules($hu-scale-modules, pseudos, null);
 $hu-scale-parents: hu-get-class-modules($hu-scale-modules, parents, null);
+$hu-scale-property-name: transform;
+$hu-scale-class-name: hu-get-class-name(($hu-scale-alias: $hu-scale-property-name));
 
 @each $module in hu-format-modules($hu-scale-core-modules) {
   @each $type, $value in $hu-scale-types {
-    $class-name: hu-class-name("scale:#{$type}");
-    $property: transform;
+    $class-name: hu-class-name("#{$hu-scale-class-name}:#{$type}");
     $value: if($value, $value, $type);
 
     @include hu-generic($class-name, $module) {
-      #{$property}: scale($value);
+      #{$hu-scale-property-name}: scale($value) #{hu-important()};
     }
   }
 }
@@ -19,12 +19,12 @@ $hu-scale-parents: hu-get-class-modules($hu-scale-modules, parents, null);
   @each $mq-scale, $mq-value in $hu-media-queries {
     @include hu-media-query($mq-value) {
       @each $type, $value in $hu-scale-types {
-        $class-name: hu-class-name("scale:#{$type}");
+        $class-name: hu-class-name("#{$hu-scale-class-name}:#{$type}");
         $property: scale;
         $value: if($value, $value, $type);
 
         @include hu-responsive($class-name, $hu-scale-core-modules, $mq-scale) {
-          #{$property}: $value #{hu-important()};
+          #{$hu-scale-property-name}: scale($value) #{hu-important()};
         }
       }
     }
@@ -34,12 +34,11 @@ $hu-scale-parents: hu-get-class-modules($hu-scale-modules, parents, null);
 @if ($hu-scale-pseudos) {
   @each $module in hu-format-modules($hu-scale-core-modules) {
     @each $type, $value in $hu-scale-types {
-      $class-name: hu-class-name("scale:#{$type}");
-      $property: transform;
+      $class-name: hu-class-name("#{$hu-scale-class-name}:#{$type}");
       $value: if($value, $value, $type);
 
       @include hu-pseudo($class-name, $hu-scale-pseudos, $module) {
-        #{$property}: scale($value);
+        #{$hu-scale-property-name}: scale($value) #{hu-important()};
       }
     }
   }
@@ -48,12 +47,12 @@ $hu-scale-parents: hu-get-class-modules($hu-scale-modules, parents, null);
     @each $mq-scale, $mq-value in $hu-media-queries {
       @include hu-media-query($mq-value) {
         @each $type, $value in $hu-scale-types {
-          $class-name: hu-class-name("scale:#{$type}");
+          $class-name: hu-class-name("#{$hu-scale-class-name}:#{$type}");
           $property: scale;
           $value: if($value, $value, $type);
 
           @include hu-pseudo-responsive($class-name, $hu-scale-pseudos, $hu-scale-core-modules, $mq-scale) {
-            #{$property}: $value #{hu-important()};
+            #{$hu-scale-property-name}: scale($value) #{hu-important()};
           }
         }
       }
@@ -64,12 +63,11 @@ $hu-scale-parents: hu-get-class-modules($hu-scale-modules, parents, null);
 @if ($hu-scale-parents) {
   @each $module in hu-format-modules($hu-scale-core-modules) {
     @each $type, $value in $hu-scale-types {
-      $class-name: hu-class-name("scale:#{$type}");
-      $property: transform;
+      $class-name: hu-class-name("#{$hu-scale-class-name}:#{$type}");
       $value: if($value, $value, $type);
 
       @include hu-parent($class-name, $hu-scale-parents, $module) {
-        #{$property}: scale($value);
+        #{$hu-scale-property-name}: scale($value) #{hu-important()};
       }
     }
   }
@@ -78,12 +76,12 @@ $hu-scale-parents: hu-get-class-modules($hu-scale-modules, parents, null);
     @each $mq-scale, $mq-value in $hu-media-queries {
       @include hu-media-query($mq-value) {
         @each $type, $value in $hu-scale-types {
-          $class-name: hu-class-name("scale:#{$type}");
+          $class-name: hu-class-name("#{$hu-scale-class-name}:#{$type}");
           $property: scale;
           $value: if($value, $value, $type);
 
           @include hu-parent-responsive($class-name, $hu-scale-parents, $hu-scale-core-modules, $mq-scale) {
-            #{$property}: $value #{hu-important()};
+            #{$hu-scale-property-name}: scale($value) #{hu-important()};
           }
         }
       }

@@ -1,1 +1,1 @@
-@include hu-classes(animation, $hu-animation-modules, $hu-animation-types);
+@include hu-classes(($hu-animation-alias: animation), $hu-animation-modules, $hu-animation-types);

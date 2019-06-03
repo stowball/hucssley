@@ -1,1 +1,1 @@
-@include hu-classes(scroll-behavior, $hu-scroll-behavior-modules, $hu-scroll-behavior-types);
+@include hu-classes(($hu-scroll-behavior-alias: scroll-behavior), $hu-scroll-behavior-modules, $hu-scroll-behavior-types);

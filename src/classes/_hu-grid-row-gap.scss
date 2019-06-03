@@ -1,1 +1,1 @@
-@include hu-classes(grid-row-gap, $hu-grid-row-gap-modules, $hu-grid-row-gap-types);
+@include hu-classes(($hu-grid-row-gap-alias: grid-row-gap), $hu-grid-row-gap-modules, $hu-grid-row-gap-types);

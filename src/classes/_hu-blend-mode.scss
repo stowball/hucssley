@@ -1,2 +1,1 @@
-// blend-mode -> mix-blend-mode
-@include hu-classes((blend-mode: mix-blend-mode), $hu-blend-mode-modules, $hu-blend-mode-types);
+@include hu-classes(($hu-blend-mode-alias: mix-blend-mode), $hu-blend-mode-modules, $hu-blend-mode-types);

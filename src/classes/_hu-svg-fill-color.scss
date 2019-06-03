@@ -1,16 +1,16 @@
-// svg-fill-color -> fill
 $hu-svg-fill-color-core-modules: hu-get-class-modules($hu-svg-fill-color-modules, core, $hu-svg-fill-color-modules);
 $hu-svg-fill-color-pseudos: hu-get-class-modules($hu-svg-fill-color-modules, pseudos, null);
 $hu-svg-fill-color-parents: hu-get-class-modules($hu-svg-fill-color-modules, parents, null);
+$hu-svg-fill-color-property-name: fill;
+$hu-svg-fill-color-class-name: hu-get-class-name(($hu-svg-fill-color-alias: $hu-svg-fill-color-property-name));
 
 @each $module in hu-format-modules($hu-svg-fill-color-core-modules) {
   @each $hue, $colors in $hu-svg-fill-color-types {
     @each $scale, $value in $colors {
-      $class-name: hu-class-name("svg-fill-color:#{$hue}-#{$scale}");
-      $property: fill;
+      $class-name: hu-class-name("#{$hu-svg-fill-color-class-name}:#{$hue}-#{$scale}");
 
       @include hu-generic($class-name, $module) {
-        #{$property}: $value #{hu-important()};
+        #{$hu-svg-fill-color-property-name}: $value #{hu-important()};
       }
     }
   }
@@ -21,11 +21,10 @@ $hu-svg-fill-color-parents: hu-get-class-modules($hu-svg-fill-color-modules, par
     @include hu-media-query($mq-value) {
       @each $hue, $colors in $hu-svg-fill-color-types {
         @each $scale, $value in $colors {
-          $class-name: hu-class-name("svg-fill-color:#{$hue}-#{$scale}");
-          $property: fill;
+          $class-name: hu-class-name("#{$hu-svg-fill-color-class-name}:#{$hue}-#{$scale}");
 
           @include hu-responsive($class-name, $hu-svg-fill-color-core-modules, $mq-scale) {
-            #{$property}: $value #{hu-important()};
+            #{$hu-svg-fill-color-property-name}: $value #{hu-important()};
           }
         }
       }
@@ -37,11 +36,10 @@ $hu-svg-fill-color-parents: hu-get-class-modules($hu-svg-fill-color-modules, par
   @each $module in hu-format-modules($hu-svg-fill-color-core-modules) {
     @each $hue, $colors in $hu-svg-fill-color-types {
       @each $scale, $value in $colors {
-        $class-name: hu-class-name("svg-fill-color:#{$hue}-#{$scale}");
-        $property: fill;
+        $class-name: hu-class-name("#{$hu-svg-fill-color-class-name}:#{$hue}-#{$scale}");
 
         @include hu-pseudo($class-name, $hu-svg-fill-color-pseudos, $module) {
-          #{$property}: $value #{hu-important()};
+          #{$hu-svg-fill-color-property-name}: $value #{hu-important()};
         }
       }
     }
@@ -52,11 +50,10 @@ $hu-svg-fill-color-parents: hu-get-class-modules($hu-svg-fill-color-modules, par
       @include hu-media-query($mq-value) {
         @each $hue, $colors in $hu-svg-fill-color-types {
           @each $scale, $value in $colors {
-            $class-name: hu-class-name("svg-fill-color:#{$hue}-#{$scale}");
-            $property: fill;
+            $class-name: hu-class-name("#{$hu-svg-fill-color-class-name}:#{$hue}-#{$scale}");
 
             @include hu-pseudo-responsive($class-name, $hu-svg-fill-color-pseudos, $hu-svg-fill-color-core-modules, $mq-scale) {
-              #{$property}: $value #{hu-important()};
+              #{$hu-svg-fill-color-property-name}: $value #{hu-important()};
             }
           }
         }
@@ -69,11 +66,10 @@ $hu-svg-fill-color-parents: hu-get-class-modules($hu-svg-fill-color-modules, par
   @each $module in hu-format-modules($hu-svg-fill-color-core-modules) {
     @each $hue, $colors in $hu-svg-fill-color-types {
       @each $scale, $value in $colors {
-        $class-name: hu-class-name("svg-fill-color:#{$hue}-#{$scale}");
-        $property: fill;
+        $class-name: hu-class-name("#{$hu-svg-fill-color-class-name}:#{$hue}-#{$scale}");
 
         @include hu-parent($class-name, $hu-svg-fill-color-parents, $module) {
-          #{$property}: $value #{hu-important()};
+          #{$hu-svg-fill-color-property-name}: $value #{hu-important()};
         }
       }
     }
@@ -84,11 +80,10 @@ $hu-svg-fill-color-parents: hu-get-class-modules($hu-svg-fill-color-modules, par
       @include hu-media-query($mq-value) {
         @each $hue, $colors in $hu-svg-fill-color-types {
           @each $scale, $value in $colors {
-            $class-name: hu-class-name("svg-fill-color:#{$hue}-#{$scale}");
-            $property: fill;
+            $class-name: hu-class-name("#{$hu-svg-fill-color-class-name}:#{$hue}-#{$scale}");
 
             @include hu-parent-responsive($class-name, $hu-svg-fill-color-parents, $hu-svg-fill-color-core-modules, $mq-scale) {
-              #{$property}: $value #{hu-important()};
+              #{$hu-svg-fill-color-property-name}: $value #{hu-important()};
             }
           }
         }

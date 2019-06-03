@@ -1,0 +1,3 @@
+@function hu-get-property-name($alias) {
+  @return if(type-of($alias) == map, nth(map-values($alias), 1), $alias);
+}

@@ -1,1 +1,1 @@
-@include hu-classes(justify-items, $hu-justify-items-modules, $hu-justify-items-types);
+@include hu-classes(($hu-justify-items-alias: justify-items), $hu-justify-items-modules, $hu-justify-items-types);

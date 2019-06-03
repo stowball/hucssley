@@ -1,1 +1,1 @@
-@include hu-classes(outline, $hu-outline-modules, $hu-outline-types);
+@include hu-classes(($hu-outline-alias: outline), $hu-outline-modules, $hu-outline-types);

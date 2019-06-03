@@ -1,2 +1,1 @@
-// animation-state -> animation-play-state
-@include hu-classes((animation-state: animation-play-state), $hu-animation-state-modules, $hu-animation-state-types);
+@include hu-classes(($hu-animation-state-alias: animation-play-state), $hu-animation-state-modules, $hu-animation-state-types);

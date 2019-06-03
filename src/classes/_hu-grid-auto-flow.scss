@@ -1,1 +1,1 @@
-@include hu-classes(grid-auto-flow, $hu-grid-auto-flow-modules, $hu-grid-auto-flow-types);
+@include hu-classes(($hu-grid-auto-flow-alias: grid-auto-flow), $hu-grid-auto-flow-modules, $hu-grid-auto-flow-types);

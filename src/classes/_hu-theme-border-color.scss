@@ -1,4 +1,3 @@
-// theme__border-color -> border-color
 @each $module in hu-format-modules($hu-theme-border-color-modules) {
   @each $theme, $keys in $hu-themes {
     @each $key, $value in $keys {
@@ -25,7 +24,7 @@
             $side-properties: if($side-properties, $side-properties, $side-type);
             $class-name: hu-class-name("#{$side-type}-color:#{$key}");
 
-            @include hu-theme-responsive($class-name, $theme, $hu-theme-bg-color-modules, $mq-scale) {
+            @include hu-theme-responsive($class-name, $theme, $hu-theme-border-color-modules, $mq-scale) {
               @each $property in $side-properties {
                 #{$property}-color: $value;
               }

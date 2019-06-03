@@ -1,1 +1,1 @@
-@include hu-classes(white-space, $hu-white-space-modules, $hu-white-space-types);
+@include hu-classes(($hu-white-space-alias: white-space), $hu-white-space-modules, $hu-white-space-types);
