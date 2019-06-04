@@ -1835,16 +1835,10 @@ $hu-text-transform-types: (
 ### hu-theme-background-color
 
 ```
-theme__background-color -> background-color
+theme__[$hu-background-color-alias] -> background-color
 ```
 
-```scss
-$hu-theme-background-color-alias: "";
-
-$hu-theme-background-color-modules: $hu-background-color-modules;
-
-$hu-theme-background-color-types: $hu-themes;
-```
+*Inherits all of `hu-background-color`’s `alias`, `modules` and `types` variables.*
 
 ### hu-theme-border-color
 
@@ -1852,27 +1846,15 @@ $hu-theme-background-color-types: $hu-themes;
 theme__border-color -> border-color
 ```
 
-```scss
-$hu-theme-border-color-modules: $hu-border-modules;
-
-$hu-theme-border-color-sides: $hu-border-sides;
-
-$hu-theme-border-color-types: $hu-themes;
-```
+*Inherits all of `hu-border-color`’s `modules`, `sides` and `types` variables.*
 
 ### hu-theme-color
 
 ```
-theme__color -> color
+theme__[$hu-color-alias] -> color
 ```
 
-```scss
-$hu-theme-color-alias: "";
-
-$hu-theme-color-modules: $hu-theme-background-color-modules;
-
-$hu-theme-color-types: $hu-themes;
-```
+*Inherits all of `hu-color`’s `alias`, `modules` and `types` variables.*
 
 ### hu-transform
 

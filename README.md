@@ -828,7 +828,7 @@ $hu-focus-pseudo: ":focus:not(.focus-visible)";
 
 #### Themes: `$hu-themes`
 
-As well as the standard `$hu-colors`, “color” classes can also be generated for theming your application based on the key/vaue pairs in this map.
+As well as the standard `$hu-colors`, `background-color`, `border-color` and `color` classes can also be generated for theming your application based on the key/vaue pairs in this map.
 
 By default, no themes are provided, but making your own is easy:
 

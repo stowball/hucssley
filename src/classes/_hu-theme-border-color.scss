@@ -1,7 +1,7 @@
-@each $module in hu-format-modules($hu-theme-border-color-modules) {
+@each $module in hu-format-modules($hu-border-color-modules) {
   @each $theme, $keys in $hu-themes {
     @each $key, $value in $keys {
-      @each $side-type, $side-properties in $hu-theme-border-color-sides {
+      @each $side-type, $side-properties in $hu-border-color-sides {
         $side-properties: if($side-properties, $side-properties, $side-type);
         $class-name: hu-class-name("#{$side-type}-color:#{$key}");
 
@@ -15,16 +15,16 @@
   }
 }
 
-@if (index($hu-theme-border-color-modules, responsive)) {
+@if (index($hu-border-color-modules, responsive)) {
   @each $mq-scale, $mq-value in $hu-media-queries {
     @include hu-media-query($mq-value) {
       @each $theme, $keys in $hu-themes {
         @each $key, $value in $keys {
-          @each $side-type, $side-properties in $hu-theme-border-color-sides {
+          @each $side-type, $side-properties in $hu-border-color-sides {
             $side-properties: if($side-properties, $side-properties, $side-type);
             $class-name: hu-class-name("#{$side-type}-color:#{$key}");
 
-            @include hu-theme-responsive($class-name, $theme, $hu-theme-border-color-modules, $mq-scale) {
+            @include hu-responsive($class-name, $theme, $hu-border-color-modules, $mq-scale) {
               @each $property in $side-properties {
                 #{$property}-color: $value;
               }
