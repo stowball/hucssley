@@ -232,10 +232,10 @@ A good example is `border-radius`:
 ```scss
 $hu-border-radius-scale: (
   0: 0,
-  100: 1px,
-  200: 2px,
-  300: 3px,
-  1000: 1000px,
+  100: hu-rem(1),
+  200: hu-rem(2),
+  300: hu-rem(3),
+  1000: hu-rem(1000),
 );
 
 $hu-border-radius-types: (
@@ -251,51 +251,51 @@ which would generate the following classes:
 
 ```css
 .border-radius:100 {
-  border-radius: 1px;
+  border-radius: 0.0625rem;
 }
 
 .border-radius-bottom:100 {
-  border-bottom-left-radius: 1px;
-  border-bottom-right-radius: 1px;
+  border-bottom-left-radius: 0.0625rem;
+  border-bottom-right-radius: 0.0625rem;
 }
 
 .border-radius-left:100 {
-  border-bottom-left-radius: 1px;
-  border-top-left-radius: 1px;
+  border-bottom-left-radius: 0.0625rem;
+  border-top-left-radius: 0.0625rem;
 }
 
 .border-radius-right:100 {
-  border-bottom-right-radius: 1px;
-  border-top-right-radius: 1px;
+  border-bottom-right-radius: 0.0625rem;
+  border-top-right-radius: 0.0625rem;
 }
 
 .border-radius-top:100 {
-  border-top-left-radius: 1px;
-  border-top-right-radius: 1px;
+  border-top-left-radius: 0.0625rem;
+  border-top-right-radius: 0.0625rem;
 }
 
 .border-radius:200 {
-  border-radius: 2px;
+  border-radius: 0.125rem;
 }
 
 .border-radius-bottom:200 {
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 0.125rem;
+  border-bottom-right-radius: 0.125rem;
 }
 
 .border-radius-left:200 {
-  border-bottom-left-radius: 2px;
-  border-top-left-radius: 2px;
+  border-bottom-left-radius: 0.125rem;
+  border-top-left-radius: 0.125rem;
 }
 
 .border-radius-right:200 {
-  border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
+  border-bottom-right-radius: 0.125rem;
+  border-top-right-radius: 0.125rem;
 }
 
 .border-radius-top:200 {
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
+  border-top-left-radius: 0.125rem;
+  border-top-right-radius: 0.125rem;
 }
 ```
 
@@ -756,12 +756,12 @@ $hu-border-radius-modules: (base, responsive);
 
 $hu-border-radius-scale: (
   0: 0,
-  100: 1px,
-  200: 2px,
-  300: 3px,
-  400: 4px,
-  500: 5px,
-  1000: 1000px,
+  100: hu-rem(1),
+  200: hu-rem(2),
+  300: hu-rem(3),
+  400: hu-rem(4),
+  500: hu-rem(5),
+  1000: hu-rem(1000),
 );
 
 $hu-border-radius-types: (
@@ -804,8 +804,8 @@ $hu-border-width-sides: $hu-border-sides;
 
 $hu-border-width-types: (
   0: 0,
-  100: 1px,
-  200: 2px,
+  100: hu-rem(1),
+  200: hu-rem(2),
 );
 ```
 

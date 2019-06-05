@@ -2,12 +2,12 @@ $hu-border-radius-modules: (base, responsive) !default;
 
 $hu-border-radius-scale: (
   0: 0,
-  100: 1px,
-  200: 2px,
-  300: 3px,
-  400: 4px,
-  500: 5px,
-  1000: 1000px,
+  100: hu-rem(1),
+  200: hu-rem(2),
+  300: hu-rem(3),
+  400: hu-rem(4),
+  500: hu-rem(5),
+  1000: hu-rem(1000),
 ) !default;
 
 $hu-border-radius-types: (

@@ -6,6 +6,6 @@ $hu-border-width-sides: $hu-border-sides !default;
 
 $hu-border-width-types: (
   0: 0,
-  100: 1px,
-  200: 2px,
+  100: hu-rem(1),
+  200: hu-rem(2),
 ) !default;
