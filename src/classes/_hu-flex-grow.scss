@@ -1,1 +1,1 @@
-@include hu-classes(flex-grow, $hu-flex-grow-modules, $hu-flex-grow-types);
+@include hu-classes(($hu-flex-grow-alias: flex-grow), $hu-flex-grow-modules, $hu-flex-grow-types);

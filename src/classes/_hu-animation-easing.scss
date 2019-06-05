@@ -1,2 +1,1 @@
-// animation-easing -> animation-timing-function
-@include hu-classes((animation-easing: animation-timing-function), $hu-animation-easing-modules, $hu-animation-easing-types);
+@include hu-classes(($hu-animation-easing-alias: animation-timing-function), $hu-animation-easing-modules, $hu-animation-easing-types);

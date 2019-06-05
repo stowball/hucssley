@@ -1,1 +1,1 @@
-@include hu-classes(max-height, $hu-max-height-modules, $hu-max-height-types);
+@include hu-classes(($hu-max-height-alias: max-height), $hu-max-height-modules, $hu-max-height-types);

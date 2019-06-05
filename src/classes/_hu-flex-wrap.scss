@@ -1,1 +1,1 @@
-@include hu-classes(flex-wrap, $hu-flex-wrap-modules, $hu-flex-wrap-types);
+@include hu-classes(($hu-flex-wrap-alias: flex-wrap), $hu-flex-wrap-modules, $hu-flex-wrap-types);

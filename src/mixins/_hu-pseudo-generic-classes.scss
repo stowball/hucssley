@@ -1,8 +1,8 @@
 @mixin hu-pseudo-generic-classes($property, $pseudos, $modules, $types: null) {
   $content-exists: content-exists();
 
-  $class-name-property: if(type-of($property) == map, nth(map-keys($property), 1), $property);
-  $property: if(type-of($property) == map, nth(map-values($property), 1), $property);
+  $class-name-property: hu-get-class-name($property);
+  $property: hu-get-property-name($property);
 
   @each $module in hu-format-modules($modules) {
     @if ($types) {

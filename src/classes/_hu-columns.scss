@@ -1,1 +1,1 @@
-@include hu-classes(columns, $hu-columns-modules, $hu-columns-types);
+@include hu-classes(($hu-columns-alias: columns), $hu-columns-modules, $hu-columns-types);

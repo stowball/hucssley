@@ -1,1 +1,1 @@
-@include hu-classes(box-sizing, $hu-box-sizing-modules, $hu-box-sizing-types);
+@include hu-classes(($hu-box-sizing-alias: box-sizing), $hu-box-sizing-modules, $hu-box-sizing-types);

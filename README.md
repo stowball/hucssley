@@ -26,11 +26,11 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
 - [Installation](#installation)
 - [Modules](#modules)
   - [Base: `base`](#base-base)
-  - [Non-parent modules: `focus, hocus, hover, print, reduced-motion, responsive`](#non-parent-modules-focus-hocus-hover-print-reduced-motion-responsive)
+    - [Non-parent modules: `focus, hocus, hover, print, reduced-motion, responsive`](#non-parent-modules-focus-hocus-hover-print-reduced-motion-responsive)
   - [State modules: `state`](#state-modules-state)
   - [Parent modules: `group-hover, group-state` and custom parent modules](#parent-modules-group-hover-group-state-and-custom-parent-modules)
     - [Custom parent modules](#custom-parent-modules)
-  - [Combining modules: `responsive` and `group-state, state`](#combining-modules-responsive-and-group-state-state)
+  - [Combining modules: `responsive` and `focus, hover, hocus, state, group-hover, group-state`](#combining-modules-responsive-and-focus-hover-hocus-state-group-hover-group-state)
 - [Scales](#scales)
 - [Configuration](#configuration)
   - [Configuration helpers](#configuration-helpers)
@@ -119,12 +119,12 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
 
 ```html
 <div class="
-  bg-color:blue-100
+  background-color:blue-100
   padding:500
 ">
   <div class="
     align-items:center
-    bg-color:neutral-0
+    background-color:neutral-0
     border-color:neutral-200
     border-radius:500
     border-style:solid
@@ -139,7 +139,7 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
    <img
       alt=""
       class="
-        bg-color:blue-600
+        background-color:blue-600
         border-color-neutral:100
         border-radius:1000
         border-style:solid
@@ -165,7 +165,7 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
       </p>
       <a
         class="
-          bg-color:blue-1000
+          background-color:blue-1000
           border-color:neutral-700
           color:neutral-0
           display:inline-block
@@ -174,7 +174,7 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
           transition-duration:200
           transition-easing:ease
           transition-property:all
-          &:hocus--bg-color:blue-600
+          &:hocus--background-color:blue-600
           &:hocus--scale:105
           @mq-768--font-size:600
           @mq-768--padding-horizontal:500
@@ -279,30 +279,22 @@ animation-count -> animation-iteration-count
 animation-easing -> animation-timing-function
 animation-mode -> animation-fill-mode
 animation-state -> animation-play-state
-backface -> backface-visibility
-bg-color -> background-color
-bg-image -> background-image
-bg-position-x -> background-position-x
-bg-position-y -> background-position-y
-bg-repeat -> background-repeat
-bg-size -> background-size
 blend-mode -> mix-blend-mode
 border-radius-[side] -> border-[side]-radius
 content -> :[pseudo]-content
 momentum-scrolling -> -webkit-overflow-scrolling
-overscroll -> overscroll-behavior
 pos-[bottom,left,right,top] -> bottom,left,right,top
 rotate -> transform: rotate
 scale -> transform: scale
 svg-fill-color -> fill
 svg-fill-rule -> fill-rule
 svg-stroke-color -> stroke
-table-border -> border-collapse
-text-case -> text-transform
 transition-easing -> transition-timing-function
 translate-x -> transform: translateX
 translate-y -> transform: translateY
 ```
+
+All of the above aliases – and every other class alias – can be changed to your liking, however. Please read [Understanding class configuration: Aliases](/hucssley-classes.md#aliases) for more details.
 
 *Note: If a global namespace has been configured, it will always precede the base class name.*
 
@@ -345,7 +337,7 @@ Children of groups can respond to user and UI interaction via groups. Their synt
 
 ```
 .group__:hover--scale:110
-.group__is-selected--bg-color:blue-300
+.group__is-selected--background-color:blue-300
 .browser-mobile__font-size:700
 ```
 
@@ -361,7 +353,7 @@ For `group` classes to take effect, a parent has to be given the raw `.group` cl
     <ul class="
       browser-mobile__font-size:700
       group__:hover--scale:110
-      group__is-selected--bg-color:blue-300
+      group__is-selected--background-color:blue-300
     "></ul>
   </div>
 </html>
@@ -404,7 +396,7 @@ Where it makes sense, and compared with other libraries, Hucssley favours a mill
 
 By default, the following classes use a millennial scale:
 
-* `bg-color`
+* `background-color`
 * `border-color`
 * `border-radius`
 * `border-width`
@@ -524,7 +516,7 @@ $hu-reset-html-overflow-y: null;
 $hu-reset-img-responsive: true;
 $hu-reset-input-placeholder-color: #767676;
 $hu-reset-remove-number-input-spinners: true;
-$hu-reset-text-input-appearance: textfield !default;
+$hu-reset-text-input-appearance: textfield;
 ```
 
 Hopefully the variables are self explanatory, but if not, please [review the source code](/src/reset/_index.scss) to see how they affect the reset styles.
@@ -600,7 +592,7 @@ $hu-colors: (
 
 To customize the palette, you can either `hu-append` or `hu-prepend` other maps to complement the existing, or start fresh by re-assigning `$hu-colors` to a new map of colors entirely.
 
-We recommend also `hu-append`ing `$hu-colors-keywords` to your brand new palette to ensure you can use classes like `bg-color-transparent` and `color-inherit`;
+We recommend also `hu-append`ing `$hu-colors-keywords` to your brand new palette to ensure you can use classes like `background-color-transparent` and `color-inherit`;
 
 Here is an example of setting a completely new palette:
 
@@ -836,7 +828,7 @@ $hu-focus-pseudo: ":focus:not(.focus-visible)";
 
 #### Themes: `$hu-themes`
 
-As well as the standard `$hu-colors`, “color” classes can also be generated for theming your application based on the key/vaue pairs in this map.
+As well as the standard `$hu-colors`, `background-color`, `border-color` and `color` classes can also be generated for theming your application based on the key/vaue pairs in this map.
 
 By default, no themes are provided, but making your own is easy:
 
@@ -863,7 +855,7 @@ $hu-themes: (
 This would allow you to theme your entire application simply by changing a single, parent level `theme:[theme-name]` class by utilizing all the generated classes, like:
 
 ```css
-.theme:broncos .theme__bg-color:primary {
+.theme:broncos .theme__background-color:primary {
   background-color: #6c1d45;
 }
 
@@ -1842,18 +1834,18 @@ export default {
         transition-easing:ease
         transition-property:all
         &:hocus--scale:105
-        is-selected--bg-color:neutral-700
+        is-selected--background-color:neutral-700
         is-selected--color:neutral-0
       `,
       type: {
         primary: `
-          bg-color:blue-1000
+          background-color:blue-1000
           color:neutral-0
-          hocus--bg-color:blue-600
+          hocus--background-color:blue-600
         `,
         secondary: `
-          bg-color:blue-300
-          hocus--bg-color:blue-400
+          background-color:blue-300
+          hocus--background-color:blue-400
         `,
       },
       shape: {

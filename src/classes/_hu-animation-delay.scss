@@ -1,1 +1,1 @@
-@include hu-classes(animation-delay, $hu-animation-delay-modules, $hu-animation-delay-types);
+@include hu-classes(($hu-animation-delay-alias: animation-delay), $hu-animation-delay-modules, $hu-animation-delay-types);

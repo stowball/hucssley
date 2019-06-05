@@ -1,1 +1,1 @@
-@include hu-classes(flex-basis, $hu-flex-basis-modules, $hu-flex-basis-types);
+@include hu-classes(($hu-flex-basis-alias: flex-basis), $hu-flex-basis-modules, $hu-flex-basis-types);

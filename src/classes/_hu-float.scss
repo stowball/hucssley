@@ -1,1 +1,1 @@
-@include hu-classes(float, $hu-float-modules, $hu-float-types);
+@include hu-classes(($hu-float-alias: float), $hu-float-modules, $hu-float-types);

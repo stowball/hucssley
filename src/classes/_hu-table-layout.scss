@@ -1,1 +1,1 @@
-@include hu-classes(table-layout, $hu-table-layout-modules, $hu-table-layout-types);
+@include hu-classes(($hu-table-layout-alias: table-layout), $hu-table-layout-modules, $hu-table-layout-types);

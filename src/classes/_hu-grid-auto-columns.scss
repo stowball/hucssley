@@ -1,1 +1,1 @@
-@include hu-classes(grid-auto-columns, $hu-grid-auto-columns-modules, $hu-grid-auto-columns-types);
+@include hu-classes(($hu-grid-auto-columns-alias: grid-auto-columns), $hu-grid-auto-columns-modules, $hu-grid-auto-columns-types);

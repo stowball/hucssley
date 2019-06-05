@@ -1,1 +1,1 @@
-@include hu-classes(z-index, $hu-z-index-modules, $hu-z-index-types);
+@include hu-classes(($hu-z-index-alias: z-index), $hu-z-index-modules, $hu-z-index-types);

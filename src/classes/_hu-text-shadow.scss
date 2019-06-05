@@ -1,1 +1,1 @@
-@include hu-classes(text-shadow, $hu-text-shadow-modules, $hu-text-shadow-types);
+@include hu-classes(($hu-text-shadow-alias: text-shadow), $hu-text-shadow-modules, $hu-text-shadow-types);

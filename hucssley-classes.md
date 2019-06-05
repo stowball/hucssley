@@ -13,6 +13,7 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
     - [Lists](#lists)
     - [Maps](#maps)
   - [Advanced types](#advanced-types)
+  - [Aliases](#aliases)
 - [Configuring classes](#configuring-classes)
 - [What's in the box?](#whats-in-the-box)
   - [hu-align-content](#hu-align-content)
@@ -28,14 +29,15 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-animation-name](#hu-animation-name)
   - [hu-animation-state](#hu-animation-state)
   - [hu-appearance](#hu-appearance)
-  - [hu-backface](#hu-backface)
-  - [hu-bg-color](#hu-bg-color)
-  - [hu-bg-image](#hu-bg-image)
-  - [hu-bg-position-x](#hu-bg-position-x)
-  - [hu-bg-position-y](#hu-bg-position-y)
-  - [hu-bg-repeat](#hu-bg-repeat)
-  - [hu-bg-size](#hu-bg-size)
+  - [hu-backface-visibility](#hu-backface-visibility)
+  - [hu-background-color](#hu-background-color)
+  - [hu-background-image](#hu-background-image)
+  - [hu-background-position-x](#hu-background-position-x)
+  - [hu-background-position-y](#hu-background-position-y)
+  - [hu-background-repeat](#hu-background-repeat)
+  - [hu-background-size](#hu-background-size)
   - [hu-blend-mode](#hu-blend-mode)
+  - [hu-border-collapse](#hu-border-collapse)
   - [hu-border-color](#hu-border-color)
   - [hu-border-radius](#hu-border-radius)
   - [hu-border-style](#hu-border-style)
@@ -58,8 +60,8 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-font-family](#hu-font-family)
   - [hu-font-size](#hu-font-size)
   - [hu-font-smoothing](#hu-font-smoothing)
-  - [hu-font-weight](#hu-font-weight)
   - [hu-font-style](#hu-font-style)
+  - [hu-font-weight](#hu-font-weight)
   - [hu-grid](#hu-grid)
   - [hu-grid-area](#hu-grid-area)
   - [hu-grid-auto-columns](#hu-grid-auto-columns)
@@ -96,7 +98,7 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-overflow](#hu-overflow)
   - [hu-overflow-x](#hu-overflow-x)
   - [hu-overflow-y](#hu-overflow-y)
-  - [hu-overscroll](#hu-overscroll)
+  - [hu-overscroll-behavior](#hu-overscroll-behavior)
   - [hu-padding](#hu-padding)
   - [hu-pointer-events](#hu-pointer-events)
   - [hu-pos](#hu-pos)
@@ -107,13 +109,12 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-svg-fill-color](#hu-svg-fill-color)
   - [hu-svg-fill-rule](#hu-svg-fill-rule)
   - [hu-svg-stroke-color](#hu-svg-stroke-color)
-  - [hu-table-border](#hu-table-border)
   - [hu-table-layout](#hu-table-layout)
   - [hu-text-align](#hu-text-align)
-  - [hu-text-case](#hu-text-case)
   - [hu-text-decoration](#hu-text-decoration)
   - [hu-text-shadow](#hu-text-shadow)
-  - [hu-theme-bg-color](#hu-theme-bg-color)
+  - [hu-text-transform](#hu-text-transform)
+  - [hu-theme-background-color](#hu-theme-background-color)
   - [hu-theme-border-color](#hu-theme-border-color)
   - [hu-theme-color](#hu-theme-color)
   - [hu-transform](#hu-transform)
@@ -177,15 +178,15 @@ $hu-justify-items-types: (
 Will generate:
 
 ```css
-.justify-items-auto {
+.justify-items:auto {
   justify-items: auto;
 }
 
-.justify-items-baseline {
+.justify-items:baseline {
   justify-items: baseline;
 }
 
-.justify-items-center {
+.justify-items:center {
   justify-items: center;
 }
 ```
@@ -207,20 +208,18 @@ $hu-flex-wrap-types: (
 Will generate:
 
 ```css
-.flex-wrap-no-wrap {
+.flex-wrap:no-wrap {
   flex-wrap: nowrap;
 }
 
-.flex-wrap {
+.flex-wrap:wrap {
   flex-wrap: wrap;
 }
 
-.flex-wrap-wrap-reverse {
+.flex-wrap:wrap-reverse {
   flex-wrap: wrap-reverse;
 }
 ```
-
-If a key/value pair is identical, the key will be automatically be omitted from the class name suffix, which is why `.flex-wrap` is created, instead of `flex-wrap-wrap`.
 
 ### Advanced types
 
@@ -241,66 +240,126 @@ $hu-border-radius-scale: (
 
 $hu-border-radius-types: (
   border-radius: border-radius,
-  border-radius-b: (border-bottom-left-radius, border-bottom-right-radius),
-  border-radius-l: (border-bottom-left-radius, border-top-left-radius),
-  border-radius-r: (border-bottom-right-radius, border-top-right-radius),
-  border-radius-t: (border-top-left-radius, border-top-right-radius),
+  border-radius-bottom: (border-bottom-left-radius, border-bottom-right-radius),
+  border-radius-left: (border-bottom-left-radius, border-top-left-radius),
+  border-radius-right: (border-bottom-right-radius, border-top-right-radius),
+  border-radius-top: (border-top-left-radius, border-top-right-radius),
 );
 ```
 
 which would generate the following classes:
 
 ```css
-.border-radius-100 {
+.border-radius:100 {
   border-radius: 1px;
 }
 
-.border-radius-b-100 {
+.border-radius-bottom:100 {
   border-bottom-left-radius: 1px;
   border-bottom-right-radius: 1px;
 }
 
-.border-radius-l-100 {
+.border-radius-left:100 {
   border-bottom-left-radius: 1px;
   border-top-left-radius: 1px;
 }
 
-.border-radius-r-100 {
+.border-radius-right:100 {
   border-bottom-right-radius: 1px;
   border-top-right-radius: 1px;
 }
 
-.border-radius-t-100 {
+.border-radius-top:100 {
   border-top-left-radius: 1px;
   border-top-right-radius: 1px;
 }
 
-.border-radius-200 {
+.border-radius:200 {
   border-radius: 2px;
 }
 
-.border-radius-b-200 {
+.border-radius-bottom:200 {
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
 }
 
-.border-radius-l-200 {
+.border-radius-left:200 {
   border-bottom-left-radius: 2px;
   border-top-left-radius: 2px;
 }
 
-.border-radius-r-200 {
+.border-radius-right:200 {
   border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
 }
 
-.border-radius-t-200 {
+.border-radius-top:200 {
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
 }
 ```
 
 Hopefully you can see how the maps controlled the resultant class name format, properties and values.
+
+### Aliases
+
+Every class provided by Hucssley can have the “property” part of its class name customized through its `$hu-[class-name]-alias` variable (where applicable). While the majority of classes use the same value for the class name and CSS property, the following deviate slightly for improved comprehension and legibility:
+
+```css
+animation-count -> animation-iteration-count
+animation-easing -> animation-timing-function
+animation-mode -> animation-fill-mode
+animation-state -> animation-play-state
+blend-mode -> mix-blend-mode
+border-radius-[side] -> border-[side]-radius
+content -> :[pseudo]-content
+momentum-scrolling -> -webkit-overflow-scrolling
+pos-[bottom,left,right,top] -> bottom,left,right,top
+rotate -> transform: rotate
+scale -> transform: scale
+svg-fill-color -> fill
+svg-fill-rule -> fill-rule
+svg-stroke-color -> stroke
+transition-easing -> transition-timing-function
+translate-x -> transform: translateX
+translate-y -> transform: translateY
+```
+
+Should you wish to change the class name, you can pass a string to the `$hu-[class-name]-alias` variable, like so:
+
+```scss
+$hu-background-color-alias: bg-color;
+
+// ->
+.bg-color:blue-1000 {
+  background-color: #172e3a;
+}
+
+// instead of ->
+.background-color:blue-1000 {
+  background-color: #172e3a;
+}
+```
+
+```scss
+$hu-visually-hidden-alias: screenreader-only;
+
+// ->
+.screenreader-only {
+  … existing .visually-hidden declarations
+}
+
+// instead of ->
+.visually-hidden {
+  … existing .visually-hidden declarations
+}
+```
+
+Some classes, like `border-`, `margin`, `padding` and `pos` are too complex so don’t use an `$-alias` variable, but can be customized through their `$-sides` or `$-type` variables instead.
+
+*Note: when passing an empty string `""` to an `$-alias` variable, the class name will use the CSS property value.*
+
+---
 
 ## Configuring classes
 
@@ -334,6 +393,8 @@ Below is a complete list of all the classes in Hucssley by default, and their in
 ### hu-align-content
 
 ```scss
+$hu-align-content-alias: "";
+
 $hu-align-content-modules: (base, responsive);
 
 $hu-align-content-types: (
@@ -354,6 +415,8 @@ $hu-align-content-types: (
 ### hu-align-items
 
 ```scss
+$hu-align-items-alias: "";
+
 $hu-align-items-modules: (base, responsive);
 
 $hu-align-items-types: (
@@ -372,6 +435,8 @@ $hu-align-items-types: (
 ### hu-align-self
 
 ```scss
+$hu-align-self-alias: "";
+
 $hu-align-self-modules: (base, responsive);
 
 $hu-align-self-types: $hu-align-items-types;
@@ -380,6 +445,11 @@ $hu-align-self-types: $hu-align-items-types;
 ### hu-animation
 
 ```scss
+$hu-animation-alias: "";
+
+$hu-animation-modules: ();
+
+$hu-animation-types: ();
 ```
 
 ### hu-animation-count
@@ -389,6 +459,8 @@ animation-count -> animation-iteration-count
 ```
 
 ```scss
+$hu-animation-count-alias: animation-count;
+
 $hu-animation-count-modules: ();
 
 $hu-animation-count-types: ();
@@ -397,6 +469,8 @@ $hu-animation-count-types: ();
 ### hu-animation-delay
 
 ```scss
+$hu-animation-delay-alias: "";
+
 $hu-animation-delay-modules: ();
 
 $hu-animation-delay-types: ();
@@ -405,6 +479,8 @@ $hu-animation-delay-types: ();
 ### hu-animation-direction
 
 ```scss
+$hu-animation-direction-alias: "";
+
 $hu-animation-direction-modules: ();
 
 $hu-animation-direction-types: (
@@ -418,6 +494,8 @@ $hu-animation-direction-types: (
 ### hu-animation-duration
 
 ```scss
+$hu-animation-duration-alias: "";
+
 $hu-animation-duration-modules: ();
 
 $hu-animation-duration-types: ();
@@ -430,6 +508,8 @@ animation-easing -> animation-timing-function
 ```
 
 ```scss
+$hu-animation-easing-alias: animation-easing ;
+
 $hu-animation-easing-modules: ();
 
 $hu-animation-easing-types: (
@@ -474,6 +554,8 @@ animation-mode -> animation-fill-mode
 ```
 
 ```scss
+$hu-animation-mode-alias: animation-mode;
+
 $hu-animation-mode-modules: ();
 
 $hu-animation-mode-types: (
@@ -487,6 +569,8 @@ $hu-animation-mode-types: (
 ### hu-animation-name
 
 ```scss
+$hu-animation-name-alias: "";
+
 $hu-animation-name-modules: ();
 
 $hu-animation-name-types: ();
@@ -499,6 +583,8 @@ animation-state -> animation-play-state
 ```
 
 ```scss
+$hu-animation-state-alias: animation-state;
+
 $hu-animation-state-modules: ();
 
 $hu-animation-state-types: (
@@ -511,6 +597,8 @@ $hu-animation-state-types: (
 ### hu-appearance
 
 ```scss
+$hu-appearance-alias: "";
+
 $hu-appearance-modules: (base);
 
 $hu-appearance-types: (
@@ -519,87 +607,75 @@ $hu-appearance-types: (
 );
 ```
 
-### hu-backface
-
-```
-backface -> backface-visibility
-```
+### hu-backface-visibility
 
 ```scss
-$hu-backface-modules: (base);
+$hu-backface-visibility-alias: "";
 
-$hu-backface-types: (
+$hu-backface-visibility-modules: (base);
+
+$hu-backface-visibility-types: (
   hidden,
   visible,
 );
 ```
 
-### hu-bg-color
-
-```
-bg-color -> background-color
-```
+### hu-background-color
 
 ```scss
-$hu-bg-color-modules: (base, hocus, group-hover, group-state, state);
+$hu-background-color-alias: "";
 
-$hu-bg-color-types: $hu-colors;
+$hu-background-color-modules: (base, hocus, group-hover, group-state, state);
+
+$hu-background-color-types: $hu-colors;
 ```
 
-### hu-bg-image
-
-```
-bg-image -> background-image
-```
+### hu-background-image
 
 ```scss
-$hu-bg-image-modules: ();
+$hu-background-image-alias: "";
 
-$hu-bg-image-types: ();
+$hu-background-image-modules: ();
+
+$hu-background-image-types: ();
 ```
 
-### hu-bg-position-x
-
-```
-bg-position-x -> background-position-x
-```
+### hu-background-position-x
 
 ```scss
-$hu-bg-position-x-modules: (base);
+$hu-background-position-x-alias: "";
 
-$hu-bg-position-x-types: (
+$hu-background-position-x-modules: (base);
+
+$hu-background-position-x-types: (
   left,
   center,
   right,
 );
 ```
 
-### hu-bg-position-y
-
-```
-bg-position-y -> background-position-y
-```
+### hu-background-position-y
 
 ```scss
-$hu-bg-position-y-modules: (base);
+$hu-background-position-y-alias: "";
 
-$hu-bg-position-y-types: (
+$hu-background-position-y-modules: (base);
+
+$hu-background-position-y-types: (
   bottom,
   center,
   top,
 );
 ```
 
-### hu-bg-repeat
-
-```
-bg-repeat -> background-repeat
-```
+### hu-background-repeat
 
 ```scss
-$hu-bg-repeat-modules: (base);
+$hu-background-repeat-alias: "";
 
-$hu-bg-repeat-types: (
+$hu-background-repeat-modules: (base);
+
+$hu-background-repeat-types: (
   repeat: repeat,
   repeat-no: no-repeat,
   repeat-space: space,
@@ -609,16 +685,14 @@ $hu-bg-repeat-types: (
 );
 ```
 
-### hu-bg-size
-
-```
-bg-size -> background-size
-```
+### hu-background-size
 
 ```scss
-$hu-bg-size-modules: (base);
+$hu-background-size-alias: "";
 
-$hu-bg-size-types: (
+$hu-background-size-modules: (base);
+
+$hu-background-size-types: (
   auto,
   contain,
   cover,
@@ -628,6 +702,8 @@ $hu-bg-size-types: (
 ### hu-blend-mode
 
 ```scss
+$hu-blend-mode-alias: blend-mode;
+
 $hu-blend-mode-modules: (base);
 
 $hu-blend-mode-types: (
@@ -647,6 +723,19 @@ $hu-blend-mode-types: (
   saturation,
   screen,
   soft-light,
+);
+```
+
+### hu-border-collapse
+
+```scss
+$hu-border-collapse-alias: "";
+
+$hu-border-collapse-modules: (base);
+
+$hu-border-collapse-types: (
+  collapse,
+  separate,
 );
 ```
 
@@ -677,14 +766,14 @@ $hu-border-radius-scale: (
 
 $hu-border-radius-types: (
   border-radius: border-radius,
-  border-radius-b: (border-bottom-left-radius, border-bottom-right-radius),
-  border-radius-bl: border-bottom-left-radius,
-  border-radius-br: border-bottom-right-radius,
-  border-radius-l: (border-bottom-left-radius, border-top-left-radius),
-  border-radius-r: (border-bottom-right-radius, border-top-right-radius),
-  border-radius-t: (border-top-left-radius, border-top-right-radius),
-  border-radius-tl: border-top-left-radius,
-  border-radius-tr: border-top-right-radius,
+  border-radius-bottom: (border-bottom-left-radius, border-bottom-right-radius),
+  border-radius-bottom-left: border-bottom-left-radius,
+  border-radius-bottom-right: border-bottom-right-radius,
+  border-radius-left: (border-bottom-left-radius, border-top-left-radius),
+  border-radius-right: (border-bottom-right-radius, border-top-right-radius),
+  border-radius-top: (border-top-left-radius, border-top-right-radius),
+  border-radius-top-left: border-top-left-radius,
+  border-radius-top-right: border-top-right-radius,
 );
 ```
 
@@ -707,6 +796,8 @@ $hu-border-style-types: (
 ### hu-border-width
 
 ```scss
+$hu-border-width-alias: "";
+
 $hu-border-width-modules: $hu-border-modules;
 
 $hu-border-width-sides: $hu-border-sides;
@@ -721,6 +812,8 @@ $hu-border-width-types: (
 ### hu-box-shadow
 
 ```scss
+$hu-box-shadow-alias: "";
+
 $hu-box-shadow-modules: ();
 
 $hu-box-shadow-types: ();
@@ -729,6 +822,8 @@ $hu-box-shadow-types: ();
 ### hu-box-sizing
 
 ```scss
+$hu-box-sizing-alias: "";
+
 $hu-box-sizing-modules: (base);
 
 $hu-box-sizing-types: (
@@ -740,7 +835,9 @@ $hu-box-sizing-types: (
 ### hu-color
 
 ```scss
-$hu-color-modules: $hu-bg-color-modules;
+$hu-color-alias: "";
+
+$hu-color-modules: $hu-background-color-modules;
 
 $hu-color-types: $hu-colors;
 ```
@@ -748,6 +845,8 @@ $hu-color-types: $hu-colors;
 ### hu-columns
 
 ```scss
+$hu-columns-alias: "";
+
 $hu-columns-modules: ();
 
 $hu-columns-types: ();
@@ -760,21 +859,26 @@ content -> :[pseudo]-content
 ```
 
 ```scss
-$hu-content-modules: (base);
+$hu-content-alias: "";
 
-$hu-content-types: (
-  "",
-);
+$hu-content-modules: (base);
 
 $hu-content-pseudos: (
   "::after", 
   "::before"
 );
+
+$hu-content-types: (
+  "",
+);
+
 ```
 
 ### hu-cursor
 
 ```scss
+$hu-cursor-alias: "";
+
 $hu-cursor-modules: (base, state);
 
 $hu-cursor-types: (
@@ -791,6 +895,8 @@ $hu-cursor-types: (
 ### hu-display
 
 ```scss
+$hu-display-alias: "";
+
 $hu-display-modules: (base, focus, hover, hocus, group-hover, group-state, print, responsive, state);
 
 $hu-display-types: (
@@ -811,6 +917,8 @@ $hu-display-types: (
 ### hu-flex
 
 ```scss
+$hu-flex-alias: "";
+
 $hu-flex-modules: ();
 
 $hu-flex-types: ();
@@ -819,6 +927,8 @@ $hu-flex-types: ();
 ### hu-flex-basis
 
 ```scss
+$hu-flex-basis-alias: "";
+
 $hu-flex-basis-modules: ();
 
 $hu-flex-basis-types: ();
@@ -827,6 +937,8 @@ $hu-flex-basis-types: ();
 ### hu-flex-direction
 
 ```scss
+$hu-flex-direction-alias: "";
+
 $hu-flex-direction-modules: (base, responsive);
 
 $hu-flex-direction-types: (
@@ -840,6 +952,8 @@ $hu-flex-direction-types: (
 ### hu-flex-flow
 
 ```scss
+$hu-flex-flow-alias: "";
+
 $hu-flex-flow-modules: ();
 
 $hu-flex-flow-types: ();
@@ -848,6 +962,8 @@ $hu-flex-flow-types: ();
 ### hu-flex-grow
 
 ```scss
+$hu-flex-grow-alias: "";
+
 $hu-flex-grow-modules: (base, responsive);
 
 $hu-flex-grow-types: (
@@ -864,6 +980,8 @@ $hu-flex-grow-types: (
 ### hu-flex-shrink
 
 ```scss
+$hu-flex-shrink-alias: "";
+
 $hu-flex-shrink-modules: (base, responsive);
 
 $hu-flex-shrink-types: $hu-flex-grow-types;
@@ -872,6 +990,8 @@ $hu-flex-shrink-types: $hu-flex-grow-types;
 ### hu-flex-wrap
 
 ```scss
+$hu-flex-wrap-alias: "";
+
 $hu-flex-wrap-modules: (base, responsive);
 
 $hu-flex-wrap-types: (
@@ -884,6 +1004,8 @@ $hu-flex-wrap-types: (
 ### hu-float
 
 ```scss
+$hu-float-alias: "";
+
 $hu-float-modules: ();
 
 $hu-float-types: ();
@@ -892,6 +1014,8 @@ $hu-float-types: ();
 ### hu-font-family
 
 ```scss
+$hu-font-family-alias: "";
+
 $hu-font-family-modules: (base);
 
 $hu-font-family-types: (
@@ -904,6 +1028,8 @@ $hu-font-family-types: (
 ### hu-font-size
 
 ```scss
+$hu-font-size-alias: "";
+
 $hu-font-size-modules: (base, responsive);
 
 $hu-font-size-types: (
@@ -923,23 +1049,23 @@ $hu-font-size-types: (
 ### hu-font-smoothing
 
 ```scss
+$hu-font-smoothing-alias: font-smoothing;
+
 $hu-font-smoothing-modules: (base);
 ```
 
-### hu-font-weight
-
-```scss
-$hu-font-weight-modules: (base);
-
-$hu-font-weight-types: (
-  400,
-  700,
-);
+```css
+.font-smoothing {
+  -moz-osx-font-smoothing: grayscale #{hu-important()};
+  -webkit-font-smoothing: antialiased #{hu-important()};
+}
 ```
 
 ### hu-font-style
 
 ```scss
+$hu-font-style-alias: "";
+
 $hu-font-style-modules: (base);
 
 $hu-font-style-types: (
@@ -949,9 +1075,24 @@ $hu-font-style-types: (
 );
 ```
 
+### hu-font-weight
+
+```scss
+$hu-font-weight-alias: "";
+
+$hu-font-weight-modules: (base);
+
+$hu-font-weight-types: (
+  400,
+  700,
+);
+```
+
 ### hu-grid
 
 ```scss
+$hu-grid-alias: "";
+
 $hu-grid-modules: ();
 
 $hu-grid-types: ();
@@ -960,6 +1101,8 @@ $hu-grid-types: ();
 ### hu-grid-area
 
 ```scss
+$hu-grid-area-alias: "";
+
 $hu-grid-area-modules: ();
 
 $hu-grid-area-types: ();
@@ -968,6 +1111,8 @@ $hu-grid-area-types: ();
 ### hu-grid-auto-columns
 
 ```scss
+$hu-grid-auto-columns-alias: "";
+
 $hu-grid-auto-columns-modules: ();
 
 $hu-grid-auto-columns-types: ();
@@ -976,6 +1121,8 @@ $hu-grid-auto-columns-types: ();
 ### hu-grid-auto-flow
 
 ```scss
+$hu-grid-auto-flow-alias: "";
+
 $hu-grid-auto-flow-modules: ();
 
 $hu-grid-auto-flow-types: ();
@@ -984,6 +1131,8 @@ $hu-grid-auto-flow-types: ();
 ### hu-grid-auto-rows
 
 ```scss
+$hu-grid-auto-rows-alias: "";
+
 $hu-grid-auto-rows-modules: ();
 
 $hu-grid-auto-rows-types: ();
@@ -992,6 +1141,8 @@ $hu-grid-auto-rows-types: ();
 ### hu-grid-column
 
 ```scss
+$hu-grid-column-alias: "";
+
 $hu-grid-column-modules: ();
 
 $hu-grid-column-types: ();
@@ -1000,6 +1151,8 @@ $hu-grid-column-types: ();
 ### hu-grid-column-end
 
 ```scss
+$hu-grid-column-end-alias: "";
+
 $hu-grid-column-end-modules: ();
 
 $hu-grid-column-end-types: ();
@@ -1008,6 +1161,8 @@ $hu-grid-column-end-types: ();
 ### hu-grid-column-gap
 
 ```scss
+$hu-grid-column-gap-alias: "";
+
 $hu-grid-column-gap-modules: ();
 
 $hu-grid-column-gap-types: ();
@@ -1016,6 +1171,8 @@ $hu-grid-column-gap-types: ();
 ### hu-grid-column-start
 
 ```scss
+$hu-grid-column-start-alias: "";
+
 $hu-grid-column-start-modules: ();
 
 $hu-grid-column-start-types: ();
@@ -1024,6 +1181,8 @@ $hu-grid-column-start-types: ();
 ### hu-grid-gap
 
 ```scss
+$hu-grid-gap-alias: "";
+
 $hu-grid-gap-modules: ();
 
 $hu-grid-gap-types: ();
@@ -1032,6 +1191,8 @@ $hu-grid-gap-types: ();
 ### hu-grid-row
 
 ```scss
+$hu-grid-row-alias: "";
+
 $hu-grid-row-modules: ();
 
 $hu-grid-row-types: ();
@@ -1040,6 +1201,8 @@ $hu-grid-row-types: ();
 ### hu-grid-row-end
 
 ```scss
+$hu-grid-row-end-alias: "";
+
 $hu-grid-row-end-modules: ();
 
 $hu-grid-row-end-types: ();
@@ -1048,6 +1211,8 @@ $hu-grid-row-end-types: ();
 ### hu-grid-row-gap
 
 ```scss
+$hu-grid-row-gap-alias: "";
+
 $hu-grid-row-gap-modules: ();
 
 $hu-grid-row-gap-types: ();
@@ -1056,6 +1221,8 @@ $hu-grid-row-gap-types: ();
 ### hu-grid-row-start
 
 ```scss
+$hu-grid-row-start-alias: "";
+
 $hu-grid-row-start-modules: ();
 
 $hu-grid-row-start-types: ();
@@ -1064,6 +1231,8 @@ $hu-grid-row-start-types: ();
 ### hu-grid-template
 
 ```scss
+$hu-grid-template-alias: "";
+
 $hu-grid-template-modules: ();
 
 $hu-grid-template-types: ();
@@ -1072,6 +1241,8 @@ $hu-grid-template-types: ();
 ### hu-grid-template-areas
 
 ```scss
+$hu-grid-template-areas-alias: "";
+
 $hu-grid-template-areas-modules: ();
 
 $hu-grid-template-areas-types: ();
@@ -1080,6 +1251,8 @@ $hu-grid-template-areas-types: ();
 ### hu-grid-template-columns
 
 ```scss
+$hu-grid-template-columns-alias: "";
+
 $hu-grid-template-columns-modules: ();
 
 $hu-grid-template-columns-types: ();
@@ -1088,6 +1261,8 @@ $hu-grid-template-columns-types: ();
 ### hu-grid-template-rows
 
 ```scss
+$hu-grid-template-rows-alias: "";
+
 $hu-grid-template-rows-modules: ();
 
 $hu-grid-template-rows-types: ();
@@ -1096,6 +1271,8 @@ $hu-grid-template-rows-types: ();
 ### hu-height
 
 ```scss
+$hu-height-alias: "";
+
 $hu-height-modules: (base, print);
 
 $hu-height-types: (
@@ -1109,6 +1286,8 @@ $hu-height-types: (
 ### hu-justify-content
 
 ```scss
+$hu-justify-content-alias: "";
+
 $hu-justify-content-modules: (base, responsive);
 
 $hu-justify-content-types: (
@@ -1130,6 +1309,8 @@ $hu-justify-content-types: (
 ### hu-justify-items
 
 ```scss
+$hu-justify-items-alias: "";
+
 $hu-justify-items-modules: (base, responsive);
 
 $hu-justify-items-types: (
@@ -1152,6 +1333,8 @@ $hu-justify-items-types: (
 ### hu-letter-spacing
 
 ```scss
+$hu-letter-spacing-alias: "";
+
 $hu-letter-spacing-modules: (base);
 
 $hu-letter-spacing-types: (
@@ -1167,6 +1350,8 @@ $hu-letter-spacing-types: (
 ### hu-line-height
 
 ```scss
+$hu-line-height-alias: "";
+
 $hu-line-height-modules: (base, responsive);
 
 $hu-line-height-types: (
@@ -1187,6 +1372,8 @@ $hu-line-height-types: (
 ### hu-list-style
 
 ```scss
+$hu-list-style-alias: "";
+
 $hu-list-style-modules: (base);
 
 $hu-list-style-types: (
@@ -1226,6 +1413,8 @@ For every numeric `$hu-margin-scale` value, negative `-[value]` classes are also
 ### hu-max-height
 
 ```scss
+$hu-max-height-alias: "";
+
 $hu-max-height-modules: (base, print);
 
 $hu-max-height-types: $hu-height-types;
@@ -1234,6 +1423,8 @@ $hu-max-height-types: $hu-height-types;
 ### hu-max-width
 
 ```scss
+$hu-max-width-alias: "";
+
 $hu-max-width-modules: (base);
 
 $hu-max-width-types: (
@@ -1244,6 +1435,8 @@ $hu-max-width-types: (
 ### hu-min-height
 
 ```scss
+$hu-min-height-alias: "";
+
 $hu-min-height-modules: (base);
 
 $hu-min-height-types: (
@@ -1257,6 +1450,8 @@ $hu-min-height-types: (
 ### hu-min-width
 
 ```scss
+$hu-min-width-alias: "";
+
 $hu-min-width-modules: (base);
 
 $hu-min-width-types: (
@@ -1274,12 +1469,22 @@ momentum-scrolling -> -webkit-overflow-scrolling
 ```
 
 ```scss
+$hu-momentum-scrolling-alias: momentum-scrolling;
+
 $hu-momentum-scrolling-modules: (base);
+```
+
+```css
+.momentum-scrolling {
+  -webkit-overflow-scrolling: touch;
+}
 ```
 
 ### hu-opacity
 
 ```scss
+$hu-opacity-alias: "";
+
 $hu-opacity-modules: (base, focus, hover, hocus, group-hover, group-state, state);
 
 $hu-opacity-types: (
@@ -1302,6 +1507,8 @@ $hu-opacity-types: (
 ### hu-order
 
 ```scss
+$hu-order-alias: "";
+
 $hu-order-modules: (base, responsive);
 
 $hu-order-types: (
@@ -1317,6 +1524,8 @@ $hu-order-types: (
 ### hu-outline
 
 ```scss
+$hu-outline-alias: "";
+
 $hu-outline-modules: (focus, hocus);
 
 $hu-outline-types: (
@@ -1327,6 +1536,8 @@ $hu-outline-types: (
 ### hu-overflow
 
 ```scss
+$hu-overflow-alias: "";
+
 $hu-overflow-modules: (base, print, responsive);
 
 $hu-overflow-types: (
@@ -1339,6 +1550,8 @@ $hu-overflow-types: (
 ### hu-overflow-x
 
 ```scss
+$hu-overflow-x-alias: "";
+
 $hu-overflow-x-modules: $hu-overflow-modules;
 
 $hu-overflow-x-types: $hu-overflow-types;
@@ -1347,21 +1560,21 @@ $hu-overflow-x-types: $hu-overflow-types;
 ### hu-overflow-y
 
 ```scss
+$hu-overflow-y-alias: "";
+
 $hu-overflow-y-modules: $hu-overflow-modules;
 
 $hu-overflow-y-types: $hu-overflow-types;
 ```
 
-### hu-overscroll
-
-```
-overscroll -> overscroll-behavior
-```
+### hu-overscroll-behavior
 
 ```scss
-$hu-overscroll-modules: (base);
+$hu-overscroll-behavior-alias: "";
 
-$hu-overscroll-types: (
+$hu-overscroll-behavior-modules: (base);
+
+$hu-overscroll-behavior-types: (
   auto,
   contain,
   none,
@@ -1429,6 +1642,8 @@ $hu-pos-types: (
 ### hu-position
 
 ```scss
+$hu-position-alias: "";
+
 $hu-position-modules: (base, hocus, group-hover, group-state, responsive, state);
 
 $hu-position-types: (
@@ -1447,6 +1662,8 @@ rotate -> transform: rotate
 ```
 
 ```scss
+$hu-rotate-alias: rotate;
+
 $hu-rotate-modules: ();
 
 $hu-rotate-types: (
@@ -1471,6 +1688,8 @@ scale -> transform: scale
 ```
 
 ```scss
+$hu-scale-alias: scale;
+
 $hu-scale-modules: (hocus);
 
 $hu-scale-types: (
@@ -1492,6 +1711,8 @@ $hu-scale-types: (
 ### hu-scroll-behavior
 
 ```scss
+$hu-scroll-behavior-alias: "";
+
 $hu-scroll-behavior-modules: (base);
 
 $hu-scroll-behavior-types: (
@@ -1507,6 +1728,8 @@ svg-fill-color -> fill
 ```
 
 ```scss
+$hu-svg-fill-color-alias: svg-fill-color;
+
 $hu-svg-fill-color-modules: (base, group-hover);
 
 $hu-svg-fill-color-types: map-merge((current: (current: currentColor)), $hu-colors);
@@ -1519,6 +1742,8 @@ svg-fill-rule -> fill-rule
 ```
 
 ```scss
+$hu-svg-fill-rule-alias: svg-fill-rule;
+
 $hu-svg-fill-rule-modules: (base);
 
 $hu-svg-fill-rule-types: (
@@ -1533,29 +1758,18 @@ svg-stroke-color -> stroke
 ```
 
 ```scss
+$hu-svg-stroke-color-alias: svg-stroke-color;
+
 $hu-svg-stroke-color-modules: $hu-svg-fill-color-modules;
 
 $hu-svg-stroke-color-types: $hu-svg-fill-color-types;
 ```
 
-### hu-table-border
-
-```
-table-border -> border-collapse
-```
-
-```scss
-$hu-table-border-modules: (base);
-
-$hu-table-border-types: (
-  collapse,
-  separate,
-);
-```
-
 ### hu-table-layout
 
 ```scss
+$hu-table-layout-alias: "";
+
 $hu-table-layout-modules: (base);
 
 $hu-table-layout-types: (
@@ -1567,6 +1781,8 @@ $hu-table-layout-types: (
 ### hu-text-align
 
 ```scss
+$hu-text-align-alias: "";
+
 $hu-text-align-modules: (base, responsive);
 
 $hu-text-align-types: (
@@ -1577,27 +1793,12 @@ $hu-text-align-types: (
 );
 ```
 
-### hu-text-case
-
-```
-text-case -> text-transform
-```
-
-```scss
-$hu-text-case-modules: (base);
-
-$hu-text-case-types: (
-  lower: lowercase,
-  normal: none,
-  title: capitalize,
-  upper: uppercase,
-);
-```
-
 ### hu-text-decoration
 
 ```scss
-$hu-text-decoration-modules: (base);
+$hu-text-decoration-alias: "";
+
+$hu-text-decoration-modules: (base, hocus);
 
 $hu-text-decoration-types: (
   line-through,
@@ -1609,22 +1810,35 @@ $hu-text-decoration-types: (
 ### hu-text-shadow
 
 ```scss
+$hu-text-shadow-alias: "";
+
 $hu-text-shadow-modules: ();
 
 $hu-text-shadow-types: ();
 ```
 
-### hu-theme-bg-color
-
-```
-theme__bg-color -> background-color
-```
+### hu-text-transform
 
 ```scss
-$hu-theme-bg-color-modules: $hu-bg-color-modules;
+$hu-text-transform-alias: "";
 
-$hu-theme-bg-color-types: $hu-themes;
+$hu-text-transform-modules: (base);
+
+$hu-text-transform-types: (
+  capitalize,
+  lowercase,
+  none,
+  uppercase,
+);
 ```
+
+### hu-theme-background-color
+
+```
+theme__[$hu-background-color-alias] -> background-color
+```
+
+*Inherits all of `hu-background-color`’s `alias`, `modules` and `types` variables.*
 
 ### hu-theme-border-color
 
@@ -1632,29 +1846,21 @@ $hu-theme-bg-color-types: $hu-themes;
 theme__border-color -> border-color
 ```
 
-```scss
-$hu-theme-border-color-modules: $hu-border-modules;
-
-$hu-theme-border-color-sides: $hu-border-sides;
-
-$hu-theme-border-color-types: $hu-themes;
-```
+*Inherits all of `hu-border-color`’s `modules`, `sides` and `types` variables.*
 
 ### hu-theme-color
 
 ```
-theme__color -> color
+theme__[$hu-color-alias] -> color
 ```
 
-```scss
-$hu-theme-color-modules: $hu-theme-bg-color-modules;
-
-$hu-theme-color-types: $hu-themes;
-```
+*Inherits all of `hu-color`’s `alias`, `modules` and `types` variables.*
 
 ### hu-transform
 
 ```scss
+$hu-transform-alias: "";
+
 $hu-transform-modules: ();
 
 $hu-transform-types: ();
@@ -1663,6 +1869,8 @@ $hu-transform-types: ();
 ### hu-transition
 
 ```scss
+$hu-transition-alias: "";
+
 $hu-transition-modules: ();
 
 $hu-transition-types: ();
@@ -1671,6 +1879,8 @@ $hu-transition-types: ();
 ### hu-transition-delay
 
 ```scss
+$hu-transition-delay-alias: "";
+
 $hu-transition-delay-modules: (base, group-hover, group-state, reduced-motion, state);
 
 $hu-transition-delay-types: (
@@ -1687,6 +1897,8 @@ $hu-transition-delay-types: (
 ### hu-transition-duration
 
 ```scss
+$hu-transition-duration-alias: "";
+
 $hu-transition-duration-modules: (base, group-hover, group-state, reduced-motion, state);
 
 $hu-transition-duration-types: (
@@ -1707,6 +1919,8 @@ transition-easing -> transition-timing-function
 ```
 
 ```scss
+$hu-transition-easing-alias: transition-easing;
+
 $hu-transition-easing-modules: (base, group-hover, group-state, reduced-motion, state);
 
 $hu-transition-easing-types: $hu-animation-easing-types;
@@ -1715,18 +1929,20 @@ $hu-transition-easing-types: $hu-animation-easing-types;
 ### hu-transition-property
 
 ```scss
+$hu-transition-property-alias: "";
+
 $hu-transition-property-modules: (base, group-hover, group-state, reduced-motion, state);
 
 $hu-transition-property-types: (
-  all: all,
-  bg-color: background-color,
-  color: color,
-  height: height,
-  opacity: opacity,
-  transform: transform,
-  visibility: visibility,
-  width: width,
-  none: none,
+  all,
+  background-color,
+  color,
+  height,
+  opacity,
+  transform,
+  visibility,
+  width,
+  none,
 );
 ```
 
@@ -1737,6 +1953,8 @@ translate-x -> transform: translateX
 ```
 
 ```scss
+$hu-translate-x-alias: translate-x;
+
 $hu-translate-x-modules: (base);
 
 $hu-translate-x-types: (
@@ -1754,6 +1972,8 @@ $hu-translate-x-types: (
 translate-y -> transform: translateY
 ```
 ```scss
+$hu-translate-y-alias: translate-y;
+
 $hu-translate-y-modules: $hu-translate-x-modules;
 
 $hu-translate-y-types: $hu-translate-x-types;
@@ -1762,6 +1982,8 @@ $hu-translate-y-types: $hu-translate-x-types;
 ### hu-truncate-text
 
 ```scss
+$hu-truncate-text-alias: "";
+
 $hu-truncate-text-modules: (base);
 ```
 
@@ -1776,6 +1998,8 @@ $hu-truncate-text-modules: (base);
 ### hu-vertical-align
 
 ```scss
+$hu-vertical-align-alias: "";
+
 $hu-vertical-align-modules: (base);
 
 $hu-vertical-align-types: (
@@ -1791,6 +2015,8 @@ $hu-vertical-align-types: (
 ### hu-visibility
 
 ```scss
+$hu-visibility-alias: "";
+
 $hu-visibility-modules: (base, hocus, group-hover, group-state, print, responsive, state);
 
 $hu-visibility-types: (
@@ -1802,6 +2028,8 @@ $hu-visibility-types: (
 ### hu-visually-hidden
 
 ```scss
+$hu-visually-hidden-alias: visually-hidden;
+
 $hu-visually-hidden-modules: (base);
 ```
 
@@ -1822,6 +2050,8 @@ $hu-visually-hidden-modules: (base);
 ### hu-white-space
 
 ```scss
+$hu-white-space-alias: "";
+
 $hu-white-space-modules: (base);
 
 $hu-white-space-types: (
@@ -1836,6 +2066,8 @@ $hu-white-space-types: (
 ### hu-width
 
 ```scss
+$hu-width-alias: "";
+
 $hu-width-modules: (base, print, responsive);
 
 $hu-width-types: (
@@ -1864,6 +2096,8 @@ $hu-width-types: (
 ### hu-z-index
 
 ```scss
+$hu-z-index-alias: "";
+
 $hu-z-index-modules: (base, hocus, group-hover, group-state, state);
 
 $hu-z-index-types: (

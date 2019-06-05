@@ -1,1 +1,1 @@
-@include hu-classes(max-width, $hu-max-width-modules, $hu-max-width-types);
+@include hu-classes(($hu-max-width-alias: max-width), $hu-max-width-modules, $hu-max-width-types);

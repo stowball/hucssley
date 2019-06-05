@@ -1,1 +1,1 @@
-@include hu-classes(vertical-align, $hu-vertical-align-modules, $hu-vertical-align-types);
+@include hu-classes(($hu-vertical-align-alias: vertical-align), $hu-vertical-align-modules, $hu-vertical-align-types);

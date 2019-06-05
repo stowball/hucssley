@@ -1,1 +1,1 @@
-@include hu-classes(box-shadow, $hu-box-shadow-modules, $hu-box-shadow-types);
+@include hu-classes(($hu-box-shadow-alias: box-shadow), $hu-box-shadow-modules, $hu-box-shadow-types);

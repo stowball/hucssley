@@ -1,1 +1,1 @@
-@include hu-classes(list-style, $hu-list-style-modules, $hu-list-style-types);
+@include hu-classes(($hu-list-style-alias: list-style), $hu-list-style-modules, $hu-list-style-types);

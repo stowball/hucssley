@@ -1,1 +1,1 @@
-@include hu-classes(visibility, $hu-visibility-modules, $hu-visibility-types);
+@include hu-classes(($hu-visibility-alias: visibility), $hu-visibility-modules, $hu-visibility-types);

@@ -1,1 +1,1 @@
-@include hu-classes(transition-property, $hu-transition-property-modules, $hu-transition-property-types);
+@include hu-classes(($hu-transition-property-alias: transition-property), $hu-transition-property-modules, $hu-transition-property-types);

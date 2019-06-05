@@ -1,4 +1,4 @@
-@include hu-classes(font-smoothing, $hu-font-smoothing-modules) {
+@include hu-classes($hu-font-smoothing-alias, $hu-font-smoothing-modules) {
   -moz-osx-font-smoothing: grayscale #{hu-important()};
   -webkit-font-smoothing: antialiased #{hu-important()};
 }

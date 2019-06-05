@@ -1,1 +1,1 @@
-@include hu-classes(text-decoration, $hu-text-decoration-modules, $hu-text-decoration-types);
+@include hu-classes(($hu-text-decoration-alias: text-decoration), $hu-text-decoration-modules, $hu-text-decoration-types);

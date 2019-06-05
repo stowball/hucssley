@@ -1,1 +1,1 @@
-@include hu-classes(min-height, $hu-min-height-modules, $hu-min-height-types);
+@include hu-classes(($hu-min-height-alias: min-height), $hu-min-height-modules, $hu-min-height-types);

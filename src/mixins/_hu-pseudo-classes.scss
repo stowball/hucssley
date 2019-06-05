@@ -1,6 +1,6 @@
 @mixin hu-pseudo-classes($property, $pseudos, $modules, $types: null) {
   $core-modules: hu-get-class-modules($modules, core, $modules);
-  
+
   @include hu-pseudo-generic-classes($property, $pseudos, $core-modules, $types) {
     @content;
   }

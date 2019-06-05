@@ -1,2 +1,1 @@
-// transition-easing -> transition-timing-function
-@include hu-classes((transition-easing: transition-timing-function), $hu-transition-easing-modules, $hu-transition-easing-types);
+@include hu-classes(($hu-transition-easing-alias: transition-timing-function), $hu-transition-easing-modules, $hu-transition-easing-types);

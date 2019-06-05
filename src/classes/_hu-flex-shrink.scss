@@ -1,1 +1,1 @@
-@include hu-classes(flex-shrink, $hu-flex-shrink-modules, $hu-flex-shrink-types);
+@include hu-classes(($hu-flex-shrink-alias: flex-shrink), $hu-flex-shrink-modules, $hu-flex-shrink-types);

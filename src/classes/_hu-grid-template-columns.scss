@@ -1,1 +1,1 @@
-@include hu-classes(grid-template-columns, $hu-grid-template-columns-modules, $hu-grid-template-columns-types);
+@include hu-classes(($hu-grid-template-columns-alias: grid-template-columns), $hu-grid-template-columns-modules, $hu-grid-template-columns-types);

@@ -1,1 +1,1 @@
-@include hu-classes(letter-spacing, $hu-letter-spacing-modules, $hu-letter-spacing-types);
+@include hu-classes(($hu-letter-spacing-alias: letter-spacing), $hu-letter-spacing-modules, $hu-letter-spacing-types);

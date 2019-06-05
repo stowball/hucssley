@@ -1,4 +1,4 @@
-@include hu-classes(truncate-text, $hu-truncate-text-modules) {
+@include hu-classes($hu-truncate-text-alias, $hu-truncate-text-modules) {
   overflow: hidden #{hu-important()};
   text-overflow: ellipsis #{hu-important()};
   white-space: nowrap #{hu-important()};

@@ -1,16 +1,16 @@
-// rotate -> transform: rotate
 $hu-rotate-core-modules: hu-get-class-modules($hu-rotate-modules, core, $hu-rotate-modules);
 $hu-rotate-pseudos: hu-get-class-modules($hu-rotate-modules, pseudos, null);
 $hu-rotate-parents: hu-get-class-modules($hu-rotate-modules, parents, null);
+$hu-rotate-property-name: transform;
+$hu-rotate-class-name: hu-get-class-name(($hu-rotate-alias: $hu-rotate-property-name));
 
 @each $module in hu-format-modules($hu-rotate-core-modules) {
   @each $type, $value in $hu-rotate-types {
-    $class-name: hu-class-name("rotate:#{$type}");
-    $property: transform;
+    $class-name: hu-class-name("#{$hu-rotate-class-name}:#{$type}");
     $value: if($value, $value, $type);
 
     @include hu-generic($class-name, $module) {
-      #{$property}: rotate($value);
+      #{$hu-rotate-property-name}: rotate($value) #{hu-important()};
     }
   }
 }
@@ -19,12 +19,12 @@ $hu-rotate-parents: hu-get-class-modules($hu-rotate-modules, parents, null);
   @each $mq-scale, $mq-value in $hu-media-queries {
     @include hu-media-query($mq-value) {
       @each $type, $value in $hu-rotate-types {
-        $class-name: hu-class-name("rotate:#{$type}");
+        $class-name: hu-class-name("#{$hu-rotate-class-name}:#{$type}");
         $property: rotate;
         $value: if($value, $value, $type);
 
         @include hu-responsive($class-name, $hu-rotate-core-modules, $mq-scale) {
-          #{$property}: $value #{hu-important()};
+          #{$hu-rotate-property-name}: rotate($value) #{hu-important()};
         }
       }
     }
@@ -34,12 +34,11 @@ $hu-rotate-parents: hu-get-class-modules($hu-rotate-modules, parents, null);
 @if ($hu-rotate-pseudos) {
   @each $module in hu-format-modules($hu-rotate-core-modules) {
     @each $type, $value in $hu-rotate-types {
-      $class-name: hu-class-name("rotate:#{$type}");
-      $property: transform;
+      $class-name: hu-class-name("#{$hu-rotate-class-name}:#{$type}");
       $value: if($value, $value, $type);
 
       @include hu-pseudo($class-name, $hu-rotate-pseudos, $module) {
-        #{$property}: rotate($value);
+        #{$hu-rotate-property-name}: rotate($value) #{hu-important()};
       }
     }
   }
@@ -48,12 +47,12 @@ $hu-rotate-parents: hu-get-class-modules($hu-rotate-modules, parents, null);
     @each $mq-scale, $mq-value in $hu-media-queries {
       @include hu-media-query($mq-value) {
         @each $type, $value in $hu-rotate-types {
-          $class-name: hu-class-name("rotate:#{$type}");
+          $class-name: hu-class-name("#{$hu-rotate-class-name}:#{$type}");
           $property: rotate;
           $value: if($value, $value, $type);
 
           @include hu-pseudo-responsive($class-name, $hu-rotate-pseudos, $hu-rotate-core-modules, $mq-scale) {
-            #{$property}: $value #{hu-important()};
+            #{$hu-rotate-property-name}: rotate($value) #{hu-important()};
           }
         }
       }
@@ -64,12 +63,11 @@ $hu-rotate-parents: hu-get-class-modules($hu-rotate-modules, parents, null);
 @if ($hu-rotate-parents) {
   @each $module in hu-format-modules($hu-rotate-core-modules) {
     @each $type, $value in $hu-rotate-types {
-      $class-name: hu-class-name("rotate:#{$type}");
-      $property: transform;
+      $class-name: hu-class-name("#{$hu-rotate-class-name}:#{$type}");
       $value: if($value, $value, $type);
 
       @include hu-parent($class-name, $hu-rotate-parents, $module) {
-        #{$property}: rotate($value);
+        #{$hu-rotate-property-name}: rotate($value) #{hu-important()};
       }
     }
   }
@@ -78,12 +76,12 @@ $hu-rotate-parents: hu-get-class-modules($hu-rotate-modules, parents, null);
     @each $mq-scale, $mq-value in $hu-media-queries {
       @include hu-media-query($mq-value) {
         @each $type, $value in $hu-rotate-types {
-          $class-name: hu-class-name("rotate:#{$type}");
+          $class-name: hu-class-name("#{$hu-rotate-class-name}:#{$type}");
           $property: rotate;
           $value: if($value, $value, $type);
 
           @include hu-parent-responsive($class-name, $hu-rotate-parents, $hu-rotate-core-modules, $mq-scale) {
-            #{$property}: $value #{hu-important()};
+            #{$hu-rotate-property-name}: rotate($value) #{hu-important()};
           }
         }
       }

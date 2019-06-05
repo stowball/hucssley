@@ -1,1 +1,1 @@
-@include hu-classes(opacity, $hu-opacity-modules, $hu-opacity-types);
+@include hu-classes(($hu-opacity-alias: opacity), $hu-opacity-modules, $hu-opacity-types);

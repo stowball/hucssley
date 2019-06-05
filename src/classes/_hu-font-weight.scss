@@ -1,1 +1,1 @@
-@include hu-classes(font-weight, $hu-font-weight-modules, $hu-font-weight-types);
+@include hu-classes(($hu-font-weight-alias: font-weight), $hu-font-weight-modules, $hu-font-weight-types);

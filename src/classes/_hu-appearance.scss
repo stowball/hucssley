@@ -1,1 +1,1 @@
-@include hu-classes(appearance, $hu-appearance-modules, $hu-appearance-types);
+@include hu-classes(($hu-appearance-alias: appearance), $hu-appearance-modules, $hu-appearance-types);

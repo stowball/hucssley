@@ -1,1 +1,1 @@
-@include hu-classes(align-items, $hu-align-items-modules, $hu-align-items-types);
+@include hu-classes(($hu-align-items-alias: align-items), $hu-align-items-modules, $hu-align-items-types);

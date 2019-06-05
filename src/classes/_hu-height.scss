@@ -1,1 +1,1 @@
-@include hu-classes(height, $hu-height-modules, $hu-height-types);
+@include hu-classes(($hu-height-alias: height), $hu-height-modules, $hu-height-types);
