@@ -2036,8 +2036,6 @@ which produces:
 …
 ```
 
-You could even use both methods together if you wanted to mega-raise your specificity count.
-
 ---
 
 ## Controlling file size
