@@ -14,7 +14,7 @@ $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
         }
       }
 
-      @if (type-of($value) == number) {
+      @if (type-of($value) == number and $value > 0) {
         @include hu-generic($class-name-negative, $module) {
           @each $property in $properties {
             #{$property}: $value * -1;
@@ -39,7 +39,7 @@ $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
             }
           }
 
-          @if (type-of($value) == number) {
+          @if (type-of($value) == number and $value > 0) {
             @include hu-responsive($class-name-negative, $hu-margin-core-modules, $mq-scale) {
               @each $property in $properties {
                 #{$property}: $value * -1;
@@ -65,7 +65,7 @@ $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
           }
         }
 
-        @if (type-of($value) == number) {
+        @if (type-of($value) == number and $value > 0) {
           @include hu-pseudo($class-name-negative, $hu-margin-pseudos, $module) {
             @each $property in $properties {
               #{$property}: $value * -1;
@@ -90,7 +90,7 @@ $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
               }
             }
 
-            @if (type-of($value) == number) {
+            @if (type-of($value) == number and $value > 0) {
               @include hu-pseudo-responsive($class-name-negative, $hu-margin-pseudos, $hu-margin-core-modules, $mq-scale) {
                 @each $property in $properties {
                   #{$property}: $value * -1;
@@ -117,7 +117,7 @@ $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
           }
         }
 
-        @if (type-of($value) == number) {
+        @if (type-of($value) == number and $value > 0) {
           @include hu-parent($class-name-negative, $hu-margin-parents, $module) {
             @each $property in $properties {
               #{$property}: $value * -1;
@@ -142,7 +142,7 @@ $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
               }
             }
 
-            @if (type-of($value) == number) {
+            @if (type-of($value) == number and $value > 0) {
               @include hu-parent-responsive($class-name-negative, $hu-margin-parents, $hu-margin-core-modules, $mq-scale) {
                 @each $property in $properties {
                   #{$property}: $value * -1;

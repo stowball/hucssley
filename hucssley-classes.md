@@ -1165,7 +1165,7 @@ $hu-grid-column-gap-alias: "";
 
 $hu-grid-column-gap-modules: ();
 
-$hu-grid-column-gap-types: ();
+$hu-grid-column-gap-types: $hu-spacing-scale;
 ```
 
 ### hu-grid-column-start
@@ -1185,7 +1185,7 @@ $hu-grid-gap-alias: "";
 
 $hu-grid-gap-modules: ();
 
-$hu-grid-gap-types: ();
+$hu-grid-gap-types: $hu-spacing-scale;
 ```
 
 ### hu-grid-row
@@ -1215,7 +1215,7 @@ $hu-grid-row-gap-alias: "";
 
 $hu-grid-row-gap-modules: ();
 
-$hu-grid-row-gap-types: ();
+$hu-grid-row-gap-types: $hu-spacing-scale;
 ```
 
 ### hu-grid-row-start
