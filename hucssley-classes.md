@@ -1273,7 +1273,7 @@ $hu-grid-template-rows-types: ();
 ```scss
 $hu-height-alias: "";
 
-$hu-height-modules: (base, print);
+$hu-height-modules: (base, print, responsive);
 
 $hu-height-types: (
   0: 0,
@@ -1335,7 +1335,7 @@ $hu-justify-items-types: (
 ```scss
 $hu-letter-spacing-alias: "";
 
-$hu-letter-spacing-modules: (base);
+$hu-letter-spacing-modules: (base, responsive);
 
 $hu-letter-spacing-types: (
   -200: -0.2em,
@@ -1425,7 +1425,7 @@ $hu-max-height-types: $hu-height-types;
 ```scss
 $hu-max-width-alias: "";
 
-$hu-max-width-modules: (base);
+$hu-max-width-modules: (base, responsive);
 
 $hu-max-width-types: (
   100: 100%,
@@ -1452,7 +1452,7 @@ $hu-min-height-types: (
 ```scss
 $hu-min-width-alias: "";
 
-$hu-min-width-modules: (base);
+$hu-min-width-modules: (base, responsive);
 
 $hu-min-width-types: (
   0: 0,
