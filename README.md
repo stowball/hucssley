@@ -119,7 +119,7 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
 
 ```html
 <div class="
-  background-color:blue-100
+  background-color:blue-0
   padding:500
 ">
   <div class="
@@ -165,7 +165,7 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
       </p>
       <a
         class="
-          background-color:blue-1000
+          background-color:blue-900
           border-color:neutral-700
           color:neutral-0
           display:inline-block
@@ -532,58 +532,58 @@ $hu-colors: (
   "neutral": (
     0: #ffffff,
     …
-    500: #898989,
+    500: #858585,
     …
-    1000: #1a1a1a,
+    1000: #161616,
   ),
   "red": (
-    100: #f9ecea,
+    0: #fae9e8,
     …
-    500: #d9524b,
+    500: #de3f35,
     …
-    1000: #361110,
+    1000: #2f0f0f,
   ),
   "orange": (
-    100: #faefea,
+    0: #faebe8,
     …
-    500: #dc7d51,
+    500: #de7035,
     …
-    1000: #371d11,
+    1000: #2f180f,
   ),
   "yellow": (
-    100: #fcfcec,
+    0: #f7f3de,
     …
-    500: #e9e262,
+    500: #d8b82d,
     …
-    1000: #3b3a16,
+    1000: #2c250f,
   ),
   "green": (
-    100: #edfbf4,
+    0: #def7e9,
     …
-    500: #7ae69a,
+    500: #2dd86c,
     …
-    1000: #1c3a25,
+    1000: #0f2c18,
   ),
   "blue": (
-    100: #ebf6fb,
+    0: #deebf7,
     …
-    500: #67bbe5,
+    500: #2d8dd8,
     …
-    1000: #172e3a,
+    1000: #0f212c,
   ),
   "indigo": (
-    100: #ede9fa,
+    0: #e5def7,
     …
-    500: #5e4be1,
+    500: #5a2dd8,
     …
-    1000: #141039,
+    1000: #140f2c,
   ),
   "violet": (
-    100: #f8eafb,
+    0: #f7def3,
     …
-    500: #cb54e3,
+    500: #d82dc7,
     …
-    1000: #321239,
+    1000: #2c0f2b,
   ),
 );
 ```
@@ -1839,12 +1839,12 @@ export default {
       `,
       type: {
         primary: `
-          background-color:blue-1000
+          background-color:blue-900
           color:neutral-0
           hocus--background-color:blue-600
         `,
         secondary: `
-          background-color:blue-300
+          background-color:blue-200
           hocus--background-color:blue-400
         `,
       },
@@ -2040,7 +2040,7 @@ which produces:
 
 ## Controlling file size
 
-While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.4 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 100 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
+While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.4 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 102 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
 
 But, Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, media queries, and spacing scales will also help.
 
