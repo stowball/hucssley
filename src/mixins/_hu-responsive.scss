@@ -33,14 +33,14 @@
   }
 
   @if (index($modules, group-hover)) {
-    .group:hover .group__#{hu-escape-class-name("@mq-#{$mq-scale}:hover")}--#{$class-name} {
+    .group:hover .group#{hu-escape-class-name(":hover")}__#{hu-escape-class-name("@mq-#{$mq-scale}")}--#{$class-name} {
       @content;
     }
   }
 
   @if (index($modules, group-state)) {
     @each $state in $hu-states {
-      .group.#{$state} .group__#{hu-escape-class-name("@mq-#{$mq-scale}")}-#{$state}--#{$class-name} {
+      .group.#{$state} .group-#{$state}__#{hu-escape-class-name("@mq-#{$mq-scale}")}--#{$class-name} {
         @content;
       }
     }

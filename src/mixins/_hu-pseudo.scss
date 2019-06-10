@@ -37,14 +37,14 @@
       }
 
       @else if ($module == group-hover) {
-        .group:hover .group__#{hu-escape-class-name(":hover")}#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+        .group:hover .group#{hu-escape-class-name(":hover")}__#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
           @content;
         }
       }
 
       @else if ($module == group-state) {
         @each $state in $hu-states {
-          .group.#{$state} .group__#{$state}#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+          .group.#{$state} .group-#{$state}__#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
             @content;
           }
         }

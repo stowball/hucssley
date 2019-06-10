@@ -28,8 +28,8 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
   - [Base: `base`](#base-base)
     - [Non-parent modules: `focus, hocus, hover, print, reduced-motion, responsive`](#non-parent-modules-focus-hocus-hover-print-reduced-motion-responsive)
   - [State modules: `state`](#state-modules-state)
-  - [Parent modules: `group-hover, group-state` and custom parent modules](#parent-modules-group-hover-group-state-and-custom-parent-modules)
-    - [Custom parent modules](#custom-parent-modules)
+  - [Group modules: `group-hover, group-state`](#group-modules-group-hover-group-state)
+  - [Custom parent modules](#custom-parent-modules)
   - [Combining modules: `responsive` and `focus, hover, hocus, state, group-hover, group-state`](#combining-modules-responsive-and-focus-hover-hocus-state-group-hover-group-state)
 - [Scales](#scales)
 - [Configuration](#configuration)
@@ -140,7 +140,7 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
       alt=""
       class="
         background-color:blue-600
-        border-color-neutral:100
+        border-color:neutral-100
         border-radius:1000
         border-style:solid
         border-width:200
@@ -331,41 +331,52 @@ For state classes to become active, you need to apply the raw state name as an c
 "></div>
 ```
 
-### Parent modules: `group-hover, group-state` and custom parent modules
+### Group modules: `group-hover, group-state`
 
-Children of groups can respond to user and UI interaction via groups. Their syntax is `[parent-name]__[parent-type]--[base-class]`:
+With groups, you can style child elements when hovering over a generic parent element, or when it’s in a particular UI state. Their syntax is `group[group-type]__[base-class]`:
 
 ```
-.group__:hover--scale:110
-.group__is-selected--background-color:blue-300
-.browser-mobile__font-size:700
+.group:hover__scale:110
+.group-is-selected__background-color:blue-300
 ```
 
 For `group` classes to take effect, a parent has to be given the raw `.group` class, and raw state class if applicable:
 
 ```html
-<html class="browser-mobile">
+<html>
   …
   <div class="
     group
 +   is-selected
   ">
     <ul class="
-      browser-mobile__font-size:700
-      group__:hover--scale:110
-      group__is-selected--background-color:blue-300
+      group:hover__scale:110
+      group-is-selected__background-color:blue-300
     "></ul>
   </div>
 </html>
 ```
 
-Be careful when using groups, because they will affect all `.group__` children. A child `.group` does not reset the actions of a parent `.group`, so you could end up with unexpected behaviour. It’s recommended to use groups on ancestors that are near to leaf nodes.
+Be careful when using groups, because they will affect all `.group…__` children. A child `.group` does not reset the actions of a parent `.group`, so you could end up with unexpected behaviour. It’s recommended to use groups on ancestors that are near to leaf nodes.
 
-#### Custom parent modules
+### Custom parent modules
 
-In the above example, we used a `browser-mobile__font-size-700` class name, which, while not included in Hucssley by default, hopefully illustrates how it can be used to style elements by any library or approach that adds a generic class to a parent element.
+Similar to groups, Hucssley allows you to use any kind of parent selector to affect and style children. However, unlike groups, custom parent selectors allow you to explicitly quarantine and contain these styling side effects.
 
-Possible use cases are a browser detection library that may add `browser-mobile`, `browser-ie` etc to `<html>`, or an element/container queries alternative like [eqio](https://github.com/stowball/eqio), that adds classes such as `eqio->400` to a parent element, and would be targetable with `eqio->400__flex-direction-row` for example.
+Possible use cases are for a browser detection library that may add `browser-mobile`, `browser-ie` etc to `<html>`, or an element/container queries alternative like [eqio](https://github.com/stowball/eqio), that adds classes such as `eqio->400` to a parent element, and would be targetable with `eqio->400__flex-direction:row` for example.
+
+Their syntax is `[parent-name]__[base-class]`:
+
+```html
+<html class="browser-mobile">
+  …
+  <div class="browser-mobile__font-size:700">
+    …
+  </div>
+</html>
+```
+
+In the above example, we used a `browser-mobile__font-size:700` class name, which, while not included in Hucssley by default, hopefully illustrates how it can be used to style elements by any library or approach that adds a class like `browser-mobile` to a parent element.
 
 For more information, please read [Parent classes](#parent-classes-hu-parent-classes).
 
@@ -379,15 +390,15 @@ Here the syntax is:
 * `@mq-[responsive-scale]:hover--[base-class]` for `hover`
 * `@mq-[responsive-scale]:hocus--[base-class]` for `hocus`
 * `@mq-[responsive-scale]-[state-name]--[base-class]` for `state`s
-* `group__@mq-[responsive-scale]:hover--[base-class]` for `group:hover`
-* `group__@mq-[responsive-scale]-[state-name]--[base-class]` for `group-state`
+* `group:hover__@mq-[responsive-scale]--[base-class]` for `group-hover`
+* `group-[state-name]__@mq-[responsive-scale]--[base-class]` for `group-state`
 
 Which results in:
 
 ```css
 .@mq-960-is-expanded--display:flex
-.group__@mq-768:hover--display:block
-.group__@mq-1200-is-collapsed--height:0
+.group:hover__@mq-768--display:block
+.group-is-collapsed__@mq-1200--height:0
 ```
 
 ## Scales
@@ -770,7 +781,7 @@ You can easily amend or override any of these values to suit your project.
 
 #### Borders: `$hu-border-modules`, `$hu-border-sides` and `$hu-border-types`
 
-By default, `.border-color-`, `.border-style-` and `.border-width-` classes use the 2 or 3 of the global border variables to control which modules, sides and colors they’re output at.
+By default, `.border-color`, `.border-style` and `.border-width` classes use the 2 or 3 of the global border variables to control which modules, sides and colors they’re output at.
 
 ```scss
 $hu-border-modules: (base);
@@ -1296,7 +1307,7 @@ Should you need to create classes that are more complex than what the 3 basic mi
 
 ##### `hu-class-name`
 
-This function formats a class name to append `$hu-namespace` (if applicable), convert duplicate final strings (e.g. `color-transparent-transparent` to `color-transparent`) and escape special characters like `:`, `<`, `>` and `@`.
+This function formats a class name to append `$hu-namespace` (if applicable), convert duplicate final strings (e.g. `color:transparent-transparent` to `color:transparent`) and escape special characters like `:`, `<`, `>` and `@`.
 
 ```scss
 @function hu-class-name($class-name);
@@ -1349,12 +1360,12 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `group-hover`, `group-
   display: block;
 }
 
-.group:hover .group__:hover--hu-display:block {
+.group:hover .group:hover__hu-display:block {
   display: block;
 }
 
 @media print {
-  .@print--hu-display-block.print--hu-display:block.print--hu-display:block {
+  .@print--hu-display:block.print--hu-display:block.print--hu-display:block {
     display: block;
   }
 }
