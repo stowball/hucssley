@@ -28,7 +28,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
   - [Base: `base`](#base-base)
     - [Non-parent modules: `focus, hocus, hover, print, reduced-motion, responsive`](#non-parent-modules-focus-hocus-hover-print-reduced-motion-responsive)
   - [State modules: `state`](#state-modules-state)
-  - [Group modules: `group-hover, group-state`](#group-modules-group-hover-group-state)
+  - [Group modules: `group-focus, group-hover, group-hocus, group-state`](#group-modules-group-focus-group-hover-group-hocus-group-state)
   - [Custom parent modules](#custom-parent-modules)
   - [Combining modules: `responsive` and `focus, hover, hocus, state, group-hover, group-state`](#combining-modules-responsive-and-focus-hover-hocus-state-group-hover-group-state)
 - [Scales](#scales)
@@ -45,7 +45,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
     - [UI states: `$hu-states`](#ui-states-hu-states)
     - [Spacing scale: `$hu-spacing-scale`](#spacing-scale-hu-spacing-scale)
     - [Borders: `$hu-border-modules`, `$hu-border-sides` and `$hu-border-types`](#borders-hu-border-modules-hu-border-sides-and-hu-border-types)
-    - [Controlling focus: `$hu-hocus-focus-parent` and `$hu-hocus-focus-pseudo`](#controlling-focus-hu-hocus-focus-parent-and-hu-hocus-focus-pseudo)
+    - [Controlling focus: `$hu-focus-parent` and `$hu-focus-pseudo`](#controlling-focus-hu-focus-parent-and-hu-focus-pseudo)
     - [Themes: `$hu-themes`](#themes-hu-themes)
     - [Namespace: `$hu-namespace`](#namespace-hu-namespace)
     - [Use important: `$hu-use-important`](#use-important-hu-use-important)
@@ -331,12 +331,14 @@ For state classes to become active, you need to apply the raw state name as an c
 "></div>
 ```
 
-### Group modules: `group-hover, group-state`
+### Group modules: `group-focus, group-hover, group-hocus, group-state`
 
-With groups, you can style child elements when hovering over a generic parent element, or when it’s in a particular UI state. Their syntax is `group[group-type]__[base-class]`:
+With groups, you can style child elements when interacting with a generic parent element (`:focus` and/or `:hover`), or when it’s in a particular UI state. Their syntax is `group[group-type]__[base-class]`:
 
 ```
+.group:focus__scale:110
 .group:hover__scale:110
+.group:hocus__scale:110 // both :focus and :hover
 .group-is-selected__background-color:blue-300
 ```
 
@@ -808,9 +810,9 @@ In conjunction with variables specific to each class name, classes like the foll
 .border-horizontal-width:200
 ```
 
-#### Controlling focus: `$hu-hocus-focus-parent` and `$hu-hocus-focus-pseudo`
+#### Controlling focus: `$hu-focus-parent` and `$hu-focus-pseudo`
 
-By default, the `focus` and `hocus` modules generate classes which use a `:focus` pseudo-class. This can be customized, should you wish to use `:focus-visible` or even in conjunction with a polyfill.
+By default, the `focus`, `group-focus`, `hocus` and `group-hocus` modules generate classes which use a `:focus` pseudo-class. This can be customized, should you wish to use `:focus-visible` or even in conjunction with a polyfill.
 
 ```scss
 $hu-focus-pseudo: ":focus-visible";
@@ -818,6 +820,11 @@ $hu-focus-pseudo: ":focus-visible";
 /* ->
 .&:focus--[class-name]:focus-visible,
 .&:hocus--[class-name]:focus-visible {
+  // declarations
+}
+
+.group:focus-visible group:focus__[class-name],
+.group:focus-visible group:hocus__[class-name] {
   // declarations
 }
 */
@@ -832,6 +839,11 @@ $hu-focus-pseudo: ":focus:not(.focus-visible)";
 /* ->
 .js-focus-visible .&:focus--[class-name]:focus:not(.focus-visible),
 .js-focus-visible .&:hocus--[class-name]:focus:not(.focus-visible) {
+  // declarations
+}
+
+.js-focus-visible .group:focus:not(.focus-visible) group:focus__[class-name],
+.js-focus-visible .group:focus:not(.focus-visible) group:hocus__[class-name] {
   // declarations
 }
 */
@@ -1261,7 +1273,7 @@ As with `$hu-classes`, you can customize the class name by passing a map to `$pr
 
 While `hu-classes` will be suitable for most use cases, should you need, you can also explicitly create custom parent classes with the `hu-parent-classes()` mixin. It behaves similarly to `hu-pseudo-classes()`, but you instead pass in a list of one or more parent elements you want to generate classes for.
 
-*Note: `group-hover` and `group-state` modules are not used for custom parents.*
+*Note: `group-focus`, `group-hover`, `group-hocus` and `group-state` modules are not used for custom parents.*
 
 ```
 @mixin hu-parent-classes($property, $parents, $modules, $types?);
@@ -2051,7 +2063,7 @@ which produces:
 
 ## Controlling file size
 
-While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.4 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 102 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
+While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.5 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 104 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
 
 But, Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, media queries, and spacing scales will also help.
 

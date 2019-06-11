@@ -32,8 +32,21 @@
     }
   }
 
+  @if (index($modules, group-focus)) {
+    #{$hu-focus-parent} .group#{$hu-focus-pseudo} .group#{hu-escape-class-name(":focus")}__#{hu-escape-class-name("@mq-#{$mq-scale}")}--#{$class-name} {
+      @content;
+    }
+  }
+
   @if (index($modules, group-hover)) {
     .group:hover .group#{hu-escape-class-name(":hover")}__#{hu-escape-class-name("@mq-#{$mq-scale}")}--#{$class-name} {
+      @content;
+    }
+  }
+
+  @if (index($modules, group-hocus)) {
+    #{$hu-focus-parent} .group#{$hu-focus-pseudo} .group#{hu-escape-class-name(":hocus")}__#{hu-escape-class-name("@mq-#{$mq-scale}")}--#{$class-name},
+    .group:hover .group#{hu-escape-class-name(":hocus")}__#{hu-escape-class-name("@mq-#{$mq-scale}")}--#{$class-name} {
       @content;
     }
   }

@@ -141,7 +141,7 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
 
 Each class will have an appropriately named `$hu-[class-name]-modules` variable, which determines what module types (if any), it is generated for.
 
-The variable accepts either a list or map. If it is a list, it will accept the following values: `(base, focus, hover, hocus, state, group-hover, group-state, reduced-motion, print)` or empty `()`. The order of the modules is not important, as Hucssley will intelligently order them for you to produce the desired output.
+The variable accepts either a list or map. If it is a list, it will accept the following values: `(base, focus, hover, hocus, state, group-focus, group-hover, group-hocus, group-state, reduced-motion, print)` or empty `()`. The order of the modules is not important, as Hucssley will intelligently order them for you to produce the desired output.
 
 #### Advanced modules
 
@@ -625,7 +625,7 @@ $hu-backface-visibility-types: (
 ```scss
 $hu-background-color-alias: "";
 
-$hu-background-color-modules: (base, hocus, group-hover, group-state, state);
+$hu-background-color-modules: (base, hocus, group-hocus, group-state, state);
 
 $hu-background-color-types: $hu-colors;
 ```
@@ -897,7 +897,7 @@ $hu-cursor-types: (
 ```scss
 $hu-display-alias: "";
 
-$hu-display-modules: (base, focus, hover, hocus, group-hover, group-state, print, responsive, state);
+$hu-display-modules: (base, focus, hover, hocus, group-hocus, group-state, print, responsive, state);
 
 $hu-display-types: (
   block,
@@ -1485,7 +1485,7 @@ $hu-momentum-scrolling-modules: (base);
 ```scss
 $hu-opacity-alias: "";
 
-$hu-opacity-modules: (base, focus, hover, hocus, group-hover, group-state, state);
+$hu-opacity-modules: (base, focus, hover, hocus, group-hocus, group-state, state);
 
 $hu-opacity-types: (
   0: 0,
@@ -1644,7 +1644,7 @@ $hu-pos-types: (
 ```scss
 $hu-position-alias: "";
 
-$hu-position-modules: (base, hocus, group-hover, group-state, responsive, state);
+$hu-position-modules: (base, hocus, group-hocus, group-state, responsive, state);
 
 $hu-position-types: (
   absolute,
@@ -1730,7 +1730,7 @@ svg-fill-color -> fill
 ```scss
 $hu-svg-fill-color-alias: svg-fill-color;
 
-$hu-svg-fill-color-modules: (base, group-hover);
+$hu-svg-fill-color-modules: (base, group-hocus);
 
 $hu-svg-fill-color-types: map-merge((current: (current: currentColor)), $hu-colors);
 ```
@@ -1881,7 +1881,7 @@ $hu-transition-types: ();
 ```scss
 $hu-transition-delay-alias: "";
 
-$hu-transition-delay-modules: (base, group-hover, group-state, reduced-motion, state);
+$hu-transition-delay-modules: (base, group-hocus, group-state, reduced-motion, state);
 
 $hu-transition-delay-types: (
   0: 0s,
@@ -1899,7 +1899,7 @@ $hu-transition-delay-types: (
 ```scss
 $hu-transition-duration-alias: "";
 
-$hu-transition-duration-modules: (base, group-hover, group-state, reduced-motion, state);
+$hu-transition-duration-modules: (base, group-hocus, group-state, reduced-motion, state);
 
 $hu-transition-duration-types: (
   0: 0s,
@@ -1921,7 +1921,7 @@ transition-easing -> transition-timing-function
 ```scss
 $hu-transition-easing-alias: transition-easing;
 
-$hu-transition-easing-modules: (base, group-hover, group-state, reduced-motion, state);
+$hu-transition-easing-modules: (base, group-hocus, group-state, reduced-motion, state);
 
 $hu-transition-easing-types: $hu-animation-easing-types;
 ```
@@ -1931,7 +1931,7 @@ $hu-transition-easing-types: $hu-animation-easing-types;
 ```scss
 $hu-transition-property-alias: "";
 
-$hu-transition-property-modules: (base, group-hover, group-state, reduced-motion, state);
+$hu-transition-property-modules: (base, group-hocus, group-state, reduced-motion, state);
 
 $hu-transition-property-types: (
   all,
@@ -2017,7 +2017,7 @@ $hu-vertical-align-types: (
 ```scss
 $hu-visibility-alias: "";
 
-$hu-visibility-modules: (base, hocus, group-hover, group-state, print, responsive, state);
+$hu-visibility-modules: (base, hocus, group-hocus, group-state, print, responsive, state);
 
 $hu-visibility-types: (
   hidden,
@@ -2098,7 +2098,7 @@ $hu-width-types: (
 ```scss
 $hu-z-index-alias: "";
 
-$hu-z-index-modules: (base, hocus, group-hover, group-state, state);
+$hu-z-index-modules: (base, hocus, group-hocus, group-state, state);
 
 $hu-z-index-types: (
   auto,
