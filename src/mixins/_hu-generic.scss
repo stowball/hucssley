@@ -35,15 +35,28 @@
       }
     }
 
+    @else if ($module == group-focus) {
+      #{$hu-focus-parent} .group#{$hu-focus-pseudo} .group#{hu-escape-class-name(":focus")}__#{$class-name} {
+        @content;
+      }
+    }
+
     @else if ($module == group-hover) {
-      .group:hover .group__#{hu-escape-class-name(":hover")}--#{$class-name} {
+      .group:hover .group#{hu-escape-class-name(":hover")}__#{$class-name} {
+        @content;
+      }
+    }
+
+    @else if ($module == group-hocus) {
+      #{$hu-focus-parent} .group#{$hu-focus-pseudo} .group#{hu-escape-class-name(":hocus")}__#{$class-name},
+      .group:hover .group#{hu-escape-class-name(":hocus")}__#{$class-name} {
         @content;
       }
     }
 
     @else if ($module == group-state) {
       @each $state in $hu-states {
-        .group.#{$state} .group__#{$state}--#{$class-name} {
+        .group.#{$state} .group-#{$state}__#{$class-name} {
           @content;
         }
       }
