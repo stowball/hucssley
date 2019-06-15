@@ -244,6 +244,13 @@ However, if you want to customize Hucssley, we recommend taking this approach:
 // @import "custom/classes/index";
 ```
 
+
+*Note: If you are using webpack, you can leverage [its advanced mechanism to resolve files](https://github.com/webpack-contrib/sass-loader#imports) by replacing the path to `node_modules` with a `~`, like so:*
+
+```scss
+@import "~hucssley/src/index";
+```
+
 ---
 
 ## Modules
