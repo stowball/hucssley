@@ -1871,7 +1871,7 @@ $hu-transform-types: ();
 ```scss
 $hu-transition-alias: "";
 
-$hu-transition-modules: ();
+$hu-transition-modules: (base, group-hocus, group-state, reduced-motion, state);
 
 $hu-transition-types: ();
 ```
@@ -1881,7 +1881,7 @@ $hu-transition-types: ();
 ```scss
 $hu-transition-delay-alias: "";
 
-$hu-transition-delay-modules: (base, group-hocus, group-state, reduced-motion, state);
+$hu-transition-delay-modules: $hu-transition-modules;
 
 $hu-transition-delay-types: (
   0: 0s,
@@ -1899,7 +1899,7 @@ $hu-transition-delay-types: (
 ```scss
 $hu-transition-duration-alias: "";
 
-$hu-transition-duration-modules: (base, group-hocus, group-state, reduced-motion, state);
+$hu-transition-duration-modules: $hu-transition-modules;
 
 $hu-transition-duration-types: (
   0: 0s,
@@ -1921,7 +1921,7 @@ transition-easing -> transition-timing-function
 ```scss
 $hu-transition-easing-alias: transition-easing;
 
-$hu-transition-easing-modules: (base, group-hocus, group-state, reduced-motion, state);
+$hu-transition-easing-modules: $hu-transition-modules;
 
 $hu-transition-easing-types: $hu-animation-easing-types;
 ```
@@ -1931,7 +1931,7 @@ $hu-transition-easing-types: $hu-animation-easing-types;
 ```scss
 $hu-transition-property-alias: "";
 
-$hu-transition-property-modules: (base, group-hocus, group-state, reduced-motion, state);
+$hu-transition-property-modules: $hu-transition-modules;
 
 $hu-transition-property-types: (
   all,
