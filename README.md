@@ -2079,7 +2079,9 @@ However, we can do better… and we can do it automatically. By utilizing [Purge
 ```js
 extractor: class {
   static extract(content) {
-    return content.match(/[A-Za-z0-9-_&:@<>]+/g) || [];
+    return content.match(/[A-Za-z0-9-_&:@<>\/]+/g) || [];
   }
 }
 ```
+
+If you wish to change which characters are escaped, you can customize the [global `$hu-escape-class-name-types` variable](/src/variables/global/_hu-escape-class-name-types.scss).
