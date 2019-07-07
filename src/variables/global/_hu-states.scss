@@ -1,5 +1,4 @@
 $hu-states: (
-  is-active,
   is-closed,
   is-collapsed,
   is-disabled,
@@ -7,6 +6,7 @@ $hu-states: (
   is-hidden,
   is-loading,
   is-open,
+  is-pressed,
   is-selected,
   is-visible,
 ) !default;

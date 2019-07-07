@@ -752,7 +752,6 @@ Out-of-the-box, Hucssley provides the following 10 UI state values, with all bei
 
 ```scss
 $hu-states: (
-  is-active,
   is-closed,
   is-collapsed,
   is-disabled,
@@ -760,6 +759,7 @@ $hu-states: (
   is-hidden,
   is-loading,
   is-open,
+  is-pressed,
   is-selected,
   is-visible,
 );
@@ -1050,11 +1050,11 @@ By passing a map to `$property`, the map’s key becomes the core class name, an
 …
 
 @media (min-width: 22.5em) {
-  .is-active.is-active--transition-easing:ease {
+  .is-selected.is-selected--transition-easing:ease {
     transition-timing-function: ease;
   }
 
-  .is-active.is-active--transition-easing:ease-in {
+  .is-selected.is-selected--transition-easing:ease-in {
     transition-timing-function: ease-in;
   }
 }
@@ -1307,7 +1307,7 @@ This mixin is a wrapper around two other mixins, `hu-parent-generic-classes()` a
     display: block;
   }
 
-  .has-js .is-active.has-js__@mq-360-is-active--display:block {
+  .has-js .is-selected.has-js__@mq-360-is-selected--display:block {
     display: block;
   }
 }
@@ -1409,7 +1409,7 @@ Generates the responsive `base`, `state` and `group-state` module styles for a c
   display: block;
 }
 
-.is-active.@mq-medium-is-active--hu-display:block {
+.is-selected.@mq-medium-is-selected--hu-display:block {
   display: block;
 }
 */
