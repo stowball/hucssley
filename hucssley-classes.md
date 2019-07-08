@@ -1125,7 +1125,11 @@ $hu-grid-auto-flow-alias: "";
 
 $hu-grid-auto-flow-modules: ();
 
-$hu-grid-auto-flow-types: ();
+$hu-grid-auto-flow-types: (
+  column,
+  dense,
+  row,
+);
 ```
 
 ### hu-grid-auto-rows

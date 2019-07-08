@@ -2,4 +2,8 @@ $hu-grid-auto-flow-alias: "" !default;
 
 $hu-grid-auto-flow-modules: () !default;
 
-$hu-grid-auto-flow-types: () !default;
+$hu-grid-auto-flow-types: (
+  column,
+  dense,
+  row,
+) !default;
