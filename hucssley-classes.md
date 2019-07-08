@@ -93,6 +93,7 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-min-height](#hu-min-height)
   - [hu-min-width](#hu-min-width)
   - [hu-momentum-scrolling](#hu-momentum-scrolling)
+  - [hu-object-fit](#hu-object-fit)
   - [hu-opacity](#hu-opacity)
   - [hu-order](#hu-order)
   - [hu-outline](#hu-outline)
@@ -1493,6 +1494,22 @@ $hu-momentum-scrolling-modules: (base);
 .momentum-scrolling {
   -webkit-overflow-scrolling: touch;
 }
+```
+
+### hu-object-fit
+
+```scss
+$hu-object-fit-alias: "";
+
+$hu-object-fit-modules: ();
+
+$hu-object-fit-types: (
+  contain,
+  cover,
+  fill,
+  none,
+  scale-down,
+);
 ```
 
 ### hu-opacity
