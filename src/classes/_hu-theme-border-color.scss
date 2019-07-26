@@ -7,7 +7,7 @@
 
         @include hu-theme($class-name, $theme, $module) {
           @each $property in $side-properties {
-            #{$property}-color: $value;
+            #{$property}-color: $value #{hu-important()};
           }
         }
       }
@@ -26,7 +26,7 @@
 
             @include hu-responsive($class-name, $theme, $hu-border-color-modules, $mq-scale) {
               @each $property in $side-properties {
-                #{$property}-color: $value;
+                #{$property}-color: $value #{hu-important()};
               }
             }
           }

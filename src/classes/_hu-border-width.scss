@@ -11,7 +11,7 @@ $hu-border-width-parents: hu-get-class-modules($hu-border-width-modules, parents
 
       @include hu-generic($class-name, $module) {
         @each $property in $side-properties {
-          #{$property}-width: $value;
+          #{$property}-width: $value #{hu-important()};
         }
       }
     }
@@ -47,7 +47,7 @@ $hu-border-width-parents: hu-get-class-modules($hu-border-width-modules, parents
 
         @include hu-pseudo($class-name, $hu-border-width-pseudos, $module) {
           @each $property in $side-properties {
-            #{$property}-width: $value;
+            #{$property}-width: $value #{hu-important()};
           }
         }
       }
@@ -84,7 +84,7 @@ $hu-border-width-parents: hu-get-class-modules($hu-border-width-modules, parents
 
         @include hu-parent($class-name, $hu-border-width-parents, $module) {
           @each $property in $side-properties {
-            #{$property}-width: $value;
+            #{$property}-width: $value #{hu-important()};
           }
         }
       }
