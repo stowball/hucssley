@@ -6,6 +6,7 @@ $hu-padding-parents: hu-get-class-modules($hu-padding-modules, parents, null);
   @each $scale, $value in $hu-padding-scale {
     @each $type, $properties in $hu-padding-types {
       $class-name: hu-class-name("#{$type}:#{$scale}");
+      $value: if($value, $value, $scale);
 
       @include hu-generic($class-name, $module) {
         @each $property in $properties {
@@ -22,6 +23,7 @@ $hu-padding-parents: hu-get-class-modules($hu-padding-modules, parents, null);
       @each $scale, $value in $hu-padding-scale {
         @each $type, $properties in $hu-padding-types {
           $class-name: hu-class-name("#{$type}:#{$scale}");
+          $value: if($value, $value, $scale);
 
           @include hu-responsive($class-name, $hu-padding-core-modules, $mq-scale) {
             @each $property in $properties {
@@ -39,6 +41,7 @@ $hu-padding-parents: hu-get-class-modules($hu-padding-modules, parents, null);
     @each $scale, $value in $hu-padding-scale {
       @each $type, $properties in $hu-padding-types {
         $class-name: hu-class-name("#{$type}:#{$scale}");
+        $value: if($value, $value, $scale);
 
         @include hu-pseudo($class-name, $hu-padding-pseudos, $module) {
           @each $property in $properties {
@@ -55,6 +58,7 @@ $hu-padding-parents: hu-get-class-modules($hu-padding-modules, parents, null);
         @each $scale, $value in $hu-padding-scale {
           @each $type, $properties in $hu-padding-types {
             $class-name: hu-class-name("#{$type}:#{$scale}");
+            $value: if($value, $value, $scale);
 
             @include hu-pseudo-responsive($class-name, $hu-padding-pseudos, $hu-padding-core-modules, $mq-scale) {
               @each $property in $properties {
@@ -73,6 +77,7 @@ $hu-padding-parents: hu-get-class-modules($hu-padding-modules, parents, null);
     @each $scale, $value in $hu-padding-scale {
       @each $type, $properties in $hu-padding-types {
         $class-name: hu-class-name("#{$type}:#{$scale}");
+        $value: if($value, $value, $scale);
 
         @include hu-parent($class-name, $hu-padding-parents, $module) {
           @each $property in $properties {
@@ -89,6 +94,7 @@ $hu-padding-parents: hu-get-class-modules($hu-padding-modules, parents, null);
         @each $scale, $value in $hu-padding-scale {
           @each $type, $properties in $hu-padding-types {
             $class-name: hu-class-name("#{$type}:#{$scale}");
+            $value: if($value, $value, $scale);
 
             @include hu-parent-responsive($class-name, $hu-padding-parents, $hu-padding-core-modules, $mq-scale) {
               @each $property in $properties {

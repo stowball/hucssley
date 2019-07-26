@@ -7,6 +7,7 @@ $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
     @each $type, $properties in $hu-margin-types {
       $class-name: hu-class-name("#{$type}:#{$scale}");
       $class-name-negative: hu-class-name("#{$type}:-#{$scale}");
+      $value: if($value, $value, $scale);
 
       @include hu-generic($class-name, $module) {
         @each $property in $properties {
@@ -32,6 +33,7 @@ $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
         @each $type, $properties in $hu-margin-types {
           $class-name: hu-class-name("#{$type}:#{$scale}");
           $class-name-negative: hu-class-name("#{$type}:-#{$scale}");
+          $value: if($value, $value, $scale);
 
           @include hu-responsive($class-name, $hu-margin-core-modules, $mq-scale) {
             @each $property in $properties {
@@ -58,6 +60,7 @@ $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
       @each $type, $properties in $hu-margin-types {
         $class-name: hu-class-name("#{$type}:#{$scale}");
         $class-name-negative: hu-class-name("#{$type}:-#{$scale}");
+        $value: if($value, $value, $scale);
 
         @include hu-pseudo($class-name, $hu-margin-pseudos, $module) {
           @each $property in $properties {
@@ -83,6 +86,7 @@ $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
           @each $type, $properties in $hu-margin-types {
             $class-name: hu-class-name("#{$type}:#{$scale}");
             $class-name-negative: hu-class-name("#{$type}:-#{$scale}");
+            $value: if($value, $value, $scale);
 
             @include hu-pseudo-responsive($class-name, $hu-margin-pseudos, $hu-margin-core-modules, $mq-scale) {
               @each $property in $properties {
@@ -110,6 +114,7 @@ $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
       @each $type, $properties in $hu-margin-types {
         $class-name: hu-class-name("#{$type}:#{$scale}");
         $class-name-negative: hu-class-name("#{$type}:-#{$scale}");
+        $value: if($value, $value, $scale);
 
         @include hu-parent($class-name, $hu-margin-parents, $module) {
           @each $property in $properties {
@@ -135,6 +140,7 @@ $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
           @each $type, $properties in $hu-margin-types {
             $class-name: hu-class-name("#{$type}:#{$scale}");
             $class-name-negative: hu-class-name("#{$type}:-#{$scale}");
+            $value: if($value, $value, $scale);
 
             @include hu-parent-responsive($class-name, $hu-margin-parents, $hu-margin-core-modules, $mq-scale) {
               @each $property in $properties {

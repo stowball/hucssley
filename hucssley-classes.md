@@ -798,8 +798,6 @@ $hu-border-style-types: (
 ### hu-border-width
 
 ```scss
-$hu-border-width-alias: "";
-
 $hu-border-width-modules: $hu-border-modules;
 
 $hu-border-width-sides: $hu-border-sides;

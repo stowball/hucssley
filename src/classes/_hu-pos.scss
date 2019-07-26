@@ -6,6 +6,7 @@ $hu-pos-parents: hu-get-class-modules($hu-pos-modules, parents, null);
   @each $scale, $value in $hu-pos-scale {
     @each $type, $properties in $hu-pos-types {
       $class-name: hu-class-name("#{$type}:#{$scale}");
+      $value: if($value, $value, $scale);
 
       @include hu-generic($class-name, $module) {
         @each $property in $properties {
@@ -22,6 +23,7 @@ $hu-pos-parents: hu-get-class-modules($hu-pos-modules, parents, null);
       @each $scale, $value in $hu-pos-scale {
         @each $type, $properties in $hu-pos-types {
           $class-name: hu-class-name("#{$type}:#{$scale}");
+          $value: if($value, $value, $scale);
 
           @include hu-responsive($class-name, $hu-pos-core-modules, $mq-scale) {
             @each $property in $properties {
@@ -39,6 +41,7 @@ $hu-pos-parents: hu-get-class-modules($hu-pos-modules, parents, null);
     @each $scale, $value in $hu-pos-scale {
       @each $type, $properties in $hu-pos-types {
         $class-name: hu-class-name("#{$type}:#{$scale}");
+        $value: if($value, $value, $scale);
 
         @include hu-pseudo($class-name, $hu-pos-pseudos, $module) {
           @each $property in $properties {
@@ -55,6 +58,7 @@ $hu-pos-parents: hu-get-class-modules($hu-pos-modules, parents, null);
         @each $scale, $value in $hu-pos-scale {
           @each $type, $properties in $hu-pos-types {
             $class-name: hu-class-name("#{$type}:#{$scale}");
+            $value: if($value, $value, $scale);
 
             @include hu-pseudo-responsive($class-name, $hu-pos-pseudos, $hu-pos-core-modules, $mq-scale) {
               @each $property in $properties {
@@ -73,6 +77,7 @@ $hu-pos-parents: hu-get-class-modules($hu-pos-modules, parents, null);
     @each $scale, $value in $hu-pos-scale {
       @each $type, $properties in $hu-pos-types {
         $class-name: hu-class-name("#{$type}:#{$scale}");
+        $value: if($value, $value, $scale);
 
         @include hu-parent($class-name, $hu-pos-parents, $module) {
           @each $property in $properties {
@@ -89,6 +94,7 @@ $hu-pos-parents: hu-get-class-modules($hu-pos-modules, parents, null);
         @each $scale, $value in $hu-pos-scale {
           @each $type, $properties in $hu-pos-types {
             $class-name: hu-class-name("#{$type}:#{$scale}");
+            $value: if($value, $value, $scale);
 
             @include hu-parent-responsive($class-name, $hu-pos-parents, $hu-pos-core-modules, $mq-scale) {
               @each $property in $properties {
