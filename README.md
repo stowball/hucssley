@@ -405,9 +405,9 @@ Here the syntax is:
 Which results in:
 
 ```css
-.@mq-960-is-expanded--display:flex
+.@mq-600-is-expanded--display:flex
 .group:hover__@mq-768--display:block
-.group-is-collapsed__@mq-1200--height:0
+.group-is-collapsed__@mq-1024--height:0
 ```
 
 ## Scales
@@ -658,11 +658,9 @@ Out-of-the-box, Hucssley provides the following 7 breakpoint values, with all be
 
 ```scss
 $hu-media-queries: (
-  360: hu-em(360),
   480: hu-em(480),
   600: hu-em(600),
   768: hu-em(768),
-  960: hu-em(960),
   1024: hu-em(1024),
   1280: hu-em(1280),
 );
@@ -1018,11 +1016,11 @@ It takes a `$property`, which can be either a CSS property or a map, a list or m
 …
 
 @media (min-width: 22.5em) {
-  .@mq-360--align-content:baseline {
+  .@mq-480--align-content:baseline {
     align-content: baseline;
   }
 
-  .@mq-360--align-content:center {
+  .@mq-480--align-content:center {
     align-content: center;
   }
 }
@@ -1080,7 +1078,7 @@ By not proving a `$type` and passing in a `@content` block, you can create “on
 }
 
 @media (min-width: 22.5em) {
-  .@mq-360--font-smoothing {
+  .@mq-480--font-smoothing {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
   }
@@ -1170,11 +1168,11 @@ $hu-display-modules: (
 …
 
 @media (min-width: 22.5em) {
-  .@mq-360:before--display:block::before {
+  .@mq-480:before--display:block::before {
     display: block;
   }
 
-  .@mq-360:first-child--display:block:first-child {
+  .@mq-480:first-child--display:block:first-child {
     display: block;
   }
 }
@@ -1253,19 +1251,19 @@ This mixin is a wrapper around two other mixins, `hu-pseudo-generic-classes()` a
 …
 
 @media (min-width: 22.5em) {
-  .@mq-360:before--display:block::before {
+  .@mq-480:before--display:block::before {
     display: block;
   }
 
-  .@mq-360:first-child--display:block:first-child {
+  .@mq-480:first-child--display:block:first-child {
     display: block;
   }
 
-  .@mq-360:before--display:flex::before {
+  .@mq-480:before--display:flex::before {
     display: flex;
   }
 
-  .@mq-360:first-child--display:flex:first-child {
+  .@mq-480:first-child--display:flex:first-child {
     display: flex;
   }
 }
@@ -1303,11 +1301,11 @@ This mixin is a wrapper around two other mixins, `hu-parent-generic-classes()` a
 …
 
 @media (min-width: 22.5em) {
-  .has-js .has-js__@mq-360--display:block {
+  .has-js .has-js__@mq-480--display:block {
     display: block;
   }
 
-  .has-js .is-selected.has-js__@mq-360-is-selected--display:block {
+  .has-js .is-selected.has-js__@mq-480-is-selected--display:block {
     display: block;
   }
 }
@@ -1613,18 +1611,6 @@ The output from these 2 blocks is:
   width: 1.5rem;
 }
 
-@media (min-width: 22.5em) {
-  .@mq-360--icon-size:100 {
-    height: 1rem;
-    width: 1rem;
-  }
-
-  .@mq-360--icon-size:200 {
-    height: 1.5rem;
-    width: 1.5rem;
-  }
-}
-
 @media (min-width: 30em) {
   .@mq-480--icon-size:100 {
     height: 1rem;
@@ -1701,18 +1687,6 @@ Generates the following:
   width: 1.5rem;
 }
 
-@media (min-width: 22.5em) {
-  .@mq-360:before--icon-size:100::before {
-    height: 1rem;
-    width: 1rem;
-  }
-
-  .@mq-360:before--icon-size:200::before {
-    height: 1.5rem;
-    width: 1.5rem;
-  }
-}
-
 @media (min-width: 30em) {
   .@mq-480:before--icon-size:100::before {
     height: 1rem;
@@ -1787,17 +1761,6 @@ will generate the following:
 .browser-mobile .browser-mobile__icon-size:200 {
   height: 1.5rem;
   width: 1.5rem;
-}
-
-@media (min-width: 22.5em) {
-  .browser-mobile .browser-mobile__@mq-360--icon-size:100 {
-    height: 1rem;
-    width: 1rem;
-  }
-  .browser-mobile .browser-mobile__@mq-360--icon-size:200 {
-    height: 1.5rem;
-    width: 1.5rem;
-  }
 }
 
 @media (min-width: 30em) {
@@ -2070,7 +2033,7 @@ which produces:
 
 ## Controlling file size
 
-While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.5 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 104 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
+While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.3 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 90 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
 
 But, Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, media queries, and spacing scales will also help.
 
