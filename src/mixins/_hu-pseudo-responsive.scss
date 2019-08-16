@@ -9,6 +9,12 @@
         }
       }
 
+      @if (index($modules, visited)) {
+        .#{hu-escape-class-name("@mq-#{$mq-scale}:visited")}#{$pseudo-class-name}--#{$class-name}:visited#{$pseudo} {
+          @content;
+        }
+      }
+
       @if (index($modules, focus)) {
         #{$hu-focus-parent} .#{hu-escape-class-name("@mq-#{$mq-scale}:focus")}#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo} {
           @content;
@@ -24,6 +30,12 @@
       @if (index($modules, hocus)) {
         #{$hu-focus-parent} .#{hu-escape-class-name("@mq-#{$mq-scale}:hocus")}#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo},
         .#{hu-escape-class-name("@mq-#{$mq-scale}:hocus")}#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
+          @content;
+        }
+      }
+
+      @if (index($modules, active)) {
+        .#{hu-escape-class-name("@mq-#{$mq-scale}:active")}#{$pseudo-class-name}--#{$class-name}:active#{$pseudo} {
           @content;
         }
       }

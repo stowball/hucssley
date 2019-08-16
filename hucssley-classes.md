@@ -627,7 +627,7 @@ $hu-backface-visibility-types: (
 ```scss
 $hu-background-color-alias: "";
 
-$hu-background-color-modules: (base, hocus, group-hocus, group-state, state);
+$hu-background-color-modules: (base, visited, hocus, active, group-hocus, group-state, state);
 
 $hu-background-color-types: $hu-colors;
 ```
@@ -1828,7 +1828,7 @@ $hu-text-align-types: (
 ```scss
 $hu-text-decoration-alias: "";
 
-$hu-text-decoration-modules: (base, hocus);
+$hu-text-decoration-modules: (base, visited, hocus, active);
 
 $hu-text-decoration-types: (
   line-through,

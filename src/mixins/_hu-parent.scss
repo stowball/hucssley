@@ -10,6 +10,12 @@
         }
       }
 
+      @else if ($module == visited) {
+        .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name(":visited")}--#{$class-name}:visited {
+          @content;
+        }
+      }
+
       @else if ($module == focus) {
         #{$hu-focus-parent} .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name(":focus")}--#{$class-name}#{$hu-focus-pseudo} {
           @content;
@@ -25,6 +31,12 @@
       @else if ($module == hocus) {
         #{$hu-focus-parent} .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name(":hocus")}--#{$class-name}#{$hu-focus-pseudo},
         .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name(":hocus")}--#{$class-name}:hover {
+          @content;
+        }
+      }
+
+      @else if ($module == active) {
+        .#{$escaped-parent} .#{$escaped-child}__#{hu-escape-class-name(":active")}--#{$class-name}:active {
           @content;
         }
       }

@@ -26,11 +26,11 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
 - [Installation](#installation)
 - [Modules](#modules)
   - [Base: `base`](#base-base)
-    - [Non-parent modules: `focus, hocus, hover, print, reduced-motion, responsive`](#non-parent-modules-focus-hocus-hover-print-reduced-motion-responsive)
+    - [Non-parent modules: `visited, focus, hocus, hover, active, print, reduced-motion, responsive`](#non-parent-modules-visited-focus-hocus-hover-active-print-reduced-motion-responsive)
   - [State modules: `state`](#state-modules-state)
   - [Group modules: `group-focus, group-hover, group-hocus, group-state`](#group-modules-group-focus-group-hover-group-hocus-group-state)
   - [Custom parent modules](#custom-parent-modules)
-  - [Combining modules: `responsive` and `focus, hover, hocus, state, group-hover, group-state`](#combining-modules-responsive-and-focus-hover-hocus-state-group-hover-group-state)
+  - [Combining modules: `responsive` and `visited, focus, hover, hocus, active, state, group-hover, group-state`](#combining-modules-responsive-and-visited-focus-hover-hocus-active-state-group-hover-group-state)
 - [Scales](#scales)
 - [Configuration](#configuration)
   - [Configuration helpers](#configuration-helpers)
@@ -159,7 +159,6 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
         font-weight:700
         line-height:200
         margin-bottom:400
-        @mq-768--font-size:800
       ">
         Disability support workers who love what you love
       </p>
@@ -176,7 +175,6 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
           transition-property:all
           &:hocus--background-color:blue-600
           &:hocus--scale:105
-          @mq-768--font-size:600
           @mq-768--padding-horizontal:500
           @mq-768--padding-vertical:400
         "
@@ -303,7 +301,7 @@ All of the above aliases – and every other class alias – can be changed to y
 
 *Note: If a global namespace has been configured, it will always precede the base class name.*
 
-#### Non-parent modules: `focus, hocus, hover, print, reduced-motion, responsive`
+#### Non-parent modules: `visited, focus, hocus, hover, active, print, reduced-motion, responsive`
 
 When you want to use class names scoped to “non-parent” modules, it follows a pattern of `[module-name][-module-variant]?--[base-class]`, for instance:
 
@@ -314,6 +312,8 @@ When you want to use class names scoped to “non-parent” modules, it follows 
 ```
 
 In the above example, `&:hocus` is a shortcut module for `:hover, :focus`, and `@mq-768` is for a `(min-width: 768px)` media query.
+
+The `:active`, `:focus`, `:hover` and `:visited` pseudo-classes are automatically ordered to the [LVHA system](https://developer.mozilla.org/en-US/docs/Web/CSS/:active) to ensure links and buttons are styled predictably.
 
 *Note: top-level pseudo classes are prefixed with `&`.*
 
@@ -387,15 +387,17 @@ In the above example, we used a `browser-mobile__font-size:700` class name, whic
 
 For more information, please read [Parent classes](#parent-classes-hu-parent-classes).
 
-### Combining modules: `responsive` and `focus, hover, hocus, state, group-hover, group-state`
+### Combining modules: `responsive` and `visited, focus, hover, hocus, active, state, group-hover, group-state`
 
 When a particular class is configured to use the `responsive` module, it will also output `focus`, `hover`, `hocus`, `state`, `group-hover` and `group-state` classes should they have also been configured.
 
 Here the syntax is:
 
+* `@mq-[responsive-scale]:visited--[base-class]` for `visited`
 * `@mq-[responsive-scale]:focus--[base-class]` for `focus`
 * `@mq-[responsive-scale]:hover--[base-class]` for `hover`
 * `@mq-[responsive-scale]:hocus--[base-class]` for `hocus`
+* `@mq-[responsive-scale]:active--[base-class]` for `active`
 * `@mq-[responsive-scale]-[state-name]--[base-class]` for `state`s
 * `group:hover__@mq-[responsive-scale]--[base-class]` for `group-hover`
 * `group-[state-name]__@mq-[responsive-scale]--[base-class]` for `group-state`
@@ -403,6 +405,7 @@ Here the syntax is:
 Which results in:
 
 ```css
+.@mq-480:active--color:neutral-1000
 .@mq-600-is-expanded--display:flex
 .group:hover__@mq-768--display:block
 .group-is-collapsed__@mq-1024--height:0
@@ -2031,7 +2034,7 @@ which produces:
 
 ## Controlling file size
 
-While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.3 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 90 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
+While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.3 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 93 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
 
 But, Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, media queries, and spacing scales will also help.
 
