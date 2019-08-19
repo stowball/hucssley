@@ -1,15 +1,24 @@
-@function hu-get($original-map, $keys: null, $stack-trace-name: null) {
-  $map: $original-map;
+@function hu-get($variable, $keys: null, $stack-trace-name: null) {
+  $map: $variable;
 
-  @if ($keys) {
-    @each $key in $keys {
-      $map: map-get($map, $key);
+  @if (type-of($variable) == map) {
+    @if ($keys) {
+      @each $key in $keys {
+        $map: map-get($map, $key);
+      }
     }
-  }
 
-  @if ($map == null) {
-    $error: hu-log-error("No map found for #{unquote($stack-trace-name)}(#{$keys}). Map contains #{$original-map}");
-  }
+    @if ($map == null) {
+      $error: hu-log-error("No map found for #{unquote($stack-trace-name)}(#{$keys}). Map contains #{$variable}");
+    }
 
-  @return $map;
+    @return $map;
+  }
+  @else if (type-of($variable) == list) {
+    @if (index($variable, nth($keys, 1)) == null) {
+      $error: hu-log-error("No item found for #{unquote($stack-trace-name)}(#{$keys}). List contains #{$variable}");
+    }
+
+    @return nth($keys, 1);
+  }
 }

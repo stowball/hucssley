@@ -473,13 +473,16 @@ With both of the above functions, they have to be of the same type. When used wi
 #### `hu-get`
 
 ```scss
-@function hu-get($map, $path);
+@function hu-get($list-or-map, $path, $stack-trace-name?);
 
 hu-get($hu-colors, neutral 1000);
 // -> #1a1a1a
+
+hu-get($hu-font-weight-types, 700);
+// -> 700
 ```
 
-Gets the value at a specific path within a map.
+Gets the value at a specific path within a map or list.
 
 #### `hu-em` and `hu-rem`
 
