@@ -1,8 +1,8 @@
-$hu-border-radius-core-modules: hu-get-class-modules($hu-border-radius-modules, core, $hu-border-radius-modules);
+$hu-border-radius-core-modules: hu-format-modules(hu-get-class-modules($hu-border-radius-modules, core, $hu-border-radius-modules));
 $hu-border-radius-pseudos: hu-get-class-modules($hu-border-radius-modules, pseudos, null);
 $hu-border-radius-parents: hu-get-class-modules($hu-border-radius-modules, parents, null);
 
-@each $module in hu-format-modules($hu-border-radius-core-modules) {
+@each $module in $hu-border-radius-core-modules {
   @each $scale, $value in $hu-border-radius-scale {
     @each $type, $properties in $hu-border-radius-types {
       $class-name: hu-class-name("#{$type}:#{$scale}");
@@ -37,7 +37,7 @@ $hu-border-radius-parents: hu-get-class-modules($hu-border-radius-modules, paren
 }
 
 @if ($hu-border-radius-pseudos) {
-  @each $module in hu-format-modules($hu-border-radius-core-modules) {
+  @each $module in $hu-border-radius-core-modules {
     @each $scale, $value in $hu-border-radius-scale {
       @each $type, $properties in $hu-border-radius-types {
         $class-name: hu-class-name("#{$type}:#{$scale}");
@@ -73,7 +73,7 @@ $hu-border-radius-parents: hu-get-class-modules($hu-border-radius-modules, paren
 }
 
 @if ($hu-border-radius-parents) {
-  @each $module in hu-format-modules($hu-border-radius-core-modules) {
+  @each $module in $hu-border-radius-core-modules {
     @each $scale, $value in $hu-border-radius-scale {
       @each $type, $properties in $hu-border-radius-types {
         $class-name: hu-class-name("#{$type}:#{$scale}");

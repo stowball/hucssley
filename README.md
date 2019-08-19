@@ -1112,7 +1112,7 @@ You could also use this technique to add complex `@supports` feature queries:
 Of course, just because you can’t provide a `$type` argument to the mixin, it doesn’t mean you’re restricted from creating multiple classes, since you can easily wrap it in its own `@each` loop:
 
 ```scss
-// if $types was map, also extract the $value variable and use that in the mixin's @content
+// if $types was a map, also extract the $value variable and use that in the mixin's @content
 @each $type in $hu-blend-mode-types {
   @include hu-classes("@supports-blend-mode:#{$type}", $hu-blend-mode-modules) {
     @supports (mix-blend-mode: #{$type}) {
@@ -1626,6 +1626,8 @@ The output from these 2 blocks is:
 
 // and all other media queries defined…
 ```
+
+To see a fully-fledged example, take a look at how [`rotate`](/src/classes/_hu-rotate.scss) is written.
 
 ##### Creating custom pseudo classes
 

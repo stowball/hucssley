@@ -1,10 +1,10 @@
-$hu-color-core-modules: hu-get-class-modules($hu-color-modules, core, $hu-color-modules);
+$hu-color-core-modules: hu-format-modules(hu-get-class-modules($hu-color-modules, core, $hu-color-modules));
 $hu-color-pseudos: hu-get-class-modules($hu-color-modules, pseudos, null);
 $hu-color-parents: hu-get-class-modules($hu-color-modules, parents, null);
 $hu-color-property-name: color;
 $hu-color-class-name: hu-get-class-name(($hu-color-alias: $hu-color-property-name));
 
-@each $module in hu-format-modules($hu-color-core-modules) {
+@each $module in $hu-color-core-modules {
   @each $hue, $colors in $hu-color-types {
     @each $scale, $value in $colors {
       $class-name: hu-class-name("#{$hu-color-class-name}:#{$hue}-#{$scale}");
@@ -33,7 +33,7 @@ $hu-color-class-name: hu-get-class-name(($hu-color-alias: $hu-color-property-nam
 }
 
 @if ($hu-color-pseudos) {
-  @each $module in hu-format-modules($hu-color-core-modules) {
+  @each $module in $hu-color-core-modules {
     @each $hue, $colors in $hu-color-types {
       @each $scale, $value in $colors {
         $class-name: hu-class-name("#{$hu-color-class-name}:#{$hue}-#{$scale}");
@@ -63,7 +63,7 @@ $hu-color-class-name: hu-get-class-name(($hu-color-alias: $hu-color-property-nam
 }
 
 @if ($hu-color-parents) {
-  @each $module in hu-format-modules($hu-color-core-modules) {
+  @each $module in $hu-color-core-modules {
     @each $hue, $colors in $hu-color-types {
       @each $scale, $value in $colors {
         $class-name: hu-class-name("#{$hu-color-class-name}:#{$hue}-#{$scale}");

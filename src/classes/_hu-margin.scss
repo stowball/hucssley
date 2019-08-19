@@ -1,8 +1,8 @@
-$hu-margin-core-modules: hu-get-class-modules($hu-margin-modules, core, $hu-margin-modules);
+$hu-margin-core-modules: hu-format-modules(hu-get-class-modules($hu-margin-modules, core, $hu-margin-modules));
 $hu-margin-pseudos: hu-get-class-modules($hu-margin-modules, pseudos, null);
 $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
 
-@each $module in hu-format-modules($hu-margin-core-modules) {
+@each $module in $hu-margin-core-modules {
   @each $scale, $value in $hu-margin-scale {
     @each $type, $properties in $hu-margin-types {
       $class-name: hu-class-name("#{$type}:#{$scale}");
@@ -55,7 +55,7 @@ $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
 }
 
 @if ($hu-margin-pseudos) {
-  @each $module in hu-format-modules($hu-margin-core-modules) {
+  @each $module in $hu-margin-core-modules {
     @each $scale, $value in $hu-margin-scale {
       @each $type, $properties in $hu-margin-types {
         $class-name: hu-class-name("#{$type}:#{$scale}");
@@ -109,7 +109,7 @@ $hu-margin-parents: hu-get-class-modules($hu-margin-modules, parents, null);
 }
 
 @if ($hu-margin-parents) {
-  @each $module in hu-format-modules($hu-margin-core-modules) {
+  @each $module in $hu-margin-core-modules {
     @each $scale, $value in $hu-margin-scale {
       @each $type, $properties in $hu-margin-types {
         $class-name: hu-class-name("#{$type}:#{$scale}");

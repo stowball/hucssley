@@ -1,8 +1,8 @@
-$hu-border-style-core-modules: hu-get-class-modules($hu-border-style-modules, core, $hu-border-style-modules);
+$hu-border-style-core-modules: hu-format-modules(hu-get-class-modules($hu-border-style-modules, core, $hu-border-style-modules));
 $hu-border-style-pseudos: hu-get-class-modules($hu-border-style-modules, pseudos, null);
 $hu-border-style-parents: hu-get-class-modules($hu-border-style-modules, parents, null);
 
-@each $module in hu-format-modules($hu-border-style-core-modules) {
+@each $module in $hu-border-style-core-modules {
   @each $type, $value in $hu-border-style-types {
     @each $side-type, $side-properties in $hu-border-style-sides {
       $side-properties: if($side-properties, $side-properties, $side-type);
@@ -39,7 +39,7 @@ $hu-border-style-parents: hu-get-class-modules($hu-border-style-modules, parents
 }
 
 @if ($hu-border-style-pseudos) {
-  @each $module in hu-format-modules($hu-border-style-core-modules) {
+  @each $module in $hu-border-style-core-modules {
     @each $type, $value in $hu-border-style-types {
       @each $side-type, $side-properties in $hu-border-style-sides {
         $side-properties: if($side-properties, $side-properties, $side-type);
@@ -77,7 +77,7 @@ $hu-border-style-parents: hu-get-class-modules($hu-border-style-modules, parents
 }
 
 @if ($hu-border-style-parents) {
-  @each $module in hu-format-modules($hu-border-style-core-modules) {
+  @each $module in $hu-border-style-core-modules {
     @each $type, $value in $hu-border-style-types {
       @each $side-type, $side-properties in $hu-border-style-sides {
         $side-properties: if($side-properties, $side-properties, $side-type);

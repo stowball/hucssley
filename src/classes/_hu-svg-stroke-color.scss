@@ -1,10 +1,10 @@
-$hu-svg-stroke-color-core-modules: hu-get-class-modules($hu-svg-stroke-color-modules, core, $hu-svg-stroke-color-modules);
+$hu-svg-stroke-color-core-modules: hu-format-modules(hu-get-class-modules($hu-svg-stroke-color-modules, core, $hu-svg-stroke-color-modules));
 $hu-svg-stroke-color-pseudos: hu-get-class-modules($hu-svg-stroke-color-modules, pseudos, null);
 $hu-svg-stroke-color-parents: hu-get-class-modules($hu-svg-stroke-color-modules, parents, null);
 $hu-svg-stroke-color-property-name: stroke;
 $hu-svg-stroke-color-class-name: hu-get-class-name(($hu-svg-stroke-color-alias: $hu-svg-stroke-color-property-name));
 
-@each $module in hu-format-modules($hu-svg-stroke-color-core-modules) {
+@each $module in $hu-svg-stroke-color-core-modules {
   @each $hue, $colors in $hu-svg-stroke-color-types {
     @each $scale, $value in $colors {
       $class-name: hu-class-name("#{$hu-svg-stroke-color-class-name}:#{$hue}-#{$scale}");
@@ -33,7 +33,7 @@ $hu-svg-stroke-color-class-name: hu-get-class-name(($hu-svg-stroke-color-alias: 
 }
 
 @if ($hu-svg-stroke-color-pseudos) {
-  @each $module in hu-format-modules($hu-svg-stroke-color-core-modules) {
+  @each $module in $hu-svg-stroke-color-core-modules {
     @each $hue, $colors in $hu-svg-stroke-color-types {
       @each $scale, $value in $colors {
         $class-name: hu-class-name("#{$hu-svg-stroke-color-class-name}:#{$hue}-#{$scale}");
@@ -63,7 +63,7 @@ $hu-svg-stroke-color-class-name: hu-get-class-name(($hu-svg-stroke-color-alias: 
 }
 
 @if ($hu-svg-stroke-color-parents) {
-  @each $module in hu-format-modules($hu-svg-stroke-color-core-modules) {
+  @each $module in $hu-svg-stroke-color-core-modules {
     @each $hue, $colors in $hu-svg-stroke-color-types {
       @each $scale, $value in $colors {
         $class-name: hu-class-name("#{$hu-svg-stroke-color-class-name}:#{$hue}-#{$scale}");

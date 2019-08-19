@@ -1,8 +1,8 @@
-$hu-border-color-core-modules: hu-get-class-modules($hu-border-color-modules, core, $hu-border-color-modules);
+$hu-border-color-core-modules: hu-format-modules(hu-get-class-modules($hu-border-color-modules, core, $hu-border-color-modules));
 $hu-border-color-pseudos: hu-get-class-modules($hu-border-color-modules, pseudos, null);
 $hu-border-color-parents: hu-get-class-modules($hu-border-color-modules, parents, null);
 
-@each $module in hu-format-modules($hu-border-color-core-modules) {
+@each $module in $hu-border-color-core-modules {
   @each $hue, $colors in $hu-border-color-types {
     @each $color-scale, $color-value in $colors {
       @each $side-type, $side-properties in $hu-border-color-sides {
@@ -41,7 +41,7 @@ $hu-border-color-parents: hu-get-class-modules($hu-border-color-modules, parents
 }
 
 @if ($hu-border-color-pseudos) {
-  @each $module in hu-format-modules($hu-border-color-core-modules) {
+  @each $module in $hu-border-color-core-modules {
     @each $hue, $colors in $hu-border-color-types {
       @each $color-scale, $color-value in $colors {
         @each $side-type, $side-properties in $hu-border-color-sides {
@@ -81,7 +81,7 @@ $hu-border-color-parents: hu-get-class-modules($hu-border-color-modules, parents
 }
 
 @if ($hu-border-color-parents) {
-  @each $module in hu-format-modules($hu-border-color-core-modules) {
+  @each $module in $hu-border-color-core-modules {
     @each $hue, $colors in $hu-border-color-types {
       @each $color-scale, $color-value in $colors {
         @each $side-type, $side-properties in $hu-border-color-sides {

@@ -1,8 +1,8 @@
-$hu-padding-core-modules: hu-get-class-modules($hu-padding-modules, core, $hu-padding-modules);
+$hu-padding-core-modules: hu-format-modules(hu-get-class-modules($hu-padding-modules, core, $hu-padding-modules));
 $hu-padding-pseudos: hu-get-class-modules($hu-padding-modules, pseudos, null);
 $hu-padding-parents: hu-get-class-modules($hu-padding-modules, parents, null);
 
-@each $module in hu-format-modules($hu-padding-core-modules) {
+@each $module in $hu-padding-core-modules {
   @each $scale, $value in $hu-padding-scale {
     @each $type, $properties in $hu-padding-types {
       $class-name: hu-class-name("#{$type}:#{$scale}");
@@ -37,7 +37,7 @@ $hu-padding-parents: hu-get-class-modules($hu-padding-modules, parents, null);
 }
 
 @if ($hu-padding-pseudos) {
-  @each $module in hu-format-modules($hu-padding-core-modules) {
+  @each $module in $hu-padding-core-modules {
     @each $scale, $value in $hu-padding-scale {
       @each $type, $properties in $hu-padding-types {
         $class-name: hu-class-name("#{$type}:#{$scale}");
@@ -73,7 +73,7 @@ $hu-padding-parents: hu-get-class-modules($hu-padding-modules, parents, null);
 }
 
 @if ($hu-padding-parents) {
-  @each $module in hu-format-modules($hu-padding-core-modules) {
+  @each $module in $hu-padding-core-modules {
     @each $scale, $value in $hu-padding-scale {
       @each $type, $properties in $hu-padding-types {
         $class-name: hu-class-name("#{$type}:#{$scale}");

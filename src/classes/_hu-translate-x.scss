@@ -1,10 +1,10 @@
-$hu-translate-x-core-modules: hu-get-class-modules($hu-translate-x-modules, core, $hu-translate-x-modules);
+$hu-translate-x-core-modules: hu-format-modules(hu-get-class-modules($hu-translate-x-modules, core, $hu-translate-x-modules));
 $hu-translate-x-pseudos: hu-get-class-modules($hu-translate-x-modules, pseudos, null);
 $hu-translate-x-parents: hu-get-class-modules($hu-translate-x-modules, parents, null);
 $hu-translate-x-property-name: transform;
 $hu-translate-x-class-name: hu-get-class-name(($hu-translate-x-alias: $hu-translate-x-property-name));
 
-@each $module in hu-format-modules($hu-translate-x-core-modules) {
+@each $module in $hu-translate-x-core-modules {
   @each $type, $value in $hu-translate-x-types {
     $class-name: hu-class-name("#{$hu-translate-x-class-name}:#{$type}");
     $value: if($value, $value, $type);
@@ -31,7 +31,7 @@ $hu-translate-x-class-name: hu-get-class-name(($hu-translate-x-alias: $hu-transl
 }
 
 @if ($hu-translate-x-pseudos) {
-  @each $module in hu-format-modules($hu-translate-x-core-modules) {
+  @each $module in $hu-translate-x-core-modules {
     @each $type, $value in $hu-translate-x-types {
       $class-name: hu-class-name("#{$hu-translate-x-class-name}:#{$type}");
       $value: if($value, $value, $type);
@@ -59,7 +59,7 @@ $hu-translate-x-class-name: hu-get-class-name(($hu-translate-x-alias: $hu-transl
 }
 
 @if ($hu-translate-x-parents) {
-  @each $module in hu-format-modules($hu-translate-x-core-modules) {
+  @each $module in $hu-translate-x-core-modules {
     @each $type, $value in $hu-translate-x-types {
       $class-name: hu-class-name("#{$hu-translate-x-class-name}:#{$type}");
       $value: if($value, $value, $type);

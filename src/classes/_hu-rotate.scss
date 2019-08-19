@@ -1,10 +1,10 @@
-$hu-rotate-core-modules: hu-get-class-modules($hu-rotate-modules, core, $hu-rotate-modules);
+$hu-rotate-core-modules: hu-format-modules(hu-get-class-modules($hu-rotate-modules, core, $hu-rotate-modules));
 $hu-rotate-pseudos: hu-get-class-modules($hu-rotate-modules, pseudos, null);
 $hu-rotate-parents: hu-get-class-modules($hu-rotate-modules, parents, null);
 $hu-rotate-property-name: transform;
 $hu-rotate-class-name: hu-get-class-name(($hu-rotate-alias: $hu-rotate-property-name));
 
-@each $module in hu-format-modules($hu-rotate-core-modules) {
+@each $module in $hu-rotate-core-modules {
   @each $type, $value in $hu-rotate-types {
     $class-name: hu-class-name("#{$hu-rotate-class-name}:#{$type}");
     $value: if($value, $value, $type);
@@ -31,7 +31,7 @@ $hu-rotate-class-name: hu-get-class-name(($hu-rotate-alias: $hu-rotate-property-
 }
 
 @if ($hu-rotate-pseudos) {
-  @each $module in hu-format-modules($hu-rotate-core-modules) {
+  @each $module in $hu-rotate-core-modules {
     @each $type, $value in $hu-rotate-types {
       $class-name: hu-class-name("#{$hu-rotate-class-name}:#{$type}");
       $value: if($value, $value, $type);
@@ -59,7 +59,7 @@ $hu-rotate-class-name: hu-get-class-name(($hu-rotate-alias: $hu-rotate-property-
 }
 
 @if ($hu-rotate-parents) {
-  @each $module in hu-format-modules($hu-rotate-core-modules) {
+  @each $module in $hu-rotate-core-modules {
     @each $type, $value in $hu-rotate-types {
       $class-name: hu-class-name("#{$hu-rotate-class-name}:#{$type}");
       $value: if($value, $value, $type);

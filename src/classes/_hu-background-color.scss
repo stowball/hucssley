@@ -1,10 +1,10 @@
-$hu-background-color-core-modules: hu-get-class-modules($hu-background-color-modules, core, $hu-background-color-modules);
+$hu-background-color-core-modules: hu-format-modules(hu-get-class-modules($hu-background-color-modules, core, $hu-background-color-modules));
 $hu-background-color-pseudos: hu-get-class-modules($hu-background-color-modules, pseudos, null);
 $hu-background-color-parents: hu-get-class-modules($hu-background-color-modules, parents, null);
 $hu-background-color-property-name: background-color;
 $hu-background-color-class-name: hu-get-class-name(($hu-background-color-alias: $hu-background-color-property-name));
 
-@each $module in hu-format-modules($hu-background-color-core-modules) {
+@each $module in $hu-background-color-core-modules {
   @each $hue, $colors in $hu-background-color-types {
     @each $scale, $value in $colors {
       $class-name: hu-class-name("#{$hu-background-color-class-name}:#{$hue}-#{$scale}");
@@ -33,7 +33,7 @@ $hu-background-color-class-name: hu-get-class-name(($hu-background-color-alias: 
 }
 
 @if ($hu-background-color-pseudos) {
-  @each $module in hu-format-modules($hu-background-color-core-modules) {
+  @each $module in $hu-background-color-core-modules {
     @each $hue, $colors in $hu-background-color-types {
       @each $scale, $value in $colors {
         $class-name: hu-class-name("#{$hu-background-color-class-name}:#{$hue}-#{$scale}");
@@ -63,7 +63,7 @@ $hu-background-color-class-name: hu-get-class-name(($hu-background-color-alias: 
 }
 
 @if ($hu-background-color-parents) {
-  @each $module in hu-format-modules($hu-background-color-core-modules) {
+  @each $module in $hu-background-color-core-modules {
     @each $hue, $colors in $hu-background-color-types {
       @each $scale, $value in $colors {
         $class-name: hu-class-name("#{$hu-background-color-class-name}:#{$hue}-#{$scale}");

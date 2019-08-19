@@ -1,8 +1,8 @@
-$hu-pos-core-modules: hu-get-class-modules($hu-pos-modules, core, $hu-pos-modules);
+$hu-pos-core-modules: hu-format-modules(hu-get-class-modules($hu-pos-modules, core, $hu-pos-modules));
 $hu-pos-pseudos: hu-get-class-modules($hu-pos-modules, pseudos, null);
 $hu-pos-parents: hu-get-class-modules($hu-pos-modules, parents, null);
 
-@each $module in hu-format-modules($hu-pos-core-modules) {
+@each $module in $hu-pos-core-modules {
   @each $scale, $value in $hu-pos-scale {
     @each $type, $properties in $hu-pos-types {
       $class-name: hu-class-name("#{$type}:#{$scale}");
@@ -37,7 +37,7 @@ $hu-pos-parents: hu-get-class-modules($hu-pos-modules, parents, null);
 }
 
 @if ($hu-pos-pseudos) {
-  @each $module in hu-format-modules($hu-pos-core-modules) {
+  @each $module in $hu-pos-core-modules {
     @each $scale, $value in $hu-pos-scale {
       @each $type, $properties in $hu-pos-types {
         $class-name: hu-class-name("#{$type}:#{$scale}");
@@ -73,7 +73,7 @@ $hu-pos-parents: hu-get-class-modules($hu-pos-modules, parents, null);
 }
 
 @if ($hu-pos-parents) {
-  @each $module in hu-format-modules($hu-pos-core-modules) {
+  @each $module in $hu-pos-core-modules {
     @each $scale, $value in $hu-pos-scale {
       @each $type, $properties in $hu-pos-types {
         $class-name: hu-class-name("#{$type}:#{$scale}");
