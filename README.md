@@ -536,6 +536,7 @@ $hu-reset-html-color: null;
 $hu-reset-html-font-family: sans-serif;
 $hu-reset-html-font-size: $hu-f-rem-context;
 $hu-reset-html-font-smoothing: true;
+$hu-reset-html-line-height: 1.25;
 $hu-reset-html-overflow-y: null;
 $hu-reset-img-responsive: false;
 $hu-reset-input-placeholder-color: #767676;

@@ -173,6 +173,7 @@
     background-color: $hu-reset-html-background-color #{hu-important()};
     color: $hu-reset-html-color #{hu-important()};
     font-family: $hu-reset-html-font-family #{hu-important()};
+    line-height: $hu-reset-html-line-height #{hu-important()};
 
     @if ($hu-reset-html-font-size != 16px) {
       font-size: $hu-reset-html-font-size #{hu-important()};
