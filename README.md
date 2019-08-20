@@ -546,6 +546,14 @@ $hu-reset-text-input-appearance: textfield;
 
 Hopefully the variables are self explanatory, but if not, please [review the source code](/src/reset/_index.scss) to see how they affect the reset styles.
 
+If you wish to disable default values, you can simply set the appropriate variable to `null`.
+
+You can also use [`hu-get`](#hu-get) to set the variables to values defined in other list and map variables, for example:
+
+```scss
+$hu-reset-html-color: hu-get($hu-colors, "neutral" 800);
+```
+
 ### Global
 
 #### Colors: `$hu-colors`
