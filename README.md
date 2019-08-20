@@ -625,7 +625,7 @@ $hu-colors: (
 
 To customize the palette, you can either `hu-append` or `hu-prepend` other maps to complement the existing, or start fresh by re-assigning `$hu-colors` to a new map of colors entirely.
 
-We recommend also `hu-append`ing `$hu-colors-keywords` to your brand new palette to ensure you can use classes like `background-color-transparent` and `color-inherit`;
+We recommend also `hu-append`ing `$hu-colors-keywords` to your brand new palette to ensure you can use classes like `background-color:transparent` and `color:inherit`;
 
 Here is an example of setting a completely new palette:
 
