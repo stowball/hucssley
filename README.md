@@ -328,7 +328,7 @@ State modules allow you to change the UI based on a particular state, and follow
 
 For state classes to become active, you need to apply the raw state name as an additional class on the element (often via JavaScript):
 
-```html
+```diff
 <div class="
   display:none
   is-open--display:block
@@ -349,7 +349,7 @@ With groups, you can style child elements when interacting with a generic parent
 
 For `group` classes to take effect, a parent has to be given the raw `.group` class, and raw state class if applicable:
 
-```html
+```diff
 <html>
   …
   <div class="
