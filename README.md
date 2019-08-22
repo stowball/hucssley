@@ -510,7 +510,7 @@ Will convert a target pixel value to its `rem` equivalent.
 @function hu-tint($color, $percentage);
 
 hu-tint(#361110, 40);
-// -> #867070;
+// -> #be3c38;
 ```
 
 Will mix the specified `$color` with a `$percentage` of white.
