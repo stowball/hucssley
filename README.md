@@ -289,6 +289,7 @@ momentum-scrolling -> -webkit-overflow-scrolling
 pos-[bottom,left,right,top] -> bottom,left,right,top
 rotate -> transform: rotate
 scale -> transform: scale
+size -> height & width
 svg-fill-color -> fill
 svg-fill-rule -> fill-rule
 svg-stroke-color -> stroke

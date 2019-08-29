@@ -108,6 +108,7 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-rotate](#hu-rotate)
   - [hu-scale](#hu-scale)
   - [hu-scroll-behavior](#hu-scroll-behavior)
+  - [hu-size](#hu-size)
   - [hu-svg-fill-color](#hu-svg-fill-color)
   - [hu-svg-fill-rule](#hu-svg-fill-rule)
   - [hu-svg-stroke-color](#hu-svg-stroke-color)
@@ -1749,6 +1750,41 @@ $hu-scroll-behavior-types: (
   auto,
   smooth,
 );
+```
+
+### hu-size
+
+```
+size -> height & width
+```
+
+```scss
+$hu-size-alias: "";
+
+$hu-size-modules: ();
+
+$hu-size-types: ();
+```
+
+Example:
+
+```scss
+$hu-size-types: (
+  100: hu-rem(16)
+  video: (hu-rem(960), hu-rem(540)),
+);
+
+->
+
+.size:100 {
+  height: 1rem;
+  width: 1rem;
+}
+
+.size:video {
+  height: 33.75rem;
+  width: 60rem;
+}
 ```
 
 ### hu-svg-fill-color

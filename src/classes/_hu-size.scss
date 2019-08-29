@@ -1,0 +1,91 @@
+$hu-size-core-modules: hu-format-modules(hu-get-class-modules($hu-size-modules, core, $hu-size-modules));
+$hu-size-pseudos: hu-get-class-modules($hu-size-modules, pseudos, null);
+$hu-size-parents: hu-get-class-modules($hu-size-modules, parents, null);
+$hu-size-class-name: hu-get-class-name(($hu-size-alias: size));
+
+@mixin _hu-size-declarations($sizes) {
+  height: if(length($sizes) > 1, nth($sizes, 2), nth($sizes, 1)) #{hu-important()};
+  width: nth($sizes, 1) #{hu-important()};
+}
+
+@each $module in $hu-size-core-modules {
+  @each $type, $value in $hu-size-types {
+    $class-name: hu-class-name("#{$hu-size-class-name}:#{$type}");
+    $value: if($value, $value, $type);
+
+    @include hu-generic($class-name, $module) {
+      @include _hu-size-declarations($value);
+    }
+  }
+}
+
+@if (index($hu-size-core-modules, responsive)) {
+  @each $mq-scale, $mq-value in $hu-media-queries {
+    @include hu-media-query($mq-value) {
+      @each $type, $value in $hu-size-types {
+        $class-name: hu-class-name("#{$hu-size-class-name}:#{$type}");
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $hu-size-core-modules, $mq-scale) {
+          @include _hu-size-declarations($value);
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-size-pseudos) {
+  @each $module in $hu-size-core-modules {
+    @each $type, $value in $hu-size-types {
+      $class-name: hu-class-name("#{$hu-size-class-name}:#{$type}");
+      $value: if($value, $value, $type);
+
+      @include hu-pseudo($class-name, $hu-size-pseudos, $module) {
+        @include _hu-size-declarations($value);
+      }
+    }
+  }
+
+  @if (index($hu-size-core-modules, responsive)) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
+        @each $type, $value in $hu-size-types {
+          $class-name: hu-class-name("#{$hu-size-class-name}:#{$type}");
+          $value: if($value, $value, $type);
+
+          @include hu-pseudo-responsive($class-name, $hu-size-pseudos, $hu-size-core-modules, $mq-scale) {
+            @include _hu-size-declarations($value);
+          }
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-size-parents) {
+  @each $module in $hu-size-core-modules {
+    @each $type, $value in $hu-size-types {
+      $class-name: hu-class-name("#{$hu-size-class-name}:#{$type}");
+      $value: if($value, $value, $type);
+
+      @include hu-parent($class-name, $hu-size-parents, $module) {
+        @include _hu-size-declarations($value);
+      }
+    }
+  }
+
+  @if (index($hu-size-core-modules, responsive)) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
+        @each $type, $value in $hu-size-types {
+          $class-name: hu-class-name("#{$hu-size-class-name}:#{$type}");
+          $value: if($value, $value, $type);
+
+          @include hu-parent-responsive($class-name, $hu-size-parents, $hu-size-core-modules, $mq-scale) {
+            @include _hu-size-declarations($value);
+          }
+        }
+      }
+    }
+  }
+}
