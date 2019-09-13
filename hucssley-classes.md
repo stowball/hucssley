@@ -432,6 +432,7 @@ $hu-align-items-types: (
   self-end,
   self-start,
   start,
+  stretch,
 );
 ```
 
