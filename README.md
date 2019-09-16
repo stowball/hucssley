@@ -283,7 +283,6 @@ animation-easing -> animation-timing-function
 animation-mode -> animation-fill-mode
 animation-state -> animation-play-state
 blend-mode -> mix-blend-mode
-border-radius-[side] -> border-[side]-radius
 content -> :[pseudo]-content
 momentum-scrolling -> -webkit-overflow-scrolling
 pos-[bottom,left,right,top] -> bottom,left,right,top

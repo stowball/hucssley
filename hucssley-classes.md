@@ -243,10 +243,10 @@ $hu-border-radius-scale: (
 
 $hu-border-radius-types: (
   border-radius: border-radius,
-  border-radius-bottom: (border-bottom-left-radius, border-bottom-right-radius),
-  border-radius-left: (border-bottom-left-radius, border-top-left-radius),
-  border-radius-right: (border-bottom-right-radius, border-top-right-radius),
-  border-radius-top: (border-top-left-radius, border-top-right-radius),
+  border-bottom-radius: (border-bottom-left-radius, border-bottom-right-radius),
+  border-left-radius: (border-bottom-left-radius, border-top-left-radius),
+  border-right-radius: (border-bottom-right-radius, border-top-right-radius),
+  border-top-radius: (border-top-left-radius, border-top-right-radius),
 );
 ```
 
@@ -257,22 +257,22 @@ which would generate the following classes:
   border-radius: 0.0625rem;
 }
 
-.border-radius-bottom:100 {
+.border-bottom-radius:100 {
   border-bottom-left-radius: 0.0625rem;
   border-bottom-right-radius: 0.0625rem;
 }
 
-.border-radius-left:100 {
+.border-left-radius:100 {
   border-bottom-left-radius: 0.0625rem;
   border-top-left-radius: 0.0625rem;
 }
 
-.border-radius-right:100 {
+.border-right-radius:100 {
   border-bottom-right-radius: 0.0625rem;
   border-top-right-radius: 0.0625rem;
 }
 
-.border-radius-top:100 {
+.border-top-radius:100 {
   border-top-left-radius: 0.0625rem;
   border-top-right-radius: 0.0625rem;
 }
@@ -281,22 +281,22 @@ which would generate the following classes:
   border-radius: 0.125rem;
 }
 
-.border-radius-bottom:200 {
+.border-bottom-radius:200 {
   border-bottom-left-radius: 0.125rem;
   border-bottom-right-radius: 0.125rem;
 }
 
-.border-radius-left:200 {
+.border-left-radius:200 {
   border-bottom-left-radius: 0.125rem;
   border-top-left-radius: 0.125rem;
 }
 
-.border-radius-right:200 {
+.border-right-radius:200 {
   border-bottom-right-radius: 0.125rem;
   border-top-right-radius: 0.125rem;
 }
 
-.border-radius-top:200 {
+.border-top-radius:200 {
   border-top-left-radius: 0.125rem;
   border-top-right-radius: 0.125rem;
 }
