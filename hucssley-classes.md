@@ -1799,7 +1799,7 @@ $hu-svg-fill-color-alias: svg-fill-color;
 
 $hu-svg-fill-color-modules: (base, group-hocus);
 
-$hu-svg-fill-color-types: map-merge((current: (current: currentColor)), $hu-colors);
+$hu-svg-fill-color-types: hu-append((current: (current: currentColor)), $hu-colors)
 ```
 
 ### hu-svg-fill-rule

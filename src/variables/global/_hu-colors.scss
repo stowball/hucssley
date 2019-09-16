@@ -7,7 +7,7 @@ $hu-colors-keywords: (
   ),
 );
 
-$hu-colors: hu-append((
+$hu-colors: hu-append($hu-colors-keywords, (
   "neutral": (
     0: #ffffff,
     100: #e1e1e1,
@@ -112,4 +112,4 @@ $hu-colors: hu-append((
     900: #460d41,
     1000: #1d051a,
   ),
-), $hu-colors-keywords) !default;
+)) !default;

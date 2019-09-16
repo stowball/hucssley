@@ -631,7 +631,7 @@ We recommend also `hu-append`ing `$hu-colors-keywords` to your brand new palette
 Here is an example of setting a completely new palette:
 
 ```scss
-$hu-colors: hu-append((
+$hu-colors: hu-append($hu-colors-keywords, (
   neutral: (
     0: #fff,
     100: #fafbfd,
@@ -663,7 +663,7 @@ $hu-colors: hu-append((
     100: #fffdfc,
     1000: #b40b00,
   ),
-), $hu-colors-keywords);
+));
 ```
 
 #### Media queries: `$hu-media-queries`

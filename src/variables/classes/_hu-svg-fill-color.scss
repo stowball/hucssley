@@ -2,4 +2,4 @@ $hu-svg-fill-color-alias: svg-fill-color !default;
 
 $hu-svg-fill-color-modules: (base, group-hocus) !default;
 
-$hu-svg-fill-color-types: map-merge((current: (current: currentColor)), $hu-colors) !default;
+$hu-svg-fill-color-types: hu-append((current: (current: currentColor)), $hu-colors) !default;
