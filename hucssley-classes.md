@@ -770,14 +770,14 @@ $hu-border-radius-scale: (
 
 $hu-border-radius-types: (
   border-radius: border-radius,
-  border-radius-bottom: (border-bottom-left-radius, border-bottom-right-radius),
-  border-radius-bottom-left: border-bottom-left-radius,
-  border-radius-bottom-right: border-bottom-right-radius,
-  border-radius-left: (border-bottom-left-radius, border-top-left-radius),
-  border-radius-right: (border-bottom-right-radius, border-top-right-radius),
-  border-radius-top: (border-top-left-radius, border-top-right-radius),
-  border-radius-top-left: border-top-left-radius,
-  border-radius-top-right: border-top-right-radius,
+  border-bottom-radius: (border-bottom-left-radius, border-bottom-right-radius),
+  border-bottom-left-radius: border-bottom-left-radius,
+  border-bottom-right-radius: border-bottom-right-radius,
+  border-left-radius: (border-bottom-left-radius, border-top-left-radius),
+  border-right-radius: (border-bottom-right-radius, border-top-right-radius),
+  border-top-radius: (border-top-left-radius, border-top-right-radius),
+  border-top-left-radius: border-top-left-radius,
+  border-top-right-radius: border-top-right-radius,
 );
 ```
 
