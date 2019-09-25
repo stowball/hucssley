@@ -85,6 +85,7 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-justify-items](#hu-justify-items)
   - [hu-justify-self](#hu-justify-self)
   - [hu-letter-spacing](#hu-letter-spacing)
+  - [hu-line-clamp](#hu-line-clamp)
   - [hu-line-height](#hu-line-height)
   - [hu-list-style](#hu-list-style)
   - [hu-margin](#hu-margin)
@@ -1360,6 +1361,19 @@ $hu-letter-spacing-types: (
   100: 0.1em,
   200: 0.2em,
   normal: normal,
+);
+```
+
+### hu-line-clamp
+
+```scss
+$hu-line-clamp-alias: "";
+
+$hu-line-clamp-modules: (base);
+
+$hu-line-clamp-types: (
+  2,
+  3,
 );
 ```
 

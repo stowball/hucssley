@@ -1,0 +1,93 @@
+$hu-line-clamp-core-modules: hu-format-modules(hu-get-class-modules($hu-line-clamp-modules, core, $hu-line-clamp-modules));
+$hu-line-clamp-pseudos: hu-get-class-modules($hu-line-clamp-modules, pseudos, null);
+$hu-line-clamp-parents: hu-get-class-modules($hu-line-clamp-modules, parents, null);
+$hu-line-clamp-class-name: hu-get-class-name(($hu-line-clamp-alias: line-clamp));
+
+@mixin _hu-line-clamp-declarations($value) {
+  -webkit-box-orient: vertical #{hu-important()};
+  display: -webkit-box #{hu-important()};
+  -webkit-line-clamp: $value #{hu-important()};
+  overflow: hidden #{hu-important()};
+}
+
+@each $module in $hu-line-clamp-core-modules {
+  @each $type, $value in $hu-line-clamp-types {
+    $class-name: hu-class-name("#{$hu-line-clamp-class-name}:#{$type}");
+    $value: if($value, $value, $type);
+
+    @include hu-generic($class-name, $module) {
+      @include _hu-line-clamp-declarations($value);
+    }
+  }
+}
+
+@if (index($hu-line-clamp-core-modules, responsive)) {
+  @each $mq-scale, $mq-value in $hu-media-queries {
+    @include hu-media-query($mq-value) {
+      @each $type, $value in $hu-line-clamp-types {
+        $class-name: hu-class-name("#{$hu-line-clamp-class-name}:#{$type}");
+        $value: if($value, $value, $type);
+
+        @include hu-responsive($class-name, $hu-line-clamp-core-modules, $mq-scale) {
+          @include _hu-line-clamp-declarations($value);
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-line-clamp-pseudos) {
+  @each $module in $hu-line-clamp-core-modules {
+    @each $type, $value in $hu-line-clamp-types {
+      $class-name: hu-class-name("#{$hu-line-clamp-class-name}:#{$type}");
+      $value: if($value, $value, $type);
+
+      @include hu-pseudo($class-name, $hu-line-clamp-pseudos, $module) {
+        @include _hu-line-clamp-declarations($value);
+      }
+    }
+  }
+
+  @if (index($hu-line-clamp-core-modules, responsive)) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
+        @each $type, $value in $hu-line-clamp-types {
+          $class-name: hu-class-name("#{$hu-line-clamp-class-name}:#{$type}");
+          $value: if($value, $value, $type);
+
+          @include hu-pseudo-responsive($class-name, $hu-line-clamp-pseudos, $hu-line-clamp-core-modules, $mq-scale) {
+            @include _hu-line-clamp-declarations($value);
+          }
+        }
+      }
+    }
+  }
+}
+
+@if ($hu-line-clamp-parents) {
+  @each $module in $hu-line-clamp-core-modules {
+    @each $type, $value in $hu-line-clamp-types {
+      $class-name: hu-class-name("#{$hu-line-clamp-class-name}:#{$type}");
+      $value: if($value, $value, $type);
+
+      @include hu-parent($class-name, $hu-line-clamp-parents, $module) {
+        @include _hu-line-clamp-declarations($value);
+      }
+    }
+  }
+
+  @if (index($hu-line-clamp-core-modules, responsive)) {
+    @each $mq-scale, $mq-value in $hu-media-queries {
+      @include hu-media-query($mq-value) {
+        @each $type, $value in $hu-line-clamp-types {
+          $class-name: hu-class-name("#{$hu-line-clamp-class-name}:#{$type}");
+          $value: if($value, $value, $type);
+
+          @include hu-parent-responsive($class-name, $hu-line-clamp-parents, $hu-line-clamp-core-modules, $mq-scale) {
+            @include _hu-line-clamp-declarations($value);
+          }
+        }
+      }
+    }
+  }
+}
