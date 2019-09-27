@@ -2019,6 +2019,8 @@ $hu-transition-property-types: (
   background-color,
   color,
   height,
+  max-height,
+  max-width,
   opacity,
   transform,
   visibility,
