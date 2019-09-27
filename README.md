@@ -283,7 +283,6 @@ animation-easing -> animation-timing-function
 animation-mode -> animation-fill-mode
 animation-state -> animation-play-state
 blend-mode -> mix-blend-mode
-content -> :[pseudo]-content
 momentum-scrolling -> -webkit-overflow-scrolling
 pos-[bottom,left,right,top] -> bottom,left,right,top
 rotate -> transform: rotate
@@ -801,19 +800,19 @@ You can easily amend or override any of these values to suit your project.
 
 #### Borders: `$hu-border-modules`, `$hu-border-sides` and `$hu-border-types`
 
-By default, `.border-color`, `.border-style` and `.border-width` classes use the 2 or 3 of the global border variables to control which modules, sides and colors they’re output at.
+By default, `.border-color`, `.border-style` and `.border-width` classes use 2 or 3 of the global border variables to control which modules, sides and colors they’re output at.
 
 ```scss
 $hu-border-modules: (base);
 
 $hu-border-sides: (
   border: border,
-  border-b: border-bottom,
-  border-l: border-left,
-  border-r: border-right,
-  border-t: border-top,
-  border-h: (border-left, border-right),
-  border-v: (border-bottom, border-top),
+  border-bottom: border-bottom,
+  border-left: border-left,
+  border-right: border-right,
+  border-top: border-top,
+  border-horizontal: (border-left, border-right),
+  border-vertical: (border-bottom, border-top),
 );
 
 $hu-border-types: $hu-colors;
