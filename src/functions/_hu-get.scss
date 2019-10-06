@@ -9,14 +9,14 @@
     }
 
     @if ($map == null) {
-      $error: hu-log-error("No map found for #{unquote($stack-trace-name)}(#{$keys}). Map contains #{$variable}");
+      $error: hu-log-error("No map found for #{if($stack-trace-name, unquote($stack-trace-name), "")}(#{$keys}). Map contains #{inspect($variable)}");
     }
 
     @return $map;
   }
   @else if (type-of($variable) == list) {
     @if (index($variable, nth($keys, 1)) == null) {
-      $error: hu-log-error("No item found for #{unquote($stack-trace-name)}(#{$keys}). List contains #{$variable}");
+      $error: hu-log-error("No item found for #{if($stack-trace-name, unquote($stack-trace-name), "")}(#{$keys}). List contains #{inspect($variable)}");
     }
 
     @return nth($keys, 1);
