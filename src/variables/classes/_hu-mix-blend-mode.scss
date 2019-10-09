@@ -1,8 +1,8 @@
-$hu-blend-mode-alias: blend-mode !default;
+$hu-mix-blend-mode-alias: "" !default;
 
-$hu-blend-mode-modules: (base) !default;
+$hu-mix-blend-mode-modules: (base) !default;
 
-$hu-blend-mode-types: (
+$hu-mix-blend-mode-types: (
   color,
   color-burn,
   color-dodge,
