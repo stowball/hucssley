@@ -703,33 +703,6 @@ $hu-background-size-types: (
 );
 ```
 
-### hu-mix-blend-mode
-
-```scss
-$hu-mix-blend-mode-alias:"";
-
-$hu-mix-blend-mode-modules: (base);
-
-$hu-mix-blend-mode-types: (
-  color,
-  color-burn,
-  color-dodge,
-  darken,
-  difference,
-  exclusion,
-  hard-light,
-  hue,
-  lighten,
-  luminosity,
-  multiply,
-  normal,
-  overlay,
-  saturation,
-  screen,
-  soft-light,
-);
-```
-
 ### hu-border-collapse
 
 ```scss
@@ -1488,6 +1461,33 @@ $hu-min-width-types: (
   100: 100%,
   100vw: 100vw,
   none: none,
+);
+```
+
+### hu-mix-blend-mode
+
+```scss
+$hu-mix-blend-mode-alias:"";
+
+$hu-mix-blend-mode-modules: (base);
+
+$hu-mix-blend-mode-types: (
+  color,
+  color-burn,
+  color-dodge,
+  darken,
+  difference,
+  exclusion,
+  hard-light,
+  hue,
+  lighten,
+  luminosity,
+  multiply,
+  normal,
+  overlay,
+  saturation,
+  screen,
+  soft-light,
 );
 ```
 
