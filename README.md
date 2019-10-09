@@ -282,7 +282,6 @@ animation-count -> animation-iteration-count
 animation-easing -> animation-timing-function
 animation-mode -> animation-fill-mode
 animation-state -> animation-play-state
-blend-mode -> mix-blend-mode
 momentum-scrolling -> -webkit-overflow-scrolling
 pos-[bottom,left,right,top] -> bottom,left,right,top
 rotate -> transform: rotate
@@ -1103,7 +1102,7 @@ By not proving a `$type` and passing in a `@content` block, you can create “on
 You could also use this technique to add complex `@supports` feature queries:
 
 ```scss
-@include hu-classes("@supports-blend-mode:multiply", (base)) {
+@include hu-classes("@supports-mix-blend-mode:multiply", (base)) {
   @supports (mix-blend-mode: multiply) {
     mix-blend-mode: multiply;
     opacity: 1;
@@ -1112,7 +1111,7 @@ You could also use this technique to add complex `@supports` feature queries:
 
 /* ->
 @supports (mix-blend-mode: multiply) {
-  .@supports-blend-mode:multiply {
+  .@supports-mix-blend-mode:multiply {
     mix-blend-mode: multiply;
     opacity: 1;
   }
@@ -1124,8 +1123,8 @@ Of course, just because you can’t provide a `$type` argument to the mixin, it 
 
 ```scss
 // if $types was a map, also extract the $value variable and use that in the mixin's @content
-@each $type in $hu-blend-mode-types {
-  @include hu-classes("@supports-blend-mode:#{$type}", $hu-blend-mode-modules) {
+@each $type in $hu-mix-blend-mode-types {
+  @include hu-classes("@supports-mix-blend-mode:#{$type}", $hu-mix-blend-mode-modules) {
     @supports (mix-blend-mode: #{$type}) {
       mix-blend-mode: $type;
     }
@@ -1134,13 +1133,13 @@ Of course, just because you can’t provide a `$type` argument to the mixin, it 
 
 /* ->
 @supports (mix-blend-mode: color) {
-  .@supports-blend-mode:color {
+  .@supports-mix-blend-mode:color {
     mix-blend-mode: color;
   }
 }
 
 @supports (mix-blend-mode: color-burn) {
-  .@supports-blend-mode:color-burn {
+  .@supports-mix-blend-mode:color-burn {
     mix-blend-mode: color-burn;
   }
 }

@@ -38,7 +38,6 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-background-position-y](#hu-background-position-y)
   - [hu-background-repeat](#hu-background-repeat)
   - [hu-background-size](#hu-background-size)
-  - [hu-blend-mode](#hu-blend-mode)
   - [hu-border-collapse](#hu-border-collapse)
   - [hu-border-color](#hu-border-color)
   - [hu-border-radius](#hu-border-radius)
@@ -95,6 +94,7 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-max-width](#hu-max-width)
   - [hu-min-height](#hu-min-height)
   - [hu-min-width](#hu-min-width)
+  - [hu-mix-blend-mode](#hu-mix-blend-mode)
   - [hu-momentum-scrolling](#hu-momentum-scrolling)
   - [hu-object-fit](#hu-object-fit)
   - [hu-opacity](#hu-opacity)
@@ -316,7 +316,6 @@ animation-count -> animation-iteration-count
 animation-easing -> animation-timing-function
 animation-mode -> animation-fill-mode
 animation-state -> animation-play-state
-blend-mode -> mix-blend-mode
 border-radius-[side] -> border-[side]-radius
 content -> :[pseudo]-content
 momentum-scrolling -> -webkit-overflow-scrolling
@@ -740,33 +739,6 @@ $hu-background-size-types: (
   auto,
   contain,
   cover,
-);
-```
-
-### hu-blend-mode
-
-```scss
-$hu-blend-mode-alias: blend-mode;
-
-$hu-blend-mode-modules: (base);
-
-$hu-blend-mode-types: (
-  color,
-  color-burn,
-  color-dodge,
-  darken,
-  difference,
-  exclusion,
-  hard-light,
-  hue,
-  lighten,
-  luminosity,
-  multiply,
-  normal,
-  overlay,
-  saturation,
-  screen,
-  soft-light,
 );
 ```
 
@@ -1528,6 +1500,33 @@ $hu-min-width-types: (
   100: 100%,
   100vw: 100vw,
   none: none,
+);
+```
+
+### hu-mix-blend-mode
+
+```scss
+$hu-mix-blend-mode-alias: "";
+
+$hu-mix-blend-mode-modules: ();
+
+$hu-mix-blend-mode-types: (
+  color,
+  color-burn,
+  color-dodge,
+  darken,
+  difference,
+  exclusion,
+  hard-light,
+  hue,
+  lighten,
+  luminosity,
+  multiply,
+  normal,
+  overlay,
+  saturation,
+  screen,
+  soft-light,
 );
 ```
 
