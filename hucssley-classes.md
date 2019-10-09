@@ -30,6 +30,7 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-animation-state](#hu-animation-state)
   - [hu-appearance](#hu-appearance)
   - [hu-backface-visibility](#hu-backface-visibility)
+  - [hu-background-blend-mode](#hu-background-blend-mode)
   - [hu-background-color](#hu-background-color)
   - [hu-background-image](#hu-background-image)
   - [hu-background-position-x](#hu-background-position-x)
@@ -635,6 +636,33 @@ $hu-background-color-modules: (base, visited, hocus, active, group-hocus, group-
 $hu-background-color-types: $hu-colors;
 ```
 
+### hu-background-blend-mode
+
+```scss
+$hu-background-blend-mode-alias: "";
+
+$hu-background-blend-mode-modules: ();
+
+$hu-background-blend-mode-types: (
+  color,
+  color-burn,
+  color-dodge,
+  darken,
+  difference,
+  exclusion,
+  hard-light,
+  hue,
+  lighten,
+  luminosity,
+  multiply,
+  normal,
+  overlay,
+  saturation,
+  screen,
+  soft-light,
+);
+```
+
 ### hu-background-image
 
 ```scss
@@ -867,7 +895,7 @@ $hu-content-alias: "";
 $hu-content-modules: (base);
 
 $hu-content-pseudos: (
-  "::after", 
+  "::after",
   "::before"
 );
 
