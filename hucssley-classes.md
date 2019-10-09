@@ -29,6 +29,7 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-animation-name](#hu-animation-name)
   - [hu-animation-state](#hu-animation-state)
   - [hu-appearance](#hu-appearance)
+  - [hu-backdrop-filter](#hu-backdrop-filter)
   - [hu-backface-visibility](#hu-backface-visibility)
   - [hu-background-color](#hu-background-color)
   - [hu-background-image](#hu-background-image)
