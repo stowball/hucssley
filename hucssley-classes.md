@@ -612,6 +612,16 @@ $hu-appearance-types: (
 );
 ```
 
+### hu-backdrop-filter
+
+```scss
+$hu-backdrop-filter-alias: "";
+
+$hu-backdrop-filter-modules: ();
+
+$hu-backdrop-filter-types: ();
+```
+
 ### hu-backface-visibility
 
 ```scss
@@ -867,7 +877,7 @@ $hu-content-alias: "";
 $hu-content-modules: (base);
 
 $hu-content-pseudos: (
-  "::after", 
+  "::after",
   "::before"
 );
 
