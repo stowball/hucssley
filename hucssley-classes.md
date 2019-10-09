@@ -1467,9 +1467,9 @@ $hu-min-width-types: (
 ### hu-mix-blend-mode
 
 ```scss
-$hu-mix-blend-mode-alias:"";
+$hu-mix-blend-mode-alias: "";
 
-$hu-mix-blend-mode-modules: (base);
+$hu-mix-blend-mode-modules: ();
 
 $hu-mix-blend-mode-types: (
   color,
