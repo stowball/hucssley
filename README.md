@@ -92,7 +92,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
 
 ## What’s in the box?
 
-Currently, Hucssley provides utility classes for over 110 CSS properties, of which multiple, sensible default values are generated. Each utility is also created for various “modules”, whether that’s at certain media queries, UI states, user interactions, for print or more.
+Currently, Hucssley provides utility classes for over 120 CSS properties, of which multiple, sensible default values are generated. Each utility is also created for various “modules”, whether that’s at certain media queries, UI states, user interactions, for print or more.
 
 Each utility is completely customizable; they can be partially renamed, have values changed, have their modules altered or be omitted entirely.
 
