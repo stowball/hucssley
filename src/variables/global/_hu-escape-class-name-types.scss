@@ -1,5 +1,5 @@
 // See https://mathiasbynens.be/notes/css-escapes
-// Use a custom Purgecss extractor: /[A-Za-z0-9-_&:@<>\/]+/g
+// Use a custom Purgecss extractor: /[A-Za-z0-9-_&:@<>\(\)\/]+/g
 $hu-escape-class-name-types: (
   ":",
   "&",
@@ -7,4 +7,6 @@ $hu-escape-class-name-types: (
   "<",
   ">",
   "/",
+  "(",
+  ")",
 ) !default;
