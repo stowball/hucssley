@@ -1,6 +1,6 @@
 # Hucssley classes
 
-Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-configured to get up and running, fast. Some are placeholders with empty variables for more complex things, like `box-shadow`, `grid` and `transform` that either don't map 1:1 to a property/value pair, and/or are more likely unable to be standardised to suit your project.
+Hucssley provides over 120 classes out-of-the-box, which have been sensibly pre-configured to get up and running, fast. Some are placeholders with empty variables for more complex things, like `box-shadow`, `grid` and `transform` that either don't map 1:1 to a property/value pair, and/or are more likely unable to be standardised to suit your project.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -108,6 +108,7 @@ Hucssley provides over 110 classes out-of-the-box, which have been sensibly pre-
   - [hu-pointer-events](#hu-pointer-events)
   - [hu-pos](#hu-pos)
   - [hu-position](#hu-position)
+  - [hu-resize](#hu-resize)
   - [hu-rotate](#hu-rotate)
   - [hu-scale](#hu-scale)
   - [hu-scroll-behavior](#hu-scroll-behavior)
@@ -1736,6 +1737,21 @@ $hu-position-types: (
   relative,
   static,
   sticky,
+);
+```
+
+### hu-resize
+
+```
+$hu-resize-alias: "";
+
+$hu-resize-modules: (base);
+
+$hu-resize-types: (
+  both,
+  horizontal,
+  none,
+  vertical,
 );
 ```
 
