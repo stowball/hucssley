@@ -9,9 +9,7 @@
     );
 
     @if (map-has-key($query, other)) {
-      @each $other-expression in hu-get($query, other) {
-        $expressions: hu-append($expressions, $other-expression);
-      }
+      $expressions: hu-append($expressions, hu-get($query, other));
     }
 
     $query: "";
