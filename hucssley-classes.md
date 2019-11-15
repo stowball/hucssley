@@ -82,6 +82,7 @@ Hucssley provides over 120 classes out-of-the-box, which have been sensibly pre-
   - [hu-grid-template-columns](#hu-grid-template-columns)
   - [hu-grid-template-rows](#hu-grid-template-rows)
   - [hu-height](#hu-height)
+  - [hu-hyphens](#hu-hyphens)
   - [hu-justify-content](#hu-justify-content)
   - [hu-justify-items](#hu-justify-items)
   - [hu-justify-self](#hu-justify-self)
@@ -101,6 +102,7 @@ Hucssley provides over 120 classes out-of-the-box, which have been sensibly pre-
   - [hu-order](#hu-order)
   - [hu-outline](#hu-outline)
   - [hu-overflow](#hu-overflow)
+  - [hu-overflow-wrap](#hu-overflow-wrap)
   - [hu-overflow-x](#hu-overflow-x)
   - [hu-overflow-y](#hu-overflow-y)
   - [hu-overscroll-behavior](#hu-overscroll-behavior)
@@ -138,6 +140,8 @@ Hucssley provides over 120 classes out-of-the-box, which have been sensibly pre-
   - [hu-visually-hidden](#hu-visually-hidden)
   - [hu-white-space](#hu-white-space)
   - [hu-width](#hu-width)
+  - [hu-word-break](#hu-word-break)
+  - [hu-word-wrap](#hu-word-wrap)
   - [hu-z-index](#hu-z-index)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -1302,6 +1306,20 @@ $hu-height-types: (
 );
 ```
 
+### hu-hyphens
+
+```scss
+$hu-hyphens-alias: "";
+
+$hu-hyphens-modules: (base);
+
+$hu-hyphens-types: (
+  auto,
+  manual,
+  none,
+);
+```
+
 ### hu-justify-content
 
 ```scss
@@ -1629,6 +1647,20 @@ $hu-overflow-types: (
   auto,
   hidden,
   visible,
+);
+```
+
+### hu-overflow-wrap
+
+```scss
+$hu-overflow-wrap-alias: "";
+
+$hu-overflow-wrap-modules: (base);
+
+$hu-overflow-wrap-types: (
+  anywhere,
+  break-word,
+  normal,
 );
 ```
 
@@ -2228,6 +2260,34 @@ $hu-width-types: (
   100: 100%,
   100vw: 100vw,
   auto: auto,
+);
+```
+
+### hu-word-break
+
+```scss
+$hu-word-break-alias: "";
+
+$hu-word-break-modules: (base);
+
+$hu-word-break-types: (
+  break-all,
+  break-word,
+  keep-all,
+  normal,
+);
+```
+
+### hu-word-wrap
+
+```scss
+$hu-word-wrap-alias: "";
+
+$hu-word-wrap-modules: (base);
+
+$hu-word-wrap-types: (
+  break-word,
+  normal,
 );
 ```
 
