@@ -472,9 +472,11 @@ animation-count -> animation-iteration-count
 ```scss
 $hu-animation-count-alias: animation-count;
 
-$hu-animation-count-modules: ();
+$hu-animation-count-modules: (base);
 
-$hu-animation-count-types: ();
+$hu-animation-count-types: (
+  infinite,
+);
 ```
 
 ### hu-animation-delay
@@ -519,9 +521,9 @@ animation-easing -> animation-timing-function
 ```
 
 ```scss
-$hu-animation-easing-alias: animation-easing ;
+$hu-animation-easing-alias: animation-easing;
 
-$hu-animation-easing-modules: ();
+$hu-animation-easing-modules: (base);
 
 $hu-animation-easing-types: (
   ease: ease,
