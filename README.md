@@ -919,7 +919,7 @@ $hu-namespace: `hu-`;
 …
 .@mq-480--hu-flex-direction:column {}
 …
-.group__is-open--hu-display:flex {}
+.group-is-open__hu-display:flex {}
 ```
 
 #### Use important: `$hu-use-important`
