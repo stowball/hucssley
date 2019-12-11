@@ -1027,9 +1027,13 @@ $hu-flex-wrap-types: (
 ```scss
 $hu-float-alias: "";
 
-$hu-float-modules: ();
+$hu-float-modules: (base);
 
-$hu-float-types: ();
+$hu-float-types: (
+  left,
+  none,
+  right,
+);
 ```
 
 ### hu-font-family

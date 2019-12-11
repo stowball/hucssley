@@ -1,5 +1,9 @@
 $hu-float-alias: "" !default;
 
-$hu-float-modules: () !default;
+$hu-float-modules: (base) !default;
 
-$hu-float-types: () !default;
+$hu-float-types: (
+  left,
+  none,
+  right,
+) !default;
