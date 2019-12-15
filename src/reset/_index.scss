@@ -161,6 +161,7 @@
     font-family: inherit #{hu-important()};
     font-size: 1em #{hu-important()};
     font-weight: inherit #{hu-important()};
+    margin: 0 #{hu-important()};
   }
 
   [disabled],
@@ -196,10 +197,6 @@
       height: auto #{hu-important()};
       max-width: 100% #{hu-important()};
     }
-  }
-
-  input {
-    margin: 0 #{hu-important()};
   }
 
   ol,
