@@ -3,10 +3,10 @@
 
   @if (type-of($alias) == map) {
     @if (str-length(nth(map-keys($alias), 1)) > 1) {
-      $class-name: nth(map-keys($alias), 1)
+      $class-name: nth(map-keys($alias), 1);
     }
     @else {
-      $class-name: nth(map-values($alias), 1)
+      $class-name: nth(map-values($alias), 1);
     }
   }
 

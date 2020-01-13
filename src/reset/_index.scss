@@ -140,6 +140,7 @@
     @if ($hu-reset-box-sizing != border-box) {
       box-sizing: $hu-reset-box-sizing #{hu-important()};
     }
+
     background: none #{hu-important()};
     border: none #{hu-important()};
     cursor: pointer #{hu-important()};
