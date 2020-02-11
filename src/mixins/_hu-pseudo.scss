@@ -1,7 +1,7 @@
 @mixin hu-pseudo($class-name, $pseudos, $modules) {
   @each $module in hu-format-modules($modules) {
     @each $pseudo in $pseudos {
-      $pseudo-class-name: "#{hu-escape-class-name(":")}#{hu-string-replace($pseudo, ":", "")}";
+      $pseudo-class-name: hu-escape-class-name($pseudo);
 
       @if ($module == base) {
         .#{hu-escape-class-name("&")}#{$pseudo-class-name}--#{$class-name}#{$pseudo} {

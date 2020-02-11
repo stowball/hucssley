@@ -1,7 +1,7 @@
 @mixin hu-pseudo-responsive($class-name, $pseudos, $modules, $mq-scale) {
   @if (index($modules, responsive)) {
     @each $pseudo in $pseudos {
-      $pseudo-class-name: "#{hu-escape-class-name(":")}#{hu-string-replace($pseudo, ":", "")}";
+      $pseudo-class-name: hu-escape-class-name($pseudo);
 
       @if (index($modules, base)) {
         .#{hu-escape-class-name("@mq-#{$mq-scale}")}#{$pseudo-class-name}--#{$class-name}#{$pseudo} {

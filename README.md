@@ -297,6 +297,7 @@ animation-count -> animation-iteration-count
 animation-easing -> animation-timing-function
 animation-mode -> animation-fill-mode
 animation-state -> animation-play-state
+content -> ::[pseudo]-content
 momentum-scrolling -> -webkit-overflow-scrolling
 pos-[bottom,left,right,top] -> bottom,left,right,top
 rotate -> transform: rotate
@@ -1183,7 +1184,7 @@ $hu-display-modules: (
 /* ->
 …
 
-.&:before--display:block::before {
+.&::before--display:block::before {
   display: block;
 }
 
@@ -1194,7 +1195,7 @@ $hu-display-modules: (
 …
 
 @media (min-width: 22.5em) {
-  .@mq-480:before--display:block::before {
+  .@mq-480::before--display:block::before {
     display: block;
   }
 
@@ -1258,7 +1259,7 @@ This mixin is a wrapper around two other mixins, `hu-pseudo-generic-classes()` a
 @include hu-pseudo-classes(display, ("::before", ":first-child"), $hu-display-modules, $hu-display-types);
 
 /* ->
-.&:before--display:block::before {
+.&::before--display:block::before {
   display: block;
 }
 
@@ -1266,7 +1267,7 @@ This mixin is a wrapper around two other mixins, `hu-pseudo-generic-classes()` a
   display: block;
 }
 
-.&:before--display:flex::before {
+.&::before--display:flex::before {
   display: flex;
 }
 
@@ -1277,7 +1278,7 @@ This mixin is a wrapper around two other mixins, `hu-pseudo-generic-classes()` a
 …
 
 @media (min-width: 22.5em) {
-  .@mq-480:before--display:block::before {
+  .@mq-480::before--display:block::before {
     display: block;
   }
 
@@ -1285,7 +1286,7 @@ This mixin is a wrapper around two other mixins, `hu-pseudo-generic-classes()` a
     display: block;
   }
 
-  .@mq-480:before--display:flex::before {
+  .@mq-480::before--display:flex::before {
     display: flex;
   }
 
@@ -1507,7 +1508,7 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `reduced-motion` and `
 }
 
 /* ->
-.&:before--hu-display:block::before {
+.&::before--hu-display:block::before {
   display: block;
 }
 
@@ -1516,7 +1517,7 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `reduced-motion` and `
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .@reduced-motion:before--hu-display:block::before.@reduced-motion:before--hu-display:block::before.@reduced-motion:before--hu-display:block::before {
+  .@reduced-motion::before--hu-display:block::before.@reduced-motion::before--hu-display:block::before.@reduced-motion::before--hu-display:block::before {
     display: block;
   }
 }
@@ -1543,7 +1544,7 @@ Generates the responsive `base` and `state` module styles for a pseudo selector 
 }
 
 /* ->
-.@mq-medium:before--display:block::before {
+.@mq-medium::before--display:block::before {
   display: block;
 }
 
@@ -1705,23 +1706,23 @@ One benefit Hucssley has over other, similar libraries is that there is a define
 Generates the following:
 
 ```css
-.&:before--icon-size:100::before {
+.&::before--icon-size:100::before {
   height: 1rem;
   width: 1rem;
 }
 
-.&:before--icon-size:200::before {
+.&::before--icon-size:200::before {
   height: 1.5rem;
   width: 1.5rem;
 }
 
 @media (min-width: 30em) {
-  .@mq-480:before--icon-size:100::before {
+  .@mq-480::before--icon-size:100::before {
     height: 1rem;
     width: 1rem;
   }
 
-  .@mq-480:before--icon-size:200::before {
+  .@mq-480::before--icon-size:200::before {
     height: 1.5rem;
     width: 1.5rem;
   }
