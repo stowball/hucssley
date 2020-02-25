@@ -1,10 +1,10 @@
 @mixin hu-media-query($query) {
   @if (type-of($query) == map) {
     $expressions: (
-      min-height: if(map-has-key($query, min-h), hu-get($query, min-h), null),
-      max-height: if(map-has-key($query, max-h), hu-get($query, max-h), null),
-      min-width: if(map-has-key($query, min-w), hu-get($query, min-w), null),
-      max-width: if(map-has-key($query, max-w), hu-get($query, max-w), null),
+      min-height: if(map-has-key($query, min-height), hu-get($query, min-height), if(map-has-key($query, min-h), hu-get($query, min-h), null)),
+      max-height: if(map-has-key($query, max-height), hu-get($query, max-height), if(map-has-key($query, max-h), hu-get($query, max-h), null)),
+      min-width: if(map-has-key($query, min-width), hu-get($query, min-width), if(map-has-key($query, min-w), hu-get($query, min-w), null)),
+      max-width: if(map-has-key($query, max-width), hu-get($query, max-width), if(map-has-key($query, max-w), hu-get($query, max-w), null)),
       orientation: if(map-has-key($query, orientation), hu-get($query, orientation), null),
     );
 

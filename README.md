@@ -695,7 +695,7 @@ $hu-media-queries: (
 
 If the value of an `$hu-media-queries` key is a number, it will compile it to a `(min-width: [value])` media query.
 
-If, however, you provide a map with any of the following keys: `min-h`, `max-h`, `min-w`, `max-w`, and `orientation`, then appropriate `(min-height)`, `(max-height)`, `(min-width)`, `(max-width)` and `(orientation)` media queries will be output.
+If, however, you provide a map with any of the following keys: `min-height`, `max-height`, `min-width`, `max-width`, and `orientation`, then appropriate `(min-height)`, `(max-height)`, `(min-width)`, `(max-width)` and `(orientation)` media queries will be output.
 
 Another special `other` key is also supported, which, when supplied with a map of key/value pairs will also output those as media query conditions, which will allow you to target every kind of [feature](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Media_features).
 
@@ -706,19 +706,19 @@ To demonstrate:
 ```scss
 $hu-media-queries: (
   600: hu-em(600),
-  min-h-200: (min-h: hu-em(200)),
-  max-h-400: (max-h: hu-em(400)),
-  min-w-300: (min-w: hu-em(300)),
-  max-w-500: (max-w: hu-em(500)),
-  min-w-300-max-w-500: (min-w: hu-em(300), max-w: hu-em(500)),
+  min-h-200: (min-height: hu-em(200)),
+  max-h-400: (max-height: hu-em(400)),
+  min-w-300: (min-width: hu-em(300)),
+  max-w-500: (max-width: hu-em(500)),
+  min-w-300-max-w-500: (min-width: hu-em(300), max-width: hu-em(500)),
   landscape: (orientation: landscape),
   coarse: (other: (pointer: coarse)),
   min-res-200: (other: (min-resolution: 200dpi)),
   all: (
-    min-h: hu-em(200),
-    max-h: hu-em(400),
-    min-w: hu-em(300),
-    max-w: hu-em(500),
+    min-height: hu-em(200),
+    max-height: hu-em(400),
+    min-width: hu-em(300),
+    max-width: hu-em(500),
     orientation: landscape,
     other: (pointer: coarse, min-resolution: 200dpi)
   ),
@@ -1604,7 +1604,7 @@ The above loop doesn’t generate the responsive classes. If we generated them w
 @if index($icon-size-modules, responsive) {
   // extract $mq-scale and $mq-value variables for each media query
   @each $mq-scale, $mq-value in $hu-media-queries {
-    // call the media-query mixin with $mq-value, which supports media query values as min-h/max-w maps
+    // call the media-query mixin with $mq-value, which supports media query values as min-height/max-width maps
     @include hu-media-query($mq-value) {
       // loop through and extract $type & $value variables from each item in $types
       @each $type, $value in $icon-size-types {
@@ -1682,7 +1682,7 @@ One benefit Hucssley has over other, similar libraries is that there is a define
 @if index($icon-size-modules, responsive) {
   // extract $mq-scale and $mq-value variables for each media query
   @each $mq-scale, $mq-value in $hu-media-queries {
-    // call the media-query mixin with $mq-value, which supports media query values as min-h/max-w maps
+    // call the media-query mixin with $mq-value, which supports media query values as min-height/max-width maps
     @include hu-media-query($mq-value) {
       // loop through and extract $type & $value variables from each item in $types
       @each $type, $value in $icon-size-types {
@@ -1758,7 +1758,7 @@ Similarly, custom parent classes can also easily be generated with the `hu-paren
 @if index($icon-size-modules, responsive) {
   // extract $mq-scale and $mq-value variables for each media query
   @each $mq-scale, $mq-value in $hu-media-queries {
-    // call the media-query mixin with $mq-value, which supports media query values as min-h/max-w maps
+    // call the media-query mixin with $mq-value, which supports media query values as min-height/max-width maps
     @include hu-media-query($mq-value) {
       // loop through and extract $type & $value variables from each item in $types
       @each $type, $value in $icon-size-types {
