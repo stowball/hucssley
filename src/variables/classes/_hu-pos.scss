@@ -1,10 +1,10 @@
 $hu-pos-modules: (base, group-state, responsive, state) !default;
 
 $hu-pos-scale: (
-  0: 0,
-  50: 50%,
-  100: 100%,
-  auto: auto,
+  0,
+  50%,
+  100%,
+  auto,
 ) !default;
 
 $hu-pos-types: (

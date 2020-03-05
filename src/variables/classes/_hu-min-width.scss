@@ -3,8 +3,8 @@ $hu-min-width-alias: "" !default;
 $hu-min-width-modules: (base, responsive) !default;
 
 $hu-min-width-types: (
-  0: 0,
-  100: 100%,
-  100vw: 100vw,
-  none: none,
+  0,
+  100%,
+  100vw,
+  none,
 ) !default;

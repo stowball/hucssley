@@ -146,11 +146,11 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
         border-style:solid
         border-width:200
         margin-bottom:400
-        width:50
-        @mq-600--width:30
+        width:50%
+        @mq-600--width:30%
         @mq-768--margin-bottom:0
         @mq-768--margin-right:500
-        @mq-768--width:20
+        @mq-768--width:20%
       "
       src="https://hireup.cdn.prismic.io/hireup/89e15301c28e6396927d85e38e9c5d5833ebab09_kyle_357-bonnie.png"
     />
@@ -2062,7 +2062,7 @@ which produces:
 
 ## Controlling file size
 
-While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.3 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 93 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
+While Hucssley creates almost every possible class you’d ever want to make building UI simple, this comes at a file size cost with the OOTB CSS coming in at a massive 1.3 MB uncompressed. Of course, the nature of Hucssley lends itself very well to gzipping, which brings the OOTB CSS down to 94 KB, which ironically, is still a lot smaller than lots of other “production” CSS in the wild.
 
 But, Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, media queries, and spacing scales will also help.
 
@@ -2071,7 +2071,7 @@ However, we can do better… and we can do it automatically. By utilizing [Purge
 ```js
 extractor: class {
   static extract(content) {
-    return content.match(/[A-Za-z0-9-_&:@<>\(\)\/]+/g) || [];
+    return content.match(/[A-Za-z0-9-_&:@%<>\(\)\/]+/g) || [];
   }
 }
 ```
