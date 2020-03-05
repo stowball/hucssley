@@ -221,7 +221,7 @@ npm install github:stowball/hucssley#master
 or
 
 ```sh
-yarn install github:stowball/hucssley#master
+yarn add github:stowball/hucssley#master
 ```
 
 If you want to use Hucssley as it comes, then it’s as simple as:
@@ -260,7 +260,7 @@ However, if you want to customize Hucssley, we recommend taking this approach:
 
 During this alpha period, if you wish to upgrade Hucssley and you use npm, it’s as simple as re-running `npm install github:stowball/hucssley#master` in your terminal.
 
-However, if you use yarn (tested on v1), re-running `yarn install github:stowball/hucssley#master` won't automatically update the files in your project unless you also explicitly run `yarn upgrade hucssley`.
+However, if you use yarn (tested on v1), re-running `yarn add github:stowball/hucssley#master` won't automatically update the files in your project unless you also explicitly run `yarn upgrade hucssley`.
 
 We recommend adding this command to a set-and-forget [`postinstall` script](https://docs.npmjs.com/misc/scripts) in your package.json to not be troubled with this issue going forward.
 
