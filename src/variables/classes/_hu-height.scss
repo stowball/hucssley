@@ -3,8 +3,8 @@ $hu-height-alias: "" !default;
 $hu-height-modules: (base, print, responsive) !default;
 
 $hu-height-types: (
-  0: 0,
-  100: 100%,
-  100vh: 100vh,
-  auto: auto,
+  0,
+  100%,
+  100vh,
+  auto,
 ) !default;

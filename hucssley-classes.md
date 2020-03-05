@@ -1306,10 +1306,10 @@ $hu-height-alias: "";
 $hu-height-modules: (base, print, responsive);
 
 $hu-height-types: (
-  0: 0,
-  100: 100%,
-  100vh: 100vh,
-  auto: auto,
+  0,
+  100%,
+  100vh,
+  auto,
 );
 ```
 
@@ -1495,7 +1495,7 @@ $hu-max-width-alias: "";
 $hu-max-width-modules: (base, responsive);
 
 $hu-max-width-types: (
-  100: 100%,
+  100%,
 );
 ```
 
@@ -1507,10 +1507,10 @@ $hu-min-height-alias: "";
 $hu-min-height-modules: (base);
 
 $hu-min-height-types: (
-  0: 0,
-  100: 100%,
-  100vh: 100vh,
-  none: none,
+  0,
+  100%,
+  100vh,
+  none,
 );
 ```
 
@@ -1522,10 +1522,10 @@ $hu-min-width-alias: "";
 $hu-min-width-modules: (base, responsive);
 
 $hu-min-width-types: (
-  0: 0,
-  100: 100%,
-  100vw: 100vw,
-  none: none,
+  0,
+  100%,
+  100vw,
+  none,
 );
 ```
 
@@ -1744,10 +1744,10 @@ pos -> bottom, left, right, top
 $hu-pos-modules: (base, group-state, responsive, state);
 
 $hu-pos-scale: (
-  0: 0,
-  50: 50%,
-  100: 100%,
-  auto: auto,
+  0,
+  50%,
+  100%,
+  auto,
 );
 
 $hu-pos-types: (
@@ -2134,11 +2134,11 @@ $hu-translate-x-alias: translate-x;
 $hu-translate-x-modules: (base);
 
 $hu-translate-x-types: (
-  -100: -100%,
-  -50: -50%,
-  0: 0,
-  50: 50%,
-  100: 100%,
+  -100%,
+  -50%,
+  0,
+  50%,
+  100%,
 );
 ```
 
@@ -2248,23 +2248,23 @@ $hu-width-modules: (base, print, responsive);
 
 $hu-width-types: (
   0: 0,
-  5: 5%,
-  10: 10%,
-  16: 16.66667%,
-  20: 20%,
-  25: 25%,
-  30: 30%,
-  33: 33.33333%,
-  40: 40%,
-  50: 50%,
-  60: 60%,
-  66: 66.66666%,
-  70: 70%,
-  75: 75%,
-  80: 80%,
-  83: 83.33333%,
-  90: 90%,
-  100: 100%,
+  5%: 5%,
+  10%: 10%,
+  16.6%: 16.66667%,
+  20%: 20%,
+  25%: 25%,
+  30%: 30%,
+  33.3%: 33.33333%,
+  40%: 40%,
+  50%: 50%,
+  60%: 60%,
+  66.6%: 66.66666%,
+  70%: 70%,
+  75%: 75%,
+  80%: 80%,
+  83.3%: 83.33333%,
+  90%: 90%,
+  100%: 100%,
   100vw: 100vw,
   auto: auto,
 );
