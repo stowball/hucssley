@@ -951,9 +951,11 @@ $hu-flex-types: ();
 ```scss
 $hu-flex-basis-alias: "";
 
-$hu-flex-basis-modules: ();
+$hu-flex-basis-modules: (base);
 
-$hu-flex-basis-types: ();
+$hu-flex-basis-types: (
+  0
+);
 ```
 
 ### hu-flex-direction
