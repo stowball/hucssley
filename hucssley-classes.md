@@ -152,7 +152,7 @@ Hucssley provides over 120 classes out-of-the-box, which have been sensibly pre-
 
 Each class will have an appropriately named `$hu-[class-name]-modules` variable, which determines what module types (if any), it is generated for.
 
-The variable accepts either a list or map. If it is a list, it will accept the following values: `(base, focus, hover, hocus, state, group-focus, group-hover, group-hocus, group-state, group-visited, reduced-motion, print)` or empty `()`. The order of the modules is not important, as Hucssley will intelligently order them for you to produce the desired output.
+The variable accepts either a list or map. If it is a list, it will accept the following values: `(base, visited, focus, hover, hocus, active, state, group-visited, group-focus, group-hover, group-hocus, group-state, reduced-motion, print)` or empty `()`. The order of the modules is not important, as Hucssley will intelligently order them for you to produce the desired output.
 
 #### Advanced modules
 
