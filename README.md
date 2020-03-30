@@ -27,11 +27,11 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
 - [Upgrading](#upgrading)
 - [Modules](#modules)
   - [Base: `base`](#base-base)
-    - [Non-parent modules: `visited, focus, hocus, hover, active, print, reduced-motion, responsive`](#non-parent-modules-visited-focus-hocus-hover-active-print-reduced-motion-responsive)
+    - [Non-parent modules: `visited`, `focus`, `hocus`, `hover`, `active`, `print`, `reduced-motion`, `responsive`](#non-parent-modules-visited-focus-hocus-hover-active-print-reduced-motion-responsive)
   - [State modules: `state`](#state-modules-state)
-  - [Group modules: `group-focus, group-hover, group-hocus, group-state, group-visited`](#group-modules-group-focus-group-hover-group-hocus-group-state-group-visited)
+  - [Group modules: `group-visited`, `group-focus`, `group-hover`, `group-hocus`, `group-state`](#group-modules-group-visited-group-focus-group-hover-group-hocus-group-state)
   - [Custom parent modules](#custom-parent-modules)
-  - [Combining modules: `responsive` and `visited, focus, hover, hocus, active, state, group-visited, group-focus, group-hover, group-hocus, group-state`](#combining-modules-responsive-and-visited-focus-hover-hocus-active-state-group-visited-group-focus-group-hover-group-hocus-group-state)
+  - [Combining modules: `responsive` and `visited`, `focus`, `hover`, `hocus`, `active`, `state`, `group-visited`, `group-focus`, `group-hover`, `group-hocus`, `group-state`](#combining-modules-responsive-and-visited-focus-hover-hocus-active-state-group-visited-group-focus-group-hover-group-hocus-group-state)
 - [Scales](#scales)
 - [Configuration](#configuration)
   - [Configuration helpers](#configuration-helpers)
@@ -315,7 +315,7 @@ All of the above aliases – and every other class alias – can be changed to y
 
 *Note: If a global namespace has been configured, it will always precede the base class name.*
 
-#### Non-parent modules: `visited, focus, hocus, hover, active, print, reduced-motion, responsive`
+#### Non-parent modules: `visited`, `focus`, `hocus`, `hover`, `active`, `print`, `reduced-motion`, `responsive`
 
 When you want to use class names scoped to “non-parent” modules, it follows a pattern of `[module-name][-module-variant]?--[base-class]`, for instance:
 
@@ -350,7 +350,7 @@ For state classes to become active, you need to apply the raw state name as an a
 "></div>
 ```
 
-### Group modules: `group-focus, group-hover, group-hocus, group-state, group-visited`
+### Group modules: `group-visited`, `group-focus`, `group-hover`, `group-hocus`, `group-state`
 
 With groups, you can style child elements when interacting with a generic parent element (`:focus` and/or `:hover`), or when it’s in a particular UI state. Their syntax is `group[group-type]__[base-class]`:
 
@@ -402,7 +402,7 @@ In the above example, we used a `browser-mobile__font-size:700` class name, whic
 
 For more information, please read [Parent classes](#parent-classes-hu-parent-classes).
 
-### Combining modules: `responsive` and `visited, focus, hover, hocus, active, state, group-visited, group-focus, group-hover, group-hocus, group-state`
+### Combining modules: `responsive` and `visited`, `focus`, `hover`, `hocus`, `active`, `state`, `group-visited`, `group-focus`, `group-hover`, `group-hocus`, `group-state`
 
 When a particular class is configured to use the `responsive` module, it will also output `focus`, `hover`, `hocus`, `state`, `group-visited`, `group-focus`, `group-hover`, `group-hocus` and `group-state` classes should they have also been configured.
 
@@ -1309,7 +1309,7 @@ As with `$hu-classes`, you can customize the class name by passing a map to `$pr
 
 While `hu-classes` will be suitable for most use cases, should you need, you can also explicitly create custom parent classes with the `hu-parent-classes()` mixin. It behaves similarly to `hu-pseudo-classes()`, but you instead pass in a list of one or more parent elements you want to generate classes for.
 
-*Note: `group-focus`, `group-hover`, `group-hocus`, `group-state` and `group-visited` modules are not used for custom parents.*
+*Note: `group-visited`, `group-focus`, `group-hover`, `group-hocus`, and `group-state`  modules are not used for custom parents.*
 
 ```
 @mixin hu-parent-classes($property, $parents, $modules, $types?);
