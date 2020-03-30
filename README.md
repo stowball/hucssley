@@ -1309,7 +1309,7 @@ As with `$hu-classes`, you can customize the class name by passing a map to `$pr
 
 While `hu-classes` will be suitable for most use cases, should you need, you can also explicitly create custom parent classes with the `hu-parent-classes()` mixin. It behaves similarly to `hu-pseudo-classes()`, but you instead pass in a list of one or more parent elements you want to generate classes for.
 
-*Note: `group-focus`, `group-hover`, `group-hocus`, `group-state`, `group-visited` modules are not used for custom parents.*
+*Note: `group-focus`, `group-hover`, `group-hocus`, `group-state` and `group-visited` modules are not used for custom parents.*
 
 ```
 @mixin hu-parent-classes($property, $parents, $modules, $types?);
