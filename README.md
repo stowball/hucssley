@@ -31,7 +31,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
   - [State modules: `state`](#state-modules-state)
   - [Group modules: `group-focus, group-hover, group-hocus, group-state, group-visited`](#group-modules-group-focus-group-hover-group-hocus-group-state-group-visited)
   - [Custom parent modules](#custom-parent-modules)
-  - [Combining modules: `responsive` and `visited, focus, hover, hocus, active, state, group-hover, group-state`](#combining-modules-responsive-and-visited-focus-hover-hocus-active-state-group-hover-group-state)
+  - [Combining modules: `responsive` and `visited, focus, hover, hocus, active, state, group-visited, group-focus, group-hover, group-hocus, group-state`](#combining-modules-responsive-and-visited-focus-hover-hocus-active-state-group-visited-group-focus-group-hover-group-hocus-group-state)
 - [Scales](#scales)
 - [Configuration](#configuration)
   - [Configuration helpers](#configuration-helpers)
@@ -402,9 +402,9 @@ In the above example, we used a `browser-mobile__font-size:700` class name, whic
 
 For more information, please read [Parent classes](#parent-classes-hu-parent-classes).
 
-### Combining modules: `responsive` and `visited, focus, hover, hocus, active, state, group-hover, group-state`
+### Combining modules: `responsive` and `visited, focus, hover, hocus, active, state, group-visited, group-focus, group-hover, group-hocus, group-state`
 
-When a particular class is configured to use the `responsive` module, it will also output `focus`, `hover`, `hocus`, `state`, `group-hover` and `group-state` classes should they have also been configured.
+When a particular class is configured to use the `responsive` module, it will also output `focus`, `hover`, `hocus`, `state`, `group-visited`, `group-focus`, `group-hover`, `group-hocus` and `group-state` classes should they have also been configured.
 
 Here the syntax is:
 
@@ -414,7 +414,10 @@ Here the syntax is:
 * `@mq-[responsive-scale]:hocus--[base-class]` for `hocus`
 * `@mq-[responsive-scale]:active--[base-class]` for `active`
 * `@mq-[responsive-scale]-[state-name]--[base-class]` for `state`s
+* `group:visited__@mq-[responsive-scale]--[base-class]` for `group-visited`
+* `group:focus__@mq-[responsive-scale]--[base-class]` for `group-focus`
 * `group:hover__@mq-[responsive-scale]--[base-class]` for `group-hover`
+* `group:hocus__@mq-[responsive-scale]--[base-class]` for `group-hocus`
 * `group-[state-name]__@mq-[responsive-scale]--[base-class]` for `group-state`
 
 Which results in:
@@ -1391,7 +1394,7 @@ hu-important();
 
 ##### `hu-generic`
 
-Generates the `base`, `focus`, `hover`, `hocus`, `state`, `group-hover`, `group-state`, `reduced-motion` and `print` module styles for a class (in that order) while also adding the correct specificity.
+Generates the `base`, `focus`, `hover`, `hocus`, `state`, `group-visited`, `group-focus`, `group-hover`, `group-hocus`, `group-state`, `reduced-motion` and `print` module styles for a class (in that order) while also adding the correct specificity.
 
 ```scss
 @mixin hu-generic($class-name, $one-or-multiple-modules);
