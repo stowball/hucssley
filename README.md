@@ -358,7 +358,7 @@ With groups, you can style child elements when interacting with a generic parent
 .group:focus__scale:110
 .group:hover__scale:110
 .group:hocus__scale:110 // both :focus and :hover
-.group:visited__scale:110
+.group:visited__color:indigo-800
 .group-is-selected__background-color:blue-300
 ```
 
