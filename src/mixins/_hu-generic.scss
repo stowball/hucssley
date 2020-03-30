@@ -47,6 +47,12 @@
       }
     }
 
+    @else if ($module == group-visited) {
+      .group:visited .group#{hu-escape-class-name(":visited")}__#{$class-name} {
+        @content;
+      }
+    }
+
     @else if ($module == group-focus) {
       #{$hu-focus-parent} .group#{$hu-focus-pseudo} .group#{hu-escape-class-name(":focus")}__#{$class-name} {
         @content;

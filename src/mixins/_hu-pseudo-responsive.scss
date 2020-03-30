@@ -48,6 +48,12 @@
         }
       }
 
+      @if (index($modules, group-visited)) {
+        .group:visited .group#{hu-escape-class-name(":visited")}__#{hu-escape-class-name("@mq-#{$mq-scale}")}#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+          @content;
+        }
+      }
+
       @if (index($modules, group-focus)) {
         #{$hu-focus-parent} .group#{$hu-focus-pseudo} .group#{hu-escape-class-name(":focus")}__#{hu-escape-class-name("@mq-#{$mq-scale}")}#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
           @content;

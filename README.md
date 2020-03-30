@@ -29,7 +29,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
   - [Base: `base`](#base-base)
     - [Non-parent modules: `visited, focus, hocus, hover, active, print, reduced-motion, responsive`](#non-parent-modules-visited-focus-hocus-hover-active-print-reduced-motion-responsive)
   - [State modules: `state`](#state-modules-state)
-  - [Group modules: `group-focus, group-hover, group-hocus, group-state`](#group-modules-group-focus-group-hover-group-hocus-group-state)
+  - [Group modules: `group-focus, group-hover, group-hocus, group-state, group-visited`](#group-modules-group-focus-group-hover-group-hocus-group-state-group-visited)
   - [Custom parent modules](#custom-parent-modules)
   - [Combining modules: `responsive` and `visited, focus, hover, hocus, active, state, group-hover, group-state`](#combining-modules-responsive-and-visited-focus-hover-hocus-active-state-group-hover-group-state)
 - [Scales](#scales)
@@ -350,7 +350,7 @@ For state classes to become active, you need to apply the raw state name as an a
 "></div>
 ```
 
-### Group modules: `group-focus, group-hover, group-hocus, group-state`
+### Group modules: `group-focus, group-hover, group-hocus, group-state, group-visited`
 
 With groups, you can style child elements when interacting with a generic parent element (`:focus` and/or `:hover`), or when it’s in a particular UI state. Their syntax is `group[group-type]__[base-class]`:
 
@@ -358,6 +358,7 @@ With groups, you can style child elements when interacting with a generic parent
 .group:focus__scale:110
 .group:hover__scale:110
 .group:hocus__scale:110 // both :focus and :hover
+.group:visited__scale:110
 .group-is-selected__background-color:blue-300
 ```
 
@@ -1305,7 +1306,7 @@ As with `$hu-classes`, you can customize the class name by passing a map to `$pr
 
 While `hu-classes` will be suitable for most use cases, should you need, you can also explicitly create custom parent classes with the `hu-parent-classes()` mixin. It behaves similarly to `hu-pseudo-classes()`, but you instead pass in a list of one or more parent elements you want to generate classes for.
 
-*Note: `group-focus`, `group-hover`, `group-hocus` and `group-state` modules are not used for custom parents.*
+*Note: `group-focus`, `group-hover`, `group-hocus`, `group-state`, `group-visited` modules are not used for custom parents.*
 
 ```
 @mixin hu-parent-classes($property, $parents, $modules, $types?);
