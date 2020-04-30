@@ -432,6 +432,7 @@ $hu-align-items-modules: (base, responsive);
 
 $hu-align-items-types: (
   auto,
+  baseline,
   center,
   end,
   flex-end,
