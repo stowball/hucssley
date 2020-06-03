@@ -171,6 +171,16 @@
     pointer-events: none #{hu-important()};
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: inherit #{hu-important()};
+    font-weight: inherit #{hu-important()};
+  }
+
   html {
     background-color: $hu-reset-html-background-color #{hu-important()};
     color: $hu-reset-html-color #{hu-important()};
