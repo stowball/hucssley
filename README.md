@@ -86,6 +86,8 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
   - [Forcing `!important`](#forcing-important)
   - [Quarantining with a descendent selector](#quarantining-with-a-descendent-selector)
 - [Controlling file size](#controlling-file-size)
+  - [v2](#v2)
+  - [v1](#v1)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -2070,12 +2072,26 @@ While Hucssley creates almost every possible class you’d ever want to make bui
 
 But, Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, media queries, and spacing scales will also help.
 
-However, we can do better… and we can do it automatically. By utilizing [Purgecss](https://purgecss.com) and the following `extractor`, you’ll be able to reduce your CSS output to only the classes that are used in your views:
+However, we can do better… and we can do it automatically by utilizing [Purgecss](https://purgecss.com) to reduce your CSS output to only the classes that are used in your views. Hucssley comes with a pre-configured  Purgecss `extractor`, which you can import into your projects, like so:
+
+### v2
 
 ```js
+const { extractor } = require('hucssley/src/purgecss/');
+
+{
+  defaultExtractor: extractor,
+}
+```
+
+### v1
+
+```js
+const { extractor } = require('hucssley/src/purgecss/');
+
 extractor: class {
   static extract(content) {
-    return content.match(/[A-Za-z0-9-_&:@%.<>()/]+/g) || [];
+    return extractor(content);
   }
 }
 ```
