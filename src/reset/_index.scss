@@ -1,10 +1,14 @@
 @if ($hu-reset == true) {
   @if ($hu-reset-box-sizing == border-box) {
+    /*! purgecss start ignore */
+
     *,
     *::before,
     *::after {
       box-sizing: $hu-reset-box-sizing #{hu-important()};
     }
+
+    /*! purgecss end ignore */
   }
 
   a,
@@ -165,11 +169,15 @@
     margin: 0 #{hu-important()};
   }
 
+  /*! purgecss start ignore */
+
   [disabled],
   :disabled {
     cursor: default #{hu-important()};
     pointer-events: none #{hu-important()};
   }
+
+  /*! purgecss end ignore */
 
   h1,
   h2,
@@ -247,6 +255,8 @@
     }
   }
 
+  /*! purgecss start ignore */
+
   ::placeholder {
     color: $hu-reset-input-placeholder-color #{hu-important()};
     opacity: 1 #{hu-important()};
@@ -256,4 +266,6 @@
     -webkit-appearance: none #{hu-important()};
     margin: 0 #{hu-important()};
   }
+
+  /*! purgecss end ignore */
 }
