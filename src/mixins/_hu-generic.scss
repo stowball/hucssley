@@ -9,32 +9,32 @@
     }
 
     @else if ($module == visited) {
-      .#{hu-escape-class-name("&:visited")}--#{$class-name}:visited {
+      .#{hu-escape-class-name("#{$hu-pseudo-prefix}:visited")}--#{$class-name}:visited {
         @content;
       }
     }
 
     @else if ($module == focus) {
-      #{$hu-focus-parent} .#{hu-escape-class-name("&:focus")}--#{$class-name}#{$hu-focus-pseudo} {
+      #{$hu-focus-parent} .#{hu-escape-class-name("#{$hu-pseudo-prefix}:focus")}--#{$class-name}#{$hu-focus-pseudo} {
         @content;
       }
     }
 
     @else if ($module == hover) {
-      .#{hu-escape-class-name("&:hover")}--#{$class-name}:hover {
+      .#{hu-escape-class-name("#{$hu-pseudo-prefix}:hover")}--#{$class-name}:hover {
         @content;
       }
     }
 
     @else if ($module == hocus) {
-      #{$hu-focus-parent} .#{hu-escape-class-name("&:hocus")}--#{$class-name}#{$hu-focus-pseudo},
-      .#{hu-escape-class-name("&:hocus")}--#{$class-name}:hover {
+      #{$hu-focus-parent} .#{hu-escape-class-name("#{$hu-pseudo-prefix}:hocus")}--#{$class-name}#{$hu-focus-pseudo},
+      .#{hu-escape-class-name("#{$hu-pseudo-prefix}:hocus")}--#{$class-name}:hover {
         @content;
       }
     }
 
     @else if ($module == active) {
-      .#{hu-escape-class-name("&:active")}--#{$class-name}:active {
+      .#{hu-escape-class-name("#{$hu-pseudo-prefix}:active")}--#{$class-name}:active {
         @content;
       }
     }

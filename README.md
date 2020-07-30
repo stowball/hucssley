@@ -50,6 +50,7 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
     - [Themes: `$hu-themes`](#themes-hu-themes)
     - [Namespace: `$hu-namespace`](#namespace-hu-namespace)
     - [Use important: `$hu-use-important`](#use-important-hu-use-important)
+    - [Pseudo prefix: `$hu-pseudo-prefix`](#pseudo-prefix-hu-pseudo-prefix)
     - [Debug: `$hu-debug`](#debug-hu-debug)
   - [Classes](#classes)
 - [Creating custom classes](#creating-custom-classes)
@@ -86,6 +87,8 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
   - [Forcing `!important`](#forcing-important)
   - [Quarantining with a descendent selector](#quarantining-with-a-descendent-selector)
 - [Controlling file size](#controlling-file-size)
+  - [v2](#v2)
+  - [v1](#v1)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -174,8 +177,8 @@ The following example demonstrates how you can use Hucssley out-of-the-box to ea
           transition-duration:200
           transition-easing:ease
           transition-property:all
-          &:hocus--background-color:blue-600
-          &:hocus--scale:105
+          :hocus--background-color:blue-600
+          :hocus--scale:105
           @mq-768--padding-horizontal:500
           @mq-768--padding-vertical:400
         "
@@ -321,15 +324,13 @@ When you want to use class names scoped to “non-parent” modules, it follows 
 
 ```css
 .@mq-768--align-items:center
-.&:hocus--color:neutral-1000
+.:hocus--color:neutral-1000
 .@print--flex-direction:column
 ```
 
-In the above example, `&:hocus` is a shortcut module for `:hover, :focus`, and `@mq-768` is for a `(min-width: 768px)` media query.
+In the above example, `:hocus` is a shortcut module for `:hover, :focus`, and `@mq-768` is for a `(min-width: 768px)` media query.
 
 The `:active`, `:focus`, `:hover` and `:visited` pseudo-classes are automatically ordered to the [LVHA system](https://developer.mozilla.org/en-US/docs/Web/CSS/:active) to ensure links and buttons are styled predictably.
-
-*Note: top-level pseudo classes are prefixed with `&`.*
 
 ### State modules: `state`
 
@@ -854,8 +855,8 @@ By default, the `focus`, `group-focus`, `hocus` and `group-hocus` modules genera
 $hu-focus-pseudo: ":focus-visible";
 
 /* ->
-.&:focus--[class-name]:focus-visible,
-.&:hocus--[class-name]:focus-visible {
+.:focus--[class-name]:focus-visible,
+.:hocus--[class-name]:focus-visible {
   // declarations
 }
 
@@ -873,8 +874,8 @@ $hu-focus-parent: ".js-focus-visible";
 $hu-focus-pseudo: ":focus:not(.focus-visible)";
 
 /* ->
-.js-focus-visible .&:focus--[class-name]:focus:not(.focus-visible),
-.js-focus-visible .&:hocus--[class-name]:focus:not(.focus-visible) {
+.js-focus-visible .:focus--[class-name]:focus:not(.focus-visible),
+.js-focus-visible .:hocus--[class-name]:focus:not(.focus-visible) {
   // declarations
 }
 
@@ -963,6 +964,23 @@ $hu-use-important: true;
 …
 */
 ```
+
+#### Pseudo prefix: `$hu-pseudo-prefix`
+
+To support [Purgecss](https://purgecss.com) v1, you can choose to add a prefix to any top-level pseudo classes, otherwise unused pseudo classes won’t be purged.
+
+```scss
+
+$hu-pseudo-prefix: "&";
+
+/* ->
+
+.&:hover--background-color:inherit:hover {
+  background-color: inherit;
+}
+```
+
+*Note: Pseudo classes which are not top-level, such as `group:hover` are unaffected by this variable.*
 
 #### Debug: `$hu-debug`
 
@@ -1188,11 +1206,11 @@ $hu-display-modules: (
 /* ->
 …
 
-.&::before--display:block::before {
+.::before--display:block::before {
   display: block;
 }
 
-.&:first-child--display:block:first-child {
+.:first-child--display:block:first-child {
   display: block;
 }
 
@@ -1263,19 +1281,19 @@ This mixin is a wrapper around two other mixins, `hu-pseudo-generic-classes()` a
 @include hu-pseudo-classes(display, ("::before", ":first-child"), $hu-display-modules, $hu-display-types);
 
 /* ->
-.&::before--display:block::before {
+.::before--display:block::before {
   display: block;
 }
 
-.&:first-child--display:block:first-child {
+.:first-child--display:block:first-child {
   display: block;
 }
 
-.&::before--display:flex::before {
+.::before--display:flex::before {
   display: flex;
 }
 
-.&:first-child--display:flex:first-child {
+.:first-child--display:flex:first-child {
   display: flex;
 }
 
@@ -1512,11 +1530,11 @@ Generates the `base`, `focus`, `hover`, `hocus`, `state`, `reduced-motion` and `
 }
 
 /* ->
-.&::before--hu-display:block::before {
+.::before--hu-display:block::before {
   display: block;
 }
 
-.&:first-child--hu-display:block:first-child {
+.:first-child--hu-display:block:first-child {
   display: block;
 }
 
@@ -1710,12 +1728,12 @@ One benefit Hucssley has over other, similar libraries is that there is a define
 Generates the following:
 
 ```css
-.&::before--icon-size:100::before {
+.::before--icon-size:100::before {
   height: 1rem;
   width: 1rem;
 }
 
-.&::before--icon-size:200::before {
+.::before--icon-size:200::before {
   height: 1.5rem;
   width: 1.5rem;
 }
@@ -1859,7 +1877,7 @@ export default {
         transition-duration:100
         transition-easing:ease
         transition-property:all
-        &:hocus--scale:105
+        :hocus--scale:105
         is-selected--background-color:neutral-700
         is-selected--color:neutral-0
       `,
@@ -2070,12 +2088,26 @@ While Hucssley creates almost every possible class you’d ever want to make bui
 
 But, Hucssley is infinitely customizable, so you can set the variables of modules you’ll never use to `()` so they won’t output, and of course, limiting the amount of colors, media queries, and spacing scales will also help.
 
-However, we can do better… and we can do it automatically. By utilizing [Purgecss](https://purgecss.com) and the following `extractor`, you’ll be able to reduce your CSS output to only the classes that are used in your views:
+However, we can do better… and we can do it automatically by utilizing [Purgecss](https://purgecss.com) to reduce your CSS output to only the classes that are used in your views. Hucssley comes with a pre-configured  Purgecss `extractor`, which you can import into your projects, like so:
+
+### v2
 
 ```js
+const { extractor } = require('hucssley/src/purgecss/');
+
+{
+  defaultExtractor: extractor,
+}
+```
+
+### v1
+
+```js
+const { extractor } = require('hucssley/src/purgecss/');
+
 extractor: class {
   static extract(content) {
-    return content.match(/[A-Za-z0-9-_&:@%.<>()/]+/g) || [];
+    return extractor(content);
   }
 }
 ```

@@ -4,38 +4,38 @@
       $pseudo-class-name: hu-escape-class-name($pseudo);
 
       @if ($module == base) {
-        .#{hu-escape-class-name("&")}#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
+        .#{hu-escape-class-name("#{$hu-pseudo-prefix}")}#{$pseudo-class-name}--#{$class-name}#{$pseudo} {
           @content;
         }
       }
 
       @else if ($module == visited) {
-        .#{hu-escape-class-name("&:visited")}#{$pseudo-class-name}--#{$class-name}:visited#{$pseudo} {
+        .#{hu-escape-class-name("#{$hu-pseudo-prefix}:visited")}#{$pseudo-class-name}--#{$class-name}:visited#{$pseudo} {
           @content;
         }
       }
 
       @else if ($module == focus) {
-        #{$hu-focus-parent} .#{hu-escape-class-name("&:focus")}#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo} {
+        #{$hu-focus-parent} .#{hu-escape-class-name("#{$hu-pseudo-prefix}:focus")}#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo} {
           @content;
         }
       }
 
       @else if ($module == hover) {
-        .#{hu-escape-class-name("&:hover")}#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
+        .#{hu-escape-class-name("#{$hu-pseudo-prefix}:hover")}#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
           @content;
         }
       }
 
       @else if ($module == hocus) {
-        #{$hu-focus-parent} .#{hu-escape-class-name("&:hocus")}#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo},
-        .#{hu-escape-class-name("&:hocus")}#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
+        #{$hu-focus-parent} .#{hu-escape-class-name("#{$hu-pseudo-prefix}:hocus")}#{$pseudo-class-name}--#{$class-name}#{$hu-focus-pseudo}#{$pseudo},
+        .#{hu-escape-class-name("#{$hu-pseudo-prefix}:hocus")}#{$pseudo-class-name}--#{$class-name}:hover#{$pseudo} {
           @content;
         }
       }
 
       @else if ($module == active) {
-        .#{hu-escape-class-name("&:active")}#{$pseudo-class-name}--#{$class-name}:active#{$pseudo} {
+        .#{hu-escape-class-name("#{$hu-pseudo-prefix}:active")}#{$pseudo-class-name}--#{$class-name}:active#{$pseudo} {
           @content;
         }
       }
