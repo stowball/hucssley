@@ -1640,7 +1640,7 @@ $hu-order-types: (
 ```scss
 $hu-outline-alias: "";
 
-$hu-outline-modules: (focus, hocus);
+$hu-outline-modules: (base, focus, hocus);
 
 $hu-outline-types: (
   none,
