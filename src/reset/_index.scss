@@ -11,37 +11,17 @@
     /*! purgecss end ignore */
   }
 
-  a,
-  abbr,
-  acronym,
-  address,
-  applet,
-  article,
-  aside,
-  audio,
-  b,
-  big,
   blockquote,
   body,
   button,
   canvas,
   caption,
-  center,
-  cite,
-  code,
   dd,
-  del,
   details,
-  dfn,
-  div,
+  dialog,
   dl,
-  dt,
-  em,
-  embed,
   fieldset,
-  figcaption,
   figure,
-  footer,
   form,
   h1,
   h2,
@@ -49,50 +29,24 @@
   h4,
   h5,
   h6,
-  header,
-  hgroup,
+  hr,
   html,
-  i,
   iframe,
   img,
-  ins,
-  kbd,
-  label,
   legend,
   li,
-  mark,
   menu,
-  nav,
-  object,
   ol,
-  output,
   p,
   pre,
-  q,
-  ruby,
-  s,
-  samp,
-  section,
-  small,
-  span,
-  strike,
-  strong,
-  sub,
-  summary,
-  sup,
   table,
   tbody,
   td,
   tfoot,
   th,
   thead,
-  time,
   tr,
-  tt,
-  u,
-  ul,
-  var,
-  video {
+  ul {
     border: none #{hu-important()};
     margin: 0 #{hu-important()};
     padding: 0 #{hu-important()};
@@ -167,6 +121,7 @@
     font-size: 1em #{hu-important()};
     font-weight: inherit #{hu-important()};
     margin: 0 #{hu-important()};
+    padding: 0 #{hu-important()};
   }
 
   /*! purgecss start ignore */
@@ -232,6 +187,12 @@
     @if ($hu-reset-box-sizing == border-box) {
       box-sizing: content-box #{hu-important()};
     }
+  }
+
+  [type="button"],
+  [type="reset"],
+  [type="submit"] {
+    -webkit-appearance: button #{hu-important()};
   }
 
   [type="email"],
