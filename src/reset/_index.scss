@@ -159,9 +159,11 @@
       -webkit-font-smoothing: antialiased #{hu-important()};
     }
 
+    overflow-x: $hu-reset-html-overflow-x #{hu-important()};
     overflow-y: $hu-reset-html-overflow-y #{hu-important()};
     -ms-overflow-style: scrollbar #{hu-important()};
     text-size-adjust: 100% #{hu-important()};
+    text-rendering: $hu-reset-html-text-rendering #{hu-important()};
   }
 
   img {
