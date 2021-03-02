@@ -214,16 +214,16 @@ So with you now intrigued, read the rest of the docs, have a play, and fall in l
 
 ## Installation
 
-While Hucssley is still in early development, it has not been published to npm. However, you can still add it as a `dependency` of your project with:
+While Hucssley is still in early development, it should be installed via [https://www.npmjs.com/package/hucssley/v/1.0.0-beta.3](npm) using the latest beta tag, for example:
 
 ```sh
-npm install hucssley
+npm install hucssley@1.0.0-beta.3
 ```
 
 or
 
 ```sh
-yarn add hucssley
+yarn add hucssley@1.0.0-beta.3
 ```
 
 If you want to use Hucssley as it comes, then it’s as simple as:
