@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @function hu-em($target, $context: 16) {
-  @return hu-strip-unit($target / $context) * 1em;
+  @return hu-strip-unit(math.div($target, $context)) * 1em;
 }
