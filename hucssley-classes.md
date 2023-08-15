@@ -645,16 +645,6 @@ $hu-backface-visibility-types: (
 );
 ```
 
-### hu-background-color
-
-```scss
-$hu-background-color-alias: "";
-
-$hu-background-color-modules: (base, visited, hocus, active, group-hocus, group-state, state);
-
-$hu-background-color-types: $hu-colors;
-```
-
 ### hu-background-blend-mode
 
 ```scss
@@ -680,6 +670,16 @@ $hu-background-blend-mode-types: (
   screen,
   soft-light,
 );
+```
+
+### hu-background-color
+
+```scss
+$hu-background-color-alias: "";
+
+$hu-background-color-modules: (base, visited, hocus, active, group-hocus, group-state, state);
+
+$hu-background-color-types: $hu-colors;
 ```
 
 ### hu-background-image
