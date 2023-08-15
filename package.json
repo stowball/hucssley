@@ -1,5 +1,5 @@
 {
-  "name": "hucssley",
+  "name": "@hireupau/hucssley",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
@@ -15,5 +15,6 @@
   "scripts": {
     "lint": "stylelint \"src/**/*.scss\"",
     "tocs": "doctoc . --github"
-  }
+  }, 
+  "files":["src/**"]
 }
