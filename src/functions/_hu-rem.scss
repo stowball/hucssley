@@ -1,5 +1,7 @@
+@use "sass:math";
+
 $hu-f-rem-context: 16px !default;
 
 @function hu-rem($target, $context: $hu-f-rem-context) {
-  @return hu-strip-unit($target / $context) * 1rem;
+  @return hu-strip-unit(math.div($target, $context)) * 1rem;
 }

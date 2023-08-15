@@ -24,7 +24,6 @@ To understand the reasoning behind its creation, please read [Rethinking CSS](/r
 - [A working example](#a-working-example)
 - [Why Hucssley?](#why-hucssley)
 - [Installation](#installation)
-- [Upgrading](#upgrading)
 - [Modules](#modules)
   - [Base: `base`](#base-base)
     - [Non-parent modules: `visited`, `focus`, `hocus`, `hover`, `active`, `print`, `reduced-motion`, `responsive`](#non-parent-modules-visited-focus-hocus-hover-active-print-reduced-motion-responsive)
@@ -215,16 +214,16 @@ So with you now intrigued, read the rest of the docs, have a play, and fall in l
 
 ## Installation
 
-While Hucssley is still in early development, it has not been published to npm. However, you can still add it as a `dependency` of your project with:
+While Hucssley is still in early development, it should be installed via [npm](https://www.npmjs.com/package/hucssley/v/1.0.0-beta.4) using the latest beta tag, for example:
 
 ```sh
-npm install github:stowball/hucssley#master
+npm install hucssley@1.0.0-beta.4
 ```
 
 or
 
 ```sh
-yarn add github:stowball/hucssley#master
+yarn add hucssley@1.0.0-beta.4
 ```
 
 If you want to use Hucssley as it comes, then it’s as simple as:
@@ -258,16 +257,6 @@ However, if you want to customize Hucssley, we recommend taking this approach:
 ```scss
 @import "~hucssley/src/index";
 ```
-
-## Upgrading
-
-During this alpha period, if you wish to upgrade Hucssley and you use npm, it’s as simple as re-running `npm install github:stowball/hucssley#master` in your terminal.
-
-However, if you use yarn (tested on v1), re-running `yarn add github:stowball/hucssley#master` won't automatically update the files in your project unless you also explicitly run `yarn upgrade hucssley`.
-
-We recommend adding this command to a set-and-forget [`postinstall` script](https://docs.npmjs.com/misc/scripts) in your package.json to not be troubled with this issue going forward.
-
----
 
 ## Modules
 
