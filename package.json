@@ -7,7 +7,8 @@
   "scripts": {
     "build": "sass src/_index.scss dist/index.css --style compressed",
     "lint": "stylelint \"src/**/*.scss\"",
-    "tocs": "doctoc . --github"
+    "tocs": "doctoc . --github",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "doctoc": "^2.2.0",
